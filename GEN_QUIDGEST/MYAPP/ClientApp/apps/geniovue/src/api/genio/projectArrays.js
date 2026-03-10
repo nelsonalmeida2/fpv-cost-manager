@@ -108,6 +108,66 @@ export class GroupOption {
 
 /* eslint-enable @typescript-eslint/no-unused-vars */
 /**
+ * The CURRENCY array.
+ */
+export class QArrayCurrency
+{
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	constructor(fnResources)
+	{
+		this.type = 'C'
+		this.pluralName = 'CURRENCIES23236'
+		this.singularName = 'CURRENCY13881'
+
+		this.elements = [
+			new Option({
+				num: 1,
+				key: 'EUR',
+				resourceId: 'EURO46226',
+				fnResources,
+			}),
+			new Option({
+				num: 2,
+				key: 'USD',
+				resourceId: 'DOLLAR33324',
+				fnResources,
+			}),
+			new Option({
+				num: 3,
+				key: 'RUB',
+				resourceId: 'RUBLE07990',
+				fnResources,
+			}),
+			new Option({
+				num: 4,
+				key: 'BRL',
+				resourceId: 'REAL43894',
+				fnResources,
+			}),
+			new Option({
+				num: 5,
+				key: 'AOA',
+				resourceId: 'KWANZA16977',
+				fnResources,
+			}),
+			new Option({
+				num: 6,
+				key: 'CNY',
+				resourceId: 'YUAN27097',
+				fnResources,
+			}),
+			new Option({
+				num: 7,
+				key: 'LOC',
+				resourceId: 'LOCAL_CURRENCY16850',
+				fnResources,
+			}),
+		]
+
+	}
+}
+
+/**
  * The s_modpro array.
  */
 export class QArrayS_modpro
@@ -376,6 +436,7 @@ export class QArrayS_tpproc
 
 
 export default {
+	QArrayCurrency,
 	QArrayS_modpro,
 	QArrayS_module,
 	QArrayS_prstat,

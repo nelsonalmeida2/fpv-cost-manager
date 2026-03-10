@@ -20,6 +20,17 @@ namespace CSGenio.business
 
             StringBuilder Qresult = new StringBuilder();
             
+			// currency
+            Qresult = new StringBuilder();
+			            Qresult.AppendLine("if {{{0}}} = \"EUR\" then \"Euro\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"USD\" then \"Dollar\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"RUB\" then \"Ruble\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"BRL\" then \"Real\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"AOA\" then \"Kwanza\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"CNY\" then \"Yuan\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"LOC\" then \"Local Currency\" else");
+            Qresult.Append("\"                                              \"");
+            todasArrays.Add("currency", Qresult.ToString());
 			// s_modpro
             Qresult = new StringBuilder();
 			            Qresult.AppendLine("if {{{0}}} = \"INDIV\" then \"Individual\" else");

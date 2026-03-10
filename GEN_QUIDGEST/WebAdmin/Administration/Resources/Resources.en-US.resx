@@ -129,6 +129,9 @@
   <data name="ROLES61449" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="INVOICE63068" xml:space="preserve">
+    <value>Invoice</value>
+  </data>
   <data name="PROCESS_TYPES19050" xml:space="preserve">
     <value>Process Types</value>
   </data>
@@ -153,6 +156,9 @@
   <data name="MOTIVE13407" xml:space="preserve">
     <value>Motive</value>
   </data>
+  <data name="RUBLE07990" xml:space="preserve">
+    <value>Ruble</value>
+  </data>
   <data name="MY_APPLICATION56216" xml:space="preserve">
     <value>My application</value>
   </data>
@@ -164,6 +170,9 @@
   </data>
   <data name="STATUS62033" xml:space="preserve">
     <value>Status</value>
+  </data>
+  <data name="BRAND05002" xml:space="preserve">
+    <value>Brand</value>
   </data>
   <data name="ERRO38355" xml:space="preserve">
     <value>Erro</value>
@@ -198,6 +207,9 @@
   <data name="A_CANCELAR43988" xml:space="preserve">
     <value>A cancelar</value>
   </data>
+  <data name="DOLLAR33324" xml:space="preserve">
+    <value>Dollar</value>
+  </data>
   <data name="AVISO03237" xml:space="preserve">
     <value>Aviso</value>
   </data>
@@ -207,11 +219,20 @@
   <data name="NOTIFICATION_EMAIL_S37352" xml:space="preserve">
     <value>Notification Email Signatures</value>
   </data>
+  <data name="INVOICES44448" xml:space="preserve">
+    <value>Invoices</value>
+  </data>
+  <data name="STORES21606" xml:space="preserve">
+    <value>Stores</value>
+  </data>
   <data name="FINISHED26993" xml:space="preserve">
     <value>Finished</value>
   </data>
   <data name="PROCESS_MODE22419" xml:space="preserve">
     <value>Process mode</value>
+  </data>
+  <data name="EURO46226" xml:space="preserve">
+    <value>Euro</value>
   </data>
   <data name="ASYNC_PROCESS56674" xml:space="preserve">
     <value>Async process</value>
@@ -222,11 +243,20 @@
   <data name="QUIDGEST26196" xml:space="preserve">
     <value>Quidgest</value>
   </data>
+  <data name="STORE16493" xml:space="preserve">
+    <value>Store</value>
+  </data>
   <data name="IMAGE65174" xml:space="preserve">
     <value>Image</value>
   </data>
   <data name="VALUE10285" xml:space="preserve">
     <value>Value</value>
+  </data>
+  <data name="ITEMS55321" xml:space="preserve">
+    <value>Items</value>
+  </data>
+  <data name="QUANTITY06415" xml:space="preserve">
+    <value>Quantity</value>
   </data>
   <data name="PHONE_NUMBER20774" xml:space="preserve">
     <value>Phone number</value>
@@ -236,6 +266,9 @@
   </data>
   <data name="HAS_LOGIN_58044" xml:space="preserve">
     <value>Has login?</value>
+  </data>
+  <data name="WEBSITE08569" xml:space="preserve">
+    <value>Website</value>
   </data>
   <data name="DESAUTORIZADO34584" xml:space="preserve">
     <value>Desautorizado</value>
@@ -255,14 +288,29 @@
   <data name="HTML_FORMAT_60293" xml:space="preserve">
     <value>HTML format?</value>
   </data>
+  <data name="UNIT_PRICE24898" xml:space="preserve">
+    <value>Unit Price</value>
+  </data>
   <data name="CONSULTA40695" xml:space="preserve">
     <value>Consulta</value>
+  </data>
+  <data name="BRANDS27300" xml:space="preserve">
+    <value>Brands</value>
+  </data>
+  <data name="REAL43894" xml:space="preserve">
+    <value>Real</value>
+  </data>
+  <data name="COUNTRY64133" xml:space="preserve">
+    <value>Country</value>
   </data>
   <data name="SENDER07671" xml:space="preserve">
     <value>Sender</value>
   </data>
   <data name="PROCESS_INFO62044" xml:space="preserve">
     <value>Process info</value>
+  </data>
+  <data name="CURRENCY13881" xml:space="preserve">
+    <value>Currency</value>
   </data>
   <data name="HORARIO56549" xml:space="preserve">
     <value>Horário</value>
@@ -294,8 +342,17 @@
   <data name="NOTIFICATION_EMAIL_S62518" xml:space="preserve">
     <value>Notification Email Signature</value>
   </data>
+  <data name="YUAN27097" xml:space="preserve">
+    <value>Yuan</value>
+  </data>
+  <data name="CATEGORIES06648" xml:space="preserve">
+    <value>Categories</value>
+  </data>
   <data name="CLIENT_IP_ADDRESS62089" xml:space="preserve">
     <value>Client ip address</value>
+  </data>
+  <data name="LOCAL_CURRENCY16850" xml:space="preserve">
+    <value>Local Currency</value>
   </data>
   <data name="AGENDADO_PARA_EXECUC11223" xml:space="preserve">
     <value>Agendado para execução</value>
@@ -320,6 +377,9 @@
   </data>
   <data name="PASSWORD_DATE16593" xml:space="preserve">
     <value>Password date</value>
+  </data>
+  <data name="ITEM40802" xml:space="preserve">
+    <value>Item</value>
   </data>
   <data name="CREATED_BY12292" xml:space="preserve">
     <value>Created by</value>
@@ -348,8 +408,14 @@
   <data name="CANCELADO05982" xml:space="preserve">
     <value>Cancelado</value>
   </data>
+  <data name="CURRENCIES23236" xml:space="preserve">
+    <value>Currencies</value>
+  </data>
   <data name="RESULT_MESSAGE40830" xml:space="preserve">
     <value>Result message</value>
+  </data>
+  <data name="SUB_CATEGORY39956" xml:space="preserve">
+    <value>Sub-Category</value>
   </data>
   <data name="SUCESSO65230" xml:space="preserve">
     <value>Sucesso</value>
@@ -378,11 +444,17 @@
   <data name="ID36840" xml:space="preserve">
     <value>Id</value>
   </data>
+  <data name="COUNTRIES64527" xml:space="preserve">
+    <value>Countries</value>
+  </data>
   <data name="MANUAL_DESTINATION21892" xml:space="preserve">
     <value>Manual destination</value>
   </data>
   <data name="ADMINISTRADOR57294" xml:space="preserve">
     <value>Administrador</value>
+  </data>
+  <data name="KWANZA16977" xml:space="preserve">
+    <value>Kwanza</value>
   </data>
   <data name="SENDS_EMAIL_12942" xml:space="preserve">
     <value>Sends email?</value>
@@ -392,6 +464,9 @@
   </data>
   <data name="EM_FILA_DE_ESPERA21822" xml:space="preserve">
     <value>Em fila de espera</value>
+  </data>
+  <data name="SUB_CATEGORIES30842" xml:space="preserve">
+    <value>Sub-Categories</value>
   </data>
   <data name="PERCENTAGE57728" xml:space="preserve">
     <value>Percentage</value>
@@ -428,6 +503,9 @@
   </data>
   <data name="USER_AUTHORIZATION53599" xml:space="preserve">
     <value>User Authorization</value>
+  </data>
+  <data name="CATEGORY18978" xml:space="preserve">
+    <value>Category</value>
   </data>
   <data name="REQUEST_DATE25771" xml:space="preserve">
     <value>Request date</value>

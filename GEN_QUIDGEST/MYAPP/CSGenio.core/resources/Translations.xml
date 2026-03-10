@@ -12,6 +12,9 @@
   <msg id="Roles" code="ROLES61449">
     <ENUS>Roles</ENUS>
   </msg>
+  <msg id="Invoice" code="INVOICE63068">
+    <ENUS>Invoice</ENUS>
+  </msg>
   <msg id="Process Types" code="PROCESS_TYPES19050">
     <ENUS>Process Types</ENUS>
   </msg>
@@ -36,6 +39,9 @@
   <msg id="Motive" code="MOTIVE13407">
     <ENUS>Motive</ENUS>
   </msg>
+  <msg id="Ruble" code="RUBLE07990">
+    <ENUS>Ruble</ENUS>
+  </msg>
   <msg id="My application" code="MY_APPLICATION56216">
     <ENUS>My application</ENUS>
   </msg>
@@ -47,6 +53,9 @@
   </msg>
   <msg id="Status" code="STATUS62033">
     <ENUS>Status</ENUS>
+  </msg>
+  <msg id="Brand" code="BRAND05002">
+    <ENUS>Brand</ENUS>
   </msg>
   <msg id="Erro" code="ERRO38355">
     <ENUS>Erro</ENUS>
@@ -81,6 +90,9 @@
   <msg id="A cancelar" code="A_CANCELAR43988">
     <ENUS>A cancelar</ENUS>
   </msg>
+  <msg id="Dollar" code="DOLLAR33324">
+    <ENUS>Dollar</ENUS>
+  </msg>
   <msg id="Aviso" code="AVISO03237">
     <ENUS>Aviso</ENUS>
   </msg>
@@ -90,11 +102,20 @@
   <msg id="Notification Email Signatures" code="NOTIFICATION_EMAIL_S37352">
     <ENUS>Notification Email Signatures</ENUS>
   </msg>
+  <msg id="Invoices" code="INVOICES44448">
+    <ENUS>Invoices</ENUS>
+  </msg>
+  <msg id="Stores" code="STORES21606">
+    <ENUS>Stores</ENUS>
+  </msg>
   <msg id="Finished" code="FINISHED26993">
     <ENUS>Finished</ENUS>
   </msg>
   <msg id="Process mode" code="PROCESS_MODE22419">
     <ENUS>Process mode</ENUS>
+  </msg>
+  <msg id="Euro" code="EURO46226">
+    <ENUS>Euro</ENUS>
   </msg>
   <msg id="Async process" code="ASYNC_PROCESS56674">
     <ENUS>Async process</ENUS>
@@ -105,11 +126,20 @@
   <msg id="Quidgest" code="QUIDGEST26196">
     <ENUS>Quidgest</ENUS>
   </msg>
+  <msg id="Store" code="STORE16493">
+    <ENUS>Store</ENUS>
+  </msg>
   <msg id="Image" code="IMAGE65174">
     <ENUS>Image</ENUS>
   </msg>
   <msg id="Value" code="VALUE10285">
     <ENUS>Value</ENUS>
+  </msg>
+  <msg id="Items" code="ITEMS55321">
+    <ENUS>Items</ENUS>
+  </msg>
+  <msg id="Quantity" code="QUANTITY06415">
+    <ENUS>Quantity</ENUS>
   </msg>
   <msg id="Phone number" code="PHONE_NUMBER20774">
     <ENUS>Phone number</ENUS>
@@ -119,6 +149,9 @@
   </msg>
   <msg id="Has login?" code="HAS_LOGIN_58044">
     <ENUS>Has login?</ENUS>
+  </msg>
+  <msg id="Website" code="WEBSITE08569">
+    <ENUS>Website</ENUS>
   </msg>
   <msg id="Desautorizado" code="DESAUTORIZADO34584">
     <ENUS>Desautorizado</ENUS>
@@ -138,14 +171,29 @@
   <msg id="HTML format?" code="HTML_FORMAT_60293">
     <ENUS>HTML format?</ENUS>
   </msg>
+  <msg id="Unit Price" code="UNIT_PRICE24898">
+    <ENUS>Unit Price</ENUS>
+  </msg>
   <msg id="Consulta" code="CONSULTA40695">
     <ENUS>Consulta</ENUS>
+  </msg>
+  <msg id="Brands" code="BRANDS27300">
+    <ENUS>Brands</ENUS>
+  </msg>
+  <msg id="Real" code="REAL43894">
+    <ENUS>Real</ENUS>
+  </msg>
+  <msg id="Country" code="COUNTRY64133">
+    <ENUS>Country</ENUS>
   </msg>
   <msg id="Sender" code="SENDER07671">
     <ENUS>Sender</ENUS>
   </msg>
   <msg id="Process info" code="PROCESS_INFO62044">
     <ENUS>Process info</ENUS>
+  </msg>
+  <msg id="Currency" code="CURRENCY13881">
+    <ENUS>Currency</ENUS>
   </msg>
   <msg id="Horário" code="HORARIO56549">
     <ENUS>Horário</ENUS>
@@ -177,8 +225,17 @@
   <msg id="Notification Email Signature" code="NOTIFICATION_EMAIL_S62518">
     <ENUS>Notification Email Signature</ENUS>
   </msg>
+  <msg id="Yuan" code="YUAN27097">
+    <ENUS>Yuan</ENUS>
+  </msg>
+  <msg id="Categories" code="CATEGORIES06648">
+    <ENUS>Categories</ENUS>
+  </msg>
   <msg id="Client ip address" code="CLIENT_IP_ADDRESS62089">
     <ENUS>Client ip address</ENUS>
+  </msg>
+  <msg id="Local Currency" code="LOCAL_CURRENCY16850">
+    <ENUS>Local Currency</ENUS>
   </msg>
   <msg id="Agendado para execução" code="AGENDADO_PARA_EXECUC11223">
     <ENUS>Agendado para execução</ENUS>
@@ -203,6 +260,9 @@
   </msg>
   <msg id="Password date" code="PASSWORD_DATE16593">
     <ENUS>Password date</ENUS>
+  </msg>
+  <msg id="Item" code="ITEM40802">
+    <ENUS>Item</ENUS>
   </msg>
   <msg id="Created by" code="CREATED_BY12292">
     <ENUS>Created by</ENUS>
@@ -231,8 +291,14 @@
   <msg id="Cancelado" code="CANCELADO05982">
     <ENUS>Cancelado</ENUS>
   </msg>
+  <msg id="Currencies" code="CURRENCIES23236">
+    <ENUS>Currencies</ENUS>
+  </msg>
   <msg id="Result message" code="RESULT_MESSAGE40830">
     <ENUS>Result message</ENUS>
+  </msg>
+  <msg id="Sub-Category" code="SUB_CATEGORY39956">
+    <ENUS>Sub-Category</ENUS>
   </msg>
   <msg id="Sucesso" code="SUCESSO65230">
     <ENUS>Sucesso</ENUS>
@@ -261,11 +327,17 @@
   <msg id="Id" code="ID36840">
     <ENUS>Id</ENUS>
   </msg>
+  <msg id="Countries" code="COUNTRIES64527">
+    <ENUS>Countries</ENUS>
+  </msg>
   <msg id="Manual destination" code="MANUAL_DESTINATION21892">
     <ENUS>Manual destination</ENUS>
   </msg>
   <msg id="Administrador" code="ADMINISTRADOR57294">
     <ENUS>Administrador</ENUS>
+  </msg>
+  <msg id="Kwanza" code="KWANZA16977">
+    <ENUS>Kwanza</ENUS>
   </msg>
   <msg id="Sends email?" code="SENDS_EMAIL_12942">
     <ENUS>Sends email?</ENUS>
@@ -275,6 +347,9 @@
   </msg>
   <msg id="Em fila de espera" code="EM_FILA_DE_ESPERA21822">
     <ENUS>Em fila de espera</ENUS>
+  </msg>
+  <msg id="Sub-Categories" code="SUB_CATEGORIES30842">
+    <ENUS>Sub-Categories</ENUS>
   </msg>
   <msg id="Percentage" code="PERCENTAGE57728">
     <ENUS>Percentage</ENUS>
@@ -311,6 +386,9 @@
   </msg>
   <msg id="User Authorization" code="USER_AUTHORIZATION53599">
     <ENUS>User Authorization</ENUS>
+  </msg>
+  <msg id="Category" code="CATEGORY18978">
+    <ENUS>Category</ENUS>
   </msg>
   <msg id="Request date" code="REQUEST_DATE25771">
     <ENUS>Request date</ENUS>

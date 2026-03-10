@@ -22,20 +22,34 @@ namespace CSGenio.business
     {
         public static AreaRef AreaS_NES { get { return m_AreaS_NES; } }
         private static AreaRef m_AreaS_NES = new AreaRef("FPV", "notificationemailsignature", "s_nes");
+        public static AreaRef AreaINVOICE { get { return m_AreaINVOICE; } }
+        private static AreaRef m_AreaINVOICE = new AreaRef("FPV", "fpvinvoice", "invoice");
         public static AreaRef AreaS_UA { get { return m_AreaS_UA; } }
         private static AreaRef m_AreaS_UA = new AreaRef("FPV", "userauthorization", "s_ua");
+        public static AreaRef AreaCOUNTRY { get { return m_AreaCOUNTRY; } }
+        private static AreaRef m_AreaCOUNTRY = new AreaRef("FPV", "fpvcountry", "country");
+        public static AreaRef AreaCATEGORY { get { return m_AreaCATEGORY; } }
+        private static AreaRef m_AreaCATEGORY = new AreaRef("FPV", "fpvcategory", "category");
         public static AreaRef AreaS_ARG { get { return m_AreaS_ARG; } }
         private static AreaRef m_AreaS_ARG = new AreaRef("FPV", "asyncprocessargument", "s_arg");
         public static AreaRef AreaPSW { get { return m_AreaPSW; } }
         private static AreaRef m_AreaPSW = new AreaRef("FPV", "userlogin", "psw");
+        public static AreaRef AreaSTORE { get { return m_AreaSTORE; } }
+        private static AreaRef m_AreaSTORE = new AreaRef("FPV", "fpvstore", "store");
         public static AreaRef AreaS_NM { get { return m_AreaS_NM; } }
         private static AreaRef m_AreaS_NM = new AreaRef("FPV", "notificationmessage", "s_nm");
         public static AreaRef AreaS_PAX { get { return m_AreaS_PAX; } }
         private static AreaRef m_AreaS_PAX = new AreaRef("FPV", "asyncprocessattachments", "s_pax");
         public static AreaRef AreaS_APR { get { return m_AreaS_APR; } }
         private static AreaRef m_AreaS_APR = new AreaRef("FPV", "asyncprocess", "s_apr");
+        public static AreaRef AreaBRAND { get { return m_AreaBRAND; } }
+        private static AreaRef m_AreaBRAND = new AreaRef("FPV", "fpvbrand", "brand");
         public static AreaRef AreaMEM { get { return m_AreaMEM; } }
         private static AreaRef m_AreaMEM = new AreaRef("FPV", "fpvmem", "mem");
+        public static AreaRef AreaSUBCATEGORY { get { return m_AreaSUBCATEGORY; } }
+        private static AreaRef m_AreaSUBCATEGORY = new AreaRef("FPV", "fpvsubcategory", "subcategory");
+        public static AreaRef AreaITEM { get { return m_AreaITEM; } }
+        private static AreaRef m_AreaITEM = new AreaRef("FPV", "fpvitem", "item");
         //areas hardcoded
         public static AreaRef AreaDELEGA { get { return m_AreaDELEGA; } }
         private static AreaRef m_AreaDELEGA = new AreaRef("FPVdelega", "delega");
@@ -68,13 +82,20 @@ namespace CSGenio.business
         public static readonly System.Collections.ObjectModel.ReadOnlyCollection<string> ListaAreas = new System.Collections.ObjectModel.ReadOnlyCollection<string>(
             new List<string>() {
             "s_nes",
+            "invoice",
             "s_ua",
+            "country",
+            "category",
             "s_arg",
             "psw",
+            "store",
             "s_nm",
             "s_pax",
             "s_apr",
+            "brand",
             "mem",
+            "subcategory",
+            "item",
         });
 
         /// <summary>
