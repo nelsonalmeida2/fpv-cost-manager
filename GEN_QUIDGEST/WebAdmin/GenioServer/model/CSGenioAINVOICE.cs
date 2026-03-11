@@ -54,6 +54,96 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "price", FieldType.CURRENCY);
+			Qfield.FieldDescription = "Price";
+			Qfield.FieldSize =  10;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 7;
+			Qfield.Decimals = 2;
+			Qfield.CavDesignation = "PRICE06900";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "shippingcost", FieldType.CURRENCY);
+			Qfield.FieldDescription = "Shipping Cost";
+			Qfield.FieldSize =  10;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 7;
+			Qfield.Decimals = 2;
+			Qfield.CavDesignation = "SHIPPING_COST12785";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "taxes", FieldType.CURRENCY);
+			Qfield.FieldDescription = "Taxes";
+			Qfield.FieldSize =  10;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 7;
+			Qfield.Decimals = 2;
+			Qfield.CavDesignation = "TAXES34617";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "totalprice", FieldType.CURRENCY);
+			Qfield.FieldDescription = "Total Price";
+			Qfield.FieldSize =  10;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 7;
+			Qfield.Decimals = 2;
+			Qfield.CavDesignation = "TOTAL_PRICE46894";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			argumentsListByArea = new List<ByAreaArguments>();
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"totalprice","shippingcost","taxes"}, new int[] {0,1,2}, "invoice", "codinvoice"));
+			Qfield.Formula = new InternalOperationFormula(argumentsListByArea, 3, delegate(object[] args, User user, string module, PersistentSupport sp) {
+				return ((decimal)args[0])+((decimal)args[1])+((decimal)args[2]);
+			});
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "numberofitems", FieldType.NUMERIC);
+			Qfield.FieldDescription = "Number of Items";
+			Qfield.FieldSize =  10;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 10;
+			Qfield.CavDesignation = "NUMBER_OF_ITEMS22472";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "store", FieldType.KEY_INT);
+			Qfield.FieldDescription = "Store";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "STORE16493";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "date", FieldType.DATE);
+			Qfield.FieldDescription = "Date";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "DATE18475";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			Qfield.DefaultValue = new DefaultValue(DefaultValue.getToday);
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -67,10 +157,13 @@ namespace CSGenio.business
 		{
 			// Daughters Relations
 			//------------------------------
+			info.ChildTable = new ChildRelation[1];
+			info.ChildTable[0]= new ChildRelation("item", new String[] {"invoice"}, DeleteProc.NA);
 
 			// Mother Relations
 			//------------------------------
 			info.ParentTables = new Dictionary<string, Relation>();
+			info.ParentTables.Add("store", new Relation("FPV", "fpvinvoice", "invoice", "codinvoice", "store", "FPV", "fpvstore", "store", "codstore", "codstore"));
 		}
 
 		/// <summary>
@@ -80,7 +173,9 @@ namespace CSGenio.business
 		{
 			// Pathways
 			//------------------------------
-			info.Pathways = new Dictionary<string, string>(0);
+			info.Pathways = new Dictionary<string, string>(2);
+			info.Pathways.Add("store","store");
+			info.Pathways.Add("country","store");
 		}
 
 		/// <summary>
@@ -93,6 +188,18 @@ namespace CSGenio.business
 
 
 
+			info.InternalOperationFields = new string[] {
+			 "totalprice"
+			};
+
+			info.DefaultValues = new string[] {
+			 "date"
+			};
+
+
+			info.RelatedSumFields = new string[] {
+			 "price","numberofitems"
+			};
 
 
 
@@ -211,6 +318,83 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCodinvoice, value); }
 		}
 
+		/// <summary>Field : "Price" Tipo: "$" Formula: SR "[ITEM->TOTALPRICE]"</summary>
+		public static FieldRef FldPrice { get { return m_fldPrice; } }
+		private static FieldRef m_fldPrice = new FieldRef("invoice", "price");
+
+		/// <summary>Field : "Price" Tipo: "$" Formula: SR "[ITEM->TOTALPRICE]"</summary>
+		public decimal ValPrice
+		{
+			get { return (decimal)returnValueField(FldPrice); }
+			set { insertNameValueField(FldPrice, value); }
+		}
+
+		/// <summary>Field : "Shipping Cost" Tipo: "$" Formula:  ""</summary>
+		public static FieldRef FldShippingcost { get { return m_fldShippingcost; } }
+		private static FieldRef m_fldShippingcost = new FieldRef("invoice", "shippingcost");
+
+		/// <summary>Field : "Shipping Cost" Tipo: "$" Formula:  ""</summary>
+		public decimal ValShippingcost
+		{
+			get { return (decimal)returnValueField(FldShippingcost); }
+			set { insertNameValueField(FldShippingcost, value); }
+		}
+
+		/// <summary>Field : "Taxes" Tipo: "$" Formula:  ""</summary>
+		public static FieldRef FldTaxes { get { return m_fldTaxes; } }
+		private static FieldRef m_fldTaxes = new FieldRef("invoice", "taxes");
+
+		/// <summary>Field : "Taxes" Tipo: "$" Formula:  ""</summary>
+		public decimal ValTaxes
+		{
+			get { return (decimal)returnValueField(FldTaxes); }
+			set { insertNameValueField(FldTaxes, value); }
+		}
+
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		public static FieldRef FldTotalprice { get { return m_fldTotalprice; } }
+		private static FieldRef m_fldTotalprice = new FieldRef("invoice", "totalprice");
+
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		public decimal ValTotalprice
+		{
+			get { return (decimal)returnValueField(FldTotalprice); }
+			set { insertNameValueField(FldTotalprice, value); }
+		}
+
+		/// <summary>Field : "Number of Items" Tipo: "N" Formula: SR "[ITEM->1]"</summary>
+		public static FieldRef FldNumberofitems { get { return m_fldNumberofitems; } }
+		private static FieldRef m_fldNumberofitems = new FieldRef("invoice", "numberofitems");
+
+		/// <summary>Field : "Number of Items" Tipo: "N" Formula: SR "[ITEM->1]"</summary>
+		public decimal ValNumberofitems
+		{
+			get { return (decimal)returnValueField(FldNumberofitems); }
+			set { insertNameValueField(FldNumberofitems, value); }
+		}
+
+		/// <summary>Field : "Store" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldStore { get { return m_fldStore; } }
+		private static FieldRef m_fldStore = new FieldRef("invoice", "store");
+
+		/// <summary>Field : "Store" Tipo: "CE" Formula:  ""</summary>
+		public string ValStore
+		{
+			get { return (string)returnValueField(FldStore); }
+			set { insertNameValueField(FldStore, value); }
+		}
+
+		/// <summary>Field : "Date" Tipo: "D" Formula:  ""</summary>
+		public static FieldRef FldDate { get { return m_fldDate; } }
+		private static FieldRef m_fldDate = new FieldRef("invoice", "date");
+
+		/// <summary>Field : "Date" Tipo: "D" Formula:  ""</summary>
+		public DateTime ValDate
+		{
+			get { return (DateTime)returnValueField(FldDate); }
+			set { insertNameValueField(FldDate, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("invoice", "zzstate");
@@ -308,7 +492,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX INVOICE]/
 
  
-  
+         
 
 	}
 }

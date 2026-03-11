@@ -27,6 +27,63 @@ namespace GenioMVC.Models
 		[ShouldSerialize("Invoice.ValCodinvoice")]
 		public string ValCodinvoice { get { return klass.ValCodinvoice; } set { klass.ValCodinvoice = value; } }
 
+		[DisplayName("Price")]
+		/// <summary>Field : "Price" Tipo: "$" Formula: SR "[ITEM->TOTALPRICE]"</summary>
+		[ShouldSerialize("Invoice.ValPrice")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValPrice { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValPrice, 2)); } set { klass.ValPrice = Convert.ToDecimal(value); } }
+
+		[DisplayName("Shipping Cost")]
+		/// <summary>Field : "Shipping Cost" Tipo: "$" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValShippingcost")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValShippingcost { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValShippingcost, 2)); } set { klass.ValShippingcost = Convert.ToDecimal(value); } }
+
+		[DisplayName("Taxes")]
+		/// <summary>Field : "Taxes" Tipo: "$" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValTaxes")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValTaxes { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTaxes, 2)); } set { klass.ValTaxes = Convert.ToDecimal(value); } }
+
+		[DisplayName("Total Price")]
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		[ShouldSerialize("Invoice.ValTotalprice")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValTotalprice { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTotalprice, 2)); } set { klass.ValTotalprice = Convert.ToDecimal(value); } }
+
+		[DisplayName("Number of Items")]
+		/// <summary>Field : "Number of Items" Tipo: "N" Formula: SR "[ITEM->1]"</summary>
+		[ShouldSerialize("Invoice.ValNumberofitems")]
+		[NumericAttribute(0)]
+		public decimal? ValNumberofitems { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValNumberofitems, 0)); } set { klass.ValNumberofitems = Convert.ToDecimal(value); } }
+
+		[DisplayName("Store")]
+		/// <summary>Field : "Store" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValStore")]
+		public string ValStore { get { return klass.ValStore; } set { klass.ValStore = value; } }
+
+		private Store _store;
+		[DisplayName("Store")]
+		[ShouldSerialize("Store")]
+		public virtual Store Store
+		{
+			get
+			{
+				if (!isEmptyModel && (_store == null || (!string.IsNullOrEmpty(ValStore) && (_store.isEmptyModel || _store.klass.QPrimaryKey != ValStore))))
+					_store = Models.Store.Find(ValStore, m_userContext, Identifier, _fieldsToSerialize);
+				_store ??= new Models.Store(m_userContext, true, _fieldsToSerialize);
+				return _store;
+			}
+			set { _store = value; }
+		}
+
+		[DisplayName("Date")]
+		/// <summary>Field : "Date" Tipo: "D" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValDate")]
+		[DataType(DataType.Date)]
+		[DateAttribute("D")]
+		public DateTime? ValDate { get { return klass.ValDate; } set { klass.ValDate = value ?? DateTime.MinValue; } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Invoice.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>
@@ -58,6 +115,10 @@ namespace GenioMVC.Models
 			{
 				switch (Qfield.Area)
 				{
+					case "store":
+						_store ??= new Store(m_userContext, true, _fieldsToSerialize);
+						_store.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
 					default:
 						break;
 				}

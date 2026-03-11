@@ -252,6 +252,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Total Price"
+		/// </summary>
+		public static string TOTAL_PRICE46894 {
+			get {
+				return ResourceManager.GetString("TOTAL_PRICE46894", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Logbook"
 		/// </summary>
 		public static string LOGBOOK00124 {
@@ -900,6 +909,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Price"
+		/// </summary>
+		public static string PRICE06900 {
+			get {
+				return ResourceManager.GetString("PRICE06900", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Expiration date"
 		/// </summary>
 		public static string EXPIRATION_DATE34293 {
@@ -1026,6 +1044,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Taxes"
+		/// </summary>
+		public static string TAXES34617 {
+			get {
+				return ResourceManager.GetString("TAXES34617", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Notification Messages"
 		/// </summary>
 		public static string NOTIFICATION_MESSAGE60981 {
@@ -1134,6 +1161,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Shipping Cost"
+		/// </summary>
+		public static string SHIPPING_COST12785 {
+			get {
+				return ResourceManager.GetString("SHIPPING_COST12785", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Real time status"
 		/// </summary>
 		public static string REAL_TIME_STATUS00476 {
@@ -1220,6 +1256,15 @@ namespace GenioMVC.Resources
 		public static string USER_AUTHORIZATION53599 {
 			get {
 				return ResourceManager.GetString("USER_AUTHORIZATION53599", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Number of Items"
+		/// </summary>
+		public static string NUMBER_OF_ITEMS22472 {
+			get {
+				return ResourceManager.GetString("NUMBER_OF_ITEMS22472", resourceCulture);
 			}
 		}
 

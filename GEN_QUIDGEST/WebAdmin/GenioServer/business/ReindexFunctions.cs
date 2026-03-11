@@ -81,58 +81,6 @@ namespace CSGenio.business
             }
                 
 
-            /* --- FPVINVOICE --- */
-            dm = sp.Execute(
-                new SelectQuery()
-                .Select(CSGenioAinvoice.FldCodinvoice)
-                .From(CSGenioAinvoice.AreaINVOICE)
-                .Where(CriteriaSet.And().In(CSGenioAinvoice.FldZzstate, zzstateToRemove))
-                );
-
-            for (int i = 0; i < dm.NumRows; i++)
-            {
-                CSGenioAinvoice model = new CSGenioAinvoice(user);
-                model.ValCodinvoice = dm.GetKey(i, 0);
-
-                try
-                {
-                    model.delete(sp);
-                }
-                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
-                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
-                catch(BusinessException ex)
-                {
-                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
-                }
-            }
-                
-
-            /* --- FPVITEM --- */
-            dm = sp.Execute(
-                new SelectQuery()
-                .Select(CSGenioAitem.FldCoditem)
-                .From(CSGenioAitem.AreaITEM)
-                .Where(CriteriaSet.And().In(CSGenioAitem.FldZzstate, zzstateToRemove))
-                );
-
-            for (int i = 0; i < dm.NumRows; i++)
-            {
-                CSGenioAitem model = new CSGenioAitem(user);
-                model.ValCoditem = dm.GetKey(i, 0);
-
-                try
-                {
-                    model.delete(sp);
-                }
-                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
-                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
-                catch(BusinessException ex)
-                {
-                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
-                }
-            }
-                
-
             /* --- FPVMEM --- */
             dm = sp.Execute(
                 new SelectQuery()
@@ -405,6 +353,58 @@ namespace CSGenio.business
             {
                 CSGenioAsubcategory model = new CSGenioAsubcategory(user);
                 model.ValCodsubcategory = dm.GetKey(i, 0);
+
+                try
+                {
+                    model.delete(sp);
+                }
+                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
+                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
+                catch(BusinessException ex)
+                {
+                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
+                }
+            }
+                
+
+            /* --- FPVINVOICE --- */
+            dm = sp.Execute(
+                new SelectQuery()
+                .Select(CSGenioAinvoice.FldCodinvoice)
+                .From(CSGenioAinvoice.AreaINVOICE)
+                .Where(CriteriaSet.And().In(CSGenioAinvoice.FldZzstate, zzstateToRemove))
+                );
+
+            for (int i = 0; i < dm.NumRows; i++)
+            {
+                CSGenioAinvoice model = new CSGenioAinvoice(user);
+                model.ValCodinvoice = dm.GetKey(i, 0);
+
+                try
+                {
+                    model.delete(sp);
+                }
+                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
+                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
+                catch(BusinessException ex)
+                {
+                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
+                }
+            }
+                
+
+            /* --- FPVITEM --- */
+            dm = sp.Execute(
+                new SelectQuery()
+                .Select(CSGenioAitem.FldCoditem)
+                .From(CSGenioAitem.AreaITEM)
+                .Where(CriteriaSet.And().In(CSGenioAitem.FldZzstate, zzstateToRemove))
+                );
+
+            for (int i = 0; i < dm.NumRows; i++)
+            {
+                CSGenioAitem model = new CSGenioAitem(user);
+                model.ValCoditem = dm.GetKey(i, 0);
 
                 try
                 {

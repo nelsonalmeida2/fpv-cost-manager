@@ -82,7 +82,6 @@ namespace CSGenio.business
 			Qfield.MQueue = false;
 			Qfield.CavDesignation = "CURRENCY13881";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
             Qfield.ArrayName = "dbo.GetValArrayCcurrency";
             Qfield.ArrayClassName = "Currency";
@@ -95,7 +94,6 @@ namespace CSGenio.business
 			Qfield.MQueue = false;
 			Qfield.CavDesignation = "COUNTRY64133";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
@@ -113,6 +111,8 @@ namespace CSGenio.business
 		{
 			// Daughters Relations
 			//------------------------------
+			info.ChildTable = new ChildRelation[1];
+			info.ChildTable[0]= new ChildRelation("invoice", new String[] {"store"}, DeleteProc.NA);
 
 			// Mother Relations
 			//------------------------------

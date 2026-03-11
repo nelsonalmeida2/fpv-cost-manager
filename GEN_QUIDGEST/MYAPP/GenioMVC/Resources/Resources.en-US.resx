@@ -180,6 +180,9 @@
 	<data name="PASSWORDS52247" xml:space="preserve">
 		<value>Passwords</value>
 	</data>
+	<data name="TOTAL_PRICE46894" xml:space="preserve">
+		<value>Total Price</value>
+	</data>
 	<data name="LOGBOOK00124" xml:space="preserve">
 		<value>Logbook</value>
 	</data>
@@ -396,6 +399,9 @@
 	<data name="PROCESS_TYPE25967" xml:space="preserve">
 		<value>Process type</value>
 	</data>
+	<data name="PRICE06900" xml:space="preserve">
+		<value>Price</value>
+	</data>
 	<data name="EXPIRATION_DATE34293" xml:space="preserve">
 		<value>Expiration date</value>
 	</data>
@@ -438,6 +444,9 @@
 	<data name="INDIVIDUAL42893" xml:space="preserve">
 		<value>Individual</value>
 	</data>
+	<data name="TAXES34617" xml:space="preserve">
+		<value>Taxes</value>
+	</data>
 	<data name="NOTIFICATION_MESSAGE60981" xml:space="preserve">
 		<value>Notification Messages</value>
 	</data>
@@ -474,6 +483,9 @@
 	<data name="ENTID_KEY04396" xml:space="preserve">
 		<value>Entid key</value>
 	</data>
+	<data name="SHIPPING_COST12785" xml:space="preserve">
+		<value>Shipping Cost</value>
+	</data>
 	<data name="REAL_TIME_STATUS00476" xml:space="preserve">
 		<value>Real time status</value>
 	</data>
@@ -503,6 +515,9 @@
 	</data>
 	<data name="USER_AUTHORIZATION53599" xml:space="preserve">
 		<value>User Authorization</value>
+	</data>
+	<data name="NUMBER_OF_ITEMS22472" xml:space="preserve">
+		<value>Number of Items</value>
 	</data>
 	<data name="CATEGORY18978" xml:space="preserve">
 		<value>Category</value>

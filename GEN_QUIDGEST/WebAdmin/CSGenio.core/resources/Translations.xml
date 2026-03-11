@@ -63,6 +63,9 @@
   <msg id="Passwords" code="PASSWORDS52247">
     <ENUS>Passwords</ENUS>
   </msg>
+  <msg id="Total Price" code="TOTAL_PRICE46894">
+    <ENUS>Total Price</ENUS>
+  </msg>
   <msg id="Logbook" code="LOGBOOK00124">
     <ENUS>Logbook</ENUS>
   </msg>
@@ -279,6 +282,9 @@
   <msg id="Process type" code="PROCESS_TYPE25967">
     <ENUS>Process type</ENUS>
   </msg>
+  <msg id="Price" code="PRICE06900">
+    <ENUS>Price</ENUS>
+  </msg>
   <msg id="Expiration date" code="EXPIRATION_DATE34293">
     <ENUS>Expiration date</ENUS>
   </msg>
@@ -321,6 +327,9 @@
   <msg id="Individual" code="INDIVIDUAL42893">
     <ENUS>Individual</ENUS>
   </msg>
+  <msg id="Taxes" code="TAXES34617">
+    <ENUS>Taxes</ENUS>
+  </msg>
   <msg id="Notification Messages" code="NOTIFICATION_MESSAGE60981">
     <ENUS>Notification Messages</ENUS>
   </msg>
@@ -357,6 +366,9 @@
   <msg id="Entid key" code="ENTID_KEY04396">
     <ENUS>Entid key</ENUS>
   </msg>
+  <msg id="Shipping Cost" code="SHIPPING_COST12785">
+    <ENUS>Shipping Cost</ENUS>
+  </msg>
   <msg id="Real time status" code="REAL_TIME_STATUS00476">
     <ENUS>Real time status</ENUS>
   </msg>
@@ -386,6 +398,9 @@
   </msg>
   <msg id="User Authorization" code="USER_AUTHORIZATION53599">
     <ENUS>User Authorization</ENUS>
+  </msg>
+  <msg id="Number of Items" code="NUMBER_OF_ITEMS22472">
+    <ENUS>Number of Items</ENUS>
   </msg>
   <msg id="Category" code="CATEGORY18978">
     <ENUS>Category</ENUS>

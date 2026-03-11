@@ -90,6 +90,8 @@ namespace CSGenio.business
 		{
 			// Daughters Relations
 			//------------------------------
+			info.ChildTable = new ChildRelation[1];
+			info.ChildTable[0]= new ChildRelation("item", new String[] {"subcategory"}, DeleteProc.NA);
 
 			// Mother Relations
 			//------------------------------

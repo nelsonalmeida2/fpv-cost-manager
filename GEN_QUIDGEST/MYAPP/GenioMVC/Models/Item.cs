@@ -44,6 +44,92 @@ namespace GenioMVC.Models
 		[CurrencyAttribute("EUR", 2)]
 		public decimal? ValUnitprice { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValUnitprice, 2)); } set { klass.ValUnitprice = Convert.ToDecimal(value); } }
 
+		[DisplayName("Total Price")]
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->TOTALPRICE]"</summary>
+		[ShouldSerialize("Item.ValTotalprice")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValTotalprice { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTotalprice, 2)); } set { klass.ValTotalprice = Convert.ToDecimal(value); } }
+
+		[DisplayName("Brand")]
+		/// <summary>Field : "Brand" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Item.ValBrand")]
+		public string ValBrand { get { return klass.ValBrand; } set { klass.ValBrand = value; } }
+
+		private Brand _brand;
+		[DisplayName("Brand")]
+		[ShouldSerialize("Brand")]
+		public virtual Brand Brand
+		{
+			get
+			{
+				if (!isEmptyModel && (_brand == null || (!string.IsNullOrEmpty(ValBrand) && (_brand.isEmptyModel || _brand.klass.QPrimaryKey != ValBrand))))
+					_brand = Models.Brand.Find(ValBrand, m_userContext, Identifier, _fieldsToSerialize);
+				_brand ??= new Models.Brand(m_userContext, true, _fieldsToSerialize);
+				return _brand;
+			}
+			set { _brand = value; }
+		}
+
+		[DisplayName("Category")]
+		/// <summary>Field : "Category" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Item.ValCategory")]
+		public string ValCategory { get { return klass.ValCategory; } set { klass.ValCategory = value; } }
+
+		private Category _category;
+		[DisplayName("Category")]
+		[ShouldSerialize("Category")]
+		public virtual Category Category
+		{
+			get
+			{
+				if (!isEmptyModel && (_category == null || (!string.IsNullOrEmpty(ValCategory) && (_category.isEmptyModel || _category.klass.QPrimaryKey != ValCategory))))
+					_category = Models.Category.Find(ValCategory, m_userContext, Identifier, _fieldsToSerialize);
+				_category ??= new Models.Category(m_userContext, true, _fieldsToSerialize);
+				return _category;
+			}
+			set { _category = value; }
+		}
+
+		[DisplayName("Sub-Category")]
+		/// <summary>Field : "Sub-Category" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Item.ValSubcategory")]
+		public string ValSubcategory { get { return klass.ValSubcategory; } set { klass.ValSubcategory = value; } }
+
+		private Subcategory _subcategory;
+		[DisplayName("Subcategory")]
+		[ShouldSerialize("Subcategory")]
+		public virtual Subcategory Subcategory
+		{
+			get
+			{
+				if (!isEmptyModel && (_subcategory == null || (!string.IsNullOrEmpty(ValSubcategory) && (_subcategory.isEmptyModel || _subcategory.klass.QPrimaryKey != ValSubcategory))))
+					_subcategory = Models.Subcategory.Find(ValSubcategory, m_userContext, Identifier, _fieldsToSerialize);
+				_subcategory ??= new Models.Subcategory(m_userContext, true, _fieldsToSerialize);
+				return _subcategory;
+			}
+			set { _subcategory = value; }
+		}
+
+		[DisplayName("Invoice")]
+		/// <summary>Field : "Invoice" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Item.ValInvoice")]
+		public string ValInvoice { get { return klass.ValInvoice; } set { klass.ValInvoice = value; } }
+
+		private Invoice _invoice;
+		[DisplayName("Invoice")]
+		[ShouldSerialize("Invoice")]
+		public virtual Invoice Invoice
+		{
+			get
+			{
+				if (!isEmptyModel && (_invoice == null || (!string.IsNullOrEmpty(ValInvoice) && (_invoice.isEmptyModel || _invoice.klass.QPrimaryKey != ValInvoice))))
+					_invoice = Models.Invoice.Find(ValInvoice, m_userContext, Identifier, _fieldsToSerialize);
+				_invoice ??= new Models.Invoice(m_userContext, true, _fieldsToSerialize);
+				return _invoice;
+			}
+			set { _invoice = value; }
+		}
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Item.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>
@@ -75,6 +161,22 @@ namespace GenioMVC.Models
 			{
 				switch (Qfield.Area)
 				{
+					case "brand":
+						_brand ??= new Brand(m_userContext, true, _fieldsToSerialize);
+						_brand.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
+					case "category":
+						_category ??= new Category(m_userContext, true, _fieldsToSerialize);
+						_category.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
+					case "subcategory":
+						_subcategory ??= new Subcategory(m_userContext, true, _fieldsToSerialize);
+						_subcategory.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
+					case "invoice":
+						_invoice ??= new Invoice(m_userContext, true, _fieldsToSerialize);
+						_invoice.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
 					default:
 						break;
 				}
