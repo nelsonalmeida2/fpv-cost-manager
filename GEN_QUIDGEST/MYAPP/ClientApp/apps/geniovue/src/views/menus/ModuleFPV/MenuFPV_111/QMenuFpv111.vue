@@ -134,7 +134,7 @@
 				model: new MenuViewModel(this),
 
 				controls: {
-					menu: new controlClass.TableListControl({
+					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_111',
 						controller: 'PERSON',
@@ -354,6 +354,107 @@
 						globalEvents: ['changed-PERSON'],
 						uuid: '2c263db8-87c2-494a-8324-08dfa8b4de08',
 						allSelectedRows: 'false',
+						viewModes: [
+							{
+								id: 'CARDS',
+								type: 'cards',
+								subtype: 'card-img-top',
+								label: computed(() => this.Resources.CARTOES27587),
+								order: 1,
+								mappingVariables: readonly({
+									title: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.NAME',
+										]
+									},
+									subtitle: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.EMAIL',
+										]
+									},
+									text: {
+										allowsMultiple: true,
+										sources: [
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
+										]
+									},
+									image: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.PHOTO',
+										]
+									},
+								}),
+								styleVariables: {
+									actionsAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									actionsStyle: {
+										rawValue: 'dropdown',
+										isMapped: false
+									},
+									backgroundColor: {
+										rawValue: 'auto',
+										isMapped: false
+									},
+									contentAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									customFollowupDefaultTarget: {
+										rawValue: 'blank',
+										isMapped: false
+									},
+									customInsertCard: {
+										rawValue: false,
+										isMapped: false
+									},
+									customInsertCardStyle: {
+										rawValue: 'secondary',
+										isMapped: false
+									},
+									displayMode: {
+										rawValue: 'grid',
+										isMapped: false
+									},
+									gridMode: {
+										rawValue: 'fixed',
+										isMapped: false
+									},
+									containerAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									hoverScaleAmount: {
+										rawValue: '1.00',
+										isMapped: false
+									},
+									imageShape: {
+										rawValue: 'rectangular',
+										isMapped: false
+									},
+									showColumnTitles: {
+										rawValue: false,
+										isMapped: false
+									},
+									showEmptyColumnTitles: {
+										rawValue: true,
+										isMapped: false
+									},
+									size: {
+										rawValue: 'regular',
+										isMapped: false
+									},
+								},
+								groups: {
+								}
+							},
+						],
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
 					}, this),
