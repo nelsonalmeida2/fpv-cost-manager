@@ -1,4 +1,5 @@
 ﻿import CardsControl from './cardsControl.js'
+import CollapsiblerowslistControl from './collapsiblerowslistControl.js'
 
 /**
  * Gets the class that implements the custom control with the desired control type.
@@ -13,6 +14,8 @@ export default function getCustomControl(controlType, context, viewModeOrder)
 	{
 		case 'cards':
 			return new CardsControl(context, viewModeOrder)
+		case 'collapsiblerowslist':
+			return new CollapsiblerowslistControl(context, viewModeOrder)
 	}
 
 	return null

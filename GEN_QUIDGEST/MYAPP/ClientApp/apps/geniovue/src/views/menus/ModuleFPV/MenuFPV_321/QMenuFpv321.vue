@@ -379,6 +379,8 @@
 										allowsMultiple: true,
 										sources: [
 											'STORE.DESCRIPTION',
+											'STORE.CURRENCY',
+											'COUNTRY.NAME',
 										]
 									},
 									image: {

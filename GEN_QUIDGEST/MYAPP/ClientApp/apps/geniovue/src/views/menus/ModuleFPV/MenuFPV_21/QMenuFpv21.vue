@@ -134,7 +134,7 @@
 				model: new MenuViewModel(this),
 
 				controls: {
-					menu: new controlClass.TableListControl({
+					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_21',
 						controller: 'INVOICE',
@@ -375,6 +375,47 @@
 						globalEvents: ['changed-INVOICE', 'changed-STORE'],
 						uuid: '4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5',
 						allSelectedRows: 'false',
+						viewModes: [
+							{
+								id: 'COLLAPSIBLEROWSLIST',
+								type: 'collapsiblerowslist',
+								subtype: '',
+								label: computed(() => this.Resources.LISTA_DE_LINHAS_COLA53301),
+								order: 1,
+								mappingVariables: readonly({
+									title: {
+										allowsMultiple: false,
+										sources: [
+											'INVOICE.CODINVOICESTORE',
+										]
+									},
+									content: {
+										allowsMultiple: false,
+										sources: [
+											'INVOICE.DATE',
+											'STORE.NAME',
+											'INVOICE.PRICE',
+											'INVOICE.TAXES',
+											'INVOICE.SHIPPINGCOST',
+											'INVOICE.TOTALPRICE',
+											'INVOICE.NUMBEROFITEMS',
+										]
+									},
+								}),
+								styleVariables: {
+									accordion: {
+										rawValue: false,
+										isMapped: false
+									},
+									htmlContent: {
+										rawValue: true,
+										isMapped: false
+									},
+								},
+								groups: {
+								}
+							},
+						],
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
 					}, this),
