@@ -98,11 +98,11 @@
 			<template v-if="formControl.initialized && showFormBody">
 				<q-row v-if="controls.FORM_PERSON__PSEUD__NEWGRP01.isVisible">
 					<q-col v-if="controls.FORM_PERSON__PSEUD__NEWGRP01.isVisible">
-						<q-group-box-container
+						<q-group-collapsible
 							v-if="controls.FORM_PERSON__PSEUD__NEWGRP01.isVisible"
 							id="FORM_PERSON__PSEUD__NEWGRP01"
 							v-bind="controls.FORM_PERSON__PSEUD__NEWGRP01"
-							:is-visible="controls.FORM_PERSON__PSEUD__NEWGRP01.isVisible">
+							v-on="controls.FORM_PERSON__PSEUD__NEWGRP01.handlers">
 							<!-- Start FORM_PERSON__PSEUD__NEWGRP01 -->
 							<q-row v-if="controls.FORM_PERSON__PERSON__CREATED_BY.isVisible">
 								<q-col
@@ -185,7 +185,7 @@
 								</q-col>
 							</q-row>
 							<!-- End FORM_PERSON__PSEUD__NEWGRP01 -->
-						</q-group-box-container>
+						</q-group-collapsible>
 					</q-col>
 				</q-row>
 				<q-row v-if="controls.FORM_PERSON__PSEUD__NEWGRP02.isVisible">
@@ -664,7 +664,8 @@
 						label: computed(() => this.Resources.METADATA28516),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
-						isCollapsible: false,
+						startsExpanded: false,
+						isCollapsible: true,
 						anchored: false,
 						directChildren: ['FORM_PERSON__PERSON__CREATED_BY', 'FORM_PERSON__PERSON__CREATED_AT', 'FORM_PERSON__PERSON__UPDATED_BY', 'FORM_PERSON__PERSON__UPDATED_AT'],
 						mustBeFilled: true,
