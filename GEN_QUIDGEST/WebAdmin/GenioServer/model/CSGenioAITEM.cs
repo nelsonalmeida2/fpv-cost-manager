@@ -101,7 +101,7 @@ namespace CSGenio.business
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			argumentsListByArea = new List<ByAreaArguments>();
-			argumentsListByArea.Add(new ByAreaArguments(new string[] {"quantity","totalprice"}, new int[] {0,1}, "item", "coditem"));
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"quantity","unitprice"}, new int[] {0,1}, "item", "coditem"));
 			Qfield.Formula = new InternalOperationFormula(argumentsListByArea, 2, delegate(object[] args, User user, string module, PersistentSupport sp) {
 				return ((decimal)args[0])*((decimal)args[1]);
 			});
@@ -415,11 +415,11 @@ namespace CSGenio.business
 			set { insertNameValueField(FldUnitprice, value); }
 		}
 
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->TOTALPRICE]"</summary>
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->UNITPRICE]"</summary>
 		public static FieldRef FldTotalprice { get { return m_fldTotalprice; } }
 		private static FieldRef m_fldTotalprice = new FieldRef("item", "totalprice");
 
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->TOTALPRICE]"</summary>
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->UNITPRICE]"</summary>
 		public decimal ValTotalprice
 		{
 			get { return (decimal)returnValueField(FldTotalprice); }

@@ -206,10 +206,10 @@ export default class ViewModel extends FormViewModelBase
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				fnFormula(params)
 				{
-					// Formula: [ITEM->QUANTITY] * [ITEM->TOTALPRICE]
-					return this.ValQuantity.value*this.ValTotalprice.value
+					// Formula: [ITEM->QUANTITY] * [ITEM->UNITPRICE]
+					return this.ValQuantity.value*this.ValUnitprice.value
 				},
-				dependencyEvents: ['fieldChange:item.quantity'],
+				dependencyEvents: ['fieldChange:item.quantity', 'fieldChange:item.unitprice'],
 				isServerRecalc: false,
 				isEmpty: qApi.emptyN,
 			},
