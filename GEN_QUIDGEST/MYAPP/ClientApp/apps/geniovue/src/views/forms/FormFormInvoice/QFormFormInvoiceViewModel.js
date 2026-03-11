@@ -230,10 +230,21 @@ export default class ViewModel extends FormViewModelBase
 				// eslint-disable-next-line @typescript-eslint/no-unused-vars
 				fnFormula(params)
 				{
-					// Formula: [INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]
-					return this.ValTotalprice.value+this.ValShippingcost.value+this.ValTaxes.value
+					// Formula: [INVOICE->PRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]
+					return this.ValPrice.value+this.ValShippingcost.value+this.ValTaxes.value
 				},
-				dependencyEvents: ['fieldChange:invoice.shippingcost', 'fieldChange:invoice.taxes'],
+				dependencyEvents: ['fieldChange:invoice.price', 'fieldChange:invoice.shippingcost', 'fieldChange:invoice.taxes'],
+				isServerRecalc: false,
+				isEmpty: qApi.emptyN,
+			},
+			showWhen: {
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				fnFormula(params)
+				{
+					// Formula: [INVOICE->NUMBEROFITEMS]!=0
+					return this.ValNumberofitems.value!==0
+				},
+				dependencyEvents: ['fieldChange:invoice.numberofitems'],
 				isServerRecalc: false,
 				isEmpty: qApi.emptyN,
 			},

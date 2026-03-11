@@ -46,7 +46,7 @@ namespace GenioMVC.Models
 		public decimal? ValTaxes { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTaxes, 2)); } set { klass.ValTaxes = Convert.ToDecimal(value); } }
 
 		[DisplayName("Total Price")]
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->PRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
 		[ShouldSerialize("Invoice.ValTotalprice")]
 		[CurrencyAttribute("EUR", 2)]
 		public decimal? ValTotalprice { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTotalprice, 2)); } set { klass.ValTotalprice = Convert.ToDecimal(value); } }

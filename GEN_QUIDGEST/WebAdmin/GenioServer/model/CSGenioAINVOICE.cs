@@ -100,7 +100,12 @@ namespace CSGenio.business
 
 			Qfield.Dupmsg = "";
 			argumentsListByArea = new List<ByAreaArguments>();
-			argumentsListByArea.Add(new ByAreaArguments(new string[] {"totalprice","shippingcost","taxes"}, new int[] {0,1,2}, "invoice", "codinvoice"));
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"numberofitems"}, new int[] {0}, "invoice", "codinvoice"));
+			Qfield.ShowWhen = new ConditionFormula(argumentsListByArea, 1, delegate(object[] args, User user, string module, PersistentSupport sp) {
+				return ((decimal)args[0])!=0;
+			});
+			argumentsListByArea = new List<ByAreaArguments>();
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"price","shippingcost","taxes"}, new int[] {0,1,2}, "invoice", "codinvoice"));
 			Qfield.Formula = new InternalOperationFormula(argumentsListByArea, 3, delegate(object[] args, User user, string module, PersistentSupport sp) {
 				return ((decimal)args[0])+((decimal)args[1])+((decimal)args[2]);
 			});
@@ -426,11 +431,11 @@ namespace CSGenio.business
 			set { insertNameValueField(FldTaxes, value); }
 		}
 
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->PRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
 		public static FieldRef FldTotalprice { get { return m_fldTotalprice; } }
 		private static FieldRef m_fldTotalprice = new FieldRef("invoice", "totalprice");
 
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->TOTALPRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
+		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[INVOICE->PRICE] + [INVOICE->SHIPPINGCOST] + [INVOICE->TAXES]"</summary>
 		public decimal ValTotalprice
 		{
 			get { return (decimal)returnValueField(FldTotalprice); }
