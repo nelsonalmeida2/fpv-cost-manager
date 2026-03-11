@@ -213,6 +213,28 @@ export default class ViewModel extends FormViewModelBase
 				isServerRecalc: false,
 				isEmpty: qApi.emptyN,
 			},
+			fillWhen: {
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				fnFormula(params)
+				{
+					// Formula: [ITEM->UNITPRICE]!= 0 && [ITEM->QUANTITY]!= 0
+					return this.ValUnitprice.value!==0&&this.ValQuantity.value!==0
+				},
+				dependencyEvents: ['fieldChange:item.unitprice', 'fieldChange:item.quantity'],
+				isServerRecalc: false,
+				isEmpty: qApi.emptyN,
+			},
+			showWhen: {
+				// eslint-disable-next-line @typescript-eslint/no-unused-vars
+				fnFormula(params)
+				{
+					// Formula: [ITEM->UNITPRICE]!= 0 && [ITEM->QUANTITY]!= 0
+					return this.ValUnitprice.value!==0&&this.ValQuantity.value!==0
+				},
+				dependencyEvents: ['fieldChange:item.unitprice', 'fieldChange:item.quantity'],
+				isServerRecalc: false,
+				isEmpty: qApi.emptyN,
+			},
 			description: computed(() => this.Resources.TOTAL_PRICE46894),
 		}).cloneFrom(values?.ValTotalprice))
 		this.stopWatchers.push(watch(() => this.ValTotalprice.value, (newValue, oldValue) => this.onUpdate('item.totalprice', this.ValTotalprice, newValue, oldValue)))

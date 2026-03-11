@@ -101,6 +101,16 @@ namespace CSGenio.business
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			argumentsListByArea = new List<ByAreaArguments>();
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"unitprice","quantity"}, new int[] {0,1}, "item", "coditem"));
+			Qfield.FillWhen = new ConditionFormula(argumentsListByArea, 2, delegate(object[] args, User user, string module, PersistentSupport sp) {
+				return ((decimal)args[0])!=0&&((decimal)args[1])!=0;
+			});
+			argumentsListByArea = new List<ByAreaArguments>();
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"unitprice","quantity"}, new int[] {0,1}, "item", "coditem"));
+			Qfield.ShowWhen = new ConditionFormula(argumentsListByArea, 2, delegate(object[] args, User user, string module, PersistentSupport sp) {
+				return ((decimal)args[0])!=0&&((decimal)args[1])!=0;
+			});
+			argumentsListByArea = new List<ByAreaArguments>();
 			argumentsListByArea.Add(new ByAreaArguments(new string[] {"quantity","unitprice"}, new int[] {0,1}, "item", "coditem"));
 			Qfield.Formula = new InternalOperationFormula(argumentsListByArea, 2, delegate(object[] args, User user, string module, PersistentSupport sp) {
 				return ((decimal)args[0])*((decimal)args[1]);
