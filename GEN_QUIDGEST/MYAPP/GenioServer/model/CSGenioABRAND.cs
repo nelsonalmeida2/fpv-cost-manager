@@ -77,6 +77,16 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "logotype", FieldType.IMAGE);
+			Qfield.FieldDescription = "Logotype";
+			Qfield.FieldSize =  3;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "LOGOTYPE44505";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -260,6 +270,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCountry, value); }
 		}
 
+		/// <summary>Field : "Logotype" Tipo: "IJ" Formula:  ""</summary>
+		public static FieldRef FldLogotype { get { return m_fldLogotype; } }
+		private static FieldRef m_fldLogotype = new FieldRef("brand", "logotype");
+
+		/// <summary>Field : "Logotype" Tipo: "IJ" Formula:  ""</summary>
+		public byte[] ValLogotype
+		{
+			get { return (byte[])returnValueField(FldLogotype); }
+			set { insertNameValueField(FldLogotype, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("brand", "zzstate");
@@ -357,7 +378,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX BRAND]/
 
  
-    
+     
 
 	}
 }

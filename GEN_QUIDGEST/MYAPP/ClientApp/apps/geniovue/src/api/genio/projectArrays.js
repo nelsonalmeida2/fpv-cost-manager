@@ -168,6 +168,42 @@ export class QArrayCurrency
 }
 
 /**
+ * The Gender array.
+ */
+export class QArrayGender
+{
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	constructor(fnResources)
+	{
+		this.type = 'C'
+		this.pluralName = 'GENDERS24703'
+		this.singularName = 'GENDER44172'
+
+		this.elements = [
+			new Option({
+				num: 1,
+				key: 'M',
+				resourceId: 'MALE32397',
+				fnResources,
+			}),
+			new Option({
+				num: 2,
+				key: 'F',
+				resourceId: 'FEMALE46107',
+				fnResources,
+			}),
+			new Option({
+				num: 3,
+				key: 'O',
+				resourceId: 'OTHER37293',
+				fnResources,
+			}),
+		]
+
+	}
+}
+
+/**
  * The s_modpro array.
  */
 export class QArrayS_modpro
@@ -437,6 +473,7 @@ export class QArrayS_tpproc
 
 export default {
 	QArrayCurrency,
+	QArrayGender,
 	QArrayS_modpro,
 	QArrayS_module,
 	QArrayS_prstat,

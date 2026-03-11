@@ -187,6 +187,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Logotype"
+        /// </summary>
+        public static string LOGOTYPE44505 {
+            get {
+                return ResourceManager.GetString("LOGOTYPE44505", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Role"
         /// </summary>
         public static string ROLE60946 {
@@ -376,6 +385,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Photo"
+        /// </summary>
+        public static string PHOTO51874 {
+            get {
+                return ResourceManager.GetString("PHOTO51874", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Dollar"
         /// </summary>
         public static string DOLLAR33324 {
@@ -417,6 +435,15 @@ namespace Administration.Resources {
         public static string INVOICES44448 {
             get {
                 return ResourceManager.GetString("INVOICES44448", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Female"
+        /// </summary>
+        public static string FEMALE46107 {
+            get {
+                return ResourceManager.GetString("FEMALE46107", resourceCulture);
             }
         }
 
@@ -516,6 +543,15 @@ namespace Administration.Resources {
         public static string IMAGE65174 {
             get {
                 return ResourceManager.GetString("IMAGE65174", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Gender"
+        /// </summary>
+        public static string GENDER44172 {
+            get {
+                return ResourceManager.GetString("GENDER44172", resourceCulture);
             }
         }
 
@@ -1042,6 +1078,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Other"
+        /// </summary>
+        public static string OTHER37293 {
+            get {
+                return ResourceManager.GetString("OTHER37293", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Cancelado"
         /// </summary>
         public static string CANCELADO05982 {
@@ -1182,6 +1227,15 @@ namespace Administration.Resources {
         public static string COUNTRIES64527 {
             get {
                 return ResourceManager.GetString("COUNTRIES64527", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Male"
+        /// </summary>
+        public static string MALE32397 {
+            get {
+                return ResourceManager.GetString("MALE32397", resourceCulture);
             }
         }
 
@@ -1330,6 +1384,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Genders"
+        /// </summary>
+        public static string GENDERS24703 {
+            get {
+                return ResourceManager.GetString("GENDERS24703", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Changed on"
         /// </summary>
         public static string CHANGED_ON19727 {
@@ -1434,6 +1497,15 @@ namespace Administration.Resources {
         public static string BCC22049 {
             get {
                 return ResourceManager.GetString("BCC22049", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Receipt"
+        /// </summary>
+        public static string RECEIPT15218 {
+            get {
+                return ResourceManager.GetString("RECEIPT15218", resourceCulture);
             }
         }
 

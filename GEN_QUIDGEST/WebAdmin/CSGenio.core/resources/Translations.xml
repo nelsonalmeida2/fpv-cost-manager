@@ -42,6 +42,9 @@
   <msg id="Terminado" code="TERMINADO46276">
     <ENUS>Terminado</ENUS>
   </msg>
+  <msg id="Logotype" code="LOGOTYPE44505">
+    <ENUS>Logotype</ENUS>
+  </msg>
   <msg id="Role" code="ROLE60946">
     <ENUS>Role</ENUS>
   </msg>
@@ -105,6 +108,9 @@
   <msg id="A cancelar" code="A_CANCELAR43988">
     <ENUS>A cancelar</ENUS>
   </msg>
+  <msg id="Photo" code="PHOTO51874">
+    <ENUS>Photo</ENUS>
+  </msg>
   <msg id="Dollar" code="DOLLAR33324">
     <ENUS>Dollar</ENUS>
   </msg>
@@ -119,6 +125,9 @@
   </msg>
   <msg id="Invoices" code="INVOICES44448">
     <ENUS>Invoices</ENUS>
+  </msg>
+  <msg id="Female" code="FEMALE46107">
+    <ENUS>Female</ENUS>
   </msg>
   <msg id="Stores" code="STORES21606">
     <ENUS>Stores</ENUS>
@@ -152,6 +161,9 @@
   </msg>
   <msg id="Image" code="IMAGE65174">
     <ENUS>Image</ENUS>
+  </msg>
+  <msg id="Gender" code="GENDER44172">
+    <ENUS>Gender</ENUS>
   </msg>
   <msg id="Value" code="VALUE10285">
     <ENUS>Value</ENUS>
@@ -327,6 +339,9 @@
   <msg id="Cc" code="CC35482">
     <ENUS>Cc</ENUS>
   </msg>
+  <msg id="Other" code="OTHER37293">
+    <ENUS>Other</ENUS>
+  </msg>
   <msg id="Cancelado" code="CANCELADO05982">
     <ENUS>Cancelado</ENUS>
   </msg>
@@ -374,6 +389,9 @@
   </msg>
   <msg id="Countries" code="COUNTRIES64527">
     <ENUS>Countries</ENUS>
+  </msg>
+  <msg id="Male" code="MALE32397">
+    <ENUS>Male</ENUS>
   </msg>
   <msg id="Manual destination" code="MANUAL_DESTINATION21892">
     <ENUS>Manual destination</ENUS>
@@ -423,6 +441,9 @@
   <msg id="Last update" code="LAST_UPDATE11909">
     <ENUS>Last update</ENUS>
   </msg>
+  <msg id="Genders" code="GENDERS24703">
+    <ENUS>Genders</ENUS>
+  </msg>
   <msg id="Changed on" code="CHANGED_ON19727">
     <ENUS>Changed on</ENUS>
   </msg>
@@ -458,6 +479,9 @@
   </msg>
   <msg id="Bcc" code="BCC22049">
     <ENUS>Bcc</ENUS>
+  </msg>
+  <msg id="Receipt" code="RECEIPT15218">
+    <ENUS>Receipt</ENUS>
   </msg>
   <msg id="a:" code="A_47238">
     <ENUS>to:</ENUS>

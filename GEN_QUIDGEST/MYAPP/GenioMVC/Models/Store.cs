@@ -65,6 +65,14 @@ namespace GenioMVC.Models
 			set { _country = value; }
 		}
 
+		[DisplayName("Logotype")]
+		/// <summary>Field : "Logotype" Tipo: "IJ" Formula:  ""</summary>
+		[ShouldSerialize("Store.ValLogotype")]
+		[ImageThumbnailJsonConverter(75, 75)]
+		public ImageModel ValLogotype { get { return new ImageModel(klass.ValLogotype) { Ticket = ValLogotypeQTicket }; } set { klass.ValLogotype = value; } }
+		[JsonIgnore]
+		public string ValLogotypeQTicket = null;
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Store.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

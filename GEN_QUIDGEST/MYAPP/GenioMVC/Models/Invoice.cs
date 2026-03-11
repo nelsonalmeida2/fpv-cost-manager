@@ -84,6 +84,13 @@ namespace GenioMVC.Models
 		[DateAttribute("D")]
 		public DateTime? ValDate { get { return klass.ValDate; } set { klass.ValDate = value ?? DateTime.MinValue; } }
 
+		[DisplayName("Receipt")]
+		/// <summary>Field : "Receipt" Tipo: "IB" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValReceipt")]
+		[Document("ValReceipt", true, false, false)]
+		public string ValReceipt { get { return klass.ValReceipt; } set { klass.ValReceipt = value; } }
+		public string ValReceiptfk { get { return klass.ValReceiptfk; } set { klass.ValReceiptfk = value; } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Invoice.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

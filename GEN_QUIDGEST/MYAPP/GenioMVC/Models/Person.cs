@@ -32,6 +32,27 @@ namespace GenioMVC.Models
 		[ShouldSerialize("Person.ValName")]
 		public string ValName { get { return klass.ValName; } set { klass.ValName = value; } }
 
+		[DisplayName("Photo")]
+		/// <summary>Field : "Photo" Tipo: "IJ" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValPhoto")]
+		[ImageThumbnailJsonConverter(75, 75)]
+		public ImageModel ValPhoto { get { return new ImageModel(klass.ValPhoto) { Ticket = ValPhotoQTicket }; } set { klass.ValPhoto = value; } }
+		[JsonIgnore]
+		public string ValPhotoQTicket = null;
+
+		[DisplayName("Gender")]
+		/// <summary>Field : "Gender" Tipo: "AC" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValGender")]
+		[DataArray("Gender", GenioMVC.Helpers.ArrayType.Character)]
+		public string ValGender { get { return klass.ValGender; } set { klass.ValGender = value; } }
+		[JsonIgnore]
+		public SelectList ArrayValgender { get { return new SelectList(CSGenio.business.ArrayGender.GetDictionary(), "Key", "Value", ValGender); } set { ValGender = value.SelectedValue as string; } }
+
+		[DisplayName("Email")]
+		/// <summary>Field : "Email" Tipo: "C" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValEmail")]
+		public string ValEmail { get { return klass.ValEmail; } set { klass.ValEmail = value; } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Person.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

@@ -31,6 +31,13 @@ namespace CSGenio.business
 			            Qresult.AppendLine("if {{{0}}} = \"LOC\" then \"Local Currency\" else");
             Qresult.Append("\"                                              \"");
             todasArrays.Add("currency", Qresult.ToString());
+			// gender
+            Qresult = new StringBuilder();
+			            Qresult.AppendLine("if {{{0}}} = \"M\" then \"Male\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"F\" then \"Female\" else");
+			            Qresult.AppendLine("if {{{0}}} = \"O\" then \"Other\" else");
+            Qresult.Append("\"                                              \"");
+            todasArrays.Add("gender", Qresult.ToString());
 			// s_modpro
             Qresult = new StringBuilder();
 			            Qresult.AppendLine("if {{{0}}} = \"INDIV\" then \"Individual\" else");

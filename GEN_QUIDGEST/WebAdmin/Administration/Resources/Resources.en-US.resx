@@ -159,6 +159,9 @@
   <data name="TERMINADO46276" xml:space="preserve">
     <value>Terminado</value>
   </data>
+  <data name="LOGOTYPE44505" xml:space="preserve">
+    <value>Logotype</value>
+  </data>
   <data name="ROLE60946" xml:space="preserve">
     <value>Role</value>
   </data>
@@ -222,6 +225,9 @@
   <data name="A_CANCELAR43988" xml:space="preserve">
     <value>A cancelar</value>
   </data>
+  <data name="PHOTO51874" xml:space="preserve">
+    <value>Photo</value>
+  </data>
   <data name="DOLLAR33324" xml:space="preserve">
     <value>Dollar</value>
   </data>
@@ -236,6 +242,9 @@
   </data>
   <data name="INVOICES44448" xml:space="preserve">
     <value>Invoices</value>
+  </data>
+  <data name="FEMALE46107" xml:space="preserve">
+    <value>Female</value>
   </data>
   <data name="STORES21606" xml:space="preserve">
     <value>Stores</value>
@@ -269,6 +278,9 @@
   </data>
   <data name="IMAGE65174" xml:space="preserve">
     <value>Image</value>
+  </data>
+  <data name="GENDER44172" xml:space="preserve">
+    <value>Gender</value>
   </data>
   <data name="VALUE10285" xml:space="preserve">
     <value>Value</value>
@@ -444,6 +456,9 @@
   <data name="CC35482" xml:space="preserve">
     <value>Cc</value>
   </data>
+  <data name="OTHER37293" xml:space="preserve">
+    <value>Other</value>
+  </data>
   <data name="CANCELADO05982" xml:space="preserve">
     <value>Cancelado</value>
   </data>
@@ -491,6 +506,9 @@
   </data>
   <data name="COUNTRIES64527" xml:space="preserve">
     <value>Countries</value>
+  </data>
+  <data name="MALE32397" xml:space="preserve">
+    <value>Male</value>
   </data>
   <data name="MANUAL_DESTINATION21892" xml:space="preserve">
     <value>Manual destination</value>
@@ -540,6 +558,9 @@
   <data name="LAST_UPDATE11909" xml:space="preserve">
     <value>Last update</value>
   </data>
+  <data name="GENDERS24703" xml:space="preserve">
+    <value>Genders</value>
+  </data>
   <data name="CHANGED_ON19727" xml:space="preserve">
     <value>Changed on</value>
   </data>
@@ -575,6 +596,9 @@
   </data>
   <data name="BCC22049" xml:space="preserve">
     <value>Bcc</value>
+  </data>
+  <data name="RECEIPT15218" xml:space="preserve">
+    <value>Receipt</value>
   </data>
   <data name="A_47238" xml:space="preserve">
     <value>to:</value>

@@ -65,6 +65,45 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "photo", FieldType.IMAGE);
+			Qfield.FieldDescription = "Photo";
+			Qfield.FieldSize =  3;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "PHOTO51874";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "gender", FieldType.ARRAY_TEXT);
+			Qfield.FieldDescription = "Gender";
+			Qfield.FieldSize =  1;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "GENDER44172";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+            Qfield.ArrayName = "dbo.GetValArrayCgender";
+            Qfield.ArrayClassName = "Gender";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "email", FieldType.TEXT);
+			Qfield.FieldDescription = "Email";
+			Qfield.FieldSize =  50;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "EMAIL25170";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			Qfield.FillingRule = (rule) =>
+			{
+				return Validation.validateEM(rule);
+			};
+			Qfield.DefaultValue = new DefaultValue("@gmail.com");
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -105,6 +144,10 @@ namespace CSGenio.business
 			//------------------------------
 
 
+
+			info.DefaultValues = new string[] {
+			 "email"
+			};
 
 
 
@@ -239,6 +282,39 @@ namespace CSGenio.business
 			set { insertNameValueField(FldName, value); }
 		}
 
+		/// <summary>Field : "Photo" Tipo: "IJ" Formula:  ""</summary>
+		public static FieldRef FldPhoto { get { return m_fldPhoto; } }
+		private static FieldRef m_fldPhoto = new FieldRef("person", "photo");
+
+		/// <summary>Field : "Photo" Tipo: "IJ" Formula:  ""</summary>
+		public byte[] ValPhoto
+		{
+			get { return (byte[])returnValueField(FldPhoto); }
+			set { insertNameValueField(FldPhoto, value); }
+		}
+
+		/// <summary>Field : "Gender" Tipo: "AC" Formula:  ""</summary>
+		public static FieldRef FldGender { get { return m_fldGender; } }
+		private static FieldRef m_fldGender = new FieldRef("person", "gender");
+
+		/// <summary>Field : "Gender" Tipo: "AC" Formula:  ""</summary>
+		public string ValGender
+		{
+			get { return (string)returnValueField(FldGender); }
+			set { insertNameValueField(FldGender, value); }
+		}
+
+		/// <summary>Field : "Email" Tipo: "C" Formula:  ""</summary>
+		public static FieldRef FldEmail { get { return m_fldEmail; } }
+		private static FieldRef m_fldEmail = new FieldRef("person", "email");
+
+		/// <summary>Field : "Email" Tipo: "C" Formula:  ""</summary>
+		public string ValEmail
+		{
+			get { return (string)returnValueField(FldEmail); }
+			set { insertNameValueField(FldEmail, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("person", "zzstate");
@@ -336,7 +412,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX PERSON]/
 
  
-   
+      
 
 	}
 }

@@ -144,6 +144,20 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "receipt", FieldType.DOCUMENT);
+			Qfield.FieldDescription = "Receipt";
+			Qfield.FieldSize =  50;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "RECEIPT15218";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+			Qfield = new Field(info.Alias, "receiptfk", FieldType.KEY_INT);
+			Qfield.FieldSize = 8;
+			Qfield.FieldDescription = "Chave estrangeira para o documento";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -270,6 +284,10 @@ namespace CSGenio.business
 
             // Documents in DB
             //------------------------------
+			info.DocumsForeignKeys = new List<String> {
+			 "receiptfk"
+			};
+			info.HasVersionManagment = true; //a true por omissão, quando o Qfield no genio tiver criado preencher por esse Qvalue
 
             // Historics
             //------------------------------
@@ -395,6 +413,28 @@ namespace CSGenio.business
 			set { insertNameValueField(FldDate, value); }
 		}
 
+		/// <summary>Field : "Receipt" Tipo: "IB" Formula:  ""</summary>
+		public static FieldRef FldReceipt { get { return m_fldReceipt; } }
+		private static FieldRef m_fldReceipt = new FieldRef("invoice", "receipt");
+
+		/// <summary>Field : "Receipt" Tipo: "IB" Formula:  ""</summary>
+		public string ValReceipt
+		{
+			get { return (string)returnValueField(FldReceipt); }
+			set { insertNameValueField(FldReceipt, value); }
+		}
+
+		/// <summary>Field : "Receipt FK" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldReceiptfk { get { return m_fldReceiptfk; } }
+		private static FieldRef m_fldReceiptfk = new FieldRef("invoice", "receiptfk");
+
+		/// <summary>Field : "Receipt FK" Tipo: "CE" Formula:  ""</summary>
+		public string ValReceiptfk
+		{
+			get { return (string)returnValueField(FldReceiptfk); }
+			set { insertNameValueField(FldReceiptfk, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("invoice", "zzstate");
@@ -492,7 +532,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX INVOICE]/
 
  
-         
+          
 
 	}
 }
