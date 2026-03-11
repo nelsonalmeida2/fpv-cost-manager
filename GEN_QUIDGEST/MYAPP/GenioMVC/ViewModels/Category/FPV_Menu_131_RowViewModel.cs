@@ -43,31 +43,7 @@ public class FPV_Menu_131_RowViewModel : Models.Category
 			{
 				Order = 2,
 				Area = "CATEGORY",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "CATEGORY",
 				Field = "DESCRIPTION",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "CATEGORY",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "CATEGORY",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "CATEGORY",
-				Field = "UPDATED_AT",
 			},
 		];
 	}

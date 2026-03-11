@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Invoice
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldUpdated_by, CSGenioAinvoice.FldReceipt, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldUpdated_at, CSGenioAinvoice.FldNumberofitems, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldCreated_by, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldCreated_at, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldShippingcost };
+			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldShippingcost, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldNumberofitems };
 
 			ListingMVC<CSGenioAinvoice> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -145,19 +145,14 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAinvoice.FldTaxes, FieldType.CURRENCY, Resources.Resources.TAXES34617, 10, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldReceipt, FieldType.DOCUMENT, Resources.Resources.RECEIPT15218, 30, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldTotalprice, FieldType.CURRENCY, Resources.Resources.TOTAL_PRICE46894, 10, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldNumberofitems, FieldType.NUMERIC, Resources.Resources.NUMBER_OF_ITEMS22472, 10, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldCodinvoicestore, FieldType.TEXT, Resources.Resources.CODINVOICESTORE44054, 30, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldDate, FieldType.DATE, Resources.Resources.DATE18475, 8, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
+				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.STORE16493, 30, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldPrice, FieldType.CURRENCY, Resources.Resources.PRICE06900, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldTaxes, FieldType.CURRENCY, Resources.Resources.TAXES34617, 10, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldShippingcost, FieldType.CURRENCY, Resources.Resources.SHIPPING_COST12785, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldTotalprice, FieldType.CURRENCY, Resources.Resources.TOTAL_PRICE46894, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldNumberofitems, FieldType.NUMERIC, Resources.Resources.NUMBER_OF_ITEMS22472, 10, 0, true),
 			];
 		}
 
@@ -321,8 +316,6 @@ namespace GenioMVC.ViewModels.Invoice
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
-			allSortOrders.Add("INVOICE.UPDATED_BY", new OrderedDictionary());
-			allSortOrders["INVOICE.UPDATED_BY"].Add("INVOICE.UPDATED_BY", "A");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -334,14 +327,8 @@ namespace GenioMVC.ViewModels.Invoice
 
 			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "invoice", allSortOrders);
 
-			if (sorts == null || sorts.Count == 0)
-			{
-				sorts = new List<ColumnSort>();
-				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAinvoice.FldUpdated_by), SortOrder.Ascending));
 
-			}
-
-			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldUpdated_by, CSGenioAinvoice.FldReceipt, CSGenioAinvoice.FldReceiptfk, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldUpdated_at, CSGenioAinvoice.FldNumberofitems, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldCreated_by, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldCreated_at, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldShippingcost };
+			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldShippingcost, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldNumberofitems };
 
 
 			// Totalizers
@@ -353,7 +340,7 @@ namespace GenioMVC.ViewModels.Invoice
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("invoice", "taxes");
+				firstVisibleColumn ??= new FieldRef("invoice", "codinvoicestore");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -516,27 +503,6 @@ namespace GenioMVC.ViewModels.Invoice
 		/// <param name="listing">The rows</param>
 		private void SetDocumentFields(ListingMVC<CSGenioAinvoice> listing)
 		{
-			if (listing.Rows == null)
-				return;
-
-			foreach (CSGenioAinvoice row in listing.Rows)
-			{
-				{
-					if (!string.IsNullOrEmpty((string)row.returnValueField("invoice.receiptfk")))
-					{
-						ResourceQuery resource = new("Invoice", "ValReceipt", "ValReceiptfk", row.ValCodinvoice);
-						string ticket = QResources.CreateTicketEncryptedBase64(m_userContext.User.Name, m_userContext.User.Location, resource);
-
-						row.insertNameValueField("invoice.receipt", Newtonsoft.Json.JsonConvert.SerializeObject(new
-						{
-							fileName = row.returnValueField("invoice.receipt"),
-							ticket
-						}));
-					}
-					else
-						row.removeFieldValue("invoice.receipt");
-				}
-			}
 		}
 
 		#region Mapper
@@ -561,24 +527,19 @@ namespace GenioMVC.ViewModels.Invoice
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Invoice", "Invoice.ValCodinvoice", "Invoice.ValZzstate", "Invoice.ValTaxes", "Invoice.ValUpdated_by", "Invoice.ValReceipt", "Invoice.ValTotalprice", "Invoice.ValUpdated_at", "Invoice.ValNumberofitems", "Store", "Store.ValName", "Invoice.ValCreated_by", "Invoice.ValCodinvoicestore", "Invoice.ValDate", "Invoice.ValCreated_at", "Invoice.ValPrice", "Invoice.ValShippingcost", "Invoice.ValStore"
+			"Invoice", "Invoice.ValCodinvoice", "Invoice.ValZzstate", "Invoice.ValCodinvoicestore", "Invoice.ValDate", "Store", "Store.ValName", "Invoice.ValPrice", "Invoice.ValTaxes", "Invoice.ValShippingcost", "Invoice.ValTotalprice", "Invoice.ValNumberofitems", "Invoice.ValStore"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValTaxes", CSGenioAinvoice.FldTaxes, typeof(decimal?)),
-			new TableSearchColumn("ValUpdated_by", CSGenioAinvoice.FldUpdated_by, typeof(string)),
-			new TableSearchColumn("ValReceipt", CSGenioAinvoice.FldReceipt, typeof(string)),
-			new TableSearchColumn("ValTotalprice", CSGenioAinvoice.FldTotalprice, typeof(decimal?)),
-			new TableSearchColumn("ValUpdated_at", CSGenioAinvoice.FldUpdated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValNumberofitems", CSGenioAinvoice.FldNumberofitems, typeof(decimal?)),
-			new TableSearchColumn("Store_ValName", CSGenioAstore.FldName, typeof(string)),
-			new TableSearchColumn("ValCreated_by", CSGenioAinvoice.FldCreated_by, typeof(string)),
 			new TableSearchColumn("ValCodinvoicestore", CSGenioAinvoice.FldCodinvoicestore, typeof(string), defaultSearch : true),
 			new TableSearchColumn("ValDate", CSGenioAinvoice.FldDate, typeof(DateTime?)),
-			new TableSearchColumn("ValCreated_at", CSGenioAinvoice.FldCreated_at, typeof(DateTime?)),
+			new TableSearchColumn("Store_ValName", CSGenioAstore.FldName, typeof(string)),
 			new TableSearchColumn("ValPrice", CSGenioAinvoice.FldPrice, typeof(decimal?)),
+			new TableSearchColumn("ValTaxes", CSGenioAinvoice.FldTaxes, typeof(decimal?)),
 			new TableSearchColumn("ValShippingcost", CSGenioAinvoice.FldShippingcost, typeof(decimal?)),
+			new TableSearchColumn("ValTotalprice", CSGenioAinvoice.FldTotalprice, typeof(decimal?)),
+			new TableSearchColumn("ValNumberofitems", CSGenioAinvoice.FldNumberofitems, typeof(decimal?)),
 		];
 	}
 }

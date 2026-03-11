@@ -37,61 +37,37 @@ public class FPV_Menu_321_RowViewModel : Models.Store
 			{
 				Order = 1,
 				Area = "STORE",
-				Field = "CURRENCY",
+				Field = "LOGOTYPE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
 				Area = "STORE",
-				Field = "LOGOTYPE",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "COUNTRY",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 4,
+				Order = 3,
 				Area = "STORE",
 				Field = "DESCRIPTION",
 			},
 			new ListColumn()
 			{
-				Order = 5,
-				Area = "STORE",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "STORE",
-				Field = "NAME",
-			},
-			new ListColumn()
-			{
-				Order = 7,
-				Area = "STORE",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 8,
+				Order = 4,
 				Area = "STORE",
 				Field = "SITE",
 			},
 			new ListColumn()
 			{
-				Order = 9,
+				Order = 5,
 				Area = "STORE",
-				Field = "CREATED_AT",
+				Field = "CURRENCY",
 			},
 			new ListColumn()
 			{
-				Order = 10,
-				Area = "STORE",
-				Field = "UPDATED_AT",
+				Order = 6,
+				Area = "COUNTRY",
+				Field = "NAME",
 			},
 		];
 	}

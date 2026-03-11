@@ -43,35 +43,11 @@ public class FPV_Menu_141_RowViewModel : Models.Subcategory
 			{
 				Order = 2,
 				Area = "SUBCATEGORY",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "SUBCATEGORY",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "SUBCATEGORY",
-				Field = "UPDATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "SUBCATEGORY",
 				Field = "DESCRIPTION",
 			},
 			new ListColumn()
 			{
-				Order = 6,
-				Area = "SUBCATEGORY",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 7,
+				Order = 3,
 				Area = "CATEGORY",
 				Field = "NAME",
 			},

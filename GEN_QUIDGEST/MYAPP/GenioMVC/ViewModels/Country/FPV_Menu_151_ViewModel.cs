@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Country
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldZzstate, CSGenioAcountry.FldUpdated_by, CSGenioAcountry.FldUpdated_at, CSGenioAcountry.FldCreated_at, CSGenioAcountry.FldCreated_by, CSGenioAcountry.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldZzstate, CSGenioAcountry.FldName };
 
 			ListingMVC<CSGenioAcountry> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -146,10 +146,6 @@ namespace GenioMVC.ViewModels.Country
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAcountry.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
-				new Exports.QColumn(CSGenioAcountry.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
-				new Exports.QColumn(CSGenioAcountry.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAcountry.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
 				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
 			];
 		}
@@ -314,8 +310,6 @@ namespace GenioMVC.ViewModels.Country
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
-			allSortOrders.Add("COUNTRY.UPDATED_BY", new OrderedDictionary());
-			allSortOrders["COUNTRY.UPDATED_BY"].Add("COUNTRY.UPDATED_BY", "A");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -327,14 +321,8 @@ namespace GenioMVC.ViewModels.Country
 
 			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "country", allSortOrders);
 
-			if (sorts == null || sorts.Count == 0)
-			{
-				sorts = new List<ColumnSort>();
-				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAcountry.FldUpdated_by), SortOrder.Ascending));
 
-			}
-
-			FieldRef[] fields = new FieldRef[] { CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldZzstate, CSGenioAcountry.FldUpdated_by, CSGenioAcountry.FldUpdated_at, CSGenioAcountry.FldCreated_at, CSGenioAcountry.FldCreated_by, CSGenioAcountry.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldZzstate, CSGenioAcountry.FldName };
 
 
 			// Totalizers
@@ -346,7 +334,7 @@ namespace GenioMVC.ViewModels.Country
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("country", "updated_by");
+				firstVisibleColumn ??= new FieldRef("country", "name");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -531,15 +519,11 @@ namespace GenioMVC.ViewModels.Country
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Country", "Country.ValCodcountry", "Country.ValZzstate", "Country.ValUpdated_by", "Country.ValUpdated_at", "Country.ValCreated_at", "Country.ValCreated_by", "Country.ValName"
+			"Country", "Country.ValCodcountry", "Country.ValZzstate", "Country.ValName"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValUpdated_by", CSGenioAcountry.FldUpdated_by, typeof(string)),
-			new TableSearchColumn("ValUpdated_at", CSGenioAcountry.FldUpdated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValCreated_at", CSGenioAcountry.FldCreated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValCreated_by", CSGenioAcountry.FldCreated_by, typeof(string)),
 			new TableSearchColumn("ValName", CSGenioAcountry.FldName, typeof(string), defaultSearch : true),
 		];
 	}

@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Category
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldZzstate, CSGenioAcategory.FldName, CSGenioAcategory.FldCreated_by, CSGenioAcategory.FldDescription, CSGenioAcategory.FldCreated_at, CSGenioAcategory.FldUpdated_by, CSGenioAcategory.FldUpdated_at };
+			FieldRef[] fields = new FieldRef[] { CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldZzstate, CSGenioAcategory.FldName, CSGenioAcategory.FldDescription };
 
 			ListingMVC<CSGenioAcategory> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -147,11 +147,7 @@ namespace GenioMVC.ViewModels.Category
 			return
 			[
 				new Exports.QColumn(CSGenioAcategory.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAcategory.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
 				new Exports.QColumn(CSGenioAcategory.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
-				new Exports.QColumn(CSGenioAcategory.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAcategory.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
-				new Exports.QColumn(CSGenioAcategory.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
 			];
 		}
 
@@ -335,7 +331,7 @@ namespace GenioMVC.ViewModels.Category
 
 			}
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldZzstate, CSGenioAcategory.FldName, CSGenioAcategory.FldCreated_by, CSGenioAcategory.FldDescription, CSGenioAcategory.FldCreated_at, CSGenioAcategory.FldUpdated_by, CSGenioAcategory.FldUpdated_at };
+			FieldRef[] fields = new FieldRef[] { CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldZzstate, CSGenioAcategory.FldName, CSGenioAcategory.FldDescription };
 
 
 			// Totalizers
@@ -532,17 +528,13 @@ namespace GenioMVC.ViewModels.Category
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Category", "Category.ValCodcategory", "Category.ValZzstate", "Category.ValName", "Category.ValCreated_by", "Category.ValDescription", "Category.ValCreated_at", "Category.ValUpdated_by", "Category.ValUpdated_at"
+			"Category", "Category.ValCodcategory", "Category.ValZzstate", "Category.ValName", "Category.ValDescription"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
 			new TableSearchColumn("ValName", CSGenioAcategory.FldName, typeof(string), defaultSearch : true),
-			new TableSearchColumn("ValCreated_by", CSGenioAcategory.FldCreated_by, typeof(string)),
 			new TableSearchColumn("ValDescription", CSGenioAcategory.FldDescription, typeof(string)),
-			new TableSearchColumn("ValCreated_at", CSGenioAcategory.FldCreated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValUpdated_by", CSGenioAcategory.FldUpdated_by, typeof(string)),
-			new TableSearchColumn("ValUpdated_at", CSGenioAcategory.FldUpdated_at, typeof(DateTime?)),
 		];
 	}
 }

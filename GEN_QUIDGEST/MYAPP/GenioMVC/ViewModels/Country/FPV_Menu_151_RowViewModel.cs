@@ -37,30 +37,6 @@ public class FPV_Menu_151_RowViewModel : Models.Country
 			{
 				Order = 1,
 				Area = "COUNTRY",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 2,
-				Area = "COUNTRY",
-				Field = "UPDATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "COUNTRY",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "COUNTRY",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "COUNTRY",
 				Field = "NAME",
 			},
 		];

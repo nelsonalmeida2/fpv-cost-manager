@@ -37,79 +37,49 @@ public class FPV_Menu_21_RowViewModel : Models.Invoice
 			{
 				Order = 1,
 				Area = "INVOICE",
-				Field = "TAXES",
+				Field = "CODINVOICESTORE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
 				Area = "INVOICE",
-				Field = "UPDATED_BY",
+				Field = "DATE",
 			},
 			new ListColumn()
 			{
 				Order = 3,
-				Area = "INVOICE",
-				Field = "RECEIPT",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "INVOICE",
-				Field = "TOTALPRICE",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "INVOICE",
-				Field = "UPDATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "INVOICE",
-				Field = "NUMBEROFITEMS",
-			},
-			new ListColumn()
-			{
-				Order = 7,
 				Area = "STORE",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 8,
-				Area = "INVOICE",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 9,
-				Area = "INVOICE",
-				Field = "CODINVOICESTORE",
-			},
-			new ListColumn()
-			{
-				Order = 10,
-				Area = "INVOICE",
-				Field = "DATE",
-			},
-			new ListColumn()
-			{
-				Order = 11,
-				Area = "INVOICE",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 12,
+				Order = 4,
 				Area = "INVOICE",
 				Field = "PRICE",
 			},
 			new ListColumn()
 			{
-				Order = 13,
+				Order = 5,
+				Area = "INVOICE",
+				Field = "TAXES",
+			},
+			new ListColumn()
+			{
+				Order = 6,
 				Area = "INVOICE",
 				Field = "SHIPPINGCOST",
+			},
+			new ListColumn()
+			{
+				Order = 7,
+				Area = "INVOICE",
+				Field = "TOTALPRICE",
+			},
+			new ListColumn()
+			{
+				Order = 8,
+				Area = "INVOICE",
+				Field = "NUMBEROFITEMS",
 			},
 		];
 	}

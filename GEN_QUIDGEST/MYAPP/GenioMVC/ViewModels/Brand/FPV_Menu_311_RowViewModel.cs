@@ -37,49 +37,25 @@ public class FPV_Menu_311_RowViewModel : Models.Brand
 			{
 				Order = 1,
 				Area = "BRAND",
-				Field = "UPDATED_AT",
+				Field = "LOGOTYPE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
 				Area = "BRAND",
-				Field = "DESCRIPTION",
+				Field = "NAME",
 			},
 			new ListColumn()
 			{
 				Order = 3,
 				Area = "BRAND",
-				Field = "NAME",
+				Field = "DESCRIPTION",
 			},
 			new ListColumn()
 			{
 				Order = 4,
-				Area = "BRAND",
-				Field = "LOGOTYPE",
-			},
-			new ListColumn()
-			{
-				Order = 5,
 				Area = "COUNTRY",
 				Field = "NAME",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "BRAND",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 7,
-				Area = "BRAND",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 8,
-				Area = "BRAND",
-				Field = "UPDATED_BY",
 			},
 		];
 	}

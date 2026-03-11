@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Brand
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldUpdated_at, CSGenioAbrand.FldDescription, CSGenioAbrand.FldName, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName, CSGenioAbrand.FldCreated_by, CSGenioAbrand.FldCreated_at, CSGenioAbrand.FldUpdated_by };
+			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldName, CSGenioAbrand.FldDescription, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
 
 			ListingMVC<CSGenioAbrand> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -146,13 +146,9 @@ namespace GenioMVC.ViewModels.Brand
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAbrand.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
-				new Exports.QColumn(CSGenioAbrand.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
 				new Exports.QColumn(CSGenioAbrand.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAbrand.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
-				new Exports.QColumn(CSGenioAbrand.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAbrand.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
+				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.COUNTRY64133, 30, 0, true),
 			];
 		}
 
@@ -316,8 +312,6 @@ namespace GenioMVC.ViewModels.Brand
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
-			allSortOrders.Add("BRAND.UPDATED_AT", new OrderedDictionary());
-			allSortOrders["BRAND.UPDATED_AT"].Add("BRAND.UPDATED_AT", "A");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -329,14 +323,8 @@ namespace GenioMVC.ViewModels.Brand
 
 			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "brand", allSortOrders);
 
-			if (sorts == null || sorts.Count == 0)
-			{
-				sorts = new List<ColumnSort>();
-				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAbrand.FldUpdated_at), SortOrder.Ascending));
 
-			}
-
-			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldUpdated_at, CSGenioAbrand.FldDescription, CSGenioAbrand.FldName, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName, CSGenioAbrand.FldCreated_by, CSGenioAbrand.FldCreated_at, CSGenioAbrand.FldUpdated_by };
+			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldName, CSGenioAbrand.FldDescription, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
 
 
 			// Totalizers
@@ -348,7 +336,7 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("brand", "updated_at");
+				firstVisibleColumn ??= new FieldRef("brand", "logotype");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -536,18 +524,14 @@ namespace GenioMVC.ViewModels.Brand
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValUpdated_at", "Brand.ValDescription", "Brand.ValName", "Brand.ValLogotype", "Country", "Country.ValName", "Brand.ValCreated_by", "Brand.ValCreated_at", "Brand.ValUpdated_by", "Brand.ValCountry"
+			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValLogotype", "Brand.ValName", "Brand.ValDescription", "Country", "Country.ValName", "Brand.ValCountry"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValUpdated_at", CSGenioAbrand.FldUpdated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValDescription", CSGenioAbrand.FldDescription, typeof(string)),
 			new TableSearchColumn("ValName", CSGenioAbrand.FldName, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValDescription", CSGenioAbrand.FldDescription, typeof(string)),
 			new TableSearchColumn("Country_ValName", CSGenioAcountry.FldName, typeof(string)),
-			new TableSearchColumn("ValCreated_by", CSGenioAbrand.FldCreated_by, typeof(string)),
-			new TableSearchColumn("ValCreated_at", CSGenioAbrand.FldCreated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValUpdated_by", CSGenioAbrand.FldUpdated_by, typeof(string)),
 		];
 		protected void SetTicketToImageFields(Models.Brand row)
 		{

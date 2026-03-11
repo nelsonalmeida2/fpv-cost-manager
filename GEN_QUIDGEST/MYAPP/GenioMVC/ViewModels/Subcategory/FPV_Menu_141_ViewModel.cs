@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Subcategory
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAsubcategory.FldCodsubcategory, CSGenioAsubcategory.FldZzstate, CSGenioAsubcategory.FldName, CSGenioAsubcategory.FldUpdated_by, CSGenioAsubcategory.FldCreated_by, CSGenioAsubcategory.FldUpdated_at, CSGenioAsubcategory.FldDescription, CSGenioAsubcategory.FldCreated_at, CSGenioAsubcategory.FldCategory, CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAsubcategory.FldCodsubcategory, CSGenioAsubcategory.FldZzstate, CSGenioAsubcategory.FldName, CSGenioAsubcategory.FldDescription, CSGenioAsubcategory.FldCategory, CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldName };
 
 			ListingMVC<CSGenioAsubcategory> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -147,12 +147,8 @@ namespace GenioMVC.ViewModels.Subcategory
 			return
 			[
 				new Exports.QColumn(CSGenioAsubcategory.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAsubcategory.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
-				new Exports.QColumn(CSGenioAsubcategory.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
-				new Exports.QColumn(CSGenioAsubcategory.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
 				new Exports.QColumn(CSGenioAsubcategory.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
-				new Exports.QColumn(CSGenioAsubcategory.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAcategory.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+				new Exports.QColumn(CSGenioAcategory.FldName, FieldType.TEXT, Resources.Resources.CATEGORY18978, 30, 0, true),
 			];
 		}
 
@@ -336,7 +332,7 @@ namespace GenioMVC.ViewModels.Subcategory
 
 			}
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAsubcategory.FldCodsubcategory, CSGenioAsubcategory.FldZzstate, CSGenioAsubcategory.FldName, CSGenioAsubcategory.FldUpdated_by, CSGenioAsubcategory.FldCreated_by, CSGenioAsubcategory.FldUpdated_at, CSGenioAsubcategory.FldDescription, CSGenioAsubcategory.FldCreated_at, CSGenioAsubcategory.FldCategory, CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAsubcategory.FldCodsubcategory, CSGenioAsubcategory.FldZzstate, CSGenioAsubcategory.FldName, CSGenioAsubcategory.FldDescription, CSGenioAsubcategory.FldCategory, CSGenioAcategory.FldCodcategory, CSGenioAcategory.FldName };
 
 
 			// Totalizers
@@ -535,17 +531,13 @@ namespace GenioMVC.ViewModels.Subcategory
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Subcategory", "Subcategory.ValCodsubcategory", "Subcategory.ValZzstate", "Subcategory.ValName", "Subcategory.ValUpdated_by", "Subcategory.ValCreated_by", "Subcategory.ValUpdated_at", "Subcategory.ValDescription", "Subcategory.ValCreated_at", "Category", "Category.ValName", "Subcategory.ValCategory"
+			"Subcategory", "Subcategory.ValCodsubcategory", "Subcategory.ValZzstate", "Subcategory.ValName", "Subcategory.ValDescription", "Category", "Category.ValName", "Subcategory.ValCategory"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
 			new TableSearchColumn("ValName", CSGenioAsubcategory.FldName, typeof(string), defaultSearch : true),
-			new TableSearchColumn("ValUpdated_by", CSGenioAsubcategory.FldUpdated_by, typeof(string)),
-			new TableSearchColumn("ValCreated_by", CSGenioAsubcategory.FldCreated_by, typeof(string)),
-			new TableSearchColumn("ValUpdated_at", CSGenioAsubcategory.FldUpdated_at, typeof(DateTime?)),
 			new TableSearchColumn("ValDescription", CSGenioAsubcategory.FldDescription, typeof(string)),
-			new TableSearchColumn("ValCreated_at", CSGenioAsubcategory.FldCreated_at, typeof(DateTime?)),
 			new TableSearchColumn("Category_ValName", CSGenioAcategory.FldName, typeof(string)),
 		];
 	}

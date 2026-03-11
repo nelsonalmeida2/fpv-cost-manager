@@ -37,7 +37,37 @@ public class FPV_Menu_111_RowViewModel : Models.Person
 			{
 				Order = 1,
 				Area = "PERSON",
+				Field = "PHOTO",
+			},
+			new ListColumn()
+			{
+				Order = 2,
+				Area = "PERSON",
 				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 3,
+				Area = "PERSON",
+				Field = "GENDER",
+			},
+			new ListColumn()
+			{
+				Order = 4,
+				Area = "PERSON",
+				Field = "BIRTHDAY",
+			},
+			new ListColumn()
+			{
+				Order = 5,
+				Area = "PERSON",
+				Field = "EMAIL",
+			},
+			new ListColumn()
+			{
+				Order = 6,
+				Area = "PERSON",
+				Field = "TELEPHONE",
 			},
 		];
 	}

@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Person
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAperson.FldCodperson, CSGenioAperson.FldZzstate, CSGenioAperson.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAperson.FldCodperson, CSGenioAperson.FldZzstate, CSGenioAperson.FldPhoto, CSGenioAperson.FldName, CSGenioAperson.FldGender, CSGenioAperson.FldBirthday, CSGenioAperson.FldEmail, CSGenioAperson.FldTelephone };
 
 			ListingMVC<CSGenioAperson> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -147,6 +147,10 @@ namespace GenioMVC.ViewModels.Person
 			return
 			[
 				new Exports.QColumn(CSGenioAperson.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+				new Exports.QColumn(CSGenioAperson.FldGender, FieldType.ARRAY_TEXT, Resources.Resources.GENDER44172, 1, 0, true, "Gender"),
+				new Exports.QColumn(CSGenioAperson.FldBirthday, FieldType.DATE, Resources.Resources.BIRTHDAY30236, 8, 0, true),
+				new Exports.QColumn(CSGenioAperson.FldEmail, FieldType.TEXT, Resources.Resources.EMAIL25170, 30, 0, true),
+				new Exports.QColumn(CSGenioAperson.FldTelephone, FieldType.NUMERIC, Resources.Resources.TELEPHONE28697, 9, 0, true),
 			];
 		}
 
@@ -330,7 +334,7 @@ namespace GenioMVC.ViewModels.Person
 
 			}
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAperson.FldCodperson, CSGenioAperson.FldZzstate, CSGenioAperson.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAperson.FldCodperson, CSGenioAperson.FldZzstate, CSGenioAperson.FldPhoto, CSGenioAperson.FldName, CSGenioAperson.FldGender, CSGenioAperson.FldBirthday, CSGenioAperson.FldEmail, CSGenioAperson.FldTelephone };
 
 
 			// Totalizers
@@ -342,7 +346,7 @@ namespace GenioMVC.ViewModels.Person
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("person", "name");
+				firstVisibleColumn ??= new FieldRef("person", "photo");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -483,6 +487,7 @@ namespace GenioMVC.ViewModels.Person
 
 			model.InitRowData();
 
+			SetTicketToImageFields(model);
 			return model;
 		}
 
@@ -527,12 +532,23 @@ namespace GenioMVC.ViewModels.Person
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Person", "Person.ValCodperson", "Person.ValZzstate", "Person.ValName"
+			"Person", "Person.ValCodperson", "Person.ValZzstate", "Person.ValPhoto", "Person.ValName", "Person.ValGender", "Person.ValBirthday", "Person.ValEmail", "Person.ValTelephone"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
 			new TableSearchColumn("ValName", CSGenioAperson.FldName, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValGender", CSGenioAperson.FldGender, typeof(string), array : "Gender"),
+			new TableSearchColumn("ValBirthday", CSGenioAperson.FldBirthday, typeof(DateTime?)),
+			new TableSearchColumn("ValEmail", CSGenioAperson.FldEmail, typeof(string)),
+			new TableSearchColumn("ValTelephone", CSGenioAperson.FldTelephone, typeof(decimal?)),
 		];
+		protected void SetTicketToImageFields(Models.Person row)
+		{
+			if (row == null)
+				return;
+
+			row.ValPhotoQTicket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaPERSON, CSGenioAperson.FldPhoto.Field, null, row.ValCodperson);
+		}
 	}
 }

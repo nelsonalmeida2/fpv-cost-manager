@@ -100,7 +100,7 @@ namespace GenioMVC.ViewModels.Store
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAstore.FldCodstore, CSGenioAstore.FldZzstate, CSGenioAstore.FldCurrency, CSGenioAstore.FldLogotype, CSGenioAstore.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName, CSGenioAstore.FldDescription, CSGenioAstore.FldUpdated_by, CSGenioAstore.FldName, CSGenioAstore.FldCreated_by, CSGenioAstore.FldSite, CSGenioAstore.FldCreated_at, CSGenioAstore.FldUpdated_at };
+			FieldRef[] fields = new FieldRef[] { CSGenioAstore.FldCodstore, CSGenioAstore.FldZzstate, CSGenioAstore.FldLogotype, CSGenioAstore.FldName, CSGenioAstore.FldDescription, CSGenioAstore.FldSite, CSGenioAstore.FldCurrency, CSGenioAstore.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
 
 			ListingMVC<CSGenioAstore> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
@@ -146,15 +146,11 @@ namespace GenioMVC.ViewModels.Store
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAstore.FldCurrency, FieldType.ARRAY_TEXT, Resources.Resources.CURRENCY13881, 3, 0, true, "CURRENCY"),
-				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
 				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
+				new Exports.QColumn(CSGenioAstore.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
 				new Exports.QColumn(CSGenioAstore.FldSite, FieldType.TEXT, Resources.Resources.WEBSITE08569, 30, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
+				new Exports.QColumn(CSGenioAstore.FldCurrency, FieldType.ARRAY_TEXT, Resources.Resources.CURRENCY13881, 3, 0, true, "CURRENCY"),
+				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.COUNTRY64133, 30, 0, true),
 			];
 		}
 
@@ -338,7 +334,7 @@ namespace GenioMVC.ViewModels.Store
 
 			}
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAstore.FldCodstore, CSGenioAstore.FldZzstate, CSGenioAstore.FldCurrency, CSGenioAstore.FldLogotype, CSGenioAstore.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName, CSGenioAstore.FldDescription, CSGenioAstore.FldUpdated_by, CSGenioAstore.FldName, CSGenioAstore.FldCreated_by, CSGenioAstore.FldSite, CSGenioAstore.FldCreated_at, CSGenioAstore.FldUpdated_at };
+			FieldRef[] fields = new FieldRef[] { CSGenioAstore.FldCodstore, CSGenioAstore.FldZzstate, CSGenioAstore.FldLogotype, CSGenioAstore.FldName, CSGenioAstore.FldDescription, CSGenioAstore.FldSite, CSGenioAstore.FldCurrency, CSGenioAstore.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
 
 
 			// Totalizers
@@ -350,7 +346,7 @@ namespace GenioMVC.ViewModels.Store
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("store", "currency");
+				firstVisibleColumn ??= new FieldRef("store", "logotype");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -538,20 +534,16 @@ namespace GenioMVC.ViewModels.Store
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Store", "Store.ValCodstore", "Store.ValZzstate", "Store.ValCurrency", "Store.ValLogotype", "Country", "Country.ValName", "Store.ValDescription", "Store.ValUpdated_by", "Store.ValName", "Store.ValCreated_by", "Store.ValSite", "Store.ValCreated_at", "Store.ValUpdated_at", "Store.ValCountry"
+			"Store", "Store.ValCodstore", "Store.ValZzstate", "Store.ValLogotype", "Store.ValName", "Store.ValDescription", "Store.ValSite", "Store.ValCurrency", "Country", "Country.ValName", "Store.ValCountry"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
+			new TableSearchColumn("ValName", CSGenioAstore.FldName, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValDescription", CSGenioAstore.FldDescription, typeof(string)),
+			new TableSearchColumn("ValSite", CSGenioAstore.FldSite, typeof(string)),
 			new TableSearchColumn("ValCurrency", CSGenioAstore.FldCurrency, typeof(string), array : "CURRENCY"),
 			new TableSearchColumn("Country_ValName", CSGenioAcountry.FldName, typeof(string)),
-			new TableSearchColumn("ValDescription", CSGenioAstore.FldDescription, typeof(string)),
-			new TableSearchColumn("ValUpdated_by", CSGenioAstore.FldUpdated_by, typeof(string)),
-			new TableSearchColumn("ValName", CSGenioAstore.FldName, typeof(string), defaultSearch : true),
-			new TableSearchColumn("ValCreated_by", CSGenioAstore.FldCreated_by, typeof(string)),
-			new TableSearchColumn("ValSite", CSGenioAstore.FldSite, typeof(string)),
-			new TableSearchColumn("ValCreated_at", CSGenioAstore.FldCreated_at, typeof(DateTime?)),
-			new TableSearchColumn("ValUpdated_at", CSGenioAstore.FldUpdated_at, typeof(DateTime?)),
 		];
 		protected void SetTicketToImageFields(Models.Store row)
 		{

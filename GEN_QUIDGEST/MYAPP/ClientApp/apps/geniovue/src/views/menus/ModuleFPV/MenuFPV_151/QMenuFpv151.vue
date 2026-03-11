@@ -148,46 +148,6 @@
 						columnsOriginal: [
 							new listColumnTypes.TextColumn({
 								order: 1,
-								name: 'ValUpdated_by',
-								area: 'COUNTRY',
-								field: 'UPDATED_BY',
-								label: computed(() => this.Resources.UPDATED_BY17808),
-								dataLength: 100,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.DateColumn({
-								order: 2,
-								name: 'ValUpdated_at',
-								area: 'COUNTRY',
-								field: 'UPDATED_AT',
-								label: computed(() => this.Resources.UPDATED_AT48366),
-								scrollData: 8,
-								dateTimeType: 'date',
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.DateColumn({
-								order: 3,
-								name: 'ValCreated_at',
-								area: 'COUNTRY',
-								field: 'CREATED_AT',
-								label: computed(() => this.Resources.CREATED_AT29089),
-								scrollData: 8,
-								dateTimeType: 'date',
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'ValCreated_by',
-								area: 'COUNTRY',
-								field: 'CREATED_BY',
-								label: computed(() => this.Resources.CREATED_BY12292),
-								dataLength: 100,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 5,
 								name: 'ValName',
 								area: 'COUNTRY',
 								field: 'NAME',
@@ -332,7 +292,7 @@
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: 'ValUpdated_by',
+								columnName: '',
 								sortOrder: 'asc'
 							}
 						},
