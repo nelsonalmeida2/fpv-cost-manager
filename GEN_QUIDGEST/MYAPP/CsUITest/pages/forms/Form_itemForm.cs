@@ -87,7 +87,12 @@ public class Form_itemForm : Form
 	public SeeMorePage InvoiceCodinvoicestoreSeeMorePage => new SeeMorePage(driver, "FORM_ITEM", "FORM_ITEM__INVOICE__CODINVOICESTORE");
 
 	/// <summary>
-	/// New Data Grid
+	/// Photos
+	/// </summary>
+	public CollapsibleZoneControl PseudNewgrp04 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__NEWGRP04-container");
+
+	/// <summary>
+	/// 
 	/// </summary>
 	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__FIELD001");
 

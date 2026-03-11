@@ -79,14 +79,24 @@ public class Form_invoiceForm : Form
 	public BaseInputControl InvoiceTaxes => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__TAXES", "#FORM_INVOICE__INVOICE__TAXES");
 
 	/// <summary>
+	/// Number of Items
+	/// </summary>
+	public BaseInputControl InvoiceNumberofitems => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__NUMBEROFITEMS", "#FORM_INVOICE__INVOICE__NUMBEROFITEMS");
+
+	/// <summary>
 	/// Total Price
 	/// </summary>
 	public BaseInputControl InvoiceTotalprice => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__TOTALPRICE", "#FORM_INVOICE__INVOICE__TOTALPRICE");
 
 	/// <summary>
-	/// Number of Items
+	/// Items
 	/// </summary>
-	public BaseInputControl InvoiceNumberofitems => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__NUMBEROFITEMS", "#FORM_INVOICE__INVOICE__NUMBEROFITEMS");
+	public CollapsibleZoneControl PseudNewgrp04 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP04-container");
+
+	/// <summary>
+	/// 
+	/// </summary>
+	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__FIELD001");
 
 	public Form_invoiceForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_INVOICE", containerLocator: containerLocator) { }

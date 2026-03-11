@@ -205,6 +205,18 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValTaxes))
 		this.stopWatchers.push(watch(() => this.ValTaxes.value, (newValue, oldValue) => this.onUpdate('invoice.taxes', this.ValTaxes, newValue, oldValue)))
 
+		this.ValNumberofitems = reactive(new modelFieldType.Number({
+			id: 'ValNumberofitems',
+			originId: 'ValNumberofitems',
+			area: 'INVOICE',
+			field: 'NUMBEROFITEMS',
+			maxDigits: 10,
+			decimalDigits: 0,
+			isFixed: true,
+			description: computed(() => this.Resources.NUMBER_OF_ITEMS22472),
+		}).cloneFrom(values?.ValNumberofitems))
+		this.stopWatchers.push(watch(() => this.ValNumberofitems.value, (newValue, oldValue) => this.onUpdate('invoice.numberofitems', this.ValNumberofitems, newValue, oldValue)))
+
 		this.ValTotalprice = reactive(new modelFieldType.Number({
 			id: 'ValTotalprice',
 			originId: 'ValTotalprice',
@@ -228,18 +240,6 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.TOTAL_PRICE46894),
 		}).cloneFrom(values?.ValTotalprice))
 		this.stopWatchers.push(watch(() => this.ValTotalprice.value, (newValue, oldValue) => this.onUpdate('invoice.totalprice', this.ValTotalprice, newValue, oldValue)))
-
-		this.ValNumberofitems = reactive(new modelFieldType.Number({
-			id: 'ValNumberofitems',
-			originId: 'ValNumberofitems',
-			area: 'INVOICE',
-			field: 'NUMBEROFITEMS',
-			maxDigits: 10,
-			decimalDigits: 0,
-			isFixed: true,
-			description: computed(() => this.Resources.NUMBER_OF_ITEMS22472),
-		}).cloneFrom(values?.ValNumberofitems))
-		this.stopWatchers.push(watch(() => this.ValNumberofitems.value, (newValue, oldValue) => this.onUpdate('invoice.numberofitems', this.ValNumberofitems, newValue, oldValue)))
 	}
 
 	/**

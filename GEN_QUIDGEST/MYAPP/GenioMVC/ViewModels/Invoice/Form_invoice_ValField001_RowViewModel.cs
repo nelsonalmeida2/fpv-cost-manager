@@ -6,16 +6,16 @@ using GenioMVC.Models.Navigation;
 
 namespace GenioMVC.ViewModels.Invoice;
 
-public class FPV_Menu_211_RowViewModel : Models.Invoice
+public class Form_invoice_ValField001_RowViewModel : Models.Item
 {
 	#region Constructors
 
-	public FPV_Menu_211_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public Form_invoice_ValField001_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_211_RowViewModel(UserContext userContext, CSGenioAinvoice val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public Form_invoice_ValField001_RowViewModel(UserContext userContext, CSGenioAitem val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,80 +36,26 @@ public class FPV_Menu_211_RowViewModel : Models.Invoice
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "INVOICE",
-				Field = "TAXES",
-			},
-			new ListColumn()
-			{
-				Order = 2,
-				Area = "INVOICE",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "INVOICE",
-				Field = "RECEIPT",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "INVOICE",
-				Field = "TOTALPRICE",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "INVOICE",
-				Field = "UPDATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "INVOICE",
-				Field = "NUMBEROFITEMS",
-			},
-			new ListColumn()
-			{
-				Order = 7,
-				Area = "STORE",
+				Area = "ITEM",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 8,
-				Area = "INVOICE",
-				Field = "CREATED_BY",
+				Order = 2,
+				Area = "ITEM",
+				Field = "UNITPRICE",
 			},
 			new ListColumn()
 			{
-				Order = 9,
-				Area = "INVOICE",
-				Field = "CODINVOICESTORE",
+				Order = 3,
+				Area = "ITEM",
+				Field = "QUANTITY",
 			},
 			new ListColumn()
 			{
-				Order = 10,
-				Area = "INVOICE",
-				Field = "DATE",
-			},
-			new ListColumn()
-			{
-				Order = 11,
-				Area = "INVOICE",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 12,
-				Area = "INVOICE",
-				Field = "PRICE",
-			},
-			new ListColumn()
-			{
-				Order = 13,
-				Area = "INVOICE",
-				Field = "SHIPPINGCOST",
+				Order = 4,
+				Area = "ITEM",
+				Field = "TOTALPRICE",
 			},
 		];
 	}

@@ -28,18 +28,18 @@ namespace GenioMVC.Controllers
 {
 	public partial class InvoiceController : ControllerBase
 	{
-		private static readonly NavigationLocation ACTION_FPV_MENU_211 = new NavigationLocation("INVOICES44448", "FPV_Menu_211", "Invoice") { vueRouteName = "menu-FPV_211" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_21 = new NavigationLocation("INVOICES44448", "FPV_Menu_21", "Invoice") { vueRouteName = "menu-FPV_21" };
 
 
 		//
-		// GET: /Invoice/FPV_Menu_211
-		[ActionName("FPV_Menu_211")]
+		// GET: /Invoice/FPV_Menu_21
+		[ActionName("FPV_Menu_21")]
 		[HttpPost]
-		public ActionResult FPV_Menu_211([FromBody] RequestMenuModel requestModel)
+		public ActionResult FPV_Menu_21([FromBody] RequestMenuModel requestModel)
 		{
 			var queryParams = requestModel.QueryParams;
 
-			FPV_Menu_211_ViewModel model = new(m_userContext);
+			FPV_Menu_21_ViewModel model = new(m_userContext);
 
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
@@ -51,7 +51,7 @@ namespace GenioMVC.Controllers
 
 			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_211");
+				Navigation.SetValue("HomePage", "FPV_Menu_21");
 
 			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
 			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_invoice")))
@@ -70,18 +70,18 @@ namespace GenioMVC.Controllers
 				querystring.AddRange(queryParams);
 
 			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_211.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_211.Action)
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_21.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_21.Action)
 				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
 			else if (isHomePage)
 			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_211.ShortDescription());
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_21.ShortDescription());
 				Navigation.SetValue("HomePageContainsList", true);
 			}
 
 
 
-// USE /[MANUAL FPV MENU_GET 211]/
+// USE /[MANUAL FPV MENU_GET 21]/
 
 			try
 			{

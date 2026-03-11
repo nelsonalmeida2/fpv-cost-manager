@@ -555,6 +555,9 @@
   <msg id="Request date" code="REQUEST_DATE25771">
     <ENUS>Request date</ENUS>
   </msg>
+  <msg id="Photos" code="PHOTOS39221">
+    <ENUS>Photos</ENUS>
+  </msg>
   <msg id="Abortado" code="ABORTADO52378">
     <ENUS>Abortado</ENUS>
   </msg>

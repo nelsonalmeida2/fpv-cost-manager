@@ -16,9 +16,9 @@ using System.Data;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-namespace GenioMVC.ViewModels.Invoice
+namespace GenioMVC.ViewModels.Photoalbum
 {
-	public class Form_invoice_ViewModel : FormViewModel<Models.Invoice>, IPreparableForSerialization
+	public class Form_photo_album_ViewModel : FormViewModel<Models.Photoalbum>, IPreparableForSerialization
 	{
 		[JsonIgnore]
 		public override bool HasWriteConditions { get => false; }
@@ -31,9 +31,9 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#region Foreign keys
 		/// <summary>
-		/// Title: "Store" | Type: "CE"
+		/// Title: "Item" | Type: "CE"
 		/// </summary>
-		public string ValStore { get; set; }
+		public string ValItem { get; set; }
 
 		#endregion
 		/// <summary>
@@ -57,54 +57,19 @@ namespace GenioMVC.ViewModels.Invoice
 		[ValidateSetAccess]
 		public DateTime? ValUpdated_at { get; set; }
 		/// <summary>
-		/// Title: "CODINVOICESTORE" | Type: "C"
+		/// Title: "Photo" | Type: "IJ"
 		/// </summary>
-		public string ValCodinvoicestore { get; set; }
+		[ImageThumbnailJsonConverter(30, 50)]
+		public GenioMVC.Models.ImageModel ValPhoto { get; set; }
 		/// <summary>
-		/// Title: "Receipt" | Type: "IB"
+		/// Title: "Title" | Type: "C"
 		/// </summary>
-		[Document("ValReceipt", true, false, false, DocumentViewTypeMode.Preview)]
-		public string ValReceipt { get; set; }
+		public string ValTitle { get; set; }
 		/// <summary>
-		/// Title: "" | Type: "PSEUD"
-		/// </summary>
-		public string ValReceiptfk { get; set; }
-		/// <summary>
-		/// Title: "" | Type: "PSEUD"
-		/// </summary>
-		public DocumsProperties_ViewModel ValReceiptPropertiesVM { get; set; }
-		/// <summary>
-		/// Title: "Store" | Type: "C"
+		/// Title: "Item" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
-		public TableDBEdit<GenioMVC.Models.Store> TableStoreName { get; set; }
-		/// <summary>
-		/// Title: "Date" | Type: "D"
-		/// </summary>
-		public DateTime? ValDate { get; set; }
-		/// <summary>
-		/// Title: "Price" | Type: "$"
-		/// </summary>
-		[ValidateSetAccess]
-		public decimal? ValPrice { get; set; }
-		/// <summary>
-		/// Title: "Shipping Cost" | Type: "$"
-		/// </summary>
-		public decimal? ValShippingcost { get; set; }
-		/// <summary>
-		/// Title: "Taxes" | Type: "$"
-		/// </summary>
-		public decimal? ValTaxes { get; set; }
-		/// <summary>
-		/// Title: "Number of Items" | Type: "N"
-		/// </summary>
-		[ValidateSetAccess]
-		public decimal? ValNumberofitems { get; set; }
-		/// <summary>
-		/// Title: "Total Price" | Type: "$"
-		/// </summary>
-		[ValidateSetAccess]
-		public decimal? ValTotalprice { get; set; }
+		public TableDBEdit<GenioMVC.Models.Item> TableItemName { get; set; }
 
 		#region Navigations
 		#endregion
@@ -126,7 +91,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#endregion
 
-		public string ValCodinvoice { get; set; }
+		public string ValCodphotoalbum { get; set; }
 
 
 		/// <summary>
@@ -134,16 +99,16 @@ namespace GenioMVC.ViewModels.Invoice
 		/// A call to Init() needs to be manually invoked after this constructor
 		/// </summary>
 		[Obsolete("For deserialization only")]
-		public Form_invoice_ViewModel() : base(null!) { }
+		public Form_photo_album_ViewModel() : base(null!) { }
 
-		public Form_invoice_ViewModel(UserContext userContext, bool nestedForm = false) : base(userContext, "FFORM_INVOICE", nestedForm) { }
+		public Form_photo_album_ViewModel(UserContext userContext, bool nestedForm = false) : base(userContext, "FFORM_PHOTO_ALBUM", nestedForm) { }
 
-		public Form_invoice_ViewModel(UserContext userContext, Models.Invoice row, bool nestedForm = false) : base(userContext, "FFORM_INVOICE", row, nestedForm) { }
+		public Form_photo_album_ViewModel(UserContext userContext, Models.Photoalbum row, bool nestedForm = false) : base(userContext, "FFORM_PHOTO_ALBUM", row, nestedForm) { }
 
-		public Form_invoice_ViewModel(UserContext userContext, string id, bool nestedForm = false, string[]? fieldsToLoad = null) : this(userContext, nestedForm)
+		public Form_photo_album_ViewModel(UserContext userContext, string id, bool nestedForm = false, string[]? fieldsToLoad = null) : this(userContext, nestedForm)
 		{
-			this.Navigation.SetValue("invoice", id);
-			Model = Models.Invoice.Find(id, userContext, "FFORM_INVOICE", fieldsToQuery: fieldsToLoad);
+			this.Navigation.SetValue("photoalbum", id);
+			Model = Models.Photoalbum.Find(id, userContext, "FFORM_PHOTO_ALBUM", fieldsToQuery: fieldsToLoad);
 			if (Model == null)
 				throw new ModelNotFoundException("Model not found");
 			InitModel();
@@ -166,13 +131,13 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 			var m_userContext = userContext;
 			StatusMessage result = new StatusMessage(Status.OK, "");
-			Models.Invoice model = new Models.Invoice(userContext) { Identifier = "FFORM_INVOICE" };
+			Models.Photoalbum model = new Models.Photoalbum(userContext) { Identifier = "FFORM_PHOTO_ALBUM" };
 
 			var navigation = m_userContext.CurrentNavigation;
 			// The "LoadKeysFromHistory" must be after the "LoadEPH" because the PHE's in the tree mark Foreign Keys to null
 			// (since they cannot assign multiple values to a single field) and thus the value that comes from Navigation is lost.
 			// And this makes it more like the order of loading the model when opening the form.
-			model.LoadEPH("FFORM_INVOICE");
+			model.LoadEPH("FFORM_PHOTO_ALBUM");
 			if (navigation != null)
 				model.LoadKeysFromHistory(navigation, navigation.CurrentLevel.Level);
 
@@ -226,35 +191,28 @@ namespace GenioMVC.ViewModels.Invoice
 		#region Mapper
 
 		/// <inheritdoc />
-		public override void MapFromModel(Models.Invoice m)
+		public override void MapFromModel(Models.Photoalbum m)
 		{
 			if (m == null)
 			{
-				CSGenio.framework.Log.Error("Map Model (Invoice) to ViewModel (Form_invoice) - Model is a null reference");
+				CSGenio.framework.Log.Error("Map Model (Photoalbum) to ViewModel (Form_photo_album) - Model is a null reference");
 				throw new ModelNotFoundException("Model not found");
 			}
 
 			try
 			{
-				ValStore = ViewModelConversion.ToString(m.ValStore);
+				ValItem = ViewModelConversion.ToString(m.ValItem);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
 				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
-				ValCodinvoicestore = ViewModelConversion.ToString(m.ValCodinvoicestore);
-				ValReceipt = ViewModelConversion.ToString(m.ValReceipt);
-				ValReceiptfk = ViewModelConversion.ToString(m.ValReceiptfk);
-				ValDate = ViewModelConversion.ToDateTime(m.ValDate);
-				ValPrice = ViewModelConversion.ToNumeric(m.ValPrice);
-				ValShippingcost = ViewModelConversion.ToNumeric(m.ValShippingcost);
-				ValTaxes = ViewModelConversion.ToNumeric(m.ValTaxes);
-				ValNumberofitems = ViewModelConversion.ToNumeric(m.ValNumberofitems);
-				ValTotalprice = ViewModelConversion.ToNumeric(m.ValTotalprice);
-				ValCodinvoice = ViewModelConversion.ToString(m.ValCodinvoice);
+				ValPhoto = ViewModelConversion.ToImage(m.ValPhoto);
+				ValTitle = ViewModelConversion.ToString(m.ValTitle);
+				ValCodphotoalbum = ViewModelConversion.ToString(m.ValCodphotoalbum);
 			}
 			catch (Exception)
 			{
-				CSGenio.framework.Log.Error("Map Model (Invoice) to ViewModel (Form_invoice) - Error during mapping");
+				CSGenio.framework.Log.Error("Map Model (Photoalbum) to ViewModel (Form_photo_album) - Error during mapping");
 				throw;
 			}
 		}
@@ -266,24 +224,21 @@ namespace GenioMVC.ViewModels.Invoice
 		}
 
 		/// <inheritdoc />
-		public override void MapToModel(Models.Invoice m)
+		public override void MapToModel(Models.Photoalbum m)
 		{
 			if (m == null)
 			{
-				CSGenio.framework.Log.Error("Map ViewModel (Form_invoice) to Model (Invoice) - Model is a null reference");
+				CSGenio.framework.Log.Error("Map ViewModel (Form_photo_album) to Model (Photoalbum) - Model is a null reference");
 				throw new ModelNotFoundException("Model not found");
 			}
 
 			try
 			{
-				m.ValStore = ViewModelConversion.ToString(ValStore);
-				m.ValCodinvoicestore = ViewModelConversion.ToString(ValCodinvoicestore);
-				m.ValReceipt = ViewModelConversion.ToString(ValReceipt);
-				m.ValReceiptfk = ViewModelConversion.ToString(ValReceiptfk);
-				m.ValDate = ViewModelConversion.ToDateTime(ValDate);
-				m.ValShippingcost = ViewModelConversion.ToNumeric(ValShippingcost);
-				m.ValTaxes = ViewModelConversion.ToNumeric(ValTaxes);
-				m.ValCodinvoice = ViewModelConversion.ToString(ValCodinvoice);
+				m.ValItem = ViewModelConversion.ToString(ValItem);
+				if (ValPhoto == null || !ValPhoto.IsThumbnail)
+					m.ValPhoto = ViewModelConversion.ToImage(ValPhoto);
+				m.ValTitle = ViewModelConversion.ToString(ValTitle);
+				m.ValCodphotoalbum = ViewModelConversion.ToString(ValCodphotoalbum);
 
 				/*
 					At this moment, in the case of runtime calculation of server-side formulas, to improve performance and reduce database load,
@@ -296,13 +251,10 @@ namespace GenioMVC.ViewModels.Invoice
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
 				m.ValUpdated_at = ViewModelConversion.ToDateTime(ValUpdated_at);
-				m.ValPrice = ViewModelConversion.ToNumeric(ValPrice);
-				m.ValNumberofitems = ViewModelConversion.ToNumeric(ValNumberofitems);
-				m.ValTotalprice = ViewModelConversion.ToNumeric(ValTotalprice);
 			}
 			catch (Exception)
 			{
-				CSGenio.framework.Log.Error($"Map ViewModel (Form_invoice) to Model (Invoice) - Error during mapping. All user values: {HasDisabledUserValuesSecurity}");
+				CSGenio.framework.Log.Error($"Map ViewModel (Form_photo_album) to Model (Photoalbum) - Error during mapping. All user values: {HasDisabledUserValuesSecurity}");
 				throw;
 			}
 		}
@@ -323,35 +275,26 @@ namespace GenioMVC.ViewModels.Invoice
 
 				switch (fullFieldName)
 				{
-					case "invoice.store":
-						this.ValStore = ViewModelConversion.ToString(_value);
+					case "photoalbum.item":
+						this.ValItem = ViewModelConversion.ToString(_value);
 						break;
-					case "invoice.codinvoicestore":
-						this.ValCodinvoicestore = ViewModelConversion.ToString(_value);
+					case "photoalbum.photo":
+						this.ValPhoto = ViewModelConversion.ToImage(_value);
 						break;
-					case "invoice.receipt":
-						this.ValReceipt = ViewModelConversion.ToString(_value);
+					case "photoalbum.title":
+						this.ValTitle = ViewModelConversion.ToString(_value);
 						break;
-					case "invoice.date":
-						this.ValDate = ViewModelConversion.ToDateTime(_value);
-						break;
-					case "invoice.shippingcost":
-						this.ValShippingcost = ViewModelConversion.ToNumeric(_value);
-						break;
-					case "invoice.taxes":
-						this.ValTaxes = ViewModelConversion.ToNumeric(_value);
-						break;
-					case "invoice.codinvoice":
-						this.ValCodinvoice = ViewModelConversion.ToString(_value);
+					case "photoalbum.codphotoalbum":
+						this.ValCodphotoalbum = ViewModelConversion.ToString(_value);
 						break;
 					default:
-						Log.Error($"SetViewModelValue (Form_invoice) - Unexpected field identifier {fullFieldName}");
+						Log.Error($"SetViewModelValue (Form_photo_album) - Unexpected field identifier {fullFieldName}");
 						break;
 				}
 			}
 			catch (Exception ex)
 			{
-				throw new FrameworkException(Resources.Resources.PEDIMOS_DESCULPA__OC63848, "SetViewModelValue (Form_invoice)", "Unexpected error", ex);
+				throw new FrameworkException(Resources.Resources.PEDIMOS_DESCULPA__OC63848, "SetViewModelValue (Form_photo_album)", "Unexpected error", ex);
 			}
 		}
 
@@ -363,8 +306,8 @@ namespace GenioMVC.ViewModels.Invoice
 		/// <param name="id">The primary key of the record that needs to be read from the database. Leave NULL to use the value from the History.</param>
 		public override void LoadModel(string id = null)
 		{
-			try { Model = Models.Invoice.Find(id ?? Navigation.GetStrValue("invoice"), m_userContext, "FFORM_INVOICE"); }
-			finally { Model ??= new Models.Invoice(m_userContext) { Identifier = "FFORM_INVOICE" }; }
+			try { Model = Models.Photoalbum.Find(id ?? Navigation.GetStrValue("photoalbum"), m_userContext, "FFORM_PHOTO_ALBUM"); }
+			finally { Model ??= new Models.Photoalbum(m_userContext) { Identifier = "FFORM_PHOTO_ALBUM" }; }
 
 			base.LoadModel();
 		}
@@ -377,7 +320,7 @@ namespace GenioMVC.ViewModels.Invoice
 			// TODO: Deve ser substituido por search do CSGenioA
 			try
 			{
-				Model = Models.Invoice.Find(Navigation.GetStrValue("invoice"), m_userContext, "FFORM_INVOICE");
+				Model = Models.Photoalbum.Find(Navigation.GetStrValue("photoalbum"), m_userContext, "FFORM_PHOTO_ALBUM");
 			}
 			finally
 			{
@@ -390,7 +333,7 @@ namespace GenioMVC.ViewModels.Invoice
 					oldvalues = Model.klass;
 			}
 
-			Model.Identifier = "FFORM_INVOICE";
+			Model.Identifier = "FFORM_PHOTO_ALBUM";
 			InitModel(qs, lazyLoad);
 
 			if (Navigation.CurrentLevel.FormMode == FormMode.New || Navigation.CurrentLevel.FormMode == FormMode.Edit || Navigation.CurrentLevel.FormMode == FormMode.Duplicate)
@@ -424,16 +367,8 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 		}
 		
-		protected override void LoadDocumentsProperties(Models.Invoice row)
+		protected override void LoadDocumentsProperties(Models.Photoalbum row)
 		{
-			try
-			{
-				ValReceiptPropertiesVM = row.GetInfoDoc("ValReceipt");
-			}
-			catch (Exception)
-			{
-				ValReceiptPropertiesVM = new DocumsProperties_ViewModel(m_userContext);
-			}
 		}
 
 		/// <summary>
@@ -447,11 +382,11 @@ namespace GenioMVC.ViewModels.Invoice
 			{
 				// Precisamos fazer o Find to obter as chaves dos documentos que já foram anexados
 				// TODO: Conseguir passar estas chaves no POST to poder retirar o Find.
-				Model = Models.Invoice.Find(Navigation.GetStrValue("invoice"), m_userContext, "FFORM_INVOICE");
+				Model = Models.Photoalbum.Find(Navigation.GetStrValue("photoalbum"), m_userContext, "FFORM_PHOTO_ALBUM");
 				if (Model == null)
 				{
-					Model = new Models.Invoice(m_userContext) { Identifier = "FFORM_INVOICE" };
-					Model.klass.QPrimaryKey = Navigation.GetStrValue("invoice");
+					Model = new Models.Photoalbum(m_userContext) { Identifier = "FFORM_PHOTO_ALBUM" };
+					Model.klass.QPrimaryKey = Navigation.GetStrValue("photoalbum");
 				}
 				MapToModel(Model);
 				LoadDocumentsProperties(Model);
@@ -459,12 +394,12 @@ namespace GenioMVC.ViewModels.Invoice
 			// Add characteristics
 			Characs = new List<string>();
 
-			Load_Form_invoice__store__name(qs, lazyLoad);
+			Load_Form_photo_album__item__name(qs, lazyLoad);
 
-// USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_PHOTO_ALBUM]/
 		}
 
-// USE /[MANUAL FPV VIEWMODEL_NEW FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_NEW FORM_PHOTO_ALBUM]/
 
 		// Preencher Qvalues default dos fields do form
 		protected override void LoadDefaultValues()
@@ -476,22 +411,16 @@ namespace GenioMVC.ViewModels.Invoice
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
 
-			validator.Required("ValStore", Resources.Resources.STORE16493, ViewModelConversion.ToString(ValStore), FieldType.KEY_INT.GetFormatting());
+			validator.Required("ValItem", Resources.Resources.ITEM40802, ViewModelConversion.ToString(ValItem), FieldType.KEY_INT.GetFormatting());
 
 			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
 
 			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
-			validator.StringLength("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ValCodinvoicestore, 50);
 
-			validator.Required("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ViewModelConversion.ToString(ValCodinvoicestore), FieldType.TEXT.GetFormatting());
+			validator.Required("ValPhoto", Resources.Resources.PHOTO51874, ViewModelConversion.ToImage(ValPhoto), FieldType.IMAGE.GetFormatting());
+			validator.StringLength("ValTitle", Resources.Resources.TITLE21885, ValTitle, 50);
 
-			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
-
-			validator.Required("ValPrice", Resources.Resources.PRICE06900, ViewModelConversion.ToNumeric(ValPrice), FieldType.CURRENCY.GetFormatting());
-
-			validator.Required("ValNumberofitems", Resources.Resources.NUMBER_OF_ITEMS22472, ViewModelConversion.ToNumeric(ValNumberofitems), FieldType.NUMERIC.GetFormatting());
-
-			validator.Required("ValTotalprice", Resources.Resources.TOTAL_PRICE46894, ViewModelConversion.ToNumeric(ValTotalprice), FieldType.CURRENCY.GetFormatting());
+			validator.Required("ValTitle", Resources.Resources.TITLE21885, ViewModelConversion.ToString(ValTitle), FieldType.TEXT.GetFormatting());
 
 
 			return validator.GetResult();
@@ -501,7 +430,7 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 			base.Init(userContext);
 		}
-// USE /[MANUAL FPV VIEWMODEL_SAVE FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_SAVE FORM_PHOTO_ALBUM]/
 		public override void Save()
 		{
 
@@ -509,14 +438,14 @@ namespace GenioMVC.ViewModels.Invoice
 			base.Save();
 		}
 
-// USE /[MANUAL FPV VIEWMODEL_APPLY FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_APPLY FORM_PHOTO_ALBUM]/
 
-// USE /[MANUAL FPV VIEWMODEL_DUPLICATE FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_DUPLICATE FORM_PHOTO_ALBUM]/
 
-// USE /[MANUAL FPV VIEWMODEL_DESTROY FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_DESTROY FORM_PHOTO_ALBUM]/
 		public override void Destroy(string id)
 		{
-			Model = Models.Invoice.Find(id, m_userContext, "FFORM_INVOICE");
+			Model = Models.Photoalbum.Find(id, m_userContext, "FFORM_PHOTO_ALBUM");
 			if (Model == null)
 				throw new ModelNotFoundException("Model not found");
 			this.flashMessage = Model.Destroy();
@@ -530,54 +459,54 @@ namespace GenioMVC.ViewModels.Invoice
 		}
 
 		/// <summary>
-		/// TableStoreName -> (DB)
+		/// TableItemName -> (DB)
 		/// </summary>
 		/// <param name="qs"></param>
 		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void Load_Form_invoice__store__name(NameValueCollection qs, bool lazyLoad = false)
+		public void Load_Form_photo_album__item__name(NameValueCollection qs, bool lazyLoad = false)
 		{
-			bool form_invoice__store__nameDoLoad = true;
-			CriteriaSet form_invoice__store__nameConds = CriteriaSet.And();
+			bool form_photo_album__item__nameDoLoad = true;
+			CriteriaSet form_photo_album__item__nameConds = CriteriaSet.And();
 			{
-				object hValue = Navigation.GetValue("store", true);
+				object hValue = Navigation.GetValue("item", true);
 				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
 				{
-					form_invoice__store__nameConds.Equal(CSGenioAstore.FldCodstore, hValue);
-					this.ValStore = DBConversion.ToString(hValue);
+					form_photo_album__item__nameConds.Equal(CSGenioAitem.FldCoditem, hValue);
+					this.ValItem = DBConversion.ToString(hValue);
 				}
 			}
 
-			TableStoreName = new TableDBEdit<Models.Store>
+			TableItemName = new TableDBEdit<Models.Item>
 			{
 				IsLazyLoad = lazyLoad
 			};
 
 			if (lazyLoad)
 			{
-				if (Navigation.CurrentLevel.GetEntry("RETURN_store") != null)
+				if (Navigation.CurrentLevel.GetEntry("RETURN_item") != null)
 				{
-					this.ValStore = Navigation.GetStrValue("RETURN_store");
-					Navigation.CurrentLevel.SetEntry("RETURN_store", null);
+					this.ValItem = Navigation.GetStrValue("RETURN_item");
+					Navigation.CurrentLevel.SetEntry("RETURN_item", null);
 				}
-				FillDependant_Form_invoiceTableStoreName(lazyLoad);
+				FillDependant_Form_photo_albumTableItemName(lazyLoad);
 				return;
 			}
 
-			if (form_invoice__store__nameDoLoad)
+			if (form_photo_album__item__nameDoLoad)
 			{
 				List<ColumnSort> sorts = [];
-				ColumnSort requestedSort = GetRequestSort(TableStoreName, "sTableStoreName", "dTableStoreName", qs, "store");
+				ColumnSort requestedSort = GetRequestSort(TableItemName, "sTableItemName", "dTableItemName", qs, "item");
 				if (requestedSort != null)
 					sorts.Add(requestedSort);
-				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAstore.FldName), SortOrder.Ascending));
+				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAitem.FldName), SortOrder.Ascending));
 
 				string query = "";
-				if (!string.IsNullOrEmpty(qs["TableStoreName_tableFilters"]))
-					TableStoreName.TableFilters = bool.Parse(qs["TableStoreName_tableFilters"]);
+				if (!string.IsNullOrEmpty(qs["TableItemName_tableFilters"]))
+					TableItemName.TableFilters = bool.Parse(qs["TableItemName_tableFilters"]);
 				else
-					TableStoreName.TableFilters = false;
+					TableItemName.TableFilters = false;
 
-				query = qs["qTableStoreName"];
+				query = qs["qTableItemName"];
 
 				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
 				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
@@ -585,64 +514,64 @@ namespace GenioMVC.ViewModels.Invoice
 				CriteriaSet search_filters = CriteriaSet.And();
 				if (!string.IsNullOrEmpty(query))
 				{
-					search_filters.Like(CSGenioAstore.FldName, query + "%");
+					search_filters.Like(CSGenioAitem.FldName, query + "%");
 				}
-				form_invoice__store__nameConds.SubSet(search_filters);
+				form_photo_album__item__nameConds.SubSet(search_filters);
 
-				string tryParsePage = qs["pTableStoreName"] != null ? qs["pTableStoreName"].ToString() : "1";
+				string tryParsePage = qs["pTableItemName"] != null ? qs["pTableItemName"].ToString() : "1";
 				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
 				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
 				int offset = (page - 1) * numberItems;
 
-				FieldRef[] fields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAstore.FldZzstate];
+				FieldRef[] fields = [CSGenioAitem.FldCoditem, CSGenioAitem.FldName, CSGenioAitem.FldZzstate];
 
-// USE /[MANUAL FPV OVERRQ FORM_INVOICE_STORENAME]/
+// USE /[MANUAL FPV OVERRQ FORM_PHOTO_ALBUM_ITEMNAME]/
 
 				// Limitation by Zzstate
 				/*
 					Records that are currently being inserted or duplicated will also be included.
 					Client-side persistence will try to fill the "text" value of that option.
 				*/
-				if (Navigation.checkFormMode("store", FormMode.New) || Navigation.checkFormMode("store", FormMode.Duplicate))
-					form_invoice__store__nameConds.SubSet(CriteriaSet.Or()
-						.Equal(CSGenioAstore.FldZzstate, 0)
-						.Equal(CSGenioAstore.FldCodstore, Navigation.GetStrValue("store")));
+				if (Navigation.checkFormMode("item", FormMode.New) || Navigation.checkFormMode("item", FormMode.Duplicate))
+					form_photo_album__item__nameConds.SubSet(CriteriaSet.Or()
+						.Equal(CSGenioAitem.FldZzstate, 0)
+						.Equal(CSGenioAitem.FldCoditem, Navigation.GetStrValue("item")));
 				else
-					form_invoice__store__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAstore.FldZzstate), CriteriaOperator.Equal, 0));
+					form_photo_album__item__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAitem.FldZzstate), CriteriaOperator.Equal, 0));
 
-				FieldRef firstVisibleColumn = new FieldRef("store", "name");
-				ListingMVC<CSGenioAstore> listing = Models.ModelBase.Where<CSGenioAstore>(m_userContext, false, form_invoice__store__nameConds, fields, offset, numberItems, sorts, "LED_FORM_INVOICE__STORE__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
+				FieldRef firstVisibleColumn = new FieldRef("item", "name");
+				ListingMVC<CSGenioAitem> listing = Models.ModelBase.Where<CSGenioAitem>(m_userContext, false, form_photo_album__item__nameConds, fields, offset, numberItems, sorts, "LED_FORM_PHOTO_ALBUM__ITEM__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
 
-				TableStoreName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
-				TableStoreName.Query = query;
-				TableStoreName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Store(m_userContext, r, true, _fieldsToSerialize_FORM_INVOICE__STORE__NAME));
+				TableItemName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
+				TableItemName.Query = query;
+				TableItemName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Item(m_userContext, r, true, _fieldsToSerialize_FORM_PHOTO_ALBUM__ITEM__NAME));
 
 				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
 				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
-				if (Navigation.CurrentLevel.GetEntry("RETURN_store") != null)
+				if (Navigation.CurrentLevel.GetEntry("RETURN_item") != null)
 				{
-					this.ValStore = Navigation.GetStrValue("RETURN_store");
-					Navigation.CurrentLevel.SetEntry("RETURN_store", null);
+					this.ValItem = Navigation.GetStrValue("RETURN_item");
+					Navigation.CurrentLevel.SetEntry("RETURN_item", null);
 				}
 
-				TableStoreName.List = new SelectList(TableStoreName.Elements.ToSelectList(x => x.ValName, x => x.ValCodstore,  x => x.ValCodstore == this.ValStore), "Value", "Text", this.ValStore);
+				TableItemName.List = new SelectList(TableItemName.Elements.ToSelectList(x => x.ValName, x => x.ValCoditem,  x => x.ValCoditem == this.ValItem), "Value", "Text", this.ValItem);
 				//Seleciona se só um
-				if (TableStoreName.List != null && TableStoreName.List.Count() == 1)
+				if (TableItemName.List != null && TableItemName.List.Count() == 1)
 				{
-					this.ValStore = TableStoreName.List.First().Value;
-					Navigation.SetValue("store", this.ValStore);
+					this.ValItem = TableItemName.List.First().Value;
+					Navigation.SetValue("item", this.ValItem);
 				}
-				FillDependant_Form_invoiceTableStoreName();
+				FillDependant_Form_photo_albumTableItemName();
 			}
 		}
 
 		/// <summary>
-		/// Get Dependant fields values -> TableStoreName (DB)
+		/// Get Dependant fields values -> TableItemName (DB)
 		/// </summary>
-		/// <param name="PKey">Primary Key of Store</param>
-		public ConcurrentDictionary<string, object> GetDependant_Form_invoiceTableStoreName(string PKey)
+		/// <param name="PKey">Primary Key of Item</param>
+		public ConcurrentDictionary<string, object> GetDependant_Form_photo_albumTableItemName(string PKey)
 		{
-			FieldRef[] refDependantFields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName];
+			FieldRef[] refDependantFields = [CSGenioAitem.FldCoditem, CSGenioAitem.FldName];
 
 			var returnEmptyDependants = false;
 			CriteriaSet wherecodition = CriteriaSet.And();
@@ -660,7 +589,7 @@ namespace GenioMVC.ViewModels.Invoice
 			PersistentSupport sp = m_userContext.PersistentSupport;
 			User u = m_userContext.User;
 
-			CSGenioAstore tempArea = new(u);
+			CSGenioAitem tempArea = new(u);
 
 			// Fields to select
 			SelectQuery querySelect = new();
@@ -669,7 +598,7 @@ namespace GenioMVC.ViewModels.Invoice
 				querySelect.Select(field);
 
 			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
-				.Where(wherecodition.Equal(CSGenioAstore.FldCodstore, PKey));
+				.Where(wherecodition.Equal(CSGenioAitem.FldCoditem, PKey));
 
 			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
 			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
@@ -683,70 +612,71 @@ namespace GenioMVC.ViewModels.Invoice
 		}
 
 		/// <summary>
-		/// Fill Dependant fields values -> TableStoreName (DB)
+		/// Fill Dependant fields values -> TableItemName (DB)
 		/// </summary>
 		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void FillDependant_Form_invoiceTableStoreName(bool lazyLoad = false)
+		public void FillDependant_Form_photo_albumTableItemName(bool lazyLoad = false)
 		{
-			var row = GetDependant_Form_invoiceTableStoreName(this.ValStore);
+			var row = GetDependant_Form_photo_albumTableItemName(this.ValItem);
 			try
 			{
 
 				// Fill List fields
-				this.ValStore = ViewModelConversion.ToString(row["store.codstore"]);
-				TableStoreName.Value = (string)row["store.name"];
-				if (GenFunctions.emptyG(this.ValStore) == 1)
+				this.ValItem = ViewModelConversion.ToString(row["item.coditem"]);
+				TableItemName.Value = (string)row["item.name"];
+				if (GenFunctions.emptyG(this.ValItem) == 1)
 				{
-					this.ValStore = "";
-					TableStoreName.Value = "";
-					Navigation.ClearValue("store");
+					this.ValItem = "";
+					TableItemName.Value = "";
+					Navigation.ClearValue("item");
 				}
 				else if (lazyLoad)
 				{
-					TableStoreName.SetPagination(1, 0, false, false, 1);
-					TableStoreName.List = new SelectList(new List<SelectListItem>()
+					TableItemName.SetPagination(1, 0, false, false, 1);
+					TableItemName.List = new SelectList(new List<SelectListItem>()
 					{
 						new SelectListItem
 						{
-							Value = Convert.ToString(this.ValStore),
-							Text = Convert.ToString(TableStoreName.Value),
+							Value = Convert.ToString(this.ValItem),
+							Text = Convert.ToString(TableItemName.Value),
 							Selected = true
 						}
-					}, "Value", "Text", this.ValStore);
+					}, "Value", "Text", this.ValItem);
 				}
 
-				TableStoreName.Selected = this.ValStore;
+				TableItemName.Selected = this.ValItem;
 			}
 			catch (Exception ex)
 			{
-				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TableStoreName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
+				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TableItemName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
 			}
 		}
 
-		private readonly string[] _fieldsToSerialize_FORM_INVOICE__STORE__NAME = ["Store", "Store.ValCodstore", "Store.ValZzstate", "Store.ValName"];
+		private readonly string[] _fieldsToSerialize_FORM_PHOTO_ALBUM__ITEM__NAME = ["Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValName"];
 
 		protected override object GetViewModelValue(string identifier, object modelValue)
 		{
 			return identifier switch
 			{
-				"invoice.store" => ViewModelConversion.ToString(modelValue),
-				"invoice.created_by" => ViewModelConversion.ToString(modelValue),
-				"invoice.created_at" => ViewModelConversion.ToDateTime(modelValue),
-				"invoice.updated_by" => ViewModelConversion.ToString(modelValue),
-				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
-				"invoice.codinvoicestore" => ViewModelConversion.ToString(modelValue),
-				"invoice.receipt" => ViewModelConversion.ToString(modelValue),
-				"invoice.date" => ViewModelConversion.ToDateTime(modelValue),
-				"invoice.price" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.shippingcost" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.taxes" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.numberofitems" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.totalprice" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
-				"store.codstore" => ViewModelConversion.ToString(modelValue),
-				"store.name" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.item" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.created_by" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"photoalbum.updated_by" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.updated_at" => ViewModelConversion.ToDateTime(modelValue),
+				"photoalbum.photo" => ViewModelConversion.ToImage(modelValue),
+				"photoalbum.title" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.codphotoalbum" => ViewModelConversion.ToString(modelValue),
+				"item.coditem" => ViewModelConversion.ToString(modelValue),
+				"item.name" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
+		}
+
+		/// <inheritdoc/>
+		protected override void SetTicketToImageFields()
+		{
+			if (ValPhoto != null)
+				ValPhoto.Ticket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaPHOTOALBUM, CSGenioAphotoalbum.FldPhoto.Field, null, ValCodphotoalbum);
 		}
 
 		#region Charts
@@ -756,7 +686,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#region Custom code
 
-// USE /[MANUAL FPV VIEWMODEL_CUSTOM FORM_INVOICE]/
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM FORM_PHOTO_ALBUM]/
 
 		#endregion
 	}

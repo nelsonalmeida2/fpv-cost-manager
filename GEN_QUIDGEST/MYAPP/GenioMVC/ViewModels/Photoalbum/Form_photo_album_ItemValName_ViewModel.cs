@@ -15,23 +15,23 @@ using GenioMVC.Models.Navigation;
 using Quidgest.Persistence;
 using Quidgest.Persistence.GenericQuery;
 
-namespace GenioMVC.ViewModels.Item
+namespace GenioMVC.ViewModels.Photoalbum
 {
-	public class Form_item_ValField001_ViewModel : MenuListViewModel<Models.Photoalbum>
+	public class Form_photo_album_ItemValName_ViewModel : MenuListViewModel<Models.Item>
 	{
 		/// <summary>
 		/// Gets or sets the object that represents the table and its elements.
 		/// </summary>
 		[JsonPropertyName("table")]
-		public TablePartial<Form_item_ValField001_RowViewModel> Menu { get; set; }
+		public TablePartial<Form_photo_album_ItemValName_RowViewModel> Menu { get; set; }
 
 		/// <inheritdoc/>
 		[JsonIgnore]
-		public override string TableAlias => "photoalbum";
+		public override string TableAlias => "item";
 
 		/// <inheritdoc/>
 		[JsonPropertyName("uuid")]
-		public override string Uuid => "Form_item_ValField001";
+		public override string Uuid => "Form_photo_album_ItemValName";
 
 		/// <inheritdoc/>
 		protected override string[] FieldsToSerialize => _fieldsToSerialize;
@@ -43,7 +43,7 @@ namespace GenioMVC.ViewModels.Item
 		/// The primary key field.
 		/// </summary>
 		[JsonIgnore]
-		public string ItemValCoditem { get; set; }
+		public string ValCodphotoalbum { get; set; }
 
 		/// <summary>
 		/// The context of the parent.
@@ -88,7 +88,7 @@ namespace GenioMVC.ViewModels.Item
 
 		public override CriteriaSet GetCustomizedStaticLimits(CriteriaSet crs)
 		{
-// USE /[MANUAL FPV LIST_LIMITS FORM_ITEM_PSEUDFIELD001]/
+// USE /[MANUAL FPV LIST_LIMITS FORM_PHOTO_ALBUM_ITEMNAME]/
 
 			return crs;
 		}
@@ -102,23 +102,23 @@ namespace GenioMVC.ViewModels.Item
 		/// FOR DESERIALIZATION ONLY
 		/// </summary>
 		[Obsolete("For deserialization only")]
-		public Form_item_ValField001_ViewModel() : base(null!) { }
+		public Form_photo_album_ItemValName_ViewModel() : base(null!) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Form_item_ValField001_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="Form_photo_album_ItemValName_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
-		public Form_item_ValField001_ViewModel(UserContext userContext) : base(userContext)
+		public Form_photo_album_ItemValName_ViewModel(UserContext userContext) : base(userContext)
 		{
-			ItemValCoditem = userContext.CurrentNavigation.CurrentLevel.GetEntry("item")?.ToString();
+			ValCodphotoalbum = userContext.CurrentNavigation.CurrentLevel.GetEntry("photoalbum")?.ToString();
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="Form_item_ValField001_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="Form_photo_album_ItemValName_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
 		/// <param name="parentCtx">The context of the parent</param>
-		public Form_item_ValField001_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
+		public Form_photo_album_ItemValName_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
 		{
 			ParentCtx = parentCtx;
 		}
@@ -128,17 +128,17 @@ namespace GenioMVC.ViewModels.Item
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAphotoalbum.FldTitle, FieldType.TEXT, Resources.Resources.TITLE21885, 30, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 255, 0, true),
 			];
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAphotoalbum> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAitem> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 			LoadToExport(out listing, out conditions, out columns, tableConfig, requestValues, ajaxRequest);
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAphotoalbum> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAitem> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			listing = null;
 			conditions = null;
@@ -170,7 +170,7 @@ namespace GenioMVC.ViewModels.Item
 			crs ??= CriteriaSet.And();
 
 
-			Menu ??= new TablePartial<Form_item_ValField001_RowViewModel>();
+			Menu ??= new TablePartial<Form_photo_album_ItemValName_RowViewModel>();
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
@@ -188,36 +188,29 @@ namespace GenioMVC.ViewModels.Item
 			// Form field filters
 			crs.SubSets.Add(ProcessFieldFilters(tableConfig.GlobalFilters));
 
-			if (this.ItemValCoditem != null)
-				crs.Equal(CSGenioAphotoalbum.FldItem, this.ItemValCoditem);
-			else
-				tableReload = false;
-
 
 			crs.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			if (isToExport)
 			{
 				// EPH
-				crs = Models.Photoalbum.AddEPH<CSGenioAphotoalbum>(ref u, crs, "IBL_FORM_ITEM__PSEUD__FIELD001");
+				crs = Models.Item.AddEPH<CSGenioAitem>(ref u, crs, "IBL_FORM_PHOTO_ALBUM__ITEM__NAME");
 
 				// Export only records with ZZState == 0
-				crs.Equal(CSGenioAphotoalbum.FldZzstate, 0);
+				crs.Equal(CSGenioAitem.FldZzstate, 0);
 
 				return crs;
 			}
 
 			// Limitation by Zzstate
-			if (!Navigation.checkFormMode("PHOTOALBUM", FormMode.New)) // TODO: Check in Duplicate mode
-				crs = extendWithZzstateCondition(crs, CSGenioAphotoalbum.FldZzstate, CSGenioAphotoalbum.FldCreated_by);
+			crs.Criterias.Add(new Criteria(new ColumnReference(CSGenioAitem.FldZzstate), CriteriaOperator.Equal, 0));
 
 
 			if (tableReload)
 			{
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_photoalbum");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_photoalbum");
+				string QMVC_POS_RECORD = requestValues["Q_POS_RECORD_item"];
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
-					crs.Equals(Models.Photoalbum.AddEPH<CSGenioAphotoalbum>(ref u, null, "IBL_FORM_ITEM__PSEUD__FIELD001"));
+					crs.Equals(Models.Item.AddEPH<CSGenioAitem>(ref u, null, "IBL_FORM_PHOTO_ALBUM__ITEM__NAME"));
 			}
 
 			return crs;
@@ -242,7 +235,7 @@ namespace GenioMVC.ViewModels.Item
 		/// <param name="conditions">The conditions.</param>
 		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAphotoalbum> listing = null;
+			ListingMVC<CSGenioAitem> listing = null;
 
 			Load(numberListItems, requestValues, ajaxRequest, false, ref listing, ref conditions);
 		}
@@ -256,7 +249,7 @@ namespace GenioMVC.ViewModels.Item
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAphotoalbum> Qlisting, ref CriteriaSet conditions)
+		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAitem> Qlisting, ref CriteriaSet conditions)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 
@@ -275,7 +268,7 @@ namespace GenioMVC.ViewModels.Item
 		/// <param name="conditions">The conditions.</param>
 		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAphotoalbum> listing = null;
+			ListingMVC<CSGenioAitem> listing = null;
 
 			Load(tableConfig, requestValues, ajaxRequest, isToExport, ref listing, ref conditions);
 		}
@@ -289,16 +282,18 @@ namespace GenioMVC.ViewModels.Item
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAphotoalbum> Qlisting, ref CriteriaSet conditions)
+		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAitem> Qlisting, ref CriteriaSet conditions)
 		{
 			User u = m_userContext.User;
-			Menu = new TablePartial<Form_item_ValField001_RowViewModel>();
+			Menu = new TablePartial<Form_photo_album_ItemValName_RowViewModel>();
 
-			CriteriaSet form_item__pseud__field001Conds = CriteriaSet.And();
+			CriteriaSet form_photo_album__item__nameConds = CriteriaSet.And();
 			bool tableReload = true;
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
+			allSortOrders.Add("ITEM.NAME", new OrderedDictionary());
+			allSortOrders["ITEM.NAME"].Add("ITEM.NAME", "A");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -308,10 +303,16 @@ namespace GenioMVC.ViewModels.Item
 			if (pageNumber < 1)
 				pageNumber = 1;
 
-			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "photoalbum", allSortOrders);
+			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "item", allSortOrders);
 
+			if (sorts == null || sorts.Count == 0)
+			{
+				sorts = new List<ColumnSort>();
+				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAitem.FldName), SortOrder.Ascending));
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAphotoalbum.FldCodphotoalbum, CSGenioAphotoalbum.FldZzstate, CSGenioAphotoalbum.FldTitle, CSGenioAphotoalbum.FldPhoto };
+			}
+
+			FieldRef[] fields = new FieldRef[] { CSGenioAitem.FldCoditem, CSGenioAitem.FldZzstate, CSGenioAitem.FldName };
 
 
 			// Totalizers
@@ -323,7 +324,7 @@ namespace GenioMVC.ViewModels.Item
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("photoalbum", "title");
+				firstVisibleColumn ??= new FieldRef("item", "name");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -334,8 +335,8 @@ namespace GenioMVC.ViewModels.Item
 			{
 				Limit limit = new Limit();
 				limit.TipoLimite = LimitType.EPH;
-				CSGenioAphotoalbum model_limit_area = new CSGenioAphotoalbum(m_userContext.User);
-				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "IBL_FORM_ITEM__PSEUD__FIELD001");
+				CSGenioAitem model_limit_area = new CSGenioAitem(m_userContext.User);
+				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "IBL_FORM_PHOTO_ALBUM__ITEM__NAME");
 				if (area_EPH_limits.Count > 0)
 					this.TableLimits.AddRange(area_EPH_limits);
 			}
@@ -344,11 +345,11 @@ namespace GenioMVC.ViewModels.Item
 			if (conditions == null)
 				conditions = CriteriaSet.And();
 
-			conditions.SubSets.Add(form_item__pseud__field001Conds);
-			form_item__pseud__field001Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
+			conditions.SubSets.Add(form_photo_album__item__nameConds);
+			form_photo_album__item__nameConds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
 			tableReload &= hasAllRequiredLimits;
 
-// USE /[MANUAL FPV OVERRQ FORM_ITEM_PSEUDFIELD001]/
+// USE /[MANUAL FPV OVERRQ FORM_PHOTO_ALBUM_ITEMNAME]/
 
 			bool distinct = false;
 
@@ -360,29 +361,28 @@ namespace GenioMVC.ViewModels.Item
 				var exportColumns = GetExportColumns(tableConfig.ColumnConfigurations);
 				var exportFieldRefs = exportColumns.Select(eCol => eCol.Field).Where(fldRef => fldRef != null).ToArray();
 
-				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAphotoalbum>(m_userContext, false, ref form_item__pseud__field001Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_FORM_ITEM__PSEUD__FIELD001", true, firstVisibleColumn: firstVisibleColumn);
+				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAitem>(m_userContext, false, ref form_photo_album__item__nameConds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_FORM_PHOTO_ALBUM__ITEM__NAME", true, firstVisibleColumn: firstVisibleColumn);
 
-// USE /[MANUAL FPV OVERRQLSTEXP FORM_ITEM_PSEUDFIELD001]/
+// USE /[MANUAL FPV OVERRQLSTEXP FORM_PHOTO_ALBUM_ITEMNAME]/
 
 				return;
 			}
 
 			if (tableReload)
 			{
-// USE /[MANUAL FPV OVERRQLIST FORM_ITEM_PSEUDFIELD001]/
+// USE /[MANUAL FPV OVERRQLIST FORM_PHOTO_ALBUM_ITEMNAME]/
 
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_photoalbum");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_photoalbum");
+				string QMVC_POS_RECORD = requestValues["Q_POS_RECORD_item"];
 				CriteriaSet m_PagingPosEPHs = null;
 
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
 				{
-					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAphotoalbum.GetInformation(), QMVC_POS_RECORD, sorts, form_item__pseud__field001Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
+					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAitem.GetInformation(), QMVC_POS_RECORD, sorts, form_photo_album__item__nameConds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
 					if (m_iCurPag != -1)
 						pageNumber = ((m_iCurPag - 1) / numberListItems) + 1;
 				}
 
-				ListingMVC<CSGenioAphotoalbum> listing = Models.ModelBase.Where<CSGenioAphotoalbum>(m_userContext, distinct, form_item__pseud__field001Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_FORM_ITEM__PSEUD__FIELD001", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
+				ListingMVC<CSGenioAitem> listing = Models.ModelBase.Where<CSGenioAitem>(m_userContext, distinct, form_photo_album__item__nameConds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_FORM_PHOTO_ALBUM__ITEM__NAME", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
 
 				if (listing.CurrentPage > 0)
 					pageNumber = listing.CurrentPage;
@@ -394,14 +394,14 @@ namespace GenioMVC.ViewModels.Item
 				//Set document field values to objects
 				SetDocumentFields(listing);
 
-				Menu.Elements = MapForm_item_ValField001(listing);
+				Menu.Elements = MapForm_photo_album_ItemValName(listing);
 
-				Menu.Identifier = "IBL_FORM_ITEM__PSEUD__FIELD001";
+				Menu.Identifier = "IBL_FORM_PHOTO_ALBUM__ITEM__NAME";
 
 				// Last updated by [CJP] at [2015.02.03]
 				// Adds the identifier to each element
 				foreach (var element in Menu.Elements)
-					element.Identifier = "IBL_FORM_ITEM__PSEUD__FIELD001";
+					element.Identifier = "IBL_FORM_PHOTO_ALBUM__ITEM__NAME";
 
 				Menu.SetPagination(pageNumber, listing.NumRegs, listing.HasMore, listing.GetTotal, listing.TotalRecords);
 
@@ -420,9 +420,9 @@ namespace GenioMVC.ViewModels.Item
 			LoadUserTableConfigNameProperties();
 		}
 
-		private List<Form_item_ValField001_RowViewModel> MapForm_item_ValField001(ListingMVC<CSGenioAphotoalbum> Qlisting)
+		private List<Form_photo_album_ItemValName_RowViewModel> MapForm_photo_album_ItemValName(ListingMVC<CSGenioAitem> Qlisting)
 		{
-			List<Form_item_ValField001_RowViewModel> Elements = [];
+			List<Form_photo_album_ItemValName_RowViewModel> Elements = [];
 			int i = 0;
 
 			if (Qlisting.Rows != null)
@@ -431,7 +431,7 @@ namespace GenioMVC.ViewModels.Item
 				{
 					if (Qlisting.NumRegs > 0 && i >= Qlisting.NumRegs) // Copiado da versão antiga do RowsToViewModels
 						break;
-					Elements.Add(MapForm_item_ValField001(row));
+					Elements.Add(MapForm_photo_album_ItemValName(row));
 					i++;
 				}
 			}
@@ -440,13 +440,13 @@ namespace GenioMVC.ViewModels.Item
 		}
 
 		/// <summary>
-		/// Maps a single CSGenioAphotoalbum row
-		/// to a Form_item_ValField001_RowViewModel object.
+		/// Maps a single CSGenioAitem row
+		/// to a Form_photo_album_ItemValName_RowViewModel object.
 		/// </summary>
 		/// <param name="row">The row.</param>
-		private Form_item_ValField001_RowViewModel MapForm_item_ValField001(CSGenioAphotoalbum row)
+		private Form_photo_album_ItemValName_RowViewModel MapForm_photo_album_ItemValName(CSGenioAitem row)
 		{
-			var model = new Form_item_ValField001_RowViewModel(m_userContext, true, _fieldsToSerialize);
+			var model = new Form_photo_album_ItemValName_RowViewModel(m_userContext, true, _fieldsToSerialize);
 			if (row == null)
 				return model;
 
@@ -454,7 +454,7 @@ namespace GenioMVC.ViewModels.Item
 			{
 				switch (Qfield.Area)
 				{
-					case "photoalbum":
+					case "item":
 						model.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
 					default:
 						break;
@@ -463,7 +463,6 @@ namespace GenioMVC.ViewModels.Item
 
 			model.InitRowData();
 
-			SetTicketToImageFields(model);
 			return model;
 		}
 
@@ -482,19 +481,19 @@ namespace GenioMVC.ViewModels.Item
 		/// Sets the document field values to objects.
 		/// </summary>
 		/// <param name="listing">The rows</param>
-		private void SetDocumentFields(ListingMVC<CSGenioAphotoalbum> listing)
+		private void SetDocumentFields(ListingMVC<CSGenioAitem> listing)
 		{
 		}
 
 		#region Mapper
 
 		/// <inheritdoc />
-		public override void MapFromModel(Models.Photoalbum m)
+		public override void MapFromModel(Models.Item m)
 		{
 		}
 
 		/// <inheritdoc />
-		public override void MapToModel(Models.Photoalbum m)
+		public override void MapToModel(Models.Item m)
 		{
 		}
 
@@ -502,25 +501,18 @@ namespace GenioMVC.ViewModels.Item
 
 		#region Custom code
 
-// USE /[MANUAL FPV VIEWMODEL_CUSTOM FORM_ITEM_VALFIELD001]/
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM FORM_PHOTO_ALBUM_ITEMVALNAME]/
 
 		#endregion
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Photoalbum", "Photoalbum.ValCodphotoalbum", "Photoalbum.ValZzstate", "Photoalbum.ValTitle", "Photoalbum.ValPhoto", "Photoalbum.ValItem"
+			"Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValSubcategory"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValTitle", CSGenioAphotoalbum.FldTitle, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValName", CSGenioAitem.FldName, typeof(string), defaultSearch : true),
 		];
-		protected void SetTicketToImageFields(Models.Photoalbum row)
-		{
-			if (row == null)
-				return;
-
-			row.ValPhotoQTicket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaPHOTOALBUM, CSGenioAphotoalbum.FldPhoto.Field, null, row.ValCodphotoalbum);
-		}
 	}
 }

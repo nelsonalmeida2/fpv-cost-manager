@@ -370,19 +370,31 @@
 						</q-group-box-container>
 					</q-col>
 				</q-row>
-				<q-row v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible">
-					<q-col v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible">
-						<q-table
-							v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible"
-							v-bind="controls.FORM_ITEM__PSEUD__FIELD001"
-							v-on="controls.FORM_ITEM__PSEUD__FIELD001.handlers">
-							<template #header>
-								<q-table-config
-									:table-ctrl="controls.FORM_ITEM__PSEUD__FIELD001"
-									v-on="controls.FORM_ITEM__PSEUD__FIELD001.handlers" />
-							</template>
-							<!-- USE /[MANUAL FPV CUSTOM_TABLE FORM_ITEM__PSEUD__FIELD001]/ -->
-						</q-table>
+				<q-row v-if="controls.FORM_ITEM__PSEUD__NEWGRP04.isVisible">
+					<q-col v-if="controls.FORM_ITEM__PSEUD__NEWGRP04.isVisible">
+						<q-group-box-container
+							v-if="controls.FORM_ITEM__PSEUD__NEWGRP04.isVisible"
+							id="FORM_ITEM__PSEUD__NEWGRP04"
+							v-bind="controls.FORM_ITEM__PSEUD__NEWGRP04"
+							:is-visible="controls.FORM_ITEM__PSEUD__NEWGRP04.isVisible">
+							<!-- Start FORM_ITEM__PSEUD__NEWGRP04 -->
+							<q-row v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible">
+								<q-col v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible">
+									<q-table
+										v-if="controls.FORM_ITEM__PSEUD__FIELD001.isVisible"
+										v-bind="controls.FORM_ITEM__PSEUD__FIELD001"
+										v-on="controls.FORM_ITEM__PSEUD__FIELD001.handlers">
+										<template #header>
+											<q-table-config
+												:table-ctrl="controls.FORM_ITEM__PSEUD__FIELD001"
+												v-on="controls.FORM_ITEM__PSEUD__FIELD001.handlers" />
+										</template>
+										<!-- USE /[MANUAL FPV CUSTOM_TABLE FORM_ITEM__PSEUD__FIELD001]/ -->
+									</q-table>
+								</q-col>
+							</q-row>
+							<!-- End FORM_ITEM__PSEUD__NEWGRP04 -->
+						</q-group-box-container>
 					</q-col>
 				</q-row>
 			</template>
@@ -1036,18 +1048,54 @@
 						controlLimits: [
 						],
 					}, this),
+					FORM_ITEM__PSEUD__NEWGRP04: new fieldControlClass.GroupControl({
+						id: 'FORM_ITEM__PSEUD__NEWGRP04',
+						name: 'NEWGRP04',
+						size: 'block',
+						label: computed(() => this.Resources.PHOTOS39221),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						isCollapsible: false,
+						anchored: false,
+						directChildren: ['FORM_ITEM__PSEUD__FIELD001'],
+						controlLimits: [
+						],
+					}, this),
 					FORM_ITEM__PSEUD__FIELD001: new fieldControlClass.TableListControl({
 						id: 'FORM_ITEM__PSEUD__FIELD001',
 						name: 'FIELD001',
 						size: 'block',
-						label: computed(() => this.Resources.NEW_DATA_GRID00674),
+						label: '',
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_ITEM__PSEUD__NEWGRP04',
 						controller: 'ITEM',
 						action: 'Form_item_ValField001',
 						hasDependencies: false,
 						isInCollapsible: false,
 						columnsOriginal: [
+							new listColumnTypes.TextColumn({
+								order: 1,
+								name: 'ValTitle',
+								area: 'PHOTOALBUM',
+								field: 'TITLE',
+								label: computed(() => this.Resources.TITLE21885),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ImageColumn({
+								order: 2,
+								name: 'ValPhoto',
+								area: 'PHOTOALBUM',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
+								scrollData: 3,
+								sortable: false,
+								searchable: false,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'ValField001',
@@ -1057,7 +1105,6 @@
 							tableNamePlural: computed(() => this.Resources.PHOTOALBUM01892),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.NEW_DATA_GRID00674),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -1066,6 +1113,96 @@
 							},
 							allowColumnFilters: false,
 							allowColumnSort: true,
+							crudActions: [
+								{
+									id: 'show',
+									name: 'show',
+									title: computed(() => this.Resources.CONSULTAR57388),
+									icon: {
+										icon: 'view'
+									},
+									isInReadOnly: true,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PHOTO_ALBUM',
+										mode: 'SHOW',
+										isControlled: true
+									}
+								},
+								{
+									id: 'edit',
+									name: 'edit',
+									title: computed(() => this.Resources.EDITAR11616),
+									icon: {
+										icon: 'pencil'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PHOTO_ALBUM',
+										mode: 'EDIT',
+										isControlled: true
+									}
+								},
+								{
+									id: 'duplicate',
+									name: 'duplicate',
+									title: computed(() => this.Resources.DUPLICAR09748),
+									icon: {
+										icon: 'duplicate'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PHOTO_ALBUM',
+										mode: 'DUPLICATE',
+										isControlled: true
+									}
+								},
+								{
+									id: 'delete',
+									name: 'delete',
+									title: computed(() => this.Resources.ELIMINAR21155),
+									icon: {
+										icon: 'delete'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PHOTO_ALBUM',
+										mode: 'DELETE',
+										isControlled: true
+									}
+								}
+							],
+							generalActions: [
+								{
+									id: 'insert',
+									name: 'insert',
+									title: computed(() => this.Resources.INSERIR43365),
+									icon: {
+										icon: 'add'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PHOTO_ALBUM',
+										mode: 'NEW',
+										repeatInsertion: false,
+										isControlled: true
+									}
+								},
+							],
 							generalCustomActions: [
 							],
 							groupActions: [
@@ -1075,16 +1212,34 @@
 							MCActions: [
 							],
 							rowClickAction: {
+								id: 'RCA__FORM_PHOTO_ALBUM',
+								name: '_FORM_PHOTO_ALBUM',
+								title: '',
+								isInReadOnly: true,
+								params: {
+									isRoute: true,
+									canExecuteAction: vm.applyChanges,
+									action: vm.openFormAction,
+									type: 'form',
+									formName: 'FORM_PHOTO_ALBUM',
+									mode: 'SHOW',
+									isControlled: true
+								}
 							},
 							formsDefinition: {
+								'FORM_PHOTO_ALBUM': {
+									fnKeySelector: (row) => row.Fields.ValCodphotoalbum,
+									isPopup: true
+								},
 							},
-							defaultSearchColumnName: '',
-							defaultSearchColumnNameOriginal: '',
+							defaultSearchColumnName: 'ValTitle',
+							defaultSearchColumnNameOriginal: 'ValTitle',
 							defaultColumnSorting: {
 								columnName: '',
 								sortOrder: 'asc'
 							}
 						},
+						globalEvents: ['changed-PHOTOALBUM', 'changed-ITEM'],
 						uuid: 'Form_item_ValField001',
 						allSelectedRows: 'false',
 						controlLimits: [
@@ -1109,6 +1264,7 @@
 					'FORM_ITEM__PSEUD__NEWGRP01',
 					'FORM_ITEM__PSEUD__NEWGRP03',
 					'FORM_ITEM__PSEUD__NEWGRP02',
+					'FORM_ITEM__PSEUD__NEWGRP04',
 				]),
 
 				tableFields: readonly([

@@ -15,7 +15,7 @@
 							:table-ctrl="controls.menu"
 							v-on="controls.menu.handlers" />
 					</template>
-					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_211]/ -->
+					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_21]/ -->
 				</q-table>
 			</q-row-container>
 		</form>
@@ -72,17 +72,17 @@
 	import qProjArrays from '@/api/genio/projectArrays.js'
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 
-	import MenuViewModel from './QMenuFPV_211ViewModel.js'
+	import MenuViewModel from './QMenuFPV_21ViewModel.js'
 
-	const requiredTextResources = ['QMenuFPV_211', 'hardcoded', 'messages']
+	const requiredTextResources = ['QMenuFPV_21', 'hardcoded', 'messages']
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_211]/
+// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_21]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
 	export default {
-		name: 'QMenuFpv211',
+		name: 'QMenuFpv21',
 
 		mixins: [
 			MenuHandlers
@@ -111,23 +111,23 @@
 			// eslint-disable-next-line
 			const vm = this
 			return {
-				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_211', false),
+				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_21', false),
 
 				interfaceMetadata: {
-					id: 'QMenuFPV_211', // Used for resources
+					id: 'QMenuFPV_21', // Used for resources
 					requiredTextResources
 				},
 
 				menuInfo: {
-					id: '211',
+					id: '21',
 					isMenuList: true,
 					designation: computed(() => this.Resources.INVOICES44448),
-					acronym: 'FPV_211',
+					acronym: 'FPV_21',
 					name: 'INVOICE',
-					route: 'menu-FPV_211',
-					order: '211',
+					route: 'menu-FPV_21',
+					order: '21',
 					controller: 'INVOICE',
-					action: 'FPV_Menu_211',
+					action: 'FPV_Menu_21',
 					isPopup: false
 				},
 
@@ -136,9 +136,9 @@
 				controls: {
 					menu: new controlClass.TableListControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
-						id: 'FPV_Menu_211',
+						id: 'FPV_Menu_21',
 						controller: 'INVOICE',
-						action: 'FPV_Menu_211',
+						action: 'FPV_Menu_21',
 						hasDependencies: false,
 						isInCollapsible: false,
 						tableModeClasses: [
@@ -286,7 +286,7 @@
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
-							name: 'FPV_Menu_211',
+							name: 'FPV_Menu_21',
 							serverMode: true,
 							pkColumn: 'ValCodinvoice',
 							tableAlias: 'INVOICE',
@@ -396,7 +396,7 @@
 							MCActions: [
 							],
 							rowClickAction: {
-								id: 'RCA_FPV_2111',
+								id: 'RCA_FPV_211',
 								name: 'form-FORM_INVOICE',
 								isVisible: true,
 								params: {
@@ -451,7 +451,7 @@
 		mounted()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_211]/
+// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_21]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
@@ -459,18 +459,18 @@
 		beforeUnmount()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_211]/
+// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_21]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
 
 		methods: {
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FUNCTIONS_JS FPV_211]/
+// USE /[MANUAL FPV FUNCTIONS_JS FPV_21]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_211]/
+// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_21]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		}

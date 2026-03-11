@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Item;
+namespace GenioMVC.ViewModels.Invoice;
 
-public class Form_item_ValField001_RowViewModel : Models.Photoalbum
+public class FPV_Menu_21_RowViewModel : Models.Invoice
 {
 	#region Constructors
 
-	public Form_item_ValField001_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_21_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public Form_item_ValField001_RowViewModel(UserContext userContext, CSGenioAphotoalbum val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_21_RowViewModel(UserContext userContext, CSGenioAinvoice val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,14 +36,80 @@ public class Form_item_ValField001_RowViewModel : Models.Photoalbum
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PHOTOALBUM",
-				Field = "TITLE",
+				Area = "INVOICE",
+				Field = "TAXES",
 			},
 			new ListColumn()
 			{
 				Order = 2,
-				Area = "PHOTOALBUM",
-				Field = "PHOTO",
+				Area = "INVOICE",
+				Field = "UPDATED_BY",
+			},
+			new ListColumn()
+			{
+				Order = 3,
+				Area = "INVOICE",
+				Field = "RECEIPT",
+			},
+			new ListColumn()
+			{
+				Order = 4,
+				Area = "INVOICE",
+				Field = "TOTALPRICE",
+			},
+			new ListColumn()
+			{
+				Order = 5,
+				Area = "INVOICE",
+				Field = "UPDATED_AT",
+			},
+			new ListColumn()
+			{
+				Order = 6,
+				Area = "INVOICE",
+				Field = "NUMBEROFITEMS",
+			},
+			new ListColumn()
+			{
+				Order = 7,
+				Area = "STORE",
+				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 8,
+				Area = "INVOICE",
+				Field = "CREATED_BY",
+			},
+			new ListColumn()
+			{
+				Order = 9,
+				Area = "INVOICE",
+				Field = "CODINVOICESTORE",
+			},
+			new ListColumn()
+			{
+				Order = 10,
+				Area = "INVOICE",
+				Field = "DATE",
+			},
+			new ListColumn()
+			{
+				Order = 11,
+				Area = "INVOICE",
+				Field = "CREATED_AT",
+			},
+			new ListColumn()
+			{
+				Order = 12,
+				Area = "INVOICE",
+				Field = "PRICE",
+			},
+			new ListColumn()
+			{
+				Order = 13,
+				Area = "INVOICE",
+				Field = "SHIPPINGCOST",
 			},
 		];
 	}

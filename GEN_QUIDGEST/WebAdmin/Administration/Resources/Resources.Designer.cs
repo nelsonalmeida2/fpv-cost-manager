@@ -1726,6 +1726,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Photos"
+        /// </summary>
+        public static string PHOTOS39221 {
+            get {
+                return ResourceManager.GetString("PHOTOS39221", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Abortado"
         /// </summary>
         public static string ABORTADO52378 {

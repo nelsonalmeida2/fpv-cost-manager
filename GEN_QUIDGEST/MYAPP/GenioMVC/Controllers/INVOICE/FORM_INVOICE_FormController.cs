@@ -437,6 +437,55 @@ namespace GenioMVC.Controllers
 			return JsonOK(model);
 		}
 
+		public class Form_invoice_ValField001Model : RequestLookupModel
+		{
+			public Form_invoice_ViewModel Model { get; set; }
+		}
+
+		//
+		// GET: /Invoice/Form_invoice_ValField001
+		// POST: /Invoice/Form_invoice_ValField001
+		[ActionName("Form_invoice_ValField001")]
+		public ActionResult Form_invoice_ValField001([FromBody] Form_invoice_ValField001Model requestModel)
+		{
+			var queryParams = requestModel.QueryParams;
+
+			// If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
+			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_item")))
+				UserContext.Current.SetPersistenceReadOnly(true);
+			else
+			{
+				Navigation.DestroyEntry("ForcePrimaryRead_item");
+				UserContext.Current.SetPersistenceReadOnly(false);
+			}
+
+			NameValueCollection requestValues = [];
+			if (queryParams != null)
+			{
+				// Add to request values
+				foreach (var kv in queryParams)
+					requestValues.Add(kv.Key, kv.Value);
+			}
+
+			Models.Invoice parentCtx = requestModel.Model == null ? null : new(m_userContext);
+			requestModel.Model?.Init(m_userContext);
+			requestModel.Model?.MapToModel(parentCtx);
+			Form_invoice_ValField001_ViewModel model = new(m_userContext, parentCtx);
+
+			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
+				requestModel.TableConfiguration,
+				requestModel.UserTableConfigName,
+				requestModel.LoadDefaultView);
+
+			// Determine rows per page
+			tableConfig.RowsPerPage = tableConfig.DetermineRowsPerPage(CSGenio.framework.Configuration.NrRegDBedit, "");
+
+			model.setModes(Request.Query["m"].ToString());
+			model.Load(tableConfig, requestValues, Request.IsAjaxRequest());
+
+			return JsonOK(model);
+		}
+
 		// POST: /Invoice/Form_invoice_SaveEdit
 		[HttpPost]
 		public ActionResult Form_invoice_SaveEdit([FromBody] Form_invoice_ViewModel model)

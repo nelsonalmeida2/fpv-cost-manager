@@ -339,24 +339,7 @@
 									</base-input-structure>
 								</q-col>
 							</q-row>
-							<q-row v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible || controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible">
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE"
-										v-on="controls.FORM_INVOICE__INVOICE__TOTALPRICE.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props"
-											@update:model-value="model.ValTotalprice.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
+							<q-row v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible || controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible">
 								<q-col
 									v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
 									cols="auto">
@@ -374,8 +357,52 @@
 											@update:model-value="model.ValNumberofitems.fnUpdateValue" />
 									</base-input-structure>
 								</q-col>
+								<q-col
+									v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE"
+										v-on="controls.FORM_INVOICE__INVOICE__TOTALPRICE.handlers"
+										:loading="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-numeric-input
+											v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+											v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props"
+											@update:model-value="model.ValTotalprice.fnUpdateValue" />
+									</base-input-structure>
+								</q-col>
 							</q-row>
 							<!-- End FORM_INVOICE__PSEUD__NEWGRP03 -->
+						</q-group-box-container>
+					</q-col>
+				</q-row>
+				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+						<q-group-box-container
+							v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible"
+							id="FORM_INVOICE__PSEUD__NEWGRP04"
+							v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP04"
+							:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+							<!-- Start FORM_INVOICE__PSEUD__NEWGRP04 -->
+							<q-row v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
+								<q-col v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
+									<q-table
+										v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible"
+										v-bind="controls.FORM_INVOICE__PSEUD__FIELD001"
+										v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers">
+										<template #header>
+											<q-table-config
+												:table-ctrl="controls.FORM_INVOICE__PSEUD__FIELD001"
+												v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers" />
+										</template>
+										<!-- USE /[MANUAL FPV CUSTOM_TABLE FORM_INVOICE__PSEUD__FIELD001]/ -->
+									</q-table>
+								</q-col>
+							</q-row>
+							<!-- End FORM_INVOICE__PSEUD__NEWGRP04 -->
 						</q-group-box-container>
 					</q-col>
 				</q-row>
@@ -899,7 +926,7 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						isCollapsible: false,
 						anchored: false,
-						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__TOTALPRICE', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS'],
+						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS', 'FORM_INVOICE__INVOICE__TOTALPRICE'],
 						mustBeFilled: true,
 						controlLimits: [
 						],
@@ -951,23 +978,6 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__INVOICE__TOTALPRICE: new fieldControlClass.CurrencyControl({
-						modelField: 'ValTotalprice',
-						valueChangeEvent: 'fieldChange:invoice.totalprice',
-						id: 'FORM_INVOICE__INVOICE__TOTALPRICE',
-						name: 'TOTALPRICE',
-						size: 'small',
-						label: computed(() => this.Resources.TOTAL_PRICE46894),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_INVOICE__PSEUD__NEWGRP03',
-						isFormulaBlocked: true,
-						maxIntegers: 7,
-						maxDecimals: 2,
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
 					FORM_INVOICE__INVOICE__NUMBEROFITEMS: new fieldControlClass.NumberControl({
 						modelField: 'ValNumberofitems',
 						valueChangeEvent: 'fieldChange:invoice.numberofitems',
@@ -985,6 +995,247 @@
 						controlLimits: [
 						],
 					}, this),
+					FORM_INVOICE__INVOICE__TOTALPRICE: new fieldControlClass.CurrencyControl({
+						modelField: 'ValTotalprice',
+						valueChangeEvent: 'fieldChange:invoice.totalprice',
+						id: 'FORM_INVOICE__INVOICE__TOTALPRICE',
+						name: 'TOTALPRICE',
+						size: 'small',
+						label: computed(() => this.Resources.TOTAL_PRICE46894),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP03',
+						isFormulaBlocked: true,
+						maxIntegers: 7,
+						maxDecimals: 2,
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__PSEUD__NEWGRP04: new fieldControlClass.GroupControl({
+						id: 'FORM_INVOICE__PSEUD__NEWGRP04',
+						name: 'NEWGRP04',
+						size: 'block',
+						label: computed(() => this.Resources.ITEMS55321),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						isCollapsible: false,
+						anchored: false,
+						directChildren: ['FORM_INVOICE__PSEUD__FIELD001'],
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__PSEUD__FIELD001: new fieldControlClass.TableListControl({
+						id: 'FORM_INVOICE__PSEUD__FIELD001',
+						name: 'FIELD001',
+						size: 'block',
+						label: '',
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
+						controller: 'INVOICE',
+						action: 'Form_invoice_ValField001',
+						hasDependencies: true,
+						isInCollapsible: false,
+						columnsOriginal: [
+							new listColumnTypes.TextColumn({
+								order: 1,
+								name: 'ValName',
+								area: 'ITEM',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 255,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 2,
+								name: 'ValUnitprice',
+								area: 'ITEM',
+								field: 'UNITPRICE',
+								label: computed(() => this.Resources.UNIT_PRICE24898),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 3,
+								name: 'ValQuantity',
+								area: 'ITEM',
+								field: 'QUANTITY',
+								label: computed(() => this.Resources.QUANTITY06415),
+								scrollData: 10,
+								maxDigits: 10,
+								decimalPlaces: 0,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 4,
+								name: 'ValTotalprice',
+								area: 'ITEM',
+								field: 'TOTALPRICE',
+								label: computed(() => this.Resources.TOTAL_PRICE46894),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+						],
+						config: {
+							name: 'ValField001',
+							serverMode: true,
+							pkColumn: 'ValCoditem',
+							tableAlias: 'ITEM',
+							tableNamePlural: computed(() => this.Resources.ITEMS55321),
+							viewManagement: '',
+							showLimitsInfo: true,
+							showAlternatePagination: true,
+							permissions: {
+							},
+							searchBarConfig: {
+								visibility: false
+							},
+							allowColumnFilters: false,
+							allowColumnSort: true,
+							crudActions: [
+								{
+									id: 'show',
+									name: 'show',
+									title: computed(() => this.Resources.CONSULTAR57388),
+									icon: {
+										icon: 'view'
+									},
+									isInReadOnly: true,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_ITEM',
+										mode: 'SHOW',
+										isControlled: true
+									}
+								},
+								{
+									id: 'edit',
+									name: 'edit',
+									title: computed(() => this.Resources.EDITAR11616),
+									icon: {
+										icon: 'pencil'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_ITEM',
+										mode: 'EDIT',
+										isControlled: true
+									}
+								},
+								{
+									id: 'duplicate',
+									name: 'duplicate',
+									title: computed(() => this.Resources.DUPLICAR09748),
+									icon: {
+										icon: 'duplicate'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_ITEM',
+										mode: 'DUPLICATE',
+										isControlled: true
+									}
+								},
+								{
+									id: 'delete',
+									name: 'delete',
+									title: computed(() => this.Resources.ELIMINAR21155),
+									icon: {
+										icon: 'delete'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_ITEM',
+										mode: 'DELETE',
+										isControlled: true
+									}
+								}
+							],
+							generalActions: [
+								{
+									id: 'insert',
+									name: 'insert',
+									title: computed(() => this.Resources.INSERIR43365),
+									icon: {
+										icon: 'add'
+									},
+									isInReadOnly: false,
+									params: {
+										canExecuteAction: vm.applyChanges,
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_ITEM',
+										mode: 'NEW',
+										repeatInsertion: false,
+										isControlled: true
+									}
+								},
+							],
+							generalCustomActions: [
+							],
+							groupActions: [
+							],
+							customActions: [
+							],
+							MCActions: [
+							],
+							rowClickAction: {
+								id: 'RCA__FORM_ITEM',
+								name: '_FORM_ITEM',
+								title: '',
+								isInReadOnly: true,
+								params: {
+									isRoute: true,
+									canExecuteAction: vm.applyChanges,
+									action: vm.openFormAction,
+									type: 'form',
+									formName: 'FORM_ITEM',
+									mode: 'SHOW',
+									isControlled: true
+								}
+							},
+							formsDefinition: {
+								'FORM_ITEM': {
+									fnKeySelector: (row) => row.Fields.ValCoditem,
+									isPopup: false
+								},
+							},
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
+							defaultColumnSorting: {
+								columnName: '',
+								sortOrder: 'asc'
+							}
+						},
+						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						uuid: 'Form_invoice_ValField001',
+						allSelectedRows: 'false',
+						controlLimits: [
+							{
+								identifier: ['id', 'invoice'],
+								dependencyEvents: ['fieldChange:invoice.codinvoice'],
+								dependencyField: 'INVOICE.CODINVOICE',
+								fnValueSelector: (model) => model.ValCodinvoice.value
+							},
+						],
+					}, this),
 				},
 
 				model: new FormViewModel(this, {
@@ -998,9 +1249,11 @@
 					'FORM_INVOICE__PSEUD__NEWGRP01',
 					'FORM_INVOICE__PSEUD__NEWGRP02',
 					'FORM_INVOICE__PSEUD__NEWGRP03',
+					'FORM_INVOICE__PSEUD__NEWGRP04',
 				]),
 
 				tableFields: readonly([
+					'FORM_INVOICE__PSEUD__FIELD001',
 				]),
 
 				timelineFields: readonly([
