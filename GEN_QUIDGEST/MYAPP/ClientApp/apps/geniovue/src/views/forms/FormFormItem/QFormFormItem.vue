@@ -921,7 +921,6 @@
 						isFormulaBlocked: true,
 						maxIntegers: 7,
 						maxDecimals: 2,
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),

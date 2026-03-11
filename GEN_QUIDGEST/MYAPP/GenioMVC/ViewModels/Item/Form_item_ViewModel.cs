@@ -489,8 +489,6 @@ namespace GenioMVC.ViewModels.Item
 
 			validator.Required("ValUnitprice", Resources.Resources.UNIT_PRICE24898, ViewModelConversion.ToNumeric(ValUnitprice), FieldType.CURRENCY.GetFormatting());
 
-			validator.Required("ValTotalprice", Resources.Resources.TOTAL_PRICE46894, ViewModelConversion.ToNumeric(ValTotalprice), FieldType.CURRENCY.GetFormatting());
-
 
 			return validator.GetResult();
 		}
