@@ -1214,7 +1214,7 @@
 							formsDefinition: {
 								'FORM_ITEM': {
 									fnKeySelector: (row) => row.Fields.ValCoditem,
-									isPopup: false
+									isPopup: true
 								},
 							},
 							defaultSearchColumnName: 'ValName',

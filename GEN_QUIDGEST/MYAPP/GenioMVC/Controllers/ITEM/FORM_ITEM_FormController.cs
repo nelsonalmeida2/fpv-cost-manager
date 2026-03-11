@@ -527,51 +527,6 @@ namespace GenioMVC.Controllers
 			return JsonOK(model);
 		}
 
-		public class Form_item_InvoiceValCodinvoicestoreModel : RequestLookupModel
-		{
-			public Form_item_ViewModel Model { get; set; }
-		}
-
-		//
-		// GET: /Item/Form_item_InvoiceValCodinvoicestore
-		// POST: /Item/Form_item_InvoiceValCodinvoicestore
-		[ActionName("Form_item_InvoiceValCodinvoicestore")]
-		public ActionResult Form_item_InvoiceValCodinvoicestore([FromBody] Form_item_InvoiceValCodinvoicestoreModel requestModel)
-		{
-			var queryParams = requestModel.QueryParams;
-
-			// If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
-			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_invoice")))
-				UserContext.Current.SetPersistenceReadOnly(true);
-			else
-			{
-				Navigation.DestroyEntry("ForcePrimaryRead_invoice");
-				UserContext.Current.SetPersistenceReadOnly(false);
-			}
-
-			NameValueCollection requestValues = [];
-			if (queryParams != null)
-			{
-				// Add to request values
-				foreach (var kv in queryParams)
-					requestValues.Add(kv.Key, kv.Value);
-			}
-
-			IsStateReadonly = true;
-
-			Models.Item parentCtx = requestModel.Model == null ? null : new(m_userContext);
-			requestModel.Model?.Init(m_userContext);
-			requestModel.Model?.MapToModel(parentCtx);
-			Form_item_InvoiceValCodinvoicestore_ViewModel model = new(m_userContext, parentCtx);
-
-			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(requestModel.TableConfiguration);
-
-			model.setModes(Request.Query["m"].ToString());
-			model.Load(tableConfig, requestValues, Request.IsAjaxRequest());
-
-			return JsonOK(model);
-		}
-
 		public class Form_item_ValField001Model : RequestLookupModel
 		{
 			public Form_item_ViewModel Model { get; set; }

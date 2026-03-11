@@ -184,6 +184,25 @@
 									</base-input-structure>
 								</q-col>
 							</q-row>
+							<q-row v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible">
+								<q-col
+									v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_ITEM__INVOICE__CODINVOICESTORE"
+										v-on="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.handlers"
+										:loading="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-lookup
+											v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
+											v-bind="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.props"
+											v-on="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.handlers" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
 							<!-- End FORM_ITEM__PSEUD__NEWGRP01 -->
 						</q-group-collapsible>
 					</q-col>
@@ -280,7 +299,7 @@
 							v-bind="controls.FORM_ITEM__PSEUD__NEWGRP02"
 							:is-visible="controls.FORM_ITEM__PSEUD__NEWGRP02.isVisible">
 							<!-- Start FORM_ITEM__PSEUD__NEWGRP02 -->
-							<q-row v-if="controls.FORM_ITEM__BRAND__NAME.isVisible || controls.FORM_ITEM__CATEGORY__NAME.isVisible || controls.FORM_ITEM__SUBCATEGORY__NAME.isVisible || controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible">
+							<q-row v-if="controls.FORM_ITEM__BRAND__NAME.isVisible || controls.FORM_ITEM__CATEGORY__NAME.isVisible || controls.FORM_ITEM__SUBCATEGORY__NAME.isVisible">
 								<q-col
 									v-if="controls.FORM_ITEM__BRAND__NAME.isVisible"
 									cols="auto">
@@ -342,27 +361,6 @@
 											v-if="controls.FORM_ITEM__SUBCATEGORY__NAME.seeMoreIsVisible"
 											v-bind="controls.FORM_ITEM__SUBCATEGORY__NAME.seeMoreParams"
 											v-on="controls.FORM_ITEM__SUBCATEGORY__NAME.handlers" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_ITEM__INVOICE__CODINVOICESTORE"
-										v-on="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.handlers"
-										:loading="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-lookup
-											v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.isVisible"
-											v-bind="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.props"
-											v-on="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.handlers" />
-										<q-see-more-form-item-invoice-codinvoicestore
-											v-if="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.seeMoreIsVisible"
-											v-bind="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.seeMoreParams"
-											v-on="controls.FORM_ITEM__INVOICE__CODINVOICESTORE.handlers" />
 									</base-input-structure>
 								</q-col>
 							</q-row>
@@ -471,7 +469,6 @@
 			QSeeMoreFormItemBrandName: defineAsyncComponent(() => import('@/views/forms/FormFormItem/dbedits/FormItemBrandNameSeeMore.vue')),
 			QSeeMoreFormItemCategoryName: defineAsyncComponent(() => import('@/views/forms/FormFormItem/dbedits/FormItemCategoryNameSeeMore.vue')),
 			QSeeMoreFormItemSubcategoryName: defineAsyncComponent(() => import('@/views/forms/FormFormItem/dbedits/FormItemSubcategoryNameSeeMore.vue')),
-			QSeeMoreFormItemInvoiceCodinvoicestore: defineAsyncComponent(() => import('@/views/forms/FormFormItem/dbedits/FormItemInvoiceCodinvoicestoreSeeMore.vue')),
 		},
 
 		mixins: [
@@ -527,7 +524,7 @@
 				},
 
 				formInfo: {
-					type: 'normal',
+					type: 'popup',
 					name: 'FORM_ITEM',
 					route: 'form-FORM_ITEM',
 					area: 'ITEM',
@@ -757,7 +754,7 @@
 						startsExpanded: false,
 						isCollapsible: true,
 						anchored: false,
-						directChildren: ['FORM_ITEM__ITEM__CREATED_BY', 'FORM_ITEM__ITEM__CREATED_AT', 'FORM_ITEM__ITEM__UPDATED_BY', 'FORM_ITEM__ITEM__UPDATED_AT'],
+						directChildren: ['FORM_ITEM__ITEM__CREATED_BY', 'FORM_ITEM__ITEM__CREATED_AT', 'FORM_ITEM__ITEM__UPDATED_BY', 'FORM_ITEM__ITEM__UPDATED_AT', 'FORM_ITEM__INVOICE__CODINVOICESTORE'],
 						mustBeFilled: true,
 						controlLimits: [
 						],
@@ -817,6 +814,36 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_ITEM__PSEUD__NEWGRP01',
 						dateTimeType: 'date',
+						controlLimits: [
+						],
+					}, this),
+					FORM_ITEM__INVOICE__CODINVOICESTORE: new fieldControlClass.LookupControl({
+						modelField: 'TableInvoiceCodinvoicestore',
+						valueChangeEvent: 'fieldChange:invoice.codinvoicestore',
+						id: 'FORM_ITEM__INVOICE__CODINVOICESTORE',
+						name: 'CODINVOICESTORE',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.INVOICE63068),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_ITEM__PSEUD__NEWGRP01',
+						externalCallbacks: {
+							getModelField: vm.getModelField,
+							getModelFieldValue: vm.getModelFieldValue,
+							setModelFieldValue: vm.setModelFieldValue
+						},
+						externalProperties: {
+							modelKeys: computed(() => vm.modelKeys)
+						},
+						lookupKeyModelField: {
+							name: 'ValInvoice',
+							dependencyEvent: 'fieldChange:item.invoice'
+						},
+						dependentFields: () => ({
+							set 'invoice.codinvoice'(value) { vm.model.ValInvoice.updateValue(value) },
+							set 'invoice.codinvoicestore'(value) { vm.model.TableInvoiceCodinvoicestore.updateValue(value) },
+						}),
+						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -907,7 +934,7 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						isCollapsible: false,
 						anchored: false,
-						directChildren: ['FORM_ITEM__BRAND__NAME', 'FORM_ITEM__CATEGORY__NAME', 'FORM_ITEM__SUBCATEGORY__NAME', 'FORM_ITEM__INVOICE__CODINVOICESTORE'],
+						directChildren: ['FORM_ITEM__BRAND__NAME', 'FORM_ITEM__CATEGORY__NAME', 'FORM_ITEM__SUBCATEGORY__NAME'],
 						mustBeFilled: true,
 						controlLimits: [
 						],
@@ -1017,36 +1044,6 @@
 							dependencyEvents: ['fieldChange:item.category'],
 							isServerRecalc: false,
 						},
-					}, this),
-					FORM_ITEM__INVOICE__CODINVOICESTORE: new fieldControlClass.LookupControl({
-						modelField: 'TableInvoiceCodinvoicestore',
-						valueChangeEvent: 'fieldChange:invoice.codinvoicestore',
-						id: 'FORM_ITEM__INVOICE__CODINVOICESTORE',
-						name: 'CODINVOICESTORE',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.INVOICE63068),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_ITEM__PSEUD__NEWGRP02',
-						externalCallbacks: {
-							getModelField: vm.getModelField,
-							getModelFieldValue: vm.getModelFieldValue,
-							setModelFieldValue: vm.setModelFieldValue
-						},
-						externalProperties: {
-							modelKeys: computed(() => vm.modelKeys)
-						},
-						lookupKeyModelField: {
-							name: 'ValInvoice',
-							dependencyEvent: 'fieldChange:item.invoice'
-						},
-						dependentFields: () => ({
-							set 'invoice.codinvoice'(value) { vm.model.ValInvoice.updateValue(value) },
-							set 'invoice.codinvoicestore'(value) { vm.model.TableInvoiceCodinvoicestore.updateValue(value) },
-						}),
-						mustBeFilled: true,
-						controlLimits: [
-						],
 					}, this),
 					FORM_ITEM__PSEUD__NEWGRP04: new fieldControlClass.GroupControl({
 						id: 'FORM_ITEM__PSEUD__NEWGRP04',

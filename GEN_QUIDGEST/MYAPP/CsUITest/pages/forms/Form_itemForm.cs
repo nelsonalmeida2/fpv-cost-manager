@@ -5,7 +5,7 @@
 namespace quidgest.uitests.pages.forms;
 
 [System.CodeDom.Compiler.GeneratedCode("Genio", "")]
-public class Form_itemForm : Form
+public class Form_itemForm : PopupForm
 {
 	/// <summary>
 	/// METADATA
@@ -31,6 +31,11 @@ public class Form_itemForm : Form
 	/// Updated At
 	/// </summary>
 	public BaseInputControl ItemUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__UPDATED_AT", "#FORM_ITEM__ITEM__UPDATED_AT");
+
+	/// <summary>
+	/// Invoice
+	/// </summary>
+	public BaseInputControl InvoiceCodinvoicestore => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__INVOICE__CODINVOICESTORE", "#FORM_ITEM__INVOICE__CODINVOICESTORE");
 
 	/// <summary>
 	/// ITEM INFO
@@ -81,12 +86,6 @@ public class Form_itemForm : Form
 	public SeeMorePage SubcategoryNameSeeMorePage => new SeeMorePage(driver, "FORM_ITEM", "FORM_ITEM__SUBCATEGORY__NAME");
 
 	/// <summary>
-	/// Invoice
-	/// </summary>
-	public LookupControl InvoiceCodinvoicestore => new LookupControl(driver, ContainerLocator, "container-FORM_ITEM__INVOICE__CODINVOICESTORE");
-	public SeeMorePage InvoiceCodinvoicestoreSeeMorePage => new SeeMorePage(driver, "FORM_ITEM", "FORM_ITEM__INVOICE__CODINVOICESTORE");
-
-	/// <summary>
 	/// Photos
 	/// </summary>
 	public CollapsibleZoneControl PseudNewgrp04 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__NEWGRP04-container");
@@ -97,5 +96,5 @@ public class Form_itemForm : Form
 	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__FIELD001");
 
 	public Form_itemForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
-		: base(driver, mode, "FORM_ITEM", containerLocator: containerLocator) { }
+		: base(driver, mode, "FORM_ITEM") { }
 }
