@@ -129,6 +129,9 @@
   <data name="ROLES61449" xml:space="preserve">
     <value>Roles</value>
   </data>
+  <data name="PSW13972" xml:space="preserve">
+    <value>PSW</value>
+  </data>
   <data name="INVOICE63068" xml:space="preserve">
     <value>Invoice</value>
   </data>
@@ -140,6 +143,12 @@
   </data>
   <data name="AGGREGATE05721" xml:space="preserve">
     <value>Aggregate</value>
+  </data>
+  <data name="NOME53888" xml:space="preserve">
+    <value>NOME</value>
+  </data>
+  <data name="PERSON00920" xml:space="preserve">
+    <value>PERSON</value>
   </data>
   <data name="PROCESS_ID11161" xml:space="preserve">
     <value>Process ID</value>
@@ -182,6 +191,9 @@
   </data>
   <data name="TOTAL_PRICE46894" xml:space="preserve">
     <value>Total Price</value>
+  </data>
+  <data name="PERSON_PSW33377" xml:space="preserve">
+    <value>Person PSW</value>
   </data>
   <data name="LOGBOOK00124" xml:space="preserve">
     <value>Logbook</value>
@@ -243,6 +255,9 @@
   <data name="CHANGED_BY08967" xml:space="preserve">
     <value>Changed by</value>
   </data>
+  <data name="NAME_PERSON43394" xml:space="preserve">
+    <value>Name Person</value>
+  </data>
   <data name="QUIDGEST26196" xml:space="preserve">
     <value>Quidgest</value>
   </data>
@@ -294,6 +309,9 @@
   <data name="UNIT_PRICE24898" xml:space="preserve">
     <value>Unit Price</value>
   </data>
+  <data name="NAME_PSW24858" xml:space="preserve">
+    <value>Name PSW</value>
+  </data>
   <data name="CONSULTA40695" xml:space="preserve">
     <value>Consulta</value>
   </data>
@@ -332,6 +350,12 @@
   </data>
   <data name="SAVES_ON_DB_61384" xml:space="preserve">
     <value>Saves on DB?</value>
+  </data>
+  <data name="USER57012" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="PERSON10446" xml:space="preserve">
+    <value>Person</value>
   </data>
   <data name="TEXT_AFTER_SIGNATURE11837" xml:space="preserve">
     <value>Text after signature</value>
@@ -383,6 +407,9 @@
   </data>
   <data name="ITEM40802" xml:space="preserve">
     <value>Item</value>
+  </data>
+  <data name="PERSONS18356" xml:space="preserve">
+    <value>Persons</value>
   </data>
   <data name="CREATED_BY12292" xml:space="preserve">
     <value>Created by</value>
@@ -444,6 +471,9 @@
   <data name="INDIVIDUAL42893" xml:space="preserve">
     <value>Individual</value>
   </data>
+  <data name="CANCELAR49513" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
   <data name="TAXES34617" xml:space="preserve">
     <value>Taxes</value>
   </data>
@@ -458,6 +488,9 @@
   </data>
   <data name="MANUAL_DESTINATION21892" xml:space="preserve">
     <value>Manual destination</value>
+  </data>
+  <data name="GRAVAR45301" xml:space="preserve">
+    <value>Gravar</value>
   </data>
   <data name="ADMINISTRADOR57294" xml:space="preserve">
     <value>Administrador</value>
@@ -564,9 +597,6 @@
   <data name="CAMPO_VAZIO_ALTERADO56548" xml:space="preserve">
     <value>Empty/Changed Field</value>
   </data>
-  <data name="CANCELAR49513" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="CONSULTA23186" xml:space="preserve">
     <value>Query</value>
   </data>
@@ -608,9 +638,6 @@
   </data>
   <data name="FORM54242" xml:space="preserve">
     <value>Form</value>
-  </data>
-  <data name="GRAVAR45301" xml:space="preserve">
-    <value>Save</value>
   </data>
   <data name="GRUPO22663" xml:space="preserve">
     <value>Group</value>
@@ -5086,7 +5113,7 @@
     <value>Select</value>
   </data>
   <data name="_CANCELAR09516" xml:space="preserve">
-    <value>Cancel</value>
+    <value>&amp;Cancelar</value>
   </data>
   <data name="_ALTERAR63438" xml:space="preserve">
     <value>Change</value>
@@ -5290,7 +5317,7 @@
     <value>&amp;Queue</value>
   </data>
   <data name="_GRAVAR27930" xml:space="preserve">
-    <value>Save</value>
+    <value>&amp;Gravar</value>
   </data>
   <data name="_TABELA23959" xml:space="preserve">
     <value>Table</value>
@@ -5368,7 +5395,7 @@
     <value>Sum</value>
   </data>
   <data name="GRA_VAR31620" xml:space="preserve">
-    <value>Save</value>
+    <value>Gra&amp;var</value>
   </data>
   <data name="UTILIZAD_OR_18947" xml:space="preserve">
     <value>Username:</value>

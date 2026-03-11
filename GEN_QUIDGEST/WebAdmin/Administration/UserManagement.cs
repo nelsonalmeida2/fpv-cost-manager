@@ -32,6 +32,7 @@ namespace Administration
         {
             List<ModulesLevel> perm = new List<ModulesLevel>();
             perm.Add(new ModulesLevel("FPV", Resources.Resources.MY_APPLICATION56216, "1", Resources.Resources.CONSULTA40695));
+            perm.Add(new ModulesLevel("FPV", Resources.Resources.MY_APPLICATION56216, "5", Resources.Resources.USER57012));
             perm.Add(new ModulesLevel("FPV", Resources.Resources.MY_APPLICATION56216, "99", Resources.Resources.ADMINISTRADOR57294));
 	
             return perm;

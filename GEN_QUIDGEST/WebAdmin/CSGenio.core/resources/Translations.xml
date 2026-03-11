@@ -12,6 +12,9 @@
   <msg id="Roles" code="ROLES61449">
     <ENUS>Roles</ENUS>
   </msg>
+  <msg id="PSW" code="PSW13972">
+    <ENUS>PSW</ENUS>
+  </msg>
   <msg id="Invoice" code="INVOICE63068">
     <ENUS>Invoice</ENUS>
   </msg>
@@ -23,6 +26,12 @@
   </msg>
   <msg id="Aggregate" code="AGGREGATE05721">
     <ENUS>Aggregate</ENUS>
+  </msg>
+  <msg id="NOME" code="NOME53888">
+    <ENUS>NOME</ENUS>
+  </msg>
+  <msg id="PERSON" code="PERSON00920">
+    <ENUS>PERSON</ENUS>
   </msg>
   <msg id="Process ID" code="PROCESS_ID11161">
     <ENUS>Process ID</ENUS>
@@ -65,6 +74,9 @@
   </msg>
   <msg id="Total Price" code="TOTAL_PRICE46894">
     <ENUS>Total Price</ENUS>
+  </msg>
+  <msg id="Person PSW" code="PERSON_PSW33377">
+    <ENUS>Person PSW</ENUS>
   </msg>
   <msg id="Logbook" code="LOGBOOK00124">
     <ENUS>Logbook</ENUS>
@@ -126,6 +138,9 @@
   <msg id="Changed by" code="CHANGED_BY08967">
     <ENUS>Changed by</ENUS>
   </msg>
+  <msg id="Name Person" code="NAME_PERSON43394">
+    <ENUS>Name Person</ENUS>
+  </msg>
   <msg id="Quidgest" code="QUIDGEST26196">
     <ENUS>Quidgest</ENUS>
   </msg>
@@ -177,6 +192,9 @@
   <msg id="Unit Price" code="UNIT_PRICE24898">
     <ENUS>Unit Price</ENUS>
   </msg>
+  <msg id="Name PSW" code="NAME_PSW24858">
+    <ENUS>Name PSW</ENUS>
+  </msg>
   <msg id="Consulta" code="CONSULTA40695">
     <ENUS>Consulta</ENUS>
   </msg>
@@ -215,6 +233,12 @@
   </msg>
   <msg id="Saves on DB?" code="SAVES_ON_DB_61384">
     <ENUS>Saves on DB?</ENUS>
+  </msg>
+  <msg id="User" code="USER57012">
+    <ENUS>User</ENUS>
+  </msg>
+  <msg id="Person" code="PERSON10446">
+    <ENUS>Person</ENUS>
   </msg>
   <msg id="Text after signature" code="TEXT_AFTER_SIGNATURE11837">
     <ENUS>Text after signature</ENUS>
@@ -266,6 +290,9 @@
   </msg>
   <msg id="Item" code="ITEM40802">
     <ENUS>Item</ENUS>
+  </msg>
+  <msg id="Persons" code="PERSONS18356">
+    <ENUS>Persons</ENUS>
   </msg>
   <msg id="Created by" code="CREATED_BY12292">
     <ENUS>Created by</ENUS>
@@ -327,6 +354,9 @@
   <msg id="Individual" code="INDIVIDUAL42893">
     <ENUS>Individual</ENUS>
   </msg>
+  <msg id="Cancelar" code="CANCELAR49513">
+    <ENUS>Cancelar</ENUS>
+  </msg>
   <msg id="Taxes" code="TAXES34617">
     <ENUS>Taxes</ENUS>
   </msg>
@@ -341,6 +371,9 @@
   </msg>
   <msg id="Manual destination" code="MANUAL_DESTINATION21892">
     <ENUS>Manual destination</ENUS>
+  </msg>
+  <msg id="Gravar" code="GRAVAR45301">
+    <ENUS>Gravar</ENUS>
   </msg>
   <msg id="Administrador" code="ADMINISTRADOR57294">
     <ENUS>Administrador</ENUS>
@@ -447,9 +480,6 @@
   <msg id="Campo Vazio/Alterado" code="CAMPO_VAZIO_ALTERADO56548">
     <ENUS>Empty/Changed Field</ENUS>
   </msg>
-  <msg id="Cancelar" code="CANCELAR49513">
-    <ENUS>Cancel</ENUS>
-  </msg>
   <msg id="consulta" code="CONSULTA23186">
     <ENUS>Query</ENUS>
   </msg>
@@ -491,9 +521,6 @@
   </msg>
   <msg id="Form" code="FORM54242">
     <ENUS>Form</ENUS>
-  </msg>
-  <msg id="Gravar" code="GRAVAR45301">
-    <ENUS>Save</ENUS>
   </msg>
   <msg id="Grupo" code="GRUPO22663">
     <ENUS>Group</ENUS>
@@ -4969,7 +4996,7 @@
     <ENUS>Select</ENUS>
   </msg>
   <msg id="&amp;Cancelar" code="_CANCELAR09516">
-    <ENUS>Cancel</ENUS>
+    <ENUS>&amp;Cancelar</ENUS>
   </msg>
   <msg id="&amp;Alterar" code="_ALTERAR63438">
     <ENUS>Change</ENUS>
@@ -5173,7 +5200,7 @@
     <ENUS>&amp;Queue</ENUS>
   </msg>
   <msg id="&amp;Gravar" code="_GRAVAR27930">
-    <ENUS>Save</ENUS>
+    <ENUS>&amp;Gravar</ENUS>
   </msg>
   <msg id="&amp;Tabela" code="_TABELA23959">
     <ENUS>Table</ENUS>
@@ -5251,7 +5278,7 @@
     <ENUS>Sum</ENUS>
   </msg>
   <msg id="Gra&amp;var" code="GRA_VAR31620">
-    <ENUS>Save</ENUS>
+    <ENUS>Gra&amp;var</ENUS>
   </msg>
   <msg id="Utilizad&amp;or:" code="UTILIZAD_OR_18947">
     <ENUS>Username:</ENUS>

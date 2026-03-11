@@ -22,6 +22,8 @@ namespace CSGenio.business
     {
         public static AreaRef AreaS_NES { get { return m_AreaS_NES; } }
         private static AreaRef m_AreaS_NES = new AreaRef("FPV", "notificationemailsignature", "s_nes");
+        public static AreaRef AreaPERSON { get { return m_AreaPERSON; } }
+        private static AreaRef m_AreaPERSON = new AreaRef("FPV", "fpvperson", "person");
         public static AreaRef AreaINVOICE { get { return m_AreaINVOICE; } }
         private static AreaRef m_AreaINVOICE = new AreaRef("FPV", "fpvinvoice", "invoice");
         public static AreaRef AreaS_UA { get { return m_AreaS_UA; } }
@@ -42,6 +44,8 @@ namespace CSGenio.business
         private static AreaRef m_AreaS_PAX = new AreaRef("FPV", "asyncprocessattachments", "s_pax");
         public static AreaRef AreaS_APR { get { return m_AreaS_APR; } }
         private static AreaRef m_AreaS_APR = new AreaRef("FPV", "asyncprocess", "s_apr");
+        public static AreaRef AreaPERSONPSW { get { return m_AreaPERSONPSW; } }
+        private static AreaRef m_AreaPERSONPSW = new AreaRef("FPV", "fpvpersonpsw", "personpsw");
         public static AreaRef AreaBRAND { get { return m_AreaBRAND; } }
         private static AreaRef m_AreaBRAND = new AreaRef("FPV", "fpvbrand", "brand");
         public static AreaRef AreaMEM { get { return m_AreaMEM; } }
@@ -82,6 +86,7 @@ namespace CSGenio.business
         public static readonly System.Collections.ObjectModel.ReadOnlyCollection<string> ListaAreas = new System.Collections.ObjectModel.ReadOnlyCollection<string>(
             new List<string>() {
             "s_nes",
+            "person",
             "invoice",
             "s_ua",
             "country",
@@ -92,6 +97,7 @@ namespace CSGenio.business
             "s_nm",
             "s_pax",
             "s_apr",
+            "personpsw",
             "brand",
             "mem",
             "subcategory",

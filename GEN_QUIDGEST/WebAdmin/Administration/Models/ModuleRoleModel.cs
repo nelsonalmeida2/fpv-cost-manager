@@ -34,6 +34,12 @@ namespace Administration.Models
                 Module = "FPV"
             },
             new ModuleRoleModel() {
+                Role = "5",
+                Designation = "USER57012",
+                Description = "",              
+                Module = "FPV"
+            },
+            new ModuleRoleModel() {
                 Role = "99",
                 Designation = "ADMINISTRADOR57294",
                 Description = "",              

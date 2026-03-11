@@ -1,4 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-16"?>
 <ArrayOfMenuEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <MenuEntry TYPE="ITEM" DESC="MY_APPLICATION56216" ID="FPV" IMG="" IMGVUE="" LVL="0" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" />
+  <MenuEntry TYPE="ITEM" DESC="MY_APPLICATION56216" ID="FPV" IMG="" IMGVUE="" LVL="0" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false">
+    <MENU TYPE="ITEM" DESC="PERSON_PSW33377" SIGLA="" ID="1" HELPTITLE="" LVL="1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="1" DEFAULTACTION="">
+      <ACCESS>99</ACCESS>
+      <MENU TYPE="ITEM" DESC="PERSON_PSW33377" ID="11" PRTID="1" IMG="" ACT="GenGenio.MenuDBEdit" ACTMVC="FPV_Menu_11" ACTVUE="menu-FPV_11" CONT="PERSONPSW" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="11">
+        <MENU TYPE="ITEM" ID="111" PRTID="11" IMG="" ACT="GenGenio.MenuFormConsulta" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="111" />
+      </MENU>
+    </MENU>
+  </MenuEntry>
 </ArrayOfMenuEntry>

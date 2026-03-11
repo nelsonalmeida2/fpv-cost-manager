@@ -107,6 +107,32 @@ namespace CSGenio.business
             }
                 
 
+            /* --- FPVPERSON --- */
+            dm = sp.Execute(
+                new SelectQuery()
+                .Select(CSGenioAperson.FldCodperson)
+                .From(CSGenioAperson.AreaPERSON)
+                .Where(CriteriaSet.And().In(CSGenioAperson.FldZzstate, zzstateToRemove))
+                );
+
+            for (int i = 0; i < dm.NumRows; i++)
+            {
+                CSGenioAperson model = new CSGenioAperson(user);
+                model.ValCodperson = dm.GetKey(i, 0);
+
+                try
+                {
+                    model.delete(sp);
+                }
+                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
+                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
+                catch(BusinessException ex)
+                {
+                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
+                }
+            }
+                
+
             /* --- UserLogin --- */
             dm = sp.Execute(
                 new SelectQuery()
@@ -223,6 +249,32 @@ namespace CSGenio.business
             {
                 CSGenioAbrand model = new CSGenioAbrand(user);
                 model.ValCodbrand = dm.GetKey(i, 0);
+
+                try
+                {
+                    model.delete(sp);
+                }
+                //Not every exception should be allowed to continue record deletion, only business exceptions need to be caught and allow to deletion continue.
+                //If there are other types of exceptions, such as database connection problems, for example, execution should be stopped immediately
+                catch(BusinessException ex)
+                {
+                    Log.Error((ex.UserMessage != null) ? ex.UserMessage : ex.Message);
+                }
+            }
+                
+
+            /* --- FPVPERSONPSW --- */
+            dm = sp.Execute(
+                new SelectQuery()
+                .Select(CSGenioApersonpsw.FldCodpersonpsw)
+                .From(CSGenioApersonpsw.AreaPERSONPSW)
+                .Where(CriteriaSet.And().In(CSGenioApersonpsw.FldZzstate, zzstateToRemove))
+                );
+
+            for (int i = 0; i < dm.NumRows; i++)
+            {
+                CSGenioApersonpsw model = new CSGenioApersonpsw(user);
+                model.ValCodpersonpsw = dm.GetKey(i, 0);
 
                 try
                 {
