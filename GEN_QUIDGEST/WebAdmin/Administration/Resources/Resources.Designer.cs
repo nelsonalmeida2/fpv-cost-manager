@@ -529,6 +529,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Catalogs"
+        /// </summary>
+        public static string CATALOGS31485 {
+            get {
+                return ResourceManager.GetString("CATALOGS31485", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Finished"
         /// </summary>
         public static string FINISHED26993 {
@@ -1497,6 +1506,15 @@ namespace Administration.Resources {
         public static string ADMINISTRADOR57294 {
             get {
                 return ResourceManager.GetString("ADMINISTRADOR57294", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Purchases"
+        /// </summary>
+        public static string PURCHASES63256 {
+            get {
+                return ResourceManager.GetString("PURCHASES63256", resourceCulture);
             }
         }
 

@@ -1,0 +1,702 @@
+﻿using CSGenio.business;
+using CSGenio.framework;
+using CSGenio.persistence;
+using GenioMVC.Helpers;
+using GenioMVC.Models.Exception;
+using GenioMVC.Models.Navigation;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Quidgest.Persistence;
+using Quidgest.Persistence.GenericQuery;
+
+using System.Collections;
+using System.Collections.Concurrent;
+using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
+using System.Data;
+using System.Globalization;
+using System.Text.Json.Serialization;
+
+namespace GenioMVC.ViewModels.Brand
+{
+	public class Form_brand_ViewModel : FormViewModel<Models.Brand>, IPreparableForSerialization
+	{
+		[JsonIgnore]
+		public override bool HasWriteConditions { get => false; }
+
+		/// <summary>
+		/// Reference for the Models MsqActive property
+		/// </summary>
+		[JsonIgnore]
+		public bool MsqActive { get; set; } = false;
+
+		#region Foreign keys
+		/// <summary>
+		/// Title: "Country" | Type: "CE"
+		/// </summary>
+		public string ValCountry { get; set; }
+
+		#endregion
+		/// <summary>
+		/// Title: "Created by" | Type: "ON"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCreated_by { get; set; }
+		/// <summary>
+		/// Title: "Created at" | Type: "OD"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValCreated_at { get; set; }
+		/// <summary>
+		/// Title: "Updated by" | Type: "EN"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValUpdated_by { get; set; }
+		/// <summary>
+		/// Title: "Updated At" | Type: "ED"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
+		/// Title: "Logotype" | Type: "IJ"
+		/// </summary>
+		[ImageThumbnailJsonConverter(30, 50)]
+		public GenioMVC.Models.ImageModel ValLogotype { get; set; }
+		/// <summary>
+		/// Title: "Brand Name" | Type: "C"
+		/// </summary>
+		public string ValName { get; set; }
+		/// <summary>
+		/// Title: "Description" | Type: "C"
+		/// </summary>
+		public string ValDescription { get; set; }
+		/// <summary>
+		/// Title: "Country" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public TableDBEdit<GenioMVC.Models.Country> TableCountryName { get; set; }
+
+		#region Navigations
+		#endregion
+
+		#region Auxiliar Keys for Image controls
+
+
+
+		#endregion
+
+		#region Extra database fields
+
+
+
+		#endregion
+
+		#region Fields for formulas
+
+
+		#endregion
+
+		public string ValCodbrand { get; set; }
+
+
+		/// <summary>
+		/// FOR DESERIALIZATION ONLY
+		/// A call to Init() needs to be manually invoked after this constructor
+		/// </summary>
+		[Obsolete("For deserialization only")]
+		public Form_brand_ViewModel() : base(null!) { }
+
+		public Form_brand_ViewModel(UserContext userContext, bool nestedForm = false) : base(userContext, "FFORM_BRAND", nestedForm) { }
+
+		public Form_brand_ViewModel(UserContext userContext, Models.Brand row, bool nestedForm = false) : base(userContext, "FFORM_BRAND", row, nestedForm) { }
+
+		public Form_brand_ViewModel(UserContext userContext, string id, bool nestedForm = false, string[]? fieldsToLoad = null) : this(userContext, nestedForm)
+		{
+			this.Navigation.SetValue("brand", id);
+			Model = Models.Brand.Find(id, userContext, "FFORM_BRAND", fieldsToQuery: fieldsToLoad);
+			if (Model == null)
+				throw new ModelNotFoundException("Model not found");
+			InitModel();
+		}
+
+		protected override void InitLevels()
+		{
+			this.RoleToShow = CSGenio.framework.Role.ROLE_5;
+			this.RoleToEdit = CSGenio.framework.Role.ROLE_5;
+		}
+
+		#region Form conditions
+
+		public override StatusMessage InsertConditions()
+		{
+			return InsertConditions(m_userContext);
+		}
+
+		public static StatusMessage InsertConditions(UserContext userContext)
+		{
+			var m_userContext = userContext;
+			StatusMessage result = new StatusMessage(Status.OK, "");
+			Models.Brand model = new Models.Brand(userContext) { Identifier = "FFORM_BRAND" };
+
+			var navigation = m_userContext.CurrentNavigation;
+			// The "LoadKeysFromHistory" must be after the "LoadEPH" because the PHE's in the tree mark Foreign Keys to null
+			// (since they cannot assign multiple values to a single field) and thus the value that comes from Navigation is lost.
+			// And this makes it more like the order of loading the model when opening the form.
+			model.LoadEPH("FFORM_BRAND");
+			if (navigation != null)
+				model.LoadKeysFromHistory(navigation, navigation.CurrentLevel.Level);
+
+			var tableResult = model.EvaluateTableConditions(ConditionType.INSERT);
+			result.MergeStatusMessage(tableResult);
+			return result;
+		}
+
+		public override StatusMessage UpdateConditions()
+		{
+			StatusMessage result = new StatusMessage(Status.OK, "");
+			var model = Model;
+
+			var tableResult = model.EvaluateTableConditions(ConditionType.UPDATE);
+			result.MergeStatusMessage(tableResult);
+			return result;
+		}
+
+		public override StatusMessage DeleteConditions()
+		{
+			StatusMessage result = new StatusMessage(Status.OK, "");
+			var model = Model;
+
+			var tableResult = model.EvaluateTableConditions(ConditionType.DELETE);
+			result.MergeStatusMessage(tableResult);
+			return result;
+		}
+
+		public override StatusMessage ViewConditions()
+		{
+			var model = Model;
+			StatusMessage result = model.EvaluateTableConditions(ConditionType.VIEW);
+			var tableResult = model.EvaluateTableConditions(ConditionType.VIEW);
+			result.MergeStatusMessage(tableResult);
+			return result;
+		}
+
+		public override StatusMessage EvaluateWriteConditions(bool isApply)
+		{
+			StatusMessage result = new StatusMessage(Status.OK, "");
+			return result;
+		}
+
+		public StatusMessage EvaluateTableConditions(ConditionType type)
+		{
+			return Model.EvaluateTableConditions(type);
+		}
+
+		#endregion
+
+		#region Mapper
+
+		/// <inheritdoc />
+		public override void MapFromModel(Models.Brand m)
+		{
+			if (m == null)
+			{
+				CSGenio.framework.Log.Error("Map Model (Brand) to ViewModel (Form_brand) - Model is a null reference");
+				throw new ModelNotFoundException("Model not found");
+			}
+
+			try
+			{
+				ValCountry = ViewModelConversion.ToString(m.ValCountry);
+				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
+				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
+				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
+				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
+				ValLogotype = ViewModelConversion.ToImage(m.ValLogotype);
+				ValName = ViewModelConversion.ToString(m.ValName);
+				ValDescription = ViewModelConversion.ToString(m.ValDescription);
+				ValCodbrand = ViewModelConversion.ToString(m.ValCodbrand);
+			}
+			catch (Exception)
+			{
+				CSGenio.framework.Log.Error("Map Model (Brand) to ViewModel (Form_brand) - Error during mapping");
+				throw;
+			}
+		}
+
+		/// <inheritdoc />
+		public override void MapToModel()
+		{
+			MapToModel(this.Model);
+		}
+
+		/// <inheritdoc />
+		public override void MapToModel(Models.Brand m)
+		{
+			if (m == null)
+			{
+				CSGenio.framework.Log.Error("Map ViewModel (Form_brand) to Model (Brand) - Model is a null reference");
+				throw new ModelNotFoundException("Model not found");
+			}
+
+			try
+			{
+				m.ValCountry = ViewModelConversion.ToString(ValCountry);
+				if (ValLogotype == null || !ValLogotype.IsThumbnail)
+					m.ValLogotype = ViewModelConversion.ToImage(ValLogotype);
+				m.ValName = ViewModelConversion.ToString(ValName);
+				m.ValDescription = ViewModelConversion.ToString(ValDescription);
+				m.ValCodbrand = ViewModelConversion.ToString(ValCodbrand);
+
+				/*
+					At this moment, in the case of runtime calculation of server-side formulas, to improve performance and reduce database load,
+						the values coming from the client-side will be accepted as valid, since they will not be saved and are only being used for calculation.
+				*/
+				if (!HasDisabledUserValuesSecurity)
+					return;
+
+				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
+				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
+				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
+				m.ValUpdated_at = ViewModelConversion.ToDateTime(ValUpdated_at);
+			}
+			catch (Exception)
+			{
+				CSGenio.framework.Log.Error($"Map ViewModel (Form_brand) to Model (Brand) - Error during mapping. All user values: {HasDisabledUserValuesSecurity}");
+				throw;
+			}
+		}
+
+		/// <summary>
+		/// Sets the value of a single property of the view model based on the provided table and field names.
+		/// </summary>
+		/// <param name="fullFieldName">The full field name in the format "table.field".</param>
+		/// <param name="value">The field value.</param>
+		/// <exception cref="ArgumentNullException">Thrown if <paramref name="fullFieldName"/> is null.</exception>
+		public override void SetViewModelValue(string fullFieldName, object value)
+		{
+			try
+			{
+				ArgumentNullException.ThrowIfNull(fullFieldName);
+				// Obtain a valid value from JsonValueKind that can come from "prefillValues" during the pre-filling of fields during insertion
+				var _value = ViewModelConversion.ToRawValue(value);
+
+				switch (fullFieldName)
+				{
+					case "brand.country":
+						this.ValCountry = ViewModelConversion.ToString(_value);
+						break;
+					case "brand.logotype":
+						this.ValLogotype = ViewModelConversion.ToImage(_value);
+						break;
+					case "brand.name":
+						this.ValName = ViewModelConversion.ToString(_value);
+						break;
+					case "brand.description":
+						this.ValDescription = ViewModelConversion.ToString(_value);
+						break;
+					case "brand.codbrand":
+						this.ValCodbrand = ViewModelConversion.ToString(_value);
+						break;
+					default:
+						Log.Error($"SetViewModelValue (Form_brand) - Unexpected field identifier {fullFieldName}");
+						break;
+				}
+			}
+			catch (Exception ex)
+			{
+				throw new FrameworkException(Resources.Resources.PEDIMOS_DESCULPA__OC63848, "SetViewModelValue (Form_brand)", "Unexpected error", ex);
+			}
+		}
+
+		#endregion
+
+		/// <summary>
+		/// Reads the Model from the database based on the key that is in the history or that was passed through the parameter
+		/// </summary>
+		/// <param name="id">The primary key of the record that needs to be read from the database. Leave NULL to use the value from the History.</param>
+		public override void LoadModel(string id = null)
+		{
+			try { Model = Models.Brand.Find(id ?? Navigation.GetStrValue("brand"), m_userContext, "FFORM_BRAND"); }
+			finally { Model ??= new Models.Brand(m_userContext) { Identifier = "FFORM_BRAND" }; }
+
+			base.LoadModel();
+		}
+
+		public override void Load(NameValueCollection qs, bool editable, bool ajaxRequest = false, bool lazyLoad = false)
+		{
+			this.editable = editable;
+			CSGenio.business.Area oldvalues = null;
+
+			// TODO: Deve ser substituido por search do CSGenioA
+			try
+			{
+				Model = Models.Brand.Find(Navigation.GetStrValue("brand"), m_userContext, "FFORM_BRAND");
+			}
+			finally
+			{
+				if (Model == null)
+					throw new ModelNotFoundException("Model not found");
+
+				if (Navigation.CurrentLevel.FormMode == FormMode.New || Navigation.CurrentLevel.FormMode == FormMode.Duplicate)
+					LoadDefaultValues();
+				else
+					oldvalues = Model.klass;
+			}
+
+			Model.Identifier = "FFORM_BRAND";
+			InitModel(qs, lazyLoad);
+
+			if (Navigation.CurrentLevel.FormMode == FormMode.New || Navigation.CurrentLevel.FormMode == FormMode.Edit || Navigation.CurrentLevel.FormMode == FormMode.Duplicate)
+			{
+				// MH - Voltar calcular as formulas to "atualizar" os Qvalues dos fields fixos
+				// Conexão deve estar aberta de fora. Podem haver formulas que utilizam funções "manuais".
+				// TODO: It needs to be analyzed whether we should disable the security of field filling here. If there is any case where the field with the block condition can only be calculated after the double calculation of the formulas.
+				MapToModel(Model);
+
+				// If it's inserting or duplicating, needs to fill the default values.
+				if (Navigation.CurrentLevel.FormMode == FormMode.New || Navigation.CurrentLevel.FormMode == FormMode.Duplicate)
+				{
+					FunctionType funcType = Navigation.CurrentLevel.FormMode == FormMode.New
+						? FunctionType.INS
+						: FunctionType.DUP;
+
+					Model.baseklass.fillValuesDefault(m_userContext.PersistentSupport, funcType);
+				}
+
+				// Preencher operações internas
+				Model.klass.fillInternalOperations(m_userContext.PersistentSupport, oldvalues);
+				MapFromModel(Model);
+			}
+
+			// Load just the selected row primary keys for checklists.
+			// Needed for submitting forms incase checklists are in collapsible zones that have not been expanded to load the checklist data.
+			LoadChecklistsSelectedIDs();
+		}
+
+		protected override void FillExtraProperties()
+		{
+		}
+		
+		protected override void LoadDocumentsProperties(Models.Brand row)
+		{
+		}
+
+		/// <summary>
+		/// Load Partial
+		/// </summary>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public override void LoadPartial(NameValueCollection qs, bool lazyLoad = false)
+		{
+			// MH [bugfix] - Quando o POST da ficha falha, ao recaregar a view os documentos na BD perdem alguma informação (ex: name do file)
+			if (Model == null)
+			{
+				// Precisamos fazer o Find to obter as chaves dos documentos que já foram anexados
+				// TODO: Conseguir passar estas chaves no POST to poder retirar o Find.
+				Model = Models.Brand.Find(Navigation.GetStrValue("brand"), m_userContext, "FFORM_BRAND");
+				if (Model == null)
+				{
+					Model = new Models.Brand(m_userContext) { Identifier = "FFORM_BRAND" };
+					Model.klass.QPrimaryKey = Navigation.GetStrValue("brand");
+				}
+				MapToModel(Model);
+				LoadDocumentsProperties(Model);
+			}
+			// Add characteristics
+			Characs = new List<string>();
+
+			Load_Form_brand__country__name(qs, lazyLoad);
+
+// USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_BRAND]/
+		}
+
+// USE /[MANUAL FPV VIEWMODEL_NEW FORM_BRAND]/
+
+		// Preencher Qvalues default dos fields do form
+		protected override void LoadDefaultValues()
+		{
+		}
+
+		public override CrudViewModelValidationResult Validate()
+		{
+			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
+
+
+			validator.Required("ValCountry", Resources.Resources.COUNTRY64133, ViewModelConversion.ToString(ValCountry), FieldType.KEY_INT.GetFormatting());
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+			validator.StringLength("ValName", Resources.Resources.BRAND_NAME49806, ValName, 50);
+
+			validator.Required("ValName", Resources.Resources.BRAND_NAME49806, ViewModelConversion.ToString(ValName), FieldType.TEXT.GetFormatting());
+			validator.StringLength("ValDescription", Resources.Resources.DESCRIPTION07383, ValDescription, 255);
+
+
+			return validator.GetResult();
+		}
+
+		public override void Init(UserContext userContext)
+		{
+			base.Init(userContext);
+		}
+// USE /[MANUAL FPV VIEWMODEL_SAVE FORM_BRAND]/
+		public override void Save()
+		{
+
+
+			base.Save();
+		}
+
+// USE /[MANUAL FPV VIEWMODEL_APPLY FORM_BRAND]/
+
+// USE /[MANUAL FPV VIEWMODEL_DUPLICATE FORM_BRAND]/
+
+// USE /[MANUAL FPV VIEWMODEL_DESTROY FORM_BRAND]/
+		public override void Destroy(string id)
+		{
+			Model = Models.Brand.Find(id, m_userContext, "FFORM_BRAND");
+			if (Model == null)
+				throw new ModelNotFoundException("Model not found");
+			this.flashMessage = Model.Destroy();
+		}
+
+		/// <summary>
+		/// Load selected row primary keys for all checklists
+		/// </summary>
+		public void LoadChecklistsSelectedIDs()
+		{
+		}
+
+		/// <summary>
+		/// TableCountryName -> (DB)
+		/// </summary>
+		/// <param name="qs"></param>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void Load_Form_brand__country__name(NameValueCollection qs, bool lazyLoad = false)
+		{
+			bool form_brand__country__nameDoLoad = true;
+			CriteriaSet form_brand__country__nameConds = CriteriaSet.And();
+			{
+				object hValue = Navigation.GetValue("country", true);
+				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
+				{
+					form_brand__country__nameConds.Equal(CSGenioAcountry.FldCodcountry, hValue);
+					this.ValCountry = DBConversion.ToString(hValue);
+				}
+			}
+
+			TableCountryName = new TableDBEdit<Models.Country>
+			{
+				IsLazyLoad = lazyLoad
+			};
+
+			if (lazyLoad)
+			{
+				if (Navigation.CurrentLevel.GetEntry("RETURN_country") != null)
+				{
+					this.ValCountry = Navigation.GetStrValue("RETURN_country");
+					Navigation.CurrentLevel.SetEntry("RETURN_country", null);
+				}
+				FillDependant_Form_brandTableCountryName(lazyLoad);
+				return;
+			}
+
+			if (form_brand__country__nameDoLoad)
+			{
+				List<ColumnSort> sorts = [];
+				ColumnSort requestedSort = GetRequestSort(TableCountryName, "sTableCountryName", "dTableCountryName", qs, "country");
+				if (requestedSort != null)
+					sorts.Add(requestedSort);
+				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAcountry.FldName), SortOrder.Ascending));
+
+				string query = "";
+				if (!string.IsNullOrEmpty(qs["TableCountryName_tableFilters"]))
+					TableCountryName.TableFilters = bool.Parse(qs["TableCountryName_tableFilters"]);
+				else
+					TableCountryName.TableFilters = false;
+
+				query = qs["qTableCountryName"];
+
+				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
+				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
+				//  tornando confuso to o user porque determinada row foi devolvida quando o Qresult não mostra como o matching foi feito
+				CriteriaSet search_filters = CriteriaSet.And();
+				if (!string.IsNullOrEmpty(query))
+				{
+					search_filters.Like(CSGenioAcountry.FldName, query + "%");
+				}
+				form_brand__country__nameConds.SubSet(search_filters);
+
+				string tryParsePage = qs["pTableCountryName"] != null ? qs["pTableCountryName"].ToString() : "1";
+				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
+				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
+				int offset = (page - 1) * numberItems;
+
+				FieldRef[] fields = [CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName, CSGenioAcountry.FldZzstate];
+
+// USE /[MANUAL FPV OVERRQ FORM_BRAND_COUNTRYNAME]/
+
+				// Limitation by Zzstate
+				/*
+					Records that are currently being inserted or duplicated will also be included.
+					Client-side persistence will try to fill the "text" value of that option.
+				*/
+				if (Navigation.checkFormMode("country", FormMode.New) || Navigation.checkFormMode("country", FormMode.Duplicate))
+					form_brand__country__nameConds.SubSet(CriteriaSet.Or()
+						.Equal(CSGenioAcountry.FldZzstate, 0)
+						.Equal(CSGenioAcountry.FldCodcountry, Navigation.GetStrValue("country")));
+				else
+					form_brand__country__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAcountry.FldZzstate), CriteriaOperator.Equal, 0));
+
+				FieldRef firstVisibleColumn = new FieldRef("country", "name");
+				ListingMVC<CSGenioAcountry> listing = Models.ModelBase.Where<CSGenioAcountry>(m_userContext, false, form_brand__country__nameConds, fields, offset, numberItems, sorts, "LED_FORM_BRAND__COUNTRY__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
+
+				TableCountryName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
+				TableCountryName.Query = query;
+				TableCountryName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Country(m_userContext, r, true, _fieldsToSerialize_FORM_BRAND__COUNTRY__NAME));
+
+				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
+				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
+				if (Navigation.CurrentLevel.GetEntry("RETURN_country") != null)
+				{
+					this.ValCountry = Navigation.GetStrValue("RETURN_country");
+					Navigation.CurrentLevel.SetEntry("RETURN_country", null);
+				}
+
+				TableCountryName.List = new SelectList(TableCountryName.Elements.ToSelectList(x => x.ValName, x => x.ValCodcountry,  x => x.ValCodcountry == this.ValCountry), "Value", "Text", this.ValCountry);
+				//Seleciona se só um
+				if (TableCountryName.List != null && TableCountryName.List.Count() == 1)
+				{
+					this.ValCountry = TableCountryName.List.First().Value;
+					Navigation.SetValue("country", this.ValCountry);
+				}
+				FillDependant_Form_brandTableCountryName();
+			}
+		}
+
+		/// <summary>
+		/// Get Dependant fields values -> TableCountryName (DB)
+		/// </summary>
+		/// <param name="PKey">Primary Key of Country</param>
+		public ConcurrentDictionary<string, object> GetDependant_Form_brandTableCountryName(string PKey)
+		{
+			FieldRef[] refDependantFields = [CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName];
+
+			var returnEmptyDependants = false;
+			CriteriaSet wherecodition = CriteriaSet.And();
+
+			// Return default values
+			if (GenFunctions.emptyG(PKey) == 1)
+				returnEmptyDependants = true;
+
+			// Check if the limit(s) is filled if exists
+			// - - - - - - - - - - - - - - - - - - - - -
+
+			if (returnEmptyDependants)
+				return GetViewModelFieldValues(refDependantFields);
+
+			PersistentSupport sp = m_userContext.PersistentSupport;
+			User u = m_userContext.User;
+
+			CSGenioAcountry tempArea = new(u);
+
+			// Fields to select
+			SelectQuery querySelect = new();
+			querySelect.PageSize(1);
+			foreach (FieldRef field in refDependantFields)
+				querySelect.Select(field);
+
+			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
+				.Where(wherecodition.Equal(CSGenioAcountry.FldCodcountry, PKey));
+
+			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
+			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
+
+			ArrayList values = sp.executeReaderOneRow(querySelect);
+			bool useDefaults = values.Count == 0;
+
+			if (useDefaults)
+				return GetViewModelFieldValues(refDependantFields);
+			return GetViewModelFieldValues(refDependantFields, values);
+		}
+
+		/// <summary>
+		/// Fill Dependant fields values -> TableCountryName (DB)
+		/// </summary>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void FillDependant_Form_brandTableCountryName(bool lazyLoad = false)
+		{
+			var row = GetDependant_Form_brandTableCountryName(this.ValCountry);
+			try
+			{
+
+				// Fill List fields
+				this.ValCountry = ViewModelConversion.ToString(row["country.codcountry"]);
+				TableCountryName.Value = (string)row["country.name"];
+				if (GenFunctions.emptyG(this.ValCountry) == 1)
+				{
+					this.ValCountry = "";
+					TableCountryName.Value = "";
+					Navigation.ClearValue("country");
+				}
+				else if (lazyLoad)
+				{
+					TableCountryName.SetPagination(1, 0, false, false, 1);
+					TableCountryName.List = new SelectList(new List<SelectListItem>()
+					{
+						new SelectListItem
+						{
+							Value = Convert.ToString(this.ValCountry),
+							Text = Convert.ToString(TableCountryName.Value),
+							Selected = true
+						}
+					}, "Value", "Text", this.ValCountry);
+				}
+
+				TableCountryName.Selected = this.ValCountry;
+			}
+			catch (Exception ex)
+			{
+				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TableCountryName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
+			}
+		}
+
+		private readonly string[] _fieldsToSerialize_FORM_BRAND__COUNTRY__NAME = ["Country", "Country.ValCodcountry", "Country.ValZzstate", "Country.ValName"];
+
+		protected override object GetViewModelValue(string identifier, object modelValue)
+		{
+			return identifier switch
+			{
+				"brand.country" => ViewModelConversion.ToString(modelValue),
+				"brand.created_by" => ViewModelConversion.ToString(modelValue),
+				"brand.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"brand.updated_by" => ViewModelConversion.ToString(modelValue),
+				"brand.updated_at" => ViewModelConversion.ToDateTime(modelValue),
+				"brand.logotype" => ViewModelConversion.ToImage(modelValue),
+				"brand.name" => ViewModelConversion.ToString(modelValue),
+				"brand.description" => ViewModelConversion.ToString(modelValue),
+				"brand.codbrand" => ViewModelConversion.ToString(modelValue),
+				"country.codcountry" => ViewModelConversion.ToString(modelValue),
+				"country.name" => ViewModelConversion.ToString(modelValue),
+				_ => modelValue
+			};
+		}
+
+		/// <inheritdoc/>
+		protected override void SetTicketToImageFields()
+		{
+			if (ValLogotype != null)
+				ValLogotype.Ticket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaBRAND, CSGenioAbrand.FldLogotype.Field, null, ValCodbrand);
+		}
+
+		#region Charts
+
+
+		#endregion
+
+		#region Custom code
+
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM FORM_BRAND]/
+
+		#endregion
+	}
+}

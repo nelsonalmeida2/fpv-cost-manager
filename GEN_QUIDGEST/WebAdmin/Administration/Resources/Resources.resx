@@ -273,6 +273,9 @@
   <data name="STORES21606" xml:space="preserve">
     <value>Stores</value>
   </data>
+  <data name="CATALOGS31485" xml:space="preserve">
+    <value>Catalogs</value>
+  </data>
   <data name="FINISHED26993" xml:space="preserve">
     <value>Finished</value>
   </data>
@@ -596,6 +599,9 @@
   </data>
   <data name="ADMINISTRADOR57294" xml:space="preserve">
     <value>Administrador</value>
+  </data>
+  <data name="PURCHASES63256" xml:space="preserve">
+    <value>Purchases</value>
   </data>
   <data name="KWANZA16977" xml:space="preserve">
     <value>Kwanza</value>

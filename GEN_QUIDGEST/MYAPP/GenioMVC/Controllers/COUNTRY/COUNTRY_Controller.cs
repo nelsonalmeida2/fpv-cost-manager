@@ -20,6 +20,7 @@ using GenioMVC.Models.Exception;
 using GenioMVC.Models.Navigation;
 using GenioMVC.Resources;
 using GenioMVC.ViewModels;
+using GenioMVC.ViewModels.Country;
 using GenioServer.business;
 using CSGenio.core.ai;
 
@@ -50,6 +51,22 @@ namespace GenioMVC.Controllers
 // USE /[MANUAL FPV MANUAL_CONTROLLER COUNTRY]/
 
 
+
+
+
+		/// <summary>
+		/// Recalculate formulas of the "Form_country" form. (++, CT, SR, CL and U1)
+		/// </summary>
+		/// <param name="formData">Current form data</param>
+		/// <returns></returns>
+		[HttpPost]
+		public JsonResult RecalculateFormulas_Form_country([FromBody]Form_country_ViewModel formData)
+		{
+			return GenericRecalculateFormulas(formData, "country",
+				(primaryKey) => Models.Country.Find(primaryKey, UserContext.Current, "FFORM_COUNTRY"),
+				(model) => formData.MapToModel(model as Models.Country)
+			);
+		}
 
 		/// <summary>
 		/// Get "See more..." tree structure

@@ -8,13 +8,18 @@ const framework = createFramework({
 				name: 'Light',
 				mode: 'light',
 				colors: {
+					secondary: '#1e2436',
+					highlight: '#17a2b8',
+					primary: '#1e2436',
+					primaryDark: '#1e2436',
+					primaryLight: '#fff',
 				}
 			}
 		]
 	},
 	defaults: {
 		QIconSvg: {
-			bundle: 'Content/svgbundle.svg?v=12'
+			bundle: 'Content/svgbundle.svg?v=13'
 		},
 		QCollapsible: {
 			icons: {

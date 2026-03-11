@@ -156,6 +156,9 @@
   <msg id="Stores" code="STORES21606">
     <ENUS>Stores</ENUS>
   </msg>
+  <msg id="Catalogs" code="CATALOGS31485">
+    <ENUS>Catalogs</ENUS>
+  </msg>
   <msg id="Finished" code="FINISHED26993">
     <ENUS>Finished</ENUS>
   </msg>
@@ -479,6 +482,9 @@
   </msg>
   <msg id="Administrador" code="ADMINISTRADOR57294">
     <ENUS>Administrador</ENUS>
+  </msg>
+  <msg id="Purchases" code="PURCHASES63256">
+    <ENUS>Purchases</ENUS>
   </msg>
   <msg id="Kwanza" code="KWANZA16977">
     <ENUS>Kwanza</ENUS>

@@ -8,7 +8,7 @@ public class AppPage: PageObject
 	private By containerLocator => By.ClassName("layout-container");
 	private IWebElement Container => driver.FindElement(containerLocator);
 
-	public IMenuControl Menu => new VerticalMenuControl(driver, _menuTree);
+	public IMenuControl Menu => new HorizontalMenuControl(driver, _menuTree);
 
 	private By loginBtnLocator => By.Id("logon-menu-btn");
 	private IWebElement loginBtn => driver.FindElement(loginBtnLocator);
@@ -106,6 +106,15 @@ public class AppPage: PageObject
 		res.AddMenu(module, "1", null);
 		res.AddMenu(module, "11", "1");
 		res.AddMenu(module, "12", "1");
+		res.AddMenu(module, "13", "1");
+		res.AddMenu(module, "14", "1");
+		res.AddMenu(module, "15", "1");
+		res.AddMenu(module, "2", null);
+		res.AddMenu(module, "21", "2");
+		res.AddMenu(module, "22", "2");
+		res.AddMenu(module, "3", null);
+		res.AddMenu(module, "31", "3");
+		res.AddMenu(module, "32", "3");
         return res;
     }
 }
