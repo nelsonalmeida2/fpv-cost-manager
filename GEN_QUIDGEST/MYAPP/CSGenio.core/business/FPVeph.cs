@@ -30,7 +30,7 @@ namespace CSGenio.framework
 			ephsPorModulo = new ();
 			//PHE in role User            
             ephsPorModulo["5"] = [
-                new EPHCondition("PERSONPSW", "FPV", "fpvpersonpsw", "personpsw", "codperson", "personpsw", "codperson", FieldType.KEY_INT, ""),
+                new EPHCondition("PERSONEPH", "FPV", "fpvpersonpsw", "personpsw", "codperson", "personpsw", "codperson", FieldType.KEY_INT, ""),
             ];
 
 			niveis = [ "5" ];

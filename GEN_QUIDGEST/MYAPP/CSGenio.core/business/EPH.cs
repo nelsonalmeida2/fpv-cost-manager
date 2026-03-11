@@ -20,7 +20,7 @@ namespace CSGenio.framework
 		static EPH()
 		{
             allConditions = new(){
-                {"PERSONPSW", new EPHCondition("PERSONPSW", "FPV", "fpvpersonpsw", "personpsw", "codperson", "personpsw", "codperson", FieldType.KEY_INT, "") },
+                {"PERSONEPH", new EPHCondition("PERSONEPH", "FPV", "fpvpersonpsw", "personpsw", "codperson", "personpsw", "codperson", FieldType.KEY_INT, "") },
             };
 
             todosEphs = new() {
