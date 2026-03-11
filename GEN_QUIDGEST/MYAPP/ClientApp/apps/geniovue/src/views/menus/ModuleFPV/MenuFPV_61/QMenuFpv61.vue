@@ -15,7 +15,7 @@
 							:table-ctrl="controls.menu"
 							v-on="controls.menu.handlers" />
 					</template>
-					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_311]/ -->
+					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_61]/ -->
 				</q-table>
 			</q-row-container>
 		</form>
@@ -72,17 +72,17 @@
 	import qProjArrays from '@/api/genio/projectArrays.js'
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 
-	import MenuViewModel from './QMenuFPV_311ViewModel.js'
+	import MenuViewModel from './QMenuFPV_61ViewModel.js'
 
-	const requiredTextResources = ['QMenuFPV_311', 'hardcoded', 'messages']
+	const requiredTextResources = ['QMenuFPV_61', 'hardcoded', 'messages']
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_311]/
+// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_61]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
 	export default {
-		name: 'QMenuFpv311',
+		name: 'QMenuFpv61',
 
 		mixins: [
 			MenuHandlers
@@ -111,23 +111,23 @@
 			// eslint-disable-next-line
 			const vm = this
 			return {
-				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_311', false),
+				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_61', false),
 
 				interfaceMetadata: {
-					id: 'QMenuFPV_311', // Used for resources
+					id: 'QMenuFPV_61', // Used for resources
 					requiredTextResources
 				},
 
 				menuInfo: {
-					id: '311',
+					id: '61',
 					isMenuList: true,
-					designation: computed(() => this.Resources.BRANDS27300),
-					acronym: 'FPV_311',
-					name: 'BRAND',
-					route: 'menu-FPV_311',
-					order: '311',
-					controller: 'BRAND',
-					action: 'FPV_Menu_311',
+					designation: computed(() => this.Resources.PHOTOS39221),
+					acronym: 'FPV_61',
+					name: 'PHOTOALBUM',
+					route: 'menu-FPV_61',
+					order: '61',
+					controller: 'PHOTOALBUM',
+					action: 'FPV_Menu_61',
 					isPopup: false
 				},
 
@@ -136,9 +136,9 @@
 				controls: {
 					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
-						id: 'FPV_Menu_311',
-						controller: 'BRAND',
-						action: 'FPV_Menu_311',
+						id: 'FPV_Menu_61',
+						controller: 'PHOTOALBUM',
+						action: 'FPV_Menu_61',
 						hasDependencies: false,
 						isInCollapsible: false,
 						tableModeClasses: [
@@ -146,59 +146,89 @@
 							'page-full-height'
 						],
 						columnsOriginal: [
-							new listColumnTypes.ImageColumn({
+							new listColumnTypes.DateColumn({
 								order: 1,
-								name: 'ValLogotype',
-								area: 'BRAND',
-								field: 'LOGOTYPE',
-								label: computed(() => this.Resources.LOGOTYPE44505),
-								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
+								name: 'ValCreated_at',
+								area: 'PHOTOALBUM',
+								field: 'CREATED_AT',
+								label: computed(() => this.Resources.CREATED_AT29089),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 2,
+								name: 'ValCreated_by',
+								area: 'PHOTOALBUM',
+								field: 'CREATED_BY',
+								label: computed(() => this.Resources.CREATED_BY12292),
+								dataLength: 100,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 3,
+								name: 'ValTitle',
+								area: 'PHOTOALBUM',
+								field: 'TITLE',
+								label: computed(() => this.Resources.TITLE21885),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ImageColumn({
+								order: 4,
+								name: 'ValPhoto',
+								area: 'PHOTOALBUM',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
 								scrollData: 3,
 								sortable: false,
 								searchable: false,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 2,
-								name: 'ValName',
-								area: 'BRAND',
-								field: 'NAME',
-								label: computed(() => this.Resources.NAME31974),
-								dataLength: 50,
+								order: 5,
+								name: 'ValUpdated_by',
+								area: 'PHOTOALBUM',
+								field: 'UPDATED_BY',
+								label: computed(() => this.Resources.UPDATED_BY17808),
+								dataLength: 100,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 3,
-								name: 'ValDescription',
-								area: 'BRAND',
-								field: 'DESCRIPTION',
-								label: computed(() => this.Resources.DESCRIPTION07383),
+								order: 6,
+								name: 'Item.ValName',
+								area: 'ITEM',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
 								dataLength: 255,
 								scrollData: 30,
 								export: 1,
+								pkColumn: 'ValCoditem',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'Country.ValName',
-								area: 'COUNTRY',
-								field: 'NAME',
-								label: computed(() => this.Resources.COUNTRY64133),
-								dataLength: 75,
-								scrollData: 30,
+							new listColumnTypes.DateColumn({
+								order: 7,
+								name: 'ValUpdated_at',
+								area: 'PHOTOALBUM',
+								field: 'UPDATED_AT',
+								label: computed(() => this.Resources.UPDATED_AT48366),
+								scrollData: 8,
+								dateTimeType: 'date',
 								export: 1,
-								pkColumn: 'ValCodcountry',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
-							name: 'FPV_Menu_311',
+							name: 'FPV_Menu_61',
 							serverMode: true,
-							pkColumn: 'ValCodbrand',
-							tableAlias: 'BRAND',
-							tableNamePlural: computed(() => this.Resources.BRANDS27300),
+							pkColumn: 'ValCodphotoalbum',
+							tableAlias: 'PHOTOALBUM',
+							tableNamePlural: computed(() => this.Resources.PHOTOS39221),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.BRANDS27300),
+							tableTitle: computed(() => this.Resources.PHOTOS39221),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -219,7 +249,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -235,7 +265,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -251,7 +281,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -267,7 +297,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -285,7 +315,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'NEW',
 										repeatInsertion: false,
 										isControlled: true
@@ -301,73 +331,59 @@
 							MCActions: [
 							],
 							rowClickAction: {
-								id: 'RCA_FPV_3111',
-								name: 'form-FORM_BRAND',
+								id: 'RCA_FPV_611',
+								name: 'form-FORM_PHOTO_ALBUM',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
 											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodbrand
+											fnValueSelector: (row) => row.ValCodphotoalbum
 										},
 									],
 									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_BRAND'
+									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_PHOTO_ALBUM'
 								}
 							},
 							formsDefinition: {
-								'FORM_BRAND': {
-									fnKeySelector: (row) => row.Fields.ValCodbrand,
-									isPopup: false
+								'FORM_PHOTO_ALBUM': {
+									fnKeySelector: (row) => row.Fields.ValCodphotoalbum,
+									isPopup: true
 								},
 							},
-							defaultSearchColumnName: 'ValName',
-							defaultSearchColumnNameOriginal: 'ValName',
+							defaultSearchColumnName: 'ValTitle',
+							defaultSearchColumnNameOriginal: 'ValTitle',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValCreated_at',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-COUNTRY', 'changed-BRAND'],
-						uuid: 'd3385526-6910-4460-aea2-824fdc1c055b',
+						globalEvents: ['changed-PHOTOALBUM', 'changed-ITEM'],
+						uuid: '2ea56c4d-ebe7-4790-80e5-e1011527fef8',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
 								id: 'CARDS',
 								type: 'cards',
-								subtype: 'card-img-top',
+								subtype: 'card',
 								label: computed(() => this.Resources.CARTOES27587),
 								order: 1,
 								mappingVariables: readonly({
-									title: {
-										allowsMultiple: false,
-										sources: [
-											'BRAND.NAME',
-										]
-									},
-									subtitle: {
-										allowsMultiple: false,
-										sources: [
-											'COUNTRY.NAME',
-										]
-									},
-									text: {
-										allowsMultiple: true,
-										sources: [
-											'BRAND.DESCRIPTION',
-										]
-									},
 									image: {
 										allowsMultiple: false,
 										sources: [
-											'BRAND.LOGOTYPE',
+											'PHOTOALBUM.PHOTO',
 										]
 									},
 								}),
 								styleVariables: {
 									actionsAlignment: {
 										rawValue: 'left',
+										isMapped: false
+									},
+									actionsPlacement: {
+										rawValue: 'footer',
 										isMapped: false
 									},
 									actionsStyle: {
@@ -455,7 +471,7 @@
 		mounted()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_311]/
+// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_61]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
@@ -463,18 +479,18 @@
 		beforeUnmount()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_311]/
+// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_61]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
 
 		methods: {
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FUNCTIONS_JS FPV_311]/
+// USE /[MANUAL FPV FUNCTIONS_JS FPV_61]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_311]/
+// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_61]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		}

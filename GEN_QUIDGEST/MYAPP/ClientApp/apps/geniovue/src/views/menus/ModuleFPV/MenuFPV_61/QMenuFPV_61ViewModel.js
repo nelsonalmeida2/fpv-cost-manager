@@ -34,8 +34,8 @@ export default class ViewModel extends MenuViewModelBase
 	}
 
 	/**
-	 * Creates a clone of the current QMenuFPV_311ViewModel instance.
-	 * @returns {QMenuFPV_311ViewModel} A new instance of QMenuFPV_311ViewModel
+	 * Creates a clone of the current QMenuFPV_61ViewModel instance.
+	 * @returns {QMenuFPV_61ViewModel} A new instance of QMenuFPV_61ViewModel
 	 */
 	clone()
 	{

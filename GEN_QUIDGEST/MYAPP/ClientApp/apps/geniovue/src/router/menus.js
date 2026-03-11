@@ -61,16 +61,30 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_321',
-			name: 'menu-FPV_321',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_321/QMenuFpv321.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_41',
+			name: 'menu-FPV_41',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'),
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '321',
+				order: '41',
 				baseArea: 'STORE',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_61',
+			name: 'menu-FPV_61',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_61/QMenuFpv61.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '61',
+				baseArea: 'PHOTOALBUM',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValTitle'],
 				isPopup: false
 			}
 		},
@@ -89,13 +103,13 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_311',
-			name: 'menu-FPV_311',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_311/QMenuFpv311.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_51',
+			name: 'menu-FPV_51',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_51/QMenuFpv51.vue'),
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '311',
+				order: '51',
 				baseArea: 'BRAND',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
@@ -111,6 +125,20 @@ export default function getMenusRoutes()
 				module: 'FPV',
 				order: '141',
 				baseArea: 'SUBCATEGORY',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_31',
+			name: 'menu-FPV_31',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_31/QMenuFpv31.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '31',
+				baseArea: 'ITEM',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
 				isPopup: false

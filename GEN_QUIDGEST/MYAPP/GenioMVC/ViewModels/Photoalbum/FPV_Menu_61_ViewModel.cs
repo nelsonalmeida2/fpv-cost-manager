@@ -15,23 +15,23 @@ using GenioMVC.Models.Navigation;
 using Quidgest.Persistence;
 using Quidgest.Persistence.GenericQuery;
 
-namespace GenioMVC.ViewModels.Brand
+namespace GenioMVC.ViewModels.Photoalbum
 {
-	public class FPV_Menu_311_ViewModel : MenuListViewModel<Models.Brand>
+	public class FPV_Menu_61_ViewModel : MenuListViewModel<Models.Photoalbum>
 	{
 		/// <summary>
 		/// Gets or sets the object that represents the table and its elements.
 		/// </summary>
 		[JsonPropertyName("table")]
-		public TablePartial<FPV_Menu_311_RowViewModel> Menu { get; set; }
+		public TablePartial<FPV_Menu_61_RowViewModel> Menu { get; set; }
 
 		/// <inheritdoc/>
 		[JsonIgnore]
-		public override string TableAlias => "brand";
+		public override string TableAlias => "photoalbum";
 
 		/// <inheritdoc/>
 		[JsonPropertyName("uuid")]
-		public override string Uuid => "d3385526-6910-4460-aea2-824fdc1c055b";
+		public override string Uuid => "2ea56c4d-ebe7-4790-80e5-e1011527fef8";
 
 		/// <inheritdoc/>
 		protected override string[] FieldsToSerialize => _fieldsToSerialize;
@@ -82,7 +82,7 @@ namespace GenioMVC.ViewModels.Brand
 
 		public override CriteriaSet GetCustomizedStaticLimits(CriteriaSet crs)
 		{
-// USE /[MANUAL FPV LIST_LIMITS 311]/
+// USE /[MANUAL FPV LIST_LIMITS 61]/
 
 			return crs;
 		}
@@ -90,25 +90,24 @@ namespace GenioMVC.ViewModels.Brand
 		public override int GetCount(User user)
 		{
 			CSGenio.persistence.PersistentSupport sp = m_userContext.PersistentSupport;
-			var areaBase = CSGenio.business.Area.createArea("brand", user, "FPV");
+			var areaBase = CSGenio.business.Area.createArea("photoalbum", user, "FPV");
 
 			//gets eph conditions to be applied in listing
-			CriteriaSet conditions = CSGenio.business.Listing.CalculateConditionsEphGeneric(areaBase, "ML311");
-			conditions.Equal(CSGenioAbrand.FldZzstate, 0); //valid zzstate only
+			CriteriaSet conditions = CSGenio.business.Listing.CalculateConditionsEphGeneric(areaBase, "ML61");
+			conditions.Equal(CSGenioAphotoalbum.FldZzstate, 0); //valid zzstate only
 
 			// Fixed limits and relations:
 			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
 			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldName, CSGenioAbrand.FldDescription, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAphotoalbum.FldCodphotoalbum, CSGenioAphotoalbum.FldZzstate, CSGenioAphotoalbum.FldCreated_at, CSGenioAphotoalbum.FldCreated_by, CSGenioAphotoalbum.FldTitle, CSGenioAphotoalbum.FldPhoto, CSGenioAphotoalbum.FldUpdated_by, CSGenioAphotoalbum.FldItem, CSGenioAitem.FldCoditem, CSGenioAitem.FldName, CSGenioAphotoalbum.FldUpdated_at };
 
-			ListingMVC<CSGenioAbrand> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
+			ListingMVC<CSGenioAphotoalbum> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
 			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
 
 			// Menu relations:
 			if (qs.FromTable == null)
 				qs.From(areaBase.QSystem, areaBase.TableName, areaBase.Alias);
-
 
 
 
@@ -120,23 +119,23 @@ namespace GenioMVC.ViewModels.Brand
 		/// FOR DESERIALIZATION ONLY
 		/// </summary>
 		[Obsolete("For deserialization only")]
-		public FPV_Menu_311_ViewModel() : base(null!) { }
+		public FPV_Menu_61_ViewModel() : base(null!) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_311_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="FPV_Menu_61_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
-		public FPV_Menu_311_ViewModel(UserContext userContext) : base(userContext)
+		public FPV_Menu_61_ViewModel(UserContext userContext) : base(userContext)
 		{
-			this.RoleToShow = CSGenio.framework.Role.ROLE_5;
+			this.RoleToShow = CSGenio.framework.Role.ROLE_1;
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_311_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="FPV_Menu_61_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
 		/// <param name="parentCtx">The context of the parent</param>
-		public FPV_Menu_311_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
+		public FPV_Menu_61_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
 		{
 			ParentCtx = parentCtx;
 		}
@@ -146,19 +145,22 @@ namespace GenioMVC.ViewModels.Brand
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAbrand.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
-				new Exports.QColumn(CSGenioAbrand.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 30, 0, true),
-				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.COUNTRY64133, 30, 0, true),
+				new Exports.QColumn(CSGenioAphotoalbum.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
+				new Exports.QColumn(CSGenioAphotoalbum.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 30, 0, true),
+				new Exports.QColumn(CSGenioAphotoalbum.FldTitle, FieldType.TEXT, Resources.Resources.TITLE21885, 30, 0, true),
+				new Exports.QColumn(CSGenioAphotoalbum.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 30, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+				new Exports.QColumn(CSGenioAphotoalbum.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
 			];
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAbrand> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAphotoalbum> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 			LoadToExport(out listing, out conditions, out columns, tableConfig, requestValues, ajaxRequest);
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAbrand> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAphotoalbum> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			listing = null;
 			conditions = null;
@@ -189,7 +191,7 @@ namespace GenioMVC.ViewModels.Brand
 
 			crs ??= CriteriaSet.And();
 
-			Menu ??= new TablePartial<FPV_Menu_311_RowViewModel>();
+			Menu ??= new TablePartial<FPV_Menu_61_RowViewModel>();
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
@@ -212,25 +214,25 @@ namespace GenioMVC.ViewModels.Brand
 			if (isToExport)
 			{
 				// EPH
-				crs = Models.Brand.AddEPH<CSGenioAbrand>(ref u, crs, "ML311");
+				crs = Models.Photoalbum.AddEPH<CSGenioAphotoalbum>(ref u, crs, "ML61");
 
 				// Export only records with ZZState == 0
-				crs.Equal(CSGenioAbrand.FldZzstate, 0);
+				crs.Equal(CSGenioAphotoalbum.FldZzstate, 0);
 
 				return crs;
 			}
 
 			// Limitation by Zzstate
-			if (!Navigation.checkFormMode("BRAND", FormMode.New)) // TODO: Check in Duplicate mode
-				crs = extendWithZzstateCondition(crs, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldCreated_by);
+			if (!Navigation.checkFormMode("PHOTOALBUM", FormMode.New)) // TODO: Check in Duplicate mode
+				crs = extendWithZzstateCondition(crs, CSGenioAphotoalbum.FldZzstate, CSGenioAphotoalbum.FldCreated_by);
 
 
 			if (tableReload)
 			{
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_brand");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_brand");
+				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_photoalbum");
+				Navigation.DestroyEntry("QMVC_POS_RECORD_photoalbum");
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
-					crs.Equals(Models.Brand.AddEPH<CSGenioAbrand>(ref u, null, "ML311"));
+					crs.Equals(Models.Photoalbum.AddEPH<CSGenioAphotoalbum>(ref u, null, "ML61"));
 			}
 
 			return crs;
@@ -255,7 +257,7 @@ namespace GenioMVC.ViewModels.Brand
 		/// <param name="conditions">The conditions.</param>
 		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAbrand> listing = null;
+			ListingMVC<CSGenioAphotoalbum> listing = null;
 
 			Load(numberListItems, requestValues, ajaxRequest, false, ref listing, ref conditions);
 		}
@@ -269,7 +271,7 @@ namespace GenioMVC.ViewModels.Brand
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAbrand> Qlisting, ref CriteriaSet conditions)
+		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAphotoalbum> Qlisting, ref CriteriaSet conditions)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 
@@ -288,7 +290,7 @@ namespace GenioMVC.ViewModels.Brand
 		/// <param name="conditions">The conditions.</param>
 		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAbrand> listing = null;
+			ListingMVC<CSGenioAphotoalbum> listing = null;
 
 			Load(tableConfig, requestValues, ajaxRequest, isToExport, ref listing, ref conditions);
 		}
@@ -302,16 +304,18 @@ namespace GenioMVC.ViewModels.Brand
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAbrand> Qlisting, ref CriteriaSet conditions)
+		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAphotoalbum> Qlisting, ref CriteriaSet conditions)
 		{
 			User u = m_userContext.User;
-			Menu = new TablePartial<FPV_Menu_311_RowViewModel>();
+			Menu = new TablePartial<FPV_Menu_61_RowViewModel>();
 
-			CriteriaSet fpv_menu_311Conds = CriteriaSet.And();
+			CriteriaSet fpv_menu_61Conds = CriteriaSet.And();
 			bool tableReload = true;
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
+			allSortOrders.Add("PHOTOALBUM.CREATED_AT", new OrderedDictionary());
+			allSortOrders["PHOTOALBUM.CREATED_AT"].Add("PHOTOALBUM.CREATED_AT", "A");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -321,10 +325,16 @@ namespace GenioMVC.ViewModels.Brand
 			if (pageNumber < 1)
 				pageNumber = 1;
 
-			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "brand", allSortOrders);
+			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "photoalbum", allSortOrders);
 
+			if (sorts == null || sorts.Count == 0)
+			{
+				sorts = new List<ColumnSort>();
+				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAphotoalbum.FldCreated_at), SortOrder.Ascending));
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldLogotype, CSGenioAbrand.FldName, CSGenioAbrand.FldDescription, CSGenioAbrand.FldCountry, CSGenioAcountry.FldCodcountry, CSGenioAcountry.FldName };
+			}
+
+			FieldRef[] fields = new FieldRef[] { CSGenioAphotoalbum.FldCodphotoalbum, CSGenioAphotoalbum.FldZzstate, CSGenioAphotoalbum.FldCreated_at, CSGenioAphotoalbum.FldCreated_by, CSGenioAphotoalbum.FldTitle, CSGenioAphotoalbum.FldPhoto, CSGenioAphotoalbum.FldUpdated_by, CSGenioAphotoalbum.FldItem, CSGenioAitem.FldCoditem, CSGenioAitem.FldName, CSGenioAphotoalbum.FldUpdated_at };
 
 
 			// Totalizers
@@ -336,7 +346,7 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("brand", "logotype");
+				firstVisibleColumn ??= new FieldRef("photoalbum", "created_at");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -347,8 +357,8 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				Limit limit = new Limit();
 				limit.TipoLimite = LimitType.EPH;
-				CSGenioAbrand model_limit_area = new CSGenioAbrand(m_userContext.User);
-				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "ML311");
+				CSGenioAphotoalbum model_limit_area = new CSGenioAphotoalbum(m_userContext.User);
+				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "ML61");
 				if (area_EPH_limits.Count > 0)
 					this.TableLimits.AddRange(area_EPH_limits);
 			}
@@ -357,11 +367,11 @@ namespace GenioMVC.ViewModels.Brand
 			if (conditions == null)
 				conditions = CriteriaSet.And();
 
-			conditions.SubSets.Add(fpv_menu_311Conds);
-			fpv_menu_311Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
+			conditions.SubSets.Add(fpv_menu_61Conds);
+			fpv_menu_61Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
 			tableReload &= hasAllRequiredLimits;
 
-// USE /[MANUAL FPV OVERRQ 311]/
+// USE /[MANUAL FPV OVERRQ 61]/
 
 			bool distinct = false;
 
@@ -373,29 +383,29 @@ namespace GenioMVC.ViewModels.Brand
 				var exportColumns = GetExportColumns(tableConfig.ColumnConfigurations);
 				var exportFieldRefs = exportColumns.Select(eCol => eCol.Field).Where(fldRef => fldRef != null).ToArray();
 
-				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAbrand>(m_userContext, false, ref fpv_menu_311Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML311", true, firstVisibleColumn: firstVisibleColumn);
+				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAphotoalbum>(m_userContext, false, ref fpv_menu_61Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML61", true, firstVisibleColumn: firstVisibleColumn);
 
-// USE /[MANUAL FPV OVERRQLSTEXP 311]/
+// USE /[MANUAL FPV OVERRQLSTEXP 61]/
 
 				return;
 			}
 
 			if (tableReload)
 			{
-// USE /[MANUAL FPV OVERRQLIST 311]/
+// USE /[MANUAL FPV OVERRQLIST 61]/
 
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_brand");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_brand");
+				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_photoalbum");
+				Navigation.DestroyEntry("QMVC_POS_RECORD_photoalbum");
 				CriteriaSet m_PagingPosEPHs = null;
 
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
 				{
-					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAbrand.GetInformation(), QMVC_POS_RECORD, sorts, fpv_menu_311Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
+					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAphotoalbum.GetInformation(), QMVC_POS_RECORD, sorts, fpv_menu_61Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
 					if (m_iCurPag != -1)
 						pageNumber = ((m_iCurPag - 1) / numberListItems) + 1;
 				}
 
-				ListingMVC<CSGenioAbrand> listing = Models.ModelBase.Where<CSGenioAbrand>(m_userContext, distinct, fpv_menu_311Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML311", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
+				ListingMVC<CSGenioAphotoalbum> listing = Models.ModelBase.Where<CSGenioAphotoalbum>(m_userContext, distinct, fpv_menu_61Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML61", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
 
 				if (listing.CurrentPage > 0)
 					pageNumber = listing.CurrentPage;
@@ -407,15 +417,15 @@ namespace GenioMVC.ViewModels.Brand
 				//Set document field values to objects
 				SetDocumentFields(listing);
 
-				Menu.Elements = MapFPV_Menu_311(listing);
+				Menu.Elements = MapFPV_Menu_61(listing);
 
-				Menu.Identifier = "ML311";
+				Menu.Identifier = "ML61";
 				Menu.Slots = new Dictionary<string, List<object>>();
 
 				// Last updated by [CJP] at [2015.02.03]
 				// Adds the identifier to each element
 				foreach (var element in Menu.Elements)
-					element.Identifier = "ML311";
+					element.Identifier = "ML61";
 
 				Menu.SetPagination(pageNumber, listing.NumRegs, listing.HasMore, listing.GetTotal, listing.TotalRecords);
 
@@ -434,9 +444,9 @@ namespace GenioMVC.ViewModels.Brand
 			LoadUserTableConfigNameProperties();
 		}
 
-		private List<FPV_Menu_311_RowViewModel> MapFPV_Menu_311(ListingMVC<CSGenioAbrand> Qlisting)
+		private List<FPV_Menu_61_RowViewModel> MapFPV_Menu_61(ListingMVC<CSGenioAphotoalbum> Qlisting)
 		{
-			List<FPV_Menu_311_RowViewModel> Elements = [];
+			List<FPV_Menu_61_RowViewModel> Elements = [];
 			int i = 0;
 
 			if (Qlisting.Rows != null)
@@ -445,7 +455,7 @@ namespace GenioMVC.ViewModels.Brand
 				{
 					if (Qlisting.NumRegs > 0 && i >= Qlisting.NumRegs) // Copiado da versão antiga do RowsToViewModels
 						break;
-					Elements.Add(MapFPV_Menu_311(row));
+					Elements.Add(MapFPV_Menu_61(row));
 					i++;
 				}
 			}
@@ -454,13 +464,13 @@ namespace GenioMVC.ViewModels.Brand
 		}
 
 		/// <summary>
-		/// Maps a single CSGenioAbrand row
-		/// to a FPV_Menu_311_RowViewModel object.
+		/// Maps a single CSGenioAphotoalbum row
+		/// to a FPV_Menu_61_RowViewModel object.
 		/// </summary>
 		/// <param name="row">The row.</param>
-		private FPV_Menu_311_RowViewModel MapFPV_Menu_311(CSGenioAbrand row)
+		private FPV_Menu_61_RowViewModel MapFPV_Menu_61(CSGenioAphotoalbum row)
 		{
-			var model = new FPV_Menu_311_RowViewModel(m_userContext, true, _fieldsToSerialize);
+			var model = new FPV_Menu_61_RowViewModel(m_userContext, true, _fieldsToSerialize);
 			if (row == null)
 				return model;
 
@@ -468,10 +478,10 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				switch (Qfield.Area)
 				{
-					case "brand":
+					case "photoalbum":
 						model.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
-					case "country":
-						model.Country.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
+					case "item":
+						model.Item.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
 					default:
 						break;
 				}
@@ -498,19 +508,19 @@ namespace GenioMVC.ViewModels.Brand
 		/// Sets the document field values to objects.
 		/// </summary>
 		/// <param name="listing">The rows</param>
-		private void SetDocumentFields(ListingMVC<CSGenioAbrand> listing)
+		private void SetDocumentFields(ListingMVC<CSGenioAphotoalbum> listing)
 		{
 		}
 
 		#region Mapper
 
 		/// <inheritdoc />
-		public override void MapFromModel(Models.Brand m)
+		public override void MapFromModel(Models.Photoalbum m)
 		{
 		}
 
 		/// <inheritdoc />
-		public override void MapToModel(Models.Brand m)
+		public override void MapToModel(Models.Photoalbum m)
 		{
 		}
 
@@ -518,27 +528,30 @@ namespace GenioMVC.ViewModels.Brand
 
 		#region Custom code
 
-// USE /[MANUAL FPV VIEWMODEL_CUSTOM FPV_MENU_311]/
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM FPV_MENU_61]/
 
 		#endregion
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValLogotype", "Brand.ValName", "Brand.ValDescription", "Country", "Country.ValName", "Brand.ValCountry"
+			"Photoalbum", "Photoalbum.ValCodphotoalbum", "Photoalbum.ValZzstate", "Photoalbum.ValCreated_at", "Photoalbum.ValCreated_by", "Photoalbum.ValTitle", "Photoalbum.ValPhoto", "Photoalbum.ValUpdated_by", "Item", "Item.ValName", "Photoalbum.ValUpdated_at", "Photoalbum.ValItem"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValName", CSGenioAbrand.FldName, typeof(string), defaultSearch : true),
-			new TableSearchColumn("ValDescription", CSGenioAbrand.FldDescription, typeof(string)),
-			new TableSearchColumn("Country_ValName", CSGenioAcountry.FldName, typeof(string)),
+			new TableSearchColumn("ValCreated_at", CSGenioAphotoalbum.FldCreated_at, typeof(DateTime?)),
+			new TableSearchColumn("ValCreated_by", CSGenioAphotoalbum.FldCreated_by, typeof(string)),
+			new TableSearchColumn("ValTitle", CSGenioAphotoalbum.FldTitle, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValUpdated_by", CSGenioAphotoalbum.FldUpdated_by, typeof(string)),
+			new TableSearchColumn("Item_ValName", CSGenioAitem.FldName, typeof(string)),
+			new TableSearchColumn("ValUpdated_at", CSGenioAphotoalbum.FldUpdated_at, typeof(DateTime?)),
 		];
-		protected void SetTicketToImageFields(Models.Brand row)
+		protected void SetTicketToImageFields(Models.Photoalbum row)
 		{
 			if (row == null)
 				return;
 
-			row.ValLogotypeQTicket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaBRAND, CSGenioAbrand.FldLogotype.Field, null, row.ValCodbrand);
+			row.ValPhotoQTicket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaPHOTOALBUM, CSGenioAphotoalbum.FldPhoto.Field, null, row.ValCodphotoalbum);
 		}
 	}
 }

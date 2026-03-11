@@ -207,7 +207,7 @@ namespace CSGenio.business
 			info.IsDomain = true;
 			info.PersistenceType = PersistenceType.Database;
 			info.AreaDesignation="Photo Album";
-			info.AreaPluralDesignation="PHOTOALBUM";
+			info.AreaPluralDesignation="Photos";
 			info.DescriptionCav="PHOTO_ALBUM45574";
 
 			//sincronização

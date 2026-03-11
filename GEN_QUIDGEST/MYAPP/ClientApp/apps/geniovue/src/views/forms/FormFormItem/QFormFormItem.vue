@@ -1098,7 +1098,7 @@
 							serverMode: true,
 							pkColumn: 'ValCodphotoalbum',
 							tableAlias: 'PHOTOALBUM',
-							tableNamePlural: computed(() => this.Resources.PHOTOALBUM01892),
+							tableNamePlural: computed(() => this.Resources.PHOTOS39221),
 							viewManagement: '',
 							showLimitsInfo: true,
 							showAlternatePagination: true,
