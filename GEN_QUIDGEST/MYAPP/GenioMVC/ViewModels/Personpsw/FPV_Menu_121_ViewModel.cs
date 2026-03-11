@@ -17,13 +17,13 @@ using Quidgest.Persistence.GenericQuery;
 
 namespace GenioMVC.ViewModels.Personpsw
 {
-	public class FPV_Menu_11_ViewModel : MenuListViewModel<Models.Personpsw>
+	public class FPV_Menu_121_ViewModel : MenuListViewModel<Models.Personpsw>
 	{
 		/// <summary>
 		/// Gets or sets the object that represents the table and its elements.
 		/// </summary>
 		[JsonPropertyName("table")]
-		public TablePartial<FPV_Menu_11_RowViewModel> Menu { get; set; }
+		public TablePartial<FPV_Menu_121_RowViewModel> Menu { get; set; }
 
 		/// <inheritdoc/>
 		[JsonIgnore]
@@ -82,7 +82,7 @@ namespace GenioMVC.ViewModels.Personpsw
 
 		public override CriteriaSet GetCustomizedStaticLimits(CriteriaSet crs)
 		{
-// USE /[MANUAL FPV LIST_LIMITS 11]/
+// USE /[MANUAL FPV LIST_LIMITS 121]/
 
 			return crs;
 		}
@@ -93,7 +93,7 @@ namespace GenioMVC.ViewModels.Personpsw
 			var areaBase = CSGenio.business.Area.createArea("personpsw", user, "FPV");
 
 			//gets eph conditions to be applied in listing
-			CriteriaSet conditions = CSGenio.business.Listing.CalculateConditionsEphGeneric(areaBase, "ML11");
+			CriteriaSet conditions = CSGenio.business.Listing.CalculateConditionsEphGeneric(areaBase, "ML121");
 			conditions.Equal(CSGenioApersonpsw.FldZzstate, 0); //valid zzstate only
 
 			// Fixed limits and relations:
@@ -111,6 +111,7 @@ namespace GenioMVC.ViewModels.Personpsw
 
 
 
+
 			//operation: Count menu records
 			return CSGenio.persistence.DBConversion.ToInteger(sp.ExecuteScalar(CSGenio.persistence.QueryUtils.buildQueryCount(qs)));
 		}
@@ -119,23 +120,23 @@ namespace GenioMVC.ViewModels.Personpsw
 		/// FOR DESERIALIZATION ONLY
 		/// </summary>
 		[Obsolete("For deserialization only")]
-		public FPV_Menu_11_ViewModel() : base(null!) { }
+		public FPV_Menu_121_ViewModel() : base(null!) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_11_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="FPV_Menu_121_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
-		public FPV_Menu_11_ViewModel(UserContext userContext) : base(userContext)
+		public FPV_Menu_121_ViewModel(UserContext userContext) : base(userContext)
 		{
 			this.RoleToShow = CSGenio.framework.Role.ADMINISTRATION;
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_11_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="FPV_Menu_121_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
 		/// <param name="parentCtx">The context of the parent</param>
-		public FPV_Menu_11_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
+		public FPV_Menu_121_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
 		{
 			ParentCtx = parentCtx;
 		}
@@ -186,7 +187,7 @@ namespace GenioMVC.ViewModels.Personpsw
 
 			crs ??= CriteriaSet.And();
 
-			Menu ??= new TablePartial<FPV_Menu_11_RowViewModel>();
+			Menu ??= new TablePartial<FPV_Menu_121_RowViewModel>();
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
@@ -209,7 +210,7 @@ namespace GenioMVC.ViewModels.Personpsw
 			if (isToExport)
 			{
 				// EPH
-				crs = Models.Personpsw.AddEPH<CSGenioApersonpsw>(ref u, crs, "ML11");
+				crs = Models.Personpsw.AddEPH<CSGenioApersonpsw>(ref u, crs, "ML121");
 
 				// Export only records with ZZState == 0
 				crs.Equal(CSGenioApersonpsw.FldZzstate, 0);
@@ -227,7 +228,7 @@ namespace GenioMVC.ViewModels.Personpsw
 				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_personpsw");
 				Navigation.DestroyEntry("QMVC_POS_RECORD_personpsw");
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
-					crs.Equals(Models.Personpsw.AddEPH<CSGenioApersonpsw>(ref u, null, "ML11"));
+					crs.Equals(Models.Personpsw.AddEPH<CSGenioApersonpsw>(ref u, null, "ML121"));
 			}
 
 			return crs;
@@ -302,9 +303,9 @@ namespace GenioMVC.ViewModels.Personpsw
 		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioApersonpsw> Qlisting, ref CriteriaSet conditions)
 		{
 			User u = m_userContext.User;
-			Menu = new TablePartial<FPV_Menu_11_RowViewModel>();
+			Menu = new TablePartial<FPV_Menu_121_RowViewModel>();
 
-			CriteriaSet fpv_menu_11Conds = CriteriaSet.And();
+			CriteriaSet fpv_menu_121Conds = CriteriaSet.And();
 			bool tableReload = true;
 
 			//FOR: MENU LIST SORTING
@@ -345,7 +346,7 @@ namespace GenioMVC.ViewModels.Personpsw
 				Limit limit = new Limit();
 				limit.TipoLimite = LimitType.EPH;
 				CSGenioApersonpsw model_limit_area = new CSGenioApersonpsw(m_userContext.User);
-				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "ML11");
+				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "ML121");
 				if (area_EPH_limits.Count > 0)
 					this.TableLimits.AddRange(area_EPH_limits);
 			}
@@ -354,11 +355,11 @@ namespace GenioMVC.ViewModels.Personpsw
 			if (conditions == null)
 				conditions = CriteriaSet.And();
 
-			conditions.SubSets.Add(fpv_menu_11Conds);
-			fpv_menu_11Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
+			conditions.SubSets.Add(fpv_menu_121Conds);
+			fpv_menu_121Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
 			tableReload &= hasAllRequiredLimits;
 
-// USE /[MANUAL FPV OVERRQ 11]/
+// USE /[MANUAL FPV OVERRQ 121]/
 
 			bool distinct = false;
 
@@ -370,16 +371,16 @@ namespace GenioMVC.ViewModels.Personpsw
 				var exportColumns = GetExportColumns(tableConfig.ColumnConfigurations);
 				var exportFieldRefs = exportColumns.Select(eCol => eCol.Field).Where(fldRef => fldRef != null).ToArray();
 
-				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioApersonpsw>(m_userContext, false, ref fpv_menu_11Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML11", true, firstVisibleColumn: firstVisibleColumn);
+				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioApersonpsw>(m_userContext, false, ref fpv_menu_121Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML121", true, firstVisibleColumn: firstVisibleColumn);
 
-// USE /[MANUAL FPV OVERRQLSTEXP 11]/
+// USE /[MANUAL FPV OVERRQLSTEXP 121]/
 
 				return;
 			}
 
 			if (tableReload)
 			{
-// USE /[MANUAL FPV OVERRQLIST 11]/
+// USE /[MANUAL FPV OVERRQLIST 121]/
 
 				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_personpsw");
 				Navigation.DestroyEntry("QMVC_POS_RECORD_personpsw");
@@ -387,12 +388,12 @@ namespace GenioMVC.ViewModels.Personpsw
 
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
 				{
-					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioApersonpsw.GetInformation(), QMVC_POS_RECORD, sorts, fpv_menu_11Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
+					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioApersonpsw.GetInformation(), QMVC_POS_RECORD, sorts, fpv_menu_121Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
 					if (m_iCurPag != -1)
 						pageNumber = ((m_iCurPag - 1) / numberListItems) + 1;
 				}
 
-				ListingMVC<CSGenioApersonpsw> listing = Models.ModelBase.Where<CSGenioApersonpsw>(m_userContext, distinct, fpv_menu_11Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML11", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
+				ListingMVC<CSGenioApersonpsw> listing = Models.ModelBase.Where<CSGenioApersonpsw>(m_userContext, distinct, fpv_menu_121Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML121", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
 
 				if (listing.CurrentPage > 0)
 					pageNumber = listing.CurrentPage;
@@ -404,15 +405,15 @@ namespace GenioMVC.ViewModels.Personpsw
 				//Set document field values to objects
 				SetDocumentFields(listing);
 
-				Menu.Elements = MapFPV_Menu_11(listing);
+				Menu.Elements = MapFPV_Menu_121(listing);
 
-				Menu.Identifier = "ML11";
+				Menu.Identifier = "ML121";
 				Menu.Slots = new Dictionary<string, List<object>>();
 
 				// Last updated by [CJP] at [2015.02.03]
 				// Adds the identifier to each element
 				foreach (var element in Menu.Elements)
-					element.Identifier = "ML11";
+					element.Identifier = "ML121";
 
 				Menu.SetPagination(pageNumber, listing.NumRegs, listing.HasMore, listing.GetTotal, listing.TotalRecords);
 
@@ -431,9 +432,9 @@ namespace GenioMVC.ViewModels.Personpsw
 			LoadUserTableConfigNameProperties();
 		}
 
-		private List<FPV_Menu_11_RowViewModel> MapFPV_Menu_11(ListingMVC<CSGenioApersonpsw> Qlisting)
+		private List<FPV_Menu_121_RowViewModel> MapFPV_Menu_121(ListingMVC<CSGenioApersonpsw> Qlisting)
 		{
-			List<FPV_Menu_11_RowViewModel> Elements = [];
+			List<FPV_Menu_121_RowViewModel> Elements = [];
 			int i = 0;
 
 			if (Qlisting.Rows != null)
@@ -442,7 +443,7 @@ namespace GenioMVC.ViewModels.Personpsw
 				{
 					if (Qlisting.NumRegs > 0 && i >= Qlisting.NumRegs) // Copiado da versão antiga do RowsToViewModels
 						break;
-					Elements.Add(MapFPV_Menu_11(row));
+					Elements.Add(MapFPV_Menu_121(row));
 					i++;
 				}
 			}
@@ -452,12 +453,12 @@ namespace GenioMVC.ViewModels.Personpsw
 
 		/// <summary>
 		/// Maps a single CSGenioApersonpsw row
-		/// to a FPV_Menu_11_RowViewModel object.
+		/// to a FPV_Menu_121_RowViewModel object.
 		/// </summary>
 		/// <param name="row">The row.</param>
-		private FPV_Menu_11_RowViewModel MapFPV_Menu_11(CSGenioApersonpsw row)
+		private FPV_Menu_121_RowViewModel MapFPV_Menu_121(CSGenioApersonpsw row)
 		{
-			var model = new FPV_Menu_11_RowViewModel(m_userContext, true, _fieldsToSerialize);
+			var model = new FPV_Menu_121_RowViewModel(m_userContext, true, _fieldsToSerialize);
 			if (row == null)
 				return model;
 
@@ -514,7 +515,7 @@ namespace GenioMVC.ViewModels.Personpsw
 
 		#region Custom code
 
-// USE /[MANUAL FPV VIEWMODEL_CUSTOM FPV_MENU_11]/
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM FPV_MENU_121]/
 
 		#endregion
 

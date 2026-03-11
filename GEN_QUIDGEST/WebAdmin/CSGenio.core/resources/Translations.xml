@@ -144,6 +144,9 @@
   <msg id="Quidgest" code="QUIDGEST26196">
     <ENUS>Quidgest</ENUS>
   </msg>
+  <msg id="Admin" code="ADMIN32587">
+    <ENUS>Admin</ENUS>
+  </msg>
   <msg id="Store" code="STORE16493">
     <ENUS>Store</ENUS>
   </msg>
@@ -221,6 +224,9 @@
   </msg>
   <msg id="Modules" code="MODULES33542">
     <ENUS>Modules</ENUS>
+  </msg>
+  <msg id="Persons PSW" code="PERSONS_PSW64657">
+    <ENUS>Persons PSW</ENUS>
   </msg>
   <msg id="Estado do processo" code="ESTADO_DO_PROCESSO07540">
     <ENUS>Estado do processo</ENUS>
@@ -9128,9 +9134,6 @@
   </msg>
   <msg id="Regular" code="REGULAR05607">
     <ENUS>Regular</ENUS>
-  </msg>
-  <msg id="Admin" code="ADMIN32587">
-    <ENUS>Admin</ENUS>
   </msg>
   <msg id="Este nome já existe!" code="ESTE_NOME_JA_EXISTE_51368">
     <ENUS>This name already exists!</ENUS>

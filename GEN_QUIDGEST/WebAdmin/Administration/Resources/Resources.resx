@@ -261,6 +261,9 @@
   <data name="QUIDGEST26196" xml:space="preserve">
     <value>Quidgest</value>
   </data>
+  <data name="ADMIN32587" xml:space="preserve">
+    <value>Admin</value>
+  </data>
   <data name="STORE16493" xml:space="preserve">
     <value>Store</value>
   </data>
@@ -338,6 +341,9 @@
   </data>
   <data name="MODULES33542" xml:space="preserve">
     <value>Modules</value>
+  </data>
+  <data name="PERSONS_PSW64657" xml:space="preserve">
+    <value>Persons PSW</value>
   </data>
   <data name="ESTADO_DO_PROCESSO07540" xml:space="preserve">
     <value>Estado do processo</value>
@@ -9245,9 +9251,6 @@
   </data>
   <data name="REGULAR05607" xml:space="preserve">
     <value>Regular</value>
-  </data>
-  <data name="ADMIN32587" xml:space="preserve">
-    <value>Admin</value>
   </data>
   <data name="ESTE_NOME_JA_EXISTE_51368" xml:space="preserve">
     <value>This name already exists!</value>

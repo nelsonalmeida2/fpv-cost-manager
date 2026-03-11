@@ -5,13 +5,27 @@ export default function getMenusRoutes()
 {
 	return [
 		{
-			path: '/:culture/:system/FPV/menu/FPV_11',
-			name: 'menu-FPV_11',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_11/QMenuFpv11.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_111',
+			name: 'menu-FPV_111',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_111/QMenuFpv111.vue'),
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '11',
+				order: '111',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_121',
+			name: 'menu-FPV_121',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_121/QMenuFpv121.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '121',
 				baseArea: 'PERSONPSW',
 				hasInitialPHE: false,
 				humanKeyFields: [],

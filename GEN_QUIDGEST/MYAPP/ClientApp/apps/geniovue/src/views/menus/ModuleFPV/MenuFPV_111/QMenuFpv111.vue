@@ -15,7 +15,7 @@
 							:table-ctrl="controls.menu"
 							v-on="controls.menu.handlers" />
 					</template>
-					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_11]/ -->
+					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_111]/ -->
 				</q-table>
 			</q-row-container>
 		</form>
@@ -72,17 +72,17 @@
 	import qProjArrays from '@/api/genio/projectArrays.js'
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 
-	import MenuViewModel from './QMenuFPV_11ViewModel.js'
+	import MenuViewModel from './QMenuFPV_111ViewModel.js'
 
-	const requiredTextResources = ['QMenuFPV_11', 'hardcoded', 'messages']
+	const requiredTextResources = ['QMenuFPV_111', 'hardcoded', 'messages']
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_11]/
+// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_111]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
 	export default {
-		name: 'QMenuFpv11',
+		name: 'QMenuFpv111',
 
 		mixins: [
 			MenuHandlers
@@ -111,23 +111,23 @@
 			// eslint-disable-next-line
 			const vm = this
 			return {
-				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_11', false),
+				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_111', false),
 
 				interfaceMetadata: {
-					id: 'QMenuFPV_11', // Used for resources
+					id: 'QMenuFPV_111', // Used for resources
 					requiredTextResources
 				},
 
 				menuInfo: {
-					id: '11',
+					id: '111',
 					isMenuList: true,
-					designation: computed(() => this.Resources.PERSON_PSW33377),
-					acronym: 'FPV_11',
-					name: 'PERSONPSW',
-					route: 'menu-FPV_11',
-					order: '11',
-					controller: 'PERSONPSW',
-					action: 'FPV_Menu_11',
+					designation: computed(() => this.Resources.PERSONS18356),
+					acronym: 'FPV_111',
+					name: 'PERSON',
+					route: 'menu-FPV_111',
+					order: '111',
+					controller: 'PERSON',
+					action: 'FPV_Menu_111',
 					isPopup: false
 				},
 
@@ -136,9 +136,9 @@
 				controls: {
 					menu: new controlClass.TableListControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
-						id: 'FPV_Menu_11',
-						controller: 'PERSONPSW',
-						action: 'FPV_Menu_11',
+						id: 'FPV_Menu_111',
+						controller: 'PERSON',
+						action: 'FPV_Menu_111',
 						hasDependencies: false,
 						isInCollapsible: false,
 						tableModeClasses: [
@@ -148,25 +148,24 @@
 						columnsOriginal: [
 							new listColumnTypes.TextColumn({
 								order: 1,
-								name: 'Person.ValName',
+								name: 'ValName',
 								area: 'PERSON',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodperson',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
-							name: 'FPV_Menu_11',
+							name: 'FPV_Menu_111',
 							serverMode: true,
-							pkColumn: 'ValCodpersonpsw',
-							tableAlias: 'PERSONPSW',
-							tableNamePlural: computed(() => this.Resources.PERSON_PSW33377),
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.PERSON_PSW33377),
+							tableTitle: computed(() => this.Resources.PERSONS18356),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -187,7 +186,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PERSONPSW',
+										formName: 'FORM_PERSON',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -203,7 +202,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PERSONPSW',
+										formName: 'FORM_PERSON',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -219,7 +218,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PERSONPSW',
+										formName: 'FORM_PERSON',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -235,7 +234,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PERSONPSW',
+										formName: 'FORM_PERSON',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -253,7 +252,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PERSONPSW',
+										formName: 'FORM_PERSON',
 										mode: 'NEW',
 										repeatInsertion: false,
 										isControlled: true
@@ -269,36 +268,36 @@
 							MCActions: [
 							],
 							rowClickAction: {
-								id: 'RCA_FPV_111',
-								name: 'form-FORM_PERSONPSW',
+								id: 'RCA_FPV_1111',
+								name: 'form-FORM_PERSON',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
 											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodpersonpsw
+											fnValueSelector: (row) => row.ValCodperson
 										},
 									],
 									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_PERSONPSW'
+									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_PERSON'
 								}
 							},
 							formsDefinition: {
-								'FORM_PERSONPSW': {
-									fnKeySelector: (row) => row.Fields.ValCodpersonpsw,
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
 									isPopup: false
 								},
 							},
-							defaultSearchColumnName: '',
-							defaultSearchColumnNameOriginal: '',
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValName',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-PSW', 'changed-PERSONPSW'],
-						uuid: 'bd90762f-e268-425d-821c-e614e435ca6b',
+						globalEvents: ['changed-PERSON'],
+						uuid: '2c263db8-87c2-494a-8324-08dfa8b4de08',
 						allSelectedRows: 'false',
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
@@ -324,7 +323,7 @@
 		mounted()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_11]/
+// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_111]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
@@ -332,18 +331,18 @@
 		beforeUnmount()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_11]/
+// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_111]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
 
 		methods: {
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FUNCTIONS_JS FPV_11]/
+// USE /[MANUAL FPV FUNCTIONS_JS FPV_111]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_11]/
+// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_111]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		}

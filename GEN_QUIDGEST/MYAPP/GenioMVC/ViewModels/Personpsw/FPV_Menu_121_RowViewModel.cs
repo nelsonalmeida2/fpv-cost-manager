@@ -6,16 +6,16 @@ using GenioMVC.Models.Navigation;
 
 namespace GenioMVC.ViewModels.Personpsw;
 
-public class FPV_Menu_11_RowViewModel : Models.Personpsw
+public class FPV_Menu_121_RowViewModel : Models.Personpsw
 {
 	#region Constructors
 
-	public FPV_Menu_11_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_121_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_11_RowViewModel(UserContext userContext, CSGenioApersonpsw val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_121_RowViewModel(UserContext userContext, CSGenioApersonpsw val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}

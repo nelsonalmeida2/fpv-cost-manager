@@ -495,6 +495,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Admin"
+		/// </summary>
+		public static string ADMIN32587 {
+			get {
+				return ResourceManager.GetString("ADMIN32587", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Store"
 		/// </summary>
 		public static string STORE16493 {
@@ -725,6 +734,15 @@ namespace GenioMVC.Resources
 		public static string MODULES33542 {
 			get {
 				return ResourceManager.GetString("MODULES33542", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Persons PSW"
+		/// </summary>
+		public static string PERSONS_PSW64657 {
+			get {
+				return ResourceManager.GetString("PERSONS_PSW64657", resourceCulture);
 			}
 		}
 
@@ -27446,15 +27464,6 @@ namespace GenioMVC.Resources
 		public static string REGULAR05607 {
 			get {
 				return ResourceManager.GetString("REGULAR05607", resourceCulture);
-			}
-		}
-
-		/// <summary>
-		///   Looks up a localized string similar to "Admin"
-		/// </summary>
-		public static string ADMIN32587 {
-			get {
-				return ResourceManager.GetString("ADMIN32587", resourceCulture);
 			}
 		}
 
