@@ -220,7 +220,7 @@ namespace GenioMVC.ViewModels.Personpsw
 
 			// Limitation by Zzstate
 			if (!Navigation.checkFormMode("PERSONPSW", FormMode.New)) // TODO: Check in Duplicate mode
-				crs = extendWithZzstateCondition(crs, CSGenioApersonpsw.FldZzstate, null);
+				crs = extendWithZzstateCondition(crs, CSGenioApersonpsw.FldZzstate, CSGenioApersonpsw.FldCreated_by);
 
 
 			if (tableReload)

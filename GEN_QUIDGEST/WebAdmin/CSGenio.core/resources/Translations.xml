@@ -33,11 +33,17 @@
   <msg id="PERSON" code="PERSON00920">
     <ENUS>PERSON</ENUS>
   </msg>
+  <msg id="New Group" code="NEW_GROUP63448">
+    <ENUS>New Group</ENUS>
+  </msg>
   <msg id="Process ID" code="PROCESS_ID11161">
     <ENUS>Process ID</ENUS>
   </msg>
   <msg id="Notification ID" code="NOTIFICATION_ID25507">
     <ENUS>Notification ID</ENUS>
+  </msg>
+  <msg id="Country Info" code="COUNTRY_INFO03464">
+    <ENUS>Country Info</ENUS>
   </msg>
   <msg id="Terminado" code="TERMINADO46276">
     <ENUS>Terminado</ENUS>
@@ -45,11 +51,20 @@
   <msg id="Logotype" code="LOGOTYPE44505">
     <ENUS>Logotype</ENUS>
   </msg>
+  <msg id="cREA" code="CREA43898">
+    <ENUS>cREA</ENUS>
+  </msg>
   <msg id="Role" code="ROLE60946">
     <ENUS>Role</ENUS>
   </msg>
+  <msg id="BRAND INFO" code="BRAND_INFO00139">
+    <ENUS>BRAND INFO</ENUS>
+  </msg>
   <msg id="Motive" code="MOTIVE13407">
     <ENUS>Motive</ENUS>
+  </msg>
+  <msg id="Person Info" code="PERSON_INFO59550">
+    <ENUS>Person Info</ENUS>
   </msg>
   <msg id="Ruble" code="RUBLE07990">
     <ENUS>Ruble</ENUS>
@@ -62,6 +77,9 @@
   </msg>
   <msg id="Canceled by" code="CANCELED_BY01167">
     <ENUS>Canceled by</ENUS>
+  </msg>
+  <msg id="Updated At" code="UPDATED_AT48366">
+    <ENUS>Updated At</ENUS>
   </msg>
   <msg id="Status" code="STATUS62033">
     <ENUS>Status</ENUS>
@@ -174,8 +192,14 @@
   <msg id="Quantity" code="QUANTITY06415">
     <ENUS>Quantity</ENUS>
   </msg>
+  <msg id="Updated by" code="UPDATED_BY17808">
+    <ENUS>Updated by</ENUS>
+  </msg>
   <msg id="Phone number" code="PHONE_NUMBER20774">
     <ENUS>Phone number</ENUS>
+  </msg>
+  <msg id="MetaData" code="METADATA28516">
+    <ENUS>MetaData</ENUS>
   </msg>
   <msg id="Unidade orgânica" code="UNIDADE_ORGANICA38383">
     <ENUS>Unidade orgânica</ENUS>
@@ -201,11 +225,17 @@
   <msg id="User ID" code="USER_ID13914">
     <ENUS>User ID</ENUS>
   </msg>
+  <msg id="SUB-CATEGORY INFO" code="SUB_CATEGORY_INFO23729">
+    <ENUS>SUB-CATEGORY INFO</ENUS>
+  </msg>
   <msg id="HTML format?" code="HTML_FORMAT_60293">
     <ENUS>HTML format?</ENUS>
   </msg>
   <msg id="Unit Price" code="UNIT_PRICE24898">
     <ENUS>Unit Price</ENUS>
+  </msg>
+  <msg id="Birthday" code="BIRTHDAY30236">
+    <ENUS>Birthday</ENUS>
   </msg>
   <msg id="Name PSW" code="NAME_PSW24858">
     <ENUS>Name PSW</ENUS>
@@ -222,6 +252,9 @@
   <msg id="Country" code="COUNTRY64133">
     <ENUS>Country</ENUS>
   </msg>
+  <msg id="Telephone" code="TELEPHONE28697">
+    <ENUS>Telephone</ENUS>
+  </msg>
   <msg id="Sender" code="SENDER07671">
     <ENUS>Sender</ENUS>
   </msg>
@@ -233,6 +266,9 @@
   </msg>
   <msg id="Horário" code="HORARIO56549">
     <ENUS>Horário</ENUS>
+  </msg>
+  <msg id="Brand Name" code="BRAND_NAME49806">
+    <ENUS>Brand Name</ENUS>
   </msg>
   <msg id="Modules" code="MODULES33542">
     <ENUS>Modules</ENUS>
@@ -264,6 +300,9 @@
   <msg id="Certified Series Number" code="CERTIFIED_SERIES_NUM14349">
     <ENUS>Certified Series Number</ENUS>
   </msg>
+  <msg id="Created at" code="CREATED_AT29089">
+    <ENUS>Created at</ENUS>
+  </msg>
   <msg id="Resultados" code="RESULTADOS20000">
     <ENUS>Resultados</ENUS>
   </msg>
@@ -275,6 +314,9 @@
   </msg>
   <msg id="Categories" code="CATEGORIES06648">
     <ENUS>Categories</ENUS>
+  </msg>
+  <msg id="updated_at" code="UPDATED_AT46891">
+    <ENUS>updated_at</ENUS>
   </msg>
   <msg id="Client ip address" code="CLIENT_IP_ADDRESS62089">
     <ENUS>Client ip address</ENUS>
@@ -297,6 +339,9 @@
   <msg id="Hidden" code="HIDDEN49780">
     <ENUS>Hidden</ENUS>
   </msg>
+  <msg id="metadata" code="METADATA13666">
+    <ENUS>metadata</ENUS>
+  </msg>
   <msg id="Obs" code="OBS42026">
     <ENUS>Obs</ENUS>
   </msg>
@@ -305,6 +350,9 @@
   </msg>
   <msg id="Password date" code="PASSWORD_DATE16593">
     <ENUS>Password date</ENUS>
+  </msg>
+  <msg id="Category INFO" code="CATEGORY_INFO13868">
+    <ENUS>Category INFO</ENUS>
   </msg>
   <msg id="Item" code="ITEM40802">
     <ENUS>Item</ENUS>
@@ -366,6 +414,9 @@
   <msg id="To" code="TO55217">
     <ENUS>To</ENUS>
   </msg>
+  <msg id="Relation" code="RELATION40306">
+    <ENUS>Relation</ENUS>
+  </msg>
   <msg id="Username" code="USERNAME51409">
     <ENUS>Username</ENUS>
   </msg>
@@ -416,6 +467,9 @@
   </msg>
   <msg id="Sub-Categories" code="SUB_CATEGORIES30842">
     <ENUS>Sub-Categories</ENUS>
+  </msg>
+  <msg id="METADATA" code="METADATA52342">
+    <ENUS>METADATA</ENUS>
   </msg>
   <msg id="Percentage" code="PERCENTAGE57728">
     <ENUS>Percentage</ENUS>

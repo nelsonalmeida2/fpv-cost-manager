@@ -33,9 +33,50 @@ namespace GenioMVC.ViewModels.Person
 
 		#endregion
 		/// <summary>
+		/// Title: "Created by" | Type: "ON"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCreated_by { get; set; }
+		/// <summary>
+		/// Title: "Created at" | Type: "OD"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValCreated_at { get; set; }
+		/// <summary>
+		/// Title: "Updated by" | Type: "EN"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValUpdated_by { get; set; }
+		/// <summary>
+		/// Title: "Updated At" | Type: "ED"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
+		/// Title: "Photo" | Type: "IJ"
+		/// </summary>
+		[ImageThumbnailJsonConverter(30, 50)]
+		public GenioMVC.Models.ImageModel ValPhoto { get; set; }
+		/// <summary>
 		/// Title: "Name" | Type: "C"
 		/// </summary>
 		public string ValName { get; set; }
+		/// <summary>
+		/// Title: "Birthday" | Type: "D"
+		/// </summary>
+		public DateTime? ValBirthday { get; set; }
+		/// <summary>
+		/// Title: "Gender" | Type: "AC"
+		/// </summary>
+		public string ValGender { get; set; }
+		/// <summary>
+		/// Title: "Email" | Type: "C"
+		/// </summary>
+		public string ValEmail { get; set; }
+		/// <summary>
+		/// Title: "Telephone" | Type: "N"
+		/// </summary>
+		public decimal? ValTelephone { get; set; }
 
 		#region Navigations
 		#endregion
@@ -167,7 +208,16 @@ namespace GenioMVC.ViewModels.Person
 
 			try
 			{
+				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
+				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
+				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
+				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
+				ValPhoto = ViewModelConversion.ToImage(m.ValPhoto);
 				ValName = ViewModelConversion.ToString(m.ValName);
+				ValBirthday = ViewModelConversion.ToDateTime(m.ValBirthday);
+				ValGender = ViewModelConversion.ToString(m.ValGender);
+				ValEmail = ViewModelConversion.ToString(m.ValEmail);
+				ValTelephone = ViewModelConversion.ToNumeric(m.ValTelephone);
 				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 			}
 			catch (Exception)
@@ -194,8 +244,26 @@ namespace GenioMVC.ViewModels.Person
 
 			try
 			{
+				if (ValPhoto == null || !ValPhoto.IsThumbnail)
+					m.ValPhoto = ViewModelConversion.ToImage(ValPhoto);
 				m.ValName = ViewModelConversion.ToString(ValName);
+				m.ValBirthday = ViewModelConversion.ToDateTime(ValBirthday);
+				m.ValGender = ViewModelConversion.ToString(ValGender);
+				m.ValEmail = ViewModelConversion.ToString(ValEmail);
+				m.ValTelephone = ViewModelConversion.ToNumeric(ValTelephone);
 				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
+
+				/*
+					At this moment, in the case of runtime calculation of server-side formulas, to improve performance and reduce database load,
+						the values coming from the client-side will be accepted as valid, since they will not be saved and are only being used for calculation.
+				*/
+				if (!HasDisabledUserValuesSecurity)
+					return;
+
+				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
+				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
+				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
+				m.ValUpdated_at = ViewModelConversion.ToDateTime(ValUpdated_at);
 			}
 			catch (Exception)
 			{
@@ -220,8 +288,23 @@ namespace GenioMVC.ViewModels.Person
 
 				switch (fullFieldName)
 				{
+					case "person.photo":
+						this.ValPhoto = ViewModelConversion.ToImage(_value);
+						break;
 					case "person.name":
 						this.ValName = ViewModelConversion.ToString(_value);
+						break;
+					case "person.birthday":
+						this.ValBirthday = ViewModelConversion.ToDateTime(_value);
+						break;
+					case "person.gender":
+						this.ValGender = ViewModelConversion.ToString(_value);
+						break;
+					case "person.email":
+						this.ValEmail = ViewModelConversion.ToString(_value);
+						break;
+					case "person.telephone":
+						this.ValTelephone = ViewModelConversion.ToNumeric(_value);
 						break;
 					case "person.codperson":
 						this.ValCodperson = ViewModelConversion.ToString(_value);
@@ -348,9 +431,24 @@ namespace GenioMVC.ViewModels.Person
 		{
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+
+			validator.Required("ValUpdated_by", Resources.Resources.UPDATED_BY17808, ViewModelConversion.ToString(ValUpdated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValUpdated_at", Resources.Resources.UPDATED_AT48366, ViewModelConversion.ToDateTime(ValUpdated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("ValName", Resources.Resources.NAME31974, ValName, 50);
 
 			validator.Required("ValName", Resources.Resources.NAME31974, ViewModelConversion.ToString(ValName), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValBirthday", Resources.Resources.BIRTHDAY30236, ViewModelConversion.ToDateTime(ValBirthday), FieldType.DATE.GetFormatting());
+
+			validator.Required("ValGender", Resources.Resources.GENDER44172, ViewModelConversion.ToString(ValGender), FieldType.ARRAY_TEXT.GetFormatting());
+			validator.StringLength("ValEmail", Resources.Resources.EMAIL25170, ValEmail, 50);
+
+			validator.Required("ValEmail", Resources.Resources.EMAIL25170, ViewModelConversion.ToString(ValEmail), FieldType.TEXT.GetFormatting());
 
 
 			return validator.GetResult();
@@ -392,10 +490,26 @@ namespace GenioMVC.ViewModels.Person
 		{
 			return identifier switch
 			{
+				"person.created_by" => ViewModelConversion.ToString(modelValue),
+				"person.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"person.updated_by" => ViewModelConversion.ToString(modelValue),
+				"person.updated_at" => ViewModelConversion.ToDateTime(modelValue),
+				"person.photo" => ViewModelConversion.ToImage(modelValue),
 				"person.name" => ViewModelConversion.ToString(modelValue),
+				"person.birthday" => ViewModelConversion.ToDateTime(modelValue),
+				"person.gender" => ViewModelConversion.ToString(modelValue),
+				"person.email" => ViewModelConversion.ToString(modelValue),
+				"person.telephone" => ViewModelConversion.ToNumeric(modelValue),
 				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
+		}
+
+		/// <inheritdoc/>
+		protected override void SetTicketToImageFields()
+		{
+			if (ValPhoto != null)
+				ValPhoto.Ticket = Helpers.Helpers.GetFileTicket(m_userContext.User, CSGenio.business.Area.AreaPERSON, CSGenioAperson.FldPhoto.Field, null, ValCodperson);
 		}
 
 		#region Charts

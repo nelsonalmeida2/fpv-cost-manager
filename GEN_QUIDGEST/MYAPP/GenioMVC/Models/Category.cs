@@ -32,6 +32,35 @@ namespace GenioMVC.Models
 		[ShouldSerialize("Category.ValName")]
 		public string ValName { get { return klass.ValName; } set { klass.ValName = value; } }
 
+		[DisplayName("Description")]
+		/// <summary>Field : "Description" Tipo: "C" Formula:  ""</summary>
+		[ShouldSerialize("Category.ValDescription")]
+		public string ValDescription { get { return klass.ValDescription; } set { klass.ValDescription = value; } }
+
+		[DisplayName("Updated At")]
+		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
+		[ShouldSerialize("Category.ValUpdated_at")]
+		[DataType(DataType.Date)]
+		[DateAttribute("ED")]
+		public DateTime? ValUpdated_at { get { return klass.ValUpdated_at; } set { klass.ValUpdated_at = value ?? DateTime.MinValue;  } }
+
+		[DisplayName("Updated by")]
+		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
+		[ShouldSerialize("Category.ValUpdated_by")]
+		public string ValUpdated_by { get { return klass.ValUpdated_by; } set { klass.ValUpdated_by = value; } }
+
+		[DisplayName("Created by")]
+		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
+		[ShouldSerialize("Category.ValCreated_by")]
+		public string ValCreated_by { get { return klass.ValCreated_by; } set { klass.ValCreated_by = value; } }
+
+		[DisplayName("Created at")]
+		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
+		[ShouldSerialize("Category.ValCreated_at")]
+		[DataType(DataType.Date)]
+		[DateAttribute("OD")]
+		public DateTime? ValCreated_at { get { return klass.ValCreated_at; } set { klass.ValCreated_at = value ?? DateTime.Now;  } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Category.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

@@ -96,50 +96,154 @@
 			data-key="FORM_PERSONPSW"
 			:data-loading="!formInitialDataLoaded || !isActiveForm">
 			<template v-if="formControl.initialized && showFormBody">
-				<q-row v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible">
-					<q-col
-						v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
-						cols="auto">
-						<base-input-structure
-							v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
-							class="i-text"
-							v-bind="controls.FORM_PERSONPSW__PSW__NOME"
-							v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers"
-							:loading="controls.FORM_PERSONPSW__PSW__NOME.props.loading"
-							:reporting-mode-on="reportingModeCAV"
-							:suggestion-mode-on="suggestionModeOn">
-							<q-lookup
-								v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
-								v-bind="controls.FORM_PERSONPSW__PSW__NOME.props"
-								v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers" />
-							<q-see-more-form-personpsw-psw-nome
-								v-if="controls.FORM_PERSONPSW__PSW__NOME.seeMoreIsVisible"
-								v-bind="controls.FORM_PERSONPSW__PSW__NOME.seeMoreParams"
-								v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers" />
-						</base-input-structure>
+				<q-row v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP02.isVisible">
+					<q-col v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP02.isVisible">
+						<q-group-box-container
+							v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP02.isVisible"
+							id="FORM_PERSONPSW__PSEUD__NEWGRP02"
+							v-bind="controls.FORM_PERSONPSW__PSEUD__NEWGRP02"
+							:is-visible="controls.FORM_PERSONPSW__PSEUD__NEWGRP02.isVisible">
+							<!-- Start FORM_PERSONPSW__PSEUD__NEWGRP02 -->
+							<q-row v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY"
+										v-on="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.handlers"
+										:loading="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY.props"
+											@blur="onBlur(controls.FORM_PERSONPSW__PERSONPSW__CREATED_BY, model.ValCreated_by.value)"
+											@change="model.ValCreated_by.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT"
+										v-on="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.handlers"
+										:loading="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-date-time-picker
+											v-if="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.isVisible"
+											v-bind="controls.FORM_PERSONPSW__PERSONPSW__CREATED_AT.props"
+											:model-value="model.ValCreated_at.value"
+											@reset-icon-click="model.ValCreated_at.fnUpdateValue(model.ValCreated_at.originalValue ?? new Date())"
+											@update:model-value="model.ValCreated_at.fnUpdateValue($event ?? '')" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY"
+										v-on="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.handlers"
+										:loading="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY.props"
+											@blur="onBlur(controls.FORM_PERSONPSW__PERSONPSW__UPDATED_BY, model.ValUpdated_by.value)"
+											@change="model.ValUpdated_by.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT"
+										v-on="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.handlers"
+										:loading="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-date-time-picker
+											v-if="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.isVisible"
+											v-bind="controls.FORM_PERSONPSW__PERSONPSW__UPDATED_AT.props"
+											:model-value="model.ValUpdated_at.value"
+											@reset-icon-click="model.ValUpdated_at.fnUpdateValue(model.ValUpdated_at.originalValue ?? new Date())"
+											@update:model-value="model.ValUpdated_at.fnUpdateValue($event ?? '')" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<!-- End FORM_PERSONPSW__PSEUD__NEWGRP02 -->
+						</q-group-box-container>
 					</q-col>
 				</q-row>
-				<q-row v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible">
-					<q-col
-						v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
-						cols="auto">
-						<base-input-structure
-							v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
-							class="i-text"
-							v-bind="controls.FORM_PERSONPSW__PERSON__NAME"
-							v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers"
-							:loading="controls.FORM_PERSONPSW__PERSON__NAME.props.loading"
-							:reporting-mode-on="reportingModeCAV"
-							:suggestion-mode-on="suggestionModeOn">
-							<q-lookup
-								v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
-								v-bind="controls.FORM_PERSONPSW__PERSON__NAME.props"
-								v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers" />
-							<q-see-more-form-personpsw-person-name
-								v-if="controls.FORM_PERSONPSW__PERSON__NAME.seeMoreIsVisible"
-								v-bind="controls.FORM_PERSONPSW__PERSON__NAME.seeMoreParams"
-								v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers" />
-						</base-input-structure>
+				<q-row v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP01.isVisible">
+					<q-col v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP01.isVisible">
+						<q-group-box-container
+							v-if="controls.FORM_PERSONPSW__PSEUD__NEWGRP01.isVisible"
+							id="FORM_PERSONPSW__PSEUD__NEWGRP01"
+							v-bind="controls.FORM_PERSONPSW__PSEUD__NEWGRP01"
+							:is-visible="controls.FORM_PERSONPSW__PSEUD__NEWGRP01.isVisible">
+							<!-- Start FORM_PERSONPSW__PSEUD__NEWGRP01 -->
+							<q-row v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PSW__NOME"
+										v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers"
+										:loading="controls.FORM_PERSONPSW__PSW__NOME.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-lookup
+											v-if="controls.FORM_PERSONPSW__PSW__NOME.isVisible"
+											v-bind="controls.FORM_PERSONPSW__PSW__NOME.props"
+											v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers" />
+										<q-see-more-form-personpsw-psw-nome
+											v-if="controls.FORM_PERSONPSW__PSW__NOME.seeMoreIsVisible"
+											v-bind="controls.FORM_PERSONPSW__PSW__NOME.seeMoreParams"
+											v-on="controls.FORM_PERSONPSW__PSW__NOME.handlers" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible">
+								<q-col
+									v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PERSONPSW__PERSON__NAME"
+										v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers"
+										:loading="controls.FORM_PERSONPSW__PERSON__NAME.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-lookup
+											v-if="controls.FORM_PERSONPSW__PERSON__NAME.isVisible"
+											v-bind="controls.FORM_PERSONPSW__PERSON__NAME.props"
+											v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers" />
+										<q-see-more-form-personpsw-person-name
+											v-if="controls.FORM_PERSONPSW__PERSON__NAME.seeMoreIsVisible"
+											v-bind="controls.FORM_PERSONPSW__PERSON__NAME.seeMoreParams"
+											v-on="controls.FORM_PERSONPSW__PERSON__NAME.handlers" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<!-- End FORM_PERSONPSW__PSEUD__NEWGRP01 -->
+						</q-group-box-container>
 					</q-col>
 				</q-row>
 			</template>
@@ -490,6 +594,94 @@
 				},
 
 				controls: {
+					FORM_PERSONPSW__PSEUD__NEWGRP02: new fieldControlClass.GroupControl({
+						id: 'FORM_PERSONPSW__PSEUD__NEWGRP02',
+						name: 'NEWGRP02',
+						size: 'block',
+						label: computed(() => this.Resources.METADATA52342),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						isCollapsible: false,
+						anchored: false,
+						directChildren: ['FORM_PERSONPSW__PERSONPSW__CREATED_BY', 'FORM_PERSONPSW__PERSONPSW__CREATED_AT', 'FORM_PERSONPSW__PERSONPSW__UPDATED_BY', 'FORM_PERSONPSW__PERSONPSW__UPDATED_AT'],
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_PERSONPSW__PERSONPSW__CREATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValCreated_by',
+						valueChangeEvent: 'fieldChange:personpsw.created_by',
+						id: 'FORM_PERSONPSW__PERSONPSW__CREATED_BY',
+						name: 'CREATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_BY12292),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP02',
+						maxLength: 100,
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_PERSONPSW__PERSONPSW__CREATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValCreated_at',
+						valueChangeEvent: 'fieldChange:personpsw.created_at',
+						id: 'FORM_PERSONPSW__PERSONPSW__CREATED_AT',
+						name: 'CREATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_AT29089),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP02',
+						dateTimeType: 'date',
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_PERSONPSW__PERSONPSW__UPDATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValUpdated_by',
+						valueChangeEvent: 'fieldChange:personpsw.updated_by',
+						id: 'FORM_PERSONPSW__PERSONPSW__UPDATED_BY',
+						name: 'UPDATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_BY17808),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP02',
+						maxLength: 100,
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_PERSONPSW__PERSONPSW__UPDATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValUpdated_at',
+						valueChangeEvent: 'fieldChange:personpsw.updated_at',
+						id: 'FORM_PERSONPSW__PERSONPSW__UPDATED_AT',
+						name: 'UPDATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_AT48366),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP02',
+						dateTimeType: 'date',
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_PERSONPSW__PSEUD__NEWGRP01: new fieldControlClass.GroupControl({
+						id: 'FORM_PERSONPSW__PSEUD__NEWGRP01',
+						name: 'NEWGRP01',
+						size: 'block',
+						label: computed(() => this.Resources.RELATION40306),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						isCollapsible: false,
+						anchored: false,
+						directChildren: ['FORM_PERSONPSW__PSW__NOME', 'FORM_PERSONPSW__PERSON__NAME'],
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
 					FORM_PERSONPSW__PSW__NOME: new fieldControlClass.LookupControl({
 						modelField: 'TablePswNome',
 						valueChangeEvent: 'fieldChange:psw.nome',
@@ -499,6 +691,7 @@
 						label: computed(() => this.Resources.NAME_PSW24858),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP01',
 						externalCallbacks: {
 							getModelField: vm.getModelField,
 							getModelFieldValue: vm.getModelFieldValue,
@@ -528,6 +721,7 @@
 						label: computed(() => this.Resources.NAME_PERSON43394),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PERSONPSW__PSEUD__NEWGRP01',
 						externalCallbacks: {
 							getModelField: vm.getModelField,
 							getModelFieldValue: vm.getModelFieldValue,
@@ -558,6 +752,8 @@
 				}),
 
 				groupFields: readonly([
+					'FORM_PERSONPSW__PSEUD__NEWGRP02',
+					'FORM_PERSONPSW__PSEUD__NEWGRP01',
 				]),
 
 				tableFields: readonly([
@@ -579,6 +775,14 @@
 						set ValCodperson(value) { vm.model.ValCodperson.updateValue(value) },
 						get ValCodpsw() { return vm.model.ValCodpsw.value },
 						set ValCodpsw(value) { vm.model.ValCodpsw.updateValue(value) },
+						get ValCreated_at() { return vm.model.ValCreated_at.value },
+						set ValCreated_at(value) { vm.model.ValCreated_at.updateValue(value) },
+						get ValCreated_by() { return vm.model.ValCreated_by.value },
+						set ValCreated_by(value) { vm.model.ValCreated_by.updateValue(value) },
+						get ValUpdated_at() { return vm.model.ValUpdated_at.value },
+						set ValUpdated_at(value) { vm.model.ValUpdated_at.updateValue(value) },
+						get ValUpdated_by() { return vm.model.ValUpdated_by.value },
+						set ValUpdated_by(value) { vm.model.ValUpdated_by.updateValue(value) },
 					},
 					Psw: {
 						get ValNome() { return vm.model.TablePswNome.value },

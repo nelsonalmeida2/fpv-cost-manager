@@ -104,6 +104,72 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "updated_at", FieldType.DATETIMESECONDS);
+			Qfield.FieldDescription = "Updated At";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "UPDATED_AT46891";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "updated_by", FieldType.TEXT);
+			Qfield.FieldDescription = "Updated by";
+			Qfield.FieldSize =  100;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "UPDATED_BY17808";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "created_by", FieldType.TEXT);
+			Qfield.FieldDescription = "Created by";
+			Qfield.FieldSize =  100;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CREATED_BY12292";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "created_at", FieldType.DATETIMESECONDS);
+			Qfield.FieldDescription = "Created at";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CREA43898";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "birthday", FieldType.DATE);
+			Qfield.FieldDescription = "Birthday";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "BIRTHDAY30236";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "telephone", FieldType.NUMERIC);
+			Qfield.FieldDescription = "Telephone";
+			Qfield.FieldSize =  9;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 9;
+			Qfield.CavDesignation = "TELEPHONE28697";
+
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -216,7 +282,13 @@ namespace CSGenio.business
 
 			// Automatic audit stamps in BD
             //------------------------------
+			info.StampFieldsIns = new string[] {
+                "created_by","created_at"
+			};
 
+			info.StampFieldsAlt = new string[] {
+                "updated_by","updated_at"
+			};
             // Documents in DB
             //------------------------------
 
@@ -313,6 +385,72 @@ namespace CSGenio.business
 		{
 			get { return (string)returnValueField(FldEmail); }
 			set { insertNameValueField(FldEmail, value); }
+		}
+
+		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
+		public static FieldRef FldUpdated_at { get { return m_fldUpdated_at; } }
+		private static FieldRef m_fldUpdated_at = new FieldRef("person", "updated_at");
+
+		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
+		public DateTime ValUpdated_at
+		{
+			get { return (DateTime)returnValueField(FldUpdated_at); }
+			set { insertNameValueField(FldUpdated_at, value); }
+		}
+
+		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
+		public static FieldRef FldUpdated_by { get { return m_fldUpdated_by; } }
+		private static FieldRef m_fldUpdated_by = new FieldRef("person", "updated_by");
+
+		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
+		public string ValUpdated_by
+		{
+			get { return (string)returnValueField(FldUpdated_by); }
+			set { insertNameValueField(FldUpdated_by, value); }
+		}
+
+		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
+		public static FieldRef FldCreated_by { get { return m_fldCreated_by; } }
+		private static FieldRef m_fldCreated_by = new FieldRef("person", "created_by");
+
+		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
+		public string ValCreated_by
+		{
+			get { return (string)returnValueField(FldCreated_by); }
+			set { insertNameValueField(FldCreated_by, value); }
+		}
+
+		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
+		public static FieldRef FldCreated_at { get { return m_fldCreated_at; } }
+		private static FieldRef m_fldCreated_at = new FieldRef("person", "created_at");
+
+		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
+		public DateTime ValCreated_at
+		{
+			get { return (DateTime)returnValueField(FldCreated_at); }
+			set { insertNameValueField(FldCreated_at, value); }
+		}
+
+		/// <summary>Field : "Birthday" Tipo: "D" Formula:  ""</summary>
+		public static FieldRef FldBirthday { get { return m_fldBirthday; } }
+		private static FieldRef m_fldBirthday = new FieldRef("person", "birthday");
+
+		/// <summary>Field : "Birthday" Tipo: "D" Formula:  ""</summary>
+		public DateTime ValBirthday
+		{
+			get { return (DateTime)returnValueField(FldBirthday); }
+			set { insertNameValueField(FldBirthday, value); }
+		}
+
+		/// <summary>Field : "Telephone" Tipo: "N" Formula:  ""</summary>
+		public static FieldRef FldTelephone { get { return m_fldTelephone; } }
+		private static FieldRef m_fldTelephone = new FieldRef("person", "telephone");
+
+		/// <summary>Field : "Telephone" Tipo: "N" Formula:  ""</summary>
+		public decimal ValTelephone
+		{
+			get { return (decimal)returnValueField(FldTelephone); }
+			set { insertNameValueField(FldTelephone, value); }
 		}
 
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
@@ -412,7 +550,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX PERSON]/
 
  
-      
+            
 
 	}
 }

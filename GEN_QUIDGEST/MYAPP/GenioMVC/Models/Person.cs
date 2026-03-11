@@ -53,6 +53,43 @@ namespace GenioMVC.Models
 		[ShouldSerialize("Person.ValEmail")]
 		public string ValEmail { get { return klass.ValEmail; } set { klass.ValEmail = value; } }
 
+		[DisplayName("Updated At")]
+		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValUpdated_at")]
+		[DataType(DataType.Date)]
+		[DateAttribute("ED")]
+		public DateTime? ValUpdated_at { get { return klass.ValUpdated_at; } set { klass.ValUpdated_at = value ?? DateTime.MinValue;  } }
+
+		[DisplayName("Updated by")]
+		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValUpdated_by")]
+		public string ValUpdated_by { get { return klass.ValUpdated_by; } set { klass.ValUpdated_by = value; } }
+
+		[DisplayName("Created by")]
+		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValCreated_by")]
+		public string ValCreated_by { get { return klass.ValCreated_by; } set { klass.ValCreated_by = value; } }
+
+		[DisplayName("Created at")]
+		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValCreated_at")]
+		[DataType(DataType.Date)]
+		[DateAttribute("OD")]
+		public DateTime? ValCreated_at { get { return klass.ValCreated_at; } set { klass.ValCreated_at = value ?? DateTime.Now;  } }
+
+		[DisplayName("Birthday")]
+		/// <summary>Field : "Birthday" Tipo: "D" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValBirthday")]
+		[DataType(DataType.Date)]
+		[DateAttribute("D")]
+		public DateTime? ValBirthday { get { return klass.ValBirthday; } set { klass.ValBirthday = value ?? DateTime.MinValue; } }
+
+		[DisplayName("Telephone")]
+		/// <summary>Field : "Telephone" Tipo: "N" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValTelephone")]
+		[NumericAttribute(0)]
+		public decimal? ValTelephone { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTelephone, 0)); } set { klass.ValTelephone = Convert.ToDecimal(value); } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Person.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

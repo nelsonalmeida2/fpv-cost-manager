@@ -41,6 +41,26 @@ namespace GenioMVC.ViewModels.Personpsw
 
 		#endregion
 		/// <summary>
+		/// Title: "Created by" | Type: "ON"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCreated_by { get; set; }
+		/// <summary>
+		/// Title: "Created at" | Type: "OD"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValCreated_at { get; set; }
+		/// <summary>
+		/// Title: "Updated by" | Type: "EN"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValUpdated_by { get; set; }
+		/// <summary>
+		/// Title: "Updated At" | Type: "ED"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
 		/// Title: "Name PSW" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
@@ -183,6 +203,10 @@ namespace GenioMVC.ViewModels.Personpsw
 			{
 				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValCodpsw = ViewModelConversion.ToString(m.ValCodpsw);
+				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
+				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
+				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
+				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
 				ValCodpersonpsw = ViewModelConversion.ToString(m.ValCodpersonpsw);
 			}
 			catch (Exception)
@@ -212,6 +236,18 @@ namespace GenioMVC.ViewModels.Personpsw
 				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCodpsw = ViewModelConversion.ToString(ValCodpsw);
 				m.ValCodpersonpsw = ViewModelConversion.ToString(ValCodpersonpsw);
+
+				/*
+					At this moment, in the case of runtime calculation of server-side formulas, to improve performance and reduce database load,
+						the values coming from the client-side will be accepted as valid, since they will not be saved and are only being used for calculation.
+				*/
+				if (!HasDisabledUserValuesSecurity)
+					return;
+
+				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
+				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
+				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
+				m.ValUpdated_at = ViewModelConversion.ToDateTime(ValUpdated_at);
 			}
 			catch (Exception)
 			{
@@ -373,6 +409,14 @@ namespace GenioMVC.ViewModels.Personpsw
 			validator.Required("ValCodperson", Resources.Resources.NAME_PERSON43394, ViewModelConversion.ToString(ValCodperson), FieldType.KEY_INT.GetFormatting());
 
 			validator.Required("ValCodpsw", Resources.Resources.NAME_PSW24858, ViewModelConversion.ToString(ValCodpsw), FieldType.KEY_INT.GetFormatting());
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+
+			validator.Required("ValUpdated_by", Resources.Resources.UPDATED_BY17808, ViewModelConversion.ToString(ValUpdated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValUpdated_at", Resources.Resources.UPDATED_AT48366, ViewModelConversion.ToDateTime(ValUpdated_at), FieldType.DATETIMESECONDS.GetFormatting());
 
 
 			return validator.GetResult();
@@ -794,6 +838,10 @@ namespace GenioMVC.ViewModels.Personpsw
 			{
 				"personpsw.codperson" => ViewModelConversion.ToString(modelValue),
 				"personpsw.codpsw" => ViewModelConversion.ToString(modelValue),
+				"personpsw.created_by" => ViewModelConversion.ToString(modelValue),
+				"personpsw.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"personpsw.updated_by" => ViewModelConversion.ToString(modelValue),
+				"personpsw.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"personpsw.codpersonpsw" => ViewModelConversion.ToString(modelValue),
 				"psw.codpsw" => ViewModelConversion.ToString(modelValue),
 				"psw.nome" => ViewModelConversion.ToString(modelValue),
