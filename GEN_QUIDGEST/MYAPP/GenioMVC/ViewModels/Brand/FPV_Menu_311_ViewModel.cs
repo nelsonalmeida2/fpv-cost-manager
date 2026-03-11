@@ -128,7 +128,7 @@ namespace GenioMVC.ViewModels.Brand
 		/// <param name="userContext">The current user request context</param>
 		public FPV_Menu_311_ViewModel(UserContext userContext) : base(userContext)
 		{
-			this.RoleToShow = CSGenio.framework.Role.ROLE_1;
+			this.RoleToShow = CSGenio.framework.Role.ROLE_5;
 		}
 
 		/// <summary>
