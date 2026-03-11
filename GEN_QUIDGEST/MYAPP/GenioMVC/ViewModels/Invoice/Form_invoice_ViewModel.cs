@@ -487,12 +487,6 @@ namespace GenioMVC.ViewModels.Invoice
 
 			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
 
-			validator.Required("ValPrice", Resources.Resources.PRICE06900, ViewModelConversion.ToNumeric(ValPrice), FieldType.CURRENCY.GetFormatting());
-
-			validator.Required("ValNumberofitems", Resources.Resources.NUMBER_OF_ITEMS22472, ViewModelConversion.ToNumeric(ValNumberofitems), FieldType.NUMERIC.GetFormatting());
-
-			validator.Required("ValTotalprice", Resources.Resources.TOTAL_PRICE46894, ViewModelConversion.ToNumeric(ValTotalprice), FieldType.CURRENCY.GetFormatting());
-
 
 			return validator.GetResult();
 		}

@@ -62,7 +62,6 @@ namespace CSGenio.business
 			Qfield.Decimals = 2;
 			Qfield.CavDesignation = "PRICE06900";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
@@ -99,7 +98,6 @@ namespace CSGenio.business
 			Qfield.Decimals = 2;
 			Qfield.CavDesignation = "TOTAL_PRICE46894";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			argumentsListByArea = new List<ByAreaArguments>();
 			argumentsListByArea.Add(new ByAreaArguments(new string[] {"totalprice","shippingcost","taxes"}, new int[] {0,1,2}, "invoice", "codinvoice"));
@@ -116,7 +114,6 @@ namespace CSGenio.business
 			Qfield.IntegerDigits = 10;
 			Qfield.CavDesignation = "NUMBER_OF_ITEMS22472";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 

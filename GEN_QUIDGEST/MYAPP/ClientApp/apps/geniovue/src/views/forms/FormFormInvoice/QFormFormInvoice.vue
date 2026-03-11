@@ -927,7 +927,6 @@
 						isCollapsible: false,
 						anchored: false,
 						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS', 'FORM_INVOICE__INVOICE__TOTALPRICE'],
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -944,7 +943,6 @@
 						isFormulaBlocked: true,
 						maxIntegers: 7,
 						maxDecimals: 2,
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -991,7 +989,6 @@
 						isFormulaBlocked: true,
 						maxIntegers: 10,
 						maxDecimals: 0,
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -1008,7 +1005,6 @@
 						isFormulaBlocked: true,
 						maxIntegers: 7,
 						maxDecimals: 2,
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
