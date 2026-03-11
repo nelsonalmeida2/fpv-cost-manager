@@ -14,23 +14,23 @@ using System.Linq;
 namespace CSGenio.business
 {
 	/// <summary>
-	/// Item
+	/// Photo Album
 	/// </summary>
-	public class CSGenioAitem : DbArea
+	public class CSGenioAphotoalbum : DbArea
 	{
 		/// <summary>
 		/// Meta-information on this area
 		/// </summary>
 		protected readonly static AreaInfo informacao = InicializaAreaInfo();
 
-		public CSGenioAitem(User user, string module)
+		public CSGenioAphotoalbum(User user, string module)
 		{
             this.user = user;
             this.module = module;
-			// USE /[MANUAL FPV CONSTRUTOR ITEM]/
+			// USE /[MANUAL FPV CONSTRUTOR PHOTOALBUM]/
 		}
 
-		public CSGenioAitem(User user) : this(user, user.CurrentModule)
+		public CSGenioAphotoalbum(User user) : this(user, user.CurrentModule)
 		{
 		}
 
@@ -44,7 +44,7 @@ namespace CSGenio.business
 			List<ByAreaArguments> argumentsListByArea;
 #pragma warning restore CS0168, S1481 // Variable is declared but never used
 			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "coditem", FieldType.KEY_INT);
+			Qfield = new Field(info.Alias, "codphotoalbum", FieldType.KEY_INT);
 			Qfield.FieldDescription = "";
 			Qfield.FieldSize =  8;
 			Qfield.MQueue = false;
@@ -54,103 +54,33 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "name", FieldType.TEXT);
-			Qfield.FieldDescription = "Name";
-			Qfield.FieldSize =  255;
+			Qfield = new Field(info.Alias, "title", FieldType.TEXT);
+			Qfield.FieldDescription = "Title";
+			Qfield.FieldSize =  50;
 			Qfield.MQueue = false;
-			Qfield.CavDesignation = "NAME31974";
+			Qfield.CavDesignation = "TITLE21885";
 
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "quantity", FieldType.NUMERIC);
-			Qfield.FieldDescription = "Quantity";
-			Qfield.FieldSize =  10;
+			Qfield = new Field(info.Alias, "photo", FieldType.IMAGE);
+			Qfield.FieldDescription = "Photo";
+			Qfield.FieldSize =  3;
 			Qfield.MQueue = false;
-			Qfield.IntegerDigits = 10;
-			Qfield.CavDesignation = "QUANTITY06415";
+			Qfield.CavDesignation = "PHOTO51874";
 
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "unitprice", FieldType.CURRENCY);
-			Qfield.FieldDescription = "Unit Price";
-			Qfield.FieldSize =  10;
-			Qfield.MQueue = false;
-			Qfield.IntegerDigits = 7;
-			Qfield.Decimals = 2;
-			Qfield.CavDesignation = "UNIT_PRICE24898";
-
-            Qfield.NotNull = true;
-			Qfield.Dupmsg = "";
-			info.RegisterFieldDB(Qfield);
-
-			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "totalprice", FieldType.CURRENCY);
-			Qfield.FieldDescription = "Total Price";
-			Qfield.FieldSize =  10;
-			Qfield.MQueue = false;
-			Qfield.IntegerDigits = 7;
-			Qfield.Decimals = 2;
-			Qfield.CavDesignation = "TOTAL_PRICE46894";
-
-            Qfield.NotNull = true;
-			Qfield.Dupmsg = "";
-			argumentsListByArea = new List<ByAreaArguments>();
-			argumentsListByArea.Add(new ByAreaArguments(new string[] {"quantity","totalprice"}, new int[] {0,1}, "item", "coditem"));
-			Qfield.Formula = new InternalOperationFormula(argumentsListByArea, 2, delegate(object[] args, User user, string module, PersistentSupport sp) {
-				return ((decimal)args[0])*((decimal)args[1]);
-			});
-			info.RegisterFieldDB(Qfield);
-
-			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "brand", FieldType.KEY_INT);
-			Qfield.FieldDescription = "Brand";
+			Qfield = new Field(info.Alias, "item", FieldType.KEY_INT);
+			Qfield.FieldDescription = "Item";
 			Qfield.FieldSize =  8;
 			Qfield.MQueue = false;
-			Qfield.CavDesignation = "BRAND05002";
-
-            Qfield.NotNull = true;
-			Qfield.Dupmsg = "";
-			info.RegisterFieldDB(Qfield);
-
-			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "category", FieldType.KEY_INT);
-			Qfield.FieldDescription = "Category";
-			Qfield.FieldSize =  8;
-			Qfield.MQueue = false;
-			Qfield.CavDesignation = "CATEGORY18978";
-
-            Qfield.NotNull = true;
-			Qfield.Dupmsg = "";
-			info.RegisterFieldDB(Qfield);
-
-			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "subcategory", FieldType.KEY_INT);
-			Qfield.FieldDescription = "Sub-Category";
-			Qfield.FieldSize =  8;
-			Qfield.MQueue = false;
-			Qfield.CavDesignation = "SUB_CATEGORY39956";
-
-            Qfield.NotNull = true;
-			Qfield.Dupmsg = "";
-			argumentsListByArea = new List<ByAreaArguments>();
-			argumentsListByArea.Add(new ByAreaArguments(new string[] {"category"}, new int[] {0}, "item", "coditem"));
-			Qfield.ShowWhen = new ConditionFormula(argumentsListByArea, 1, delegate(object[] args, User user, string module, PersistentSupport sp) {
-				return !(((string)args[0]) == "");
-			});
-			info.RegisterFieldDB(Qfield);
-
-			//- - - - - - - - - - - - - - - - - - -
-			Qfield = new Field(info.Alias, "invoice", FieldType.KEY_INT);
-			Qfield.FieldDescription = "Invoice";
-			Qfield.FieldSize =  8;
-			Qfield.MQueue = false;
-			Qfield.CavDesignation = "INVOICE63068";
+			Qfield.CavDesignation = "ITEM40802";
 
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
@@ -212,16 +142,11 @@ namespace CSGenio.business
 		{
 			// Daughters Relations
 			//------------------------------
-			info.ChildTable = new ChildRelation[1];
-			info.ChildTable[0]= new ChildRelation("photoalbum", new String[] {"item"}, DeleteProc.NA);
 
 			// Mother Relations
 			//------------------------------
 			info.ParentTables = new Dictionary<string, Relation>();
-			info.ParentTables.Add("brand", new Relation("FPV", "fpvitem", "item", "coditem", "brand", "FPV", "fpvbrand", "brand", "codbrand", "codbrand"));
-			info.ParentTables.Add("category", new Relation("FPV", "fpvitem", "item", "coditem", "category", "FPV", "fpvcategory", "category", "codcategory", "codcategory"));
-			info.ParentTables.Add("invoice", new Relation("FPV", "fpvitem", "item", "coditem", "invoice", "FPV", "fpvinvoice", "invoice", "codinvoice", "codinvoice"));
-			info.ParentTables.Add("subcategory", new Relation("FPV", "fpvitem", "item", "coditem", "subcategory", "FPV", "fpvsubcategory", "subcategory", "codsubcategory", "codsubcategory"));
+			info.ParentTables.Add("item", new Relation("FPV", "fpvphotoalbum", "photoalbum", "codphotoalbum", "item", "FPV", "fpvitem", "item", "coditem", "coditem"));
 		}
 
 		/// <summary>
@@ -231,13 +156,14 @@ namespace CSGenio.business
 		{
 			// Pathways
 			//------------------------------
-			info.Pathways = new Dictionary<string, string>(6);
-			info.Pathways.Add("category","category");
-			info.Pathways.Add("subcategory","subcategory");
-			info.Pathways.Add("brand","brand");
-			info.Pathways.Add("invoice","invoice");
-			info.Pathways.Add("country","brand");
-			info.Pathways.Add("store","invoice");
+			info.Pathways = new Dictionary<string, string>(7);
+			info.Pathways.Add("item","item");
+			info.Pathways.Add("category","item");
+			info.Pathways.Add("subcategory","item");
+			info.Pathways.Add("brand","item");
+			info.Pathways.Add("invoice","item");
+			info.Pathways.Add("country","item");
+			info.Pathways.Add("store","item");
 		}
 
 		/// <summary>
@@ -247,16 +173,8 @@ namespace CSGenio.business
 		{
 			// Formulas
 			//------------------------------
-			//Actualiza as seguintes somas relacionadas:
-			info.RelatedSumArgs = new List<RelatedSumArgument>();
-			info.RelatedSumArgs.Add( new RelatedSumArgument("item", "invoice", "numberofitems", "1", '+', false));
-			info.RelatedSumArgs.Add( new RelatedSumArgument("item", "invoice", "price", "totalprice", '+', true));
 
 
-
-			info.InternalOperationFields = new string[] {
-			 "totalprice"
-			};
 
 
 
@@ -271,7 +189,7 @@ namespace CSGenio.business
 		}
 
 		/// <summary>
-		/// static CSGenioAitem()
+		/// static CSGenioAphotoalbum()
 		/// </summary>
 		private static AreaInfo InicializaAreaInfo()
 		{
@@ -279,18 +197,18 @@ namespace CSGenio.business
 
 			// Area meta-information
 			info.QSystem="FPV";
-			info.TableName="fpvitem";
+			info.TableName="fpvphotoalbum";
 			info.ShadowTabName="";
 			info.ShadowTabKeyName="";
 
-			info.PrimaryKeyName="coditem";
-			info.HumanKeyName="name,".TrimEnd(',');
-			info.Alias="item";
+			info.PrimaryKeyName="codphotoalbum";
+			info.HumanKeyName="title,".TrimEnd(',');
+			info.Alias="photoalbum";
 			info.IsDomain = true;
 			info.PersistenceType = PersistenceType.Database;
-			info.AreaDesignation="Item";
-			info.AreaPluralDesignation="Items";
-			info.DescriptionCav="ITEM40802";
+			info.AreaDesignation="Photo Album";
+			info.AreaPluralDesignation="PHOTOALBUM";
+			info.DescriptionCav="PHOTO_ALBUM45574";
 
 			//sincronização
 			info.SyncIncrementalDateStart = TimeSpan.FromHours(8);
@@ -372,107 +290,52 @@ namespace CSGenio.business
 		}
 
 		/// <summary>Field : "" Tipo: "+" Formula:  ""</summary>
-		public static FieldRef FldCoditem { get { return m_fldCoditem; } }
-		private static FieldRef m_fldCoditem = new FieldRef("item", "coditem");
+		public static FieldRef FldCodphotoalbum { get { return m_fldCodphotoalbum; } }
+		private static FieldRef m_fldCodphotoalbum = new FieldRef("photoalbum", "codphotoalbum");
 
 		/// <summary>Field : "" Tipo: "+" Formula:  ""</summary>
-		public string ValCoditem
+		public string ValCodphotoalbum
 		{
-			get { return (string)returnValueField(FldCoditem); }
-			set { insertNameValueField(FldCoditem, value); }
+			get { return (string)returnValueField(FldCodphotoalbum); }
+			set { insertNameValueField(FldCodphotoalbum, value); }
 		}
 
-		/// <summary>Field : "Name" Tipo: "C" Formula:  ""</summary>
-		public static FieldRef FldName { get { return m_fldName; } }
-		private static FieldRef m_fldName = new FieldRef("item", "name");
+		/// <summary>Field : "Title" Tipo: "C" Formula:  ""</summary>
+		public static FieldRef FldTitle { get { return m_fldTitle; } }
+		private static FieldRef m_fldTitle = new FieldRef("photoalbum", "title");
 
-		/// <summary>Field : "Name" Tipo: "C" Formula:  ""</summary>
-		public string ValName
+		/// <summary>Field : "Title" Tipo: "C" Formula:  ""</summary>
+		public string ValTitle
 		{
-			get { return (string)returnValueField(FldName); }
-			set { insertNameValueField(FldName, value); }
+			get { return (string)returnValueField(FldTitle); }
+			set { insertNameValueField(FldTitle, value); }
 		}
 
-		/// <summary>Field : "Quantity" Tipo: "N" Formula:  ""</summary>
-		public static FieldRef FldQuantity { get { return m_fldQuantity; } }
-		private static FieldRef m_fldQuantity = new FieldRef("item", "quantity");
+		/// <summary>Field : "Photo" Tipo: "IJ" Formula:  ""</summary>
+		public static FieldRef FldPhoto { get { return m_fldPhoto; } }
+		private static FieldRef m_fldPhoto = new FieldRef("photoalbum", "photo");
 
-		/// <summary>Field : "Quantity" Tipo: "N" Formula:  ""</summary>
-		public decimal ValQuantity
+		/// <summary>Field : "Photo" Tipo: "IJ" Formula:  ""</summary>
+		public byte[] ValPhoto
 		{
-			get { return (decimal)returnValueField(FldQuantity); }
-			set { insertNameValueField(FldQuantity, value); }
+			get { return (byte[])returnValueField(FldPhoto); }
+			set { insertNameValueField(FldPhoto, value); }
 		}
 
-		/// <summary>Field : "Unit Price" Tipo: "$" Formula:  ""</summary>
-		public static FieldRef FldUnitprice { get { return m_fldUnitprice; } }
-		private static FieldRef m_fldUnitprice = new FieldRef("item", "unitprice");
+		/// <summary>Field : "Item" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldItem { get { return m_fldItem; } }
+		private static FieldRef m_fldItem = new FieldRef("photoalbum", "item");
 
-		/// <summary>Field : "Unit Price" Tipo: "$" Formula:  ""</summary>
-		public decimal ValUnitprice
+		/// <summary>Field : "Item" Tipo: "CE" Formula:  ""</summary>
+		public string ValItem
 		{
-			get { return (decimal)returnValueField(FldUnitprice); }
-			set { insertNameValueField(FldUnitprice, value); }
-		}
-
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->TOTALPRICE]"</summary>
-		public static FieldRef FldTotalprice { get { return m_fldTotalprice; } }
-		private static FieldRef m_fldTotalprice = new FieldRef("item", "totalprice");
-
-		/// <summary>Field : "Total Price" Tipo: "$" Formula: + "[ITEM->QUANTITY] * [ITEM->TOTALPRICE]"</summary>
-		public decimal ValTotalprice
-		{
-			get { return (decimal)returnValueField(FldTotalprice); }
-			set { insertNameValueField(FldTotalprice, value); }
-		}
-
-		/// <summary>Field : "Brand" Tipo: "CE" Formula:  ""</summary>
-		public static FieldRef FldBrand { get { return m_fldBrand; } }
-		private static FieldRef m_fldBrand = new FieldRef("item", "brand");
-
-		/// <summary>Field : "Brand" Tipo: "CE" Formula:  ""</summary>
-		public string ValBrand
-		{
-			get { return (string)returnValueField(FldBrand); }
-			set { insertNameValueField(FldBrand, value); }
-		}
-
-		/// <summary>Field : "Category" Tipo: "CE" Formula:  ""</summary>
-		public static FieldRef FldCategory { get { return m_fldCategory; } }
-		private static FieldRef m_fldCategory = new FieldRef("item", "category");
-
-		/// <summary>Field : "Category" Tipo: "CE" Formula:  ""</summary>
-		public string ValCategory
-		{
-			get { return (string)returnValueField(FldCategory); }
-			set { insertNameValueField(FldCategory, value); }
-		}
-
-		/// <summary>Field : "Sub-Category" Tipo: "CE" Formula:  ""</summary>
-		public static FieldRef FldSubcategory { get { return m_fldSubcategory; } }
-		private static FieldRef m_fldSubcategory = new FieldRef("item", "subcategory");
-
-		/// <summary>Field : "Sub-Category" Tipo: "CE" Formula:  ""</summary>
-		public string ValSubcategory
-		{
-			get { return (string)returnValueField(FldSubcategory); }
-			set { insertNameValueField(FldSubcategory, value); }
-		}
-
-		/// <summary>Field : "Invoice" Tipo: "CE" Formula:  ""</summary>
-		public static FieldRef FldInvoice { get { return m_fldInvoice; } }
-		private static FieldRef m_fldInvoice = new FieldRef("item", "invoice");
-
-		/// <summary>Field : "Invoice" Tipo: "CE" Formula:  ""</summary>
-		public string ValInvoice
-		{
-			get { return (string)returnValueField(FldInvoice); }
-			set { insertNameValueField(FldInvoice, value); }
+			get { return (string)returnValueField(FldItem); }
+			set { insertNameValueField(FldItem, value); }
 		}
 
 		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
 		public static FieldRef FldUpdated_at { get { return m_fldUpdated_at; } }
-		private static FieldRef m_fldUpdated_at = new FieldRef("item", "updated_at");
+		private static FieldRef m_fldUpdated_at = new FieldRef("photoalbum", "updated_at");
 
 		/// <summary>Field : "Updated At" Tipo: "ED" Formula:  ""</summary>
 		public DateTime ValUpdated_at
@@ -483,7 +346,7 @@ namespace CSGenio.business
 
 		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
 		public static FieldRef FldUpdated_by { get { return m_fldUpdated_by; } }
-		private static FieldRef m_fldUpdated_by = new FieldRef("item", "updated_by");
+		private static FieldRef m_fldUpdated_by = new FieldRef("photoalbum", "updated_by");
 
 		/// <summary>Field : "Updated by" Tipo: "EN" Formula:  ""</summary>
 		public string ValUpdated_by
@@ -494,7 +357,7 @@ namespace CSGenio.business
 
 		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
 		public static FieldRef FldCreated_by { get { return m_fldCreated_by; } }
-		private static FieldRef m_fldCreated_by = new FieldRef("item", "created_by");
+		private static FieldRef m_fldCreated_by = new FieldRef("photoalbum", "created_by");
 
 		/// <summary>Field : "Created by" Tipo: "ON" Formula:  ""</summary>
 		public string ValCreated_by
@@ -505,7 +368,7 @@ namespace CSGenio.business
 
 		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
 		public static FieldRef FldCreated_at { get { return m_fldCreated_at; } }
-		private static FieldRef m_fldCreated_at = new FieldRef("item", "created_at");
+		private static FieldRef m_fldCreated_at = new FieldRef("photoalbum", "created_at");
 
 		/// <summary>Field : "Created at" Tipo: "OD" Formula:  ""</summary>
 		public DateTime ValCreated_at
@@ -516,7 +379,7 @@ namespace CSGenio.business
 
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
-		private static FieldRef m_fldZzstate = new FieldRef("item", "zzstate");
+		private static FieldRef m_fldZzstate = new FieldRef("photoalbum", "zzstate");
 
 
 
@@ -537,12 +400,12 @@ namespace CSGenio.business
 		/// <param name="forUpdate">True if you are preparing to update this record, false otherwise</param>
         /// <returns>An area with the fields requests of the record read or null if the key does not exist</returns>
         /// <remarks>Persistence operations should not be used on a partially positioned register</remarks>
-        public static CSGenioAitem search(PersistentSupport sp, string key, User user, string[] fields = null, bool forUpdate = false)
+        public static CSGenioAphotoalbum search(PersistentSupport sp, string key, User user, string[] fields = null, bool forUpdate = false)
         {
 			if (string.IsNullOrEmpty(key))
 				return null;
 
-		    CSGenioAitem area = new CSGenioAitem(user, user.CurrentModule);
+		    CSGenioAphotoalbum area = new CSGenioAphotoalbum(user, user.CurrentModule);
 
             if (sp.getRecord(area, key, fields, forUpdate))
                 return area;
@@ -569,9 +432,9 @@ namespace CSGenio.business
         /// <param name="noLock">NOLOCK</param>
         /// <returns>A list of area records with all fields populated</returns>
         /// <remarks>Persistence operations should not be used on a partially positioned register</remarks>
-        public static List<CSGenioAitem> searchList(PersistentSupport sp, User user, CriteriaSet where, string[] fields = null, bool distinct = false, bool noLock = false)
+        public static List<CSGenioAphotoalbum> searchList(PersistentSupport sp, User user, CriteriaSet where, string[] fields = null, bool distinct = false, bool noLock = false)
         {
-				return sp.searchListWhere<CSGenioAitem>(where, user, fields, distinct, noLock);
+				return sp.searchListWhere<CSGenioAphotoalbum>(where, user, fields, distinct, noLock);
         }
 
 
@@ -585,9 +448,9 @@ namespace CSGenio.business
         /// <param name="listing">List configuration</param>
         /// <returns>A list of area records with all fields populated</returns>
         /// <remarks>Persistence operations should not be used on a partially positioned register</remarks>
-        public static void searchListAdvancedWhere(PersistentSupport sp, User user, CriteriaSet where, ListingMVC<CSGenioAitem> listing)
+        public static void searchListAdvancedWhere(PersistentSupport sp, User user, CriteriaSet where, ListingMVC<CSGenioAphotoalbum> listing)
         {
-			sp.searchListAdvancedWhere<CSGenioAitem>(where, listing);
+			sp.searchListAdvancedWhere<CSGenioAphotoalbum>(where, listing);
         }
 
 
@@ -608,10 +471,10 @@ namespace CSGenio.business
 
 
 
-		// USE /[MANUAL FPV TABAUX ITEM]/
+		// USE /[MANUAL FPV TABAUX PHOTOALBUM]/
 
  
-              
+         
 
 	}
 }

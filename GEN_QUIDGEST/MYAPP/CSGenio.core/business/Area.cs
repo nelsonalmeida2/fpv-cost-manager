@@ -44,6 +44,8 @@ namespace CSGenio.business
         private static AreaRef m_AreaS_PAX = new AreaRef("FPV", "asyncprocessattachments", "s_pax");
         public static AreaRef AreaS_APR { get { return m_AreaS_APR; } }
         private static AreaRef m_AreaS_APR = new AreaRef("FPV", "asyncprocess", "s_apr");
+        public static AreaRef AreaPHOTOALBUM { get { return m_AreaPHOTOALBUM; } }
+        private static AreaRef m_AreaPHOTOALBUM = new AreaRef("FPV", "fpvphotoalbum", "photoalbum");
         public static AreaRef AreaPERSONPSW { get { return m_AreaPERSONPSW; } }
         private static AreaRef m_AreaPERSONPSW = new AreaRef("FPV", "fpvpersonpsw", "personpsw");
         public static AreaRef AreaBRAND { get { return m_AreaBRAND; } }
@@ -97,6 +99,7 @@ namespace CSGenio.business
             "s_nm",
             "s_pax",
             "s_apr",
+            "photoalbum",
             "personpsw",
             "brand",
             "mem",

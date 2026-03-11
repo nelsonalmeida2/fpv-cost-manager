@@ -114,6 +114,9 @@
   <msg id="Global" code="GLOBAL58588">
     <ENUS>Global</ENUS>
   </msg>
+  <msg id="PHOTO DETAILS" code="PHOTO_DETAILS14260">
+    <ENUS>PHOTO DETAILS</ENUS>
+  </msg>
   <msg id="Async process attachment" code="ASYNC_PROCESS_ATTACH34417">
     <ENUS>Async process attachment</ENUS>
   </msg>
@@ -201,6 +204,9 @@
   <msg id="Updated by" code="UPDATED_BY17808">
     <ENUS>Updated by</ENUS>
   </msg>
+  <msg id="Title" code="TITLE21885">
+    <ENUS>Title</ENUS>
+  </msg>
   <msg id="Phone number" code="PHONE_NUMBER20774">
     <ENUS>Phone number</ENUS>
   </msg>
@@ -273,6 +279,9 @@
   <msg id="Sender" code="SENDER07671">
     <ENUS>Sender</ENUS>
   </msg>
+  <msg id="Photo Album" code="PHOTO_ALBUM45574">
+    <ENUS>Photo Album</ENUS>
+  </msg>
   <msg id="Process info" code="PROCESS_INFO62044">
     <ENUS>Process info</ENUS>
   </msg>
@@ -320,6 +329,9 @@
   </msg>
   <msg id="Resultados" code="RESULTADOS20000">
     <ENUS>Resultados</ENUS>
+  </msg>
+  <msg id="New Data Grid" code="NEW_DATA_GRID00674">
+    <ENUS>New Data Grid</ENUS>
   </msg>
   <msg id="Notification Email Signature" code="NOTIFICATION_EMAIL_S62518">
     <ENUS>Notification Email Signature</ENUS>

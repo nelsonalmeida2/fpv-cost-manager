@@ -231,6 +231,9 @@
   <data name="GLOBAL58588" xml:space="preserve">
     <value>Global</value>
   </data>
+  <data name="PHOTO_DETAILS14260" xml:space="preserve">
+    <value>PHOTO DETAILS</value>
+  </data>
   <data name="ASYNC_PROCESS_ATTACH34417" xml:space="preserve">
     <value>Async process attachment</value>
   </data>
@@ -318,6 +321,9 @@
   <data name="UPDATED_BY17808" xml:space="preserve">
     <value>Updated by</value>
   </data>
+  <data name="TITLE21885" xml:space="preserve">
+    <value>Title</value>
+  </data>
   <data name="PHONE_NUMBER20774" xml:space="preserve">
     <value>Phone number</value>
   </data>
@@ -390,6 +396,9 @@
   <data name="SENDER07671" xml:space="preserve">
     <value>Sender</value>
   </data>
+  <data name="PHOTO_ALBUM45574" xml:space="preserve">
+    <value>Photo Album</value>
+  </data>
   <data name="PROCESS_INFO62044" xml:space="preserve">
     <value>Process info</value>
   </data>
@@ -437,6 +446,9 @@
   </data>
   <data name="RESULTADOS20000" xml:space="preserve">
     <value>Resultados</value>
+  </data>
+  <data name="NEW_DATA_GRID00674" xml:space="preserve">
+    <value>New Data Grid</value>
   </data>
   <data name="NOTIFICATION_EMAIL_S62518" xml:space="preserve">
     <value>Notification Email Signature</value>

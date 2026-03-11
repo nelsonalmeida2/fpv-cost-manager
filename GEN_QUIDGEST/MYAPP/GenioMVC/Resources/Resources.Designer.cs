@@ -405,6 +405,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "PHOTO DETAILS"
+		/// </summary>
+		public static string PHOTO_DETAILS14260 {
+			get {
+				return ResourceManager.GetString("PHOTO_DETAILS14260", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Async process attachment"
 		/// </summary>
 		public static string ASYNC_PROCESS_ATTACH34417 {
@@ -666,6 +675,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Title"
+		/// </summary>
+		public static string TITLE21885 {
+			get {
+				return ResourceManager.GetString("TITLE21885", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Phone number"
 		/// </summary>
 		public static string PHONE_NUMBER20774 {
@@ -882,6 +900,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Photo Album"
+		/// </summary>
+		public static string PHOTO_ALBUM45574 {
+			get {
+				return ResourceManager.GetString("PHOTO_ALBUM45574", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Process info"
 		/// </summary>
 		public static string PROCESS_INFO62044 {
@@ -1022,6 +1049,15 @@ namespace GenioMVC.Resources
 		public static string RESULTADOS20000 {
 			get {
 				return ResourceManager.GetString("RESULTADOS20000", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "New Data Grid"
+		/// </summary>
+		public static string NEW_DATA_GRID00674 {
+			get {
+				return ResourceManager.GetString("NEW_DATA_GRID00674", resourceCulture);
 			}
 		}
 
