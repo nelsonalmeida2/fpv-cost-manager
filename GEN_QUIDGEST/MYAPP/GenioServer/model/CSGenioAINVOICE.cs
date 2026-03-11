@@ -164,7 +164,6 @@ namespace CSGenio.business
 			Qfield.MQueue = false;
 			Qfield.CavDesignation = "UPDATED_AT46891";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
@@ -175,7 +174,6 @@ namespace CSGenio.business
 			Qfield.MQueue = false;
 			Qfield.CavDesignation = "UPDATED_BY17808";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 
@@ -199,6 +197,18 @@ namespace CSGenio.business
 
             Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "codinvoicestore", FieldType.TEXT);
+			Qfield.FieldDescription = "CODINVOICESTORE";
+			Qfield.FieldSize =  50;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CODINVOICESTORE44054";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+            Qfield.NotDup = true;
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
@@ -284,7 +294,7 @@ namespace CSGenio.business
 			info.ShadowTabKeyName="";
 
 			info.PrimaryKeyName="codinvoice";
-			info.HumanKeyName="";
+			info.HumanKeyName="codinvoicestore,".TrimEnd(',');
 			info.Alias="invoice";
 			info.IsDomain = true;
 			info.PersistenceType = PersistenceType.Database;
@@ -529,6 +539,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCreated_at, value); }
 		}
 
+		/// <summary>Field : "CODINVOICESTORE" Tipo: "C" Formula:  ""</summary>
+		public static FieldRef FldCodinvoicestore { get { return m_fldCodinvoicestore; } }
+		private static FieldRef m_fldCodinvoicestore = new FieldRef("invoice", "codinvoicestore");
+
+		/// <summary>Field : "CODINVOICESTORE" Tipo: "C" Formula:  ""</summary>
+		public string ValCodinvoicestore
+		{
+			get { return (string)returnValueField(FldCodinvoicestore); }
+			set { insertNameValueField(FldCodinvoicestore, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("invoice", "zzstate");
@@ -626,7 +647,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX INVOICE]/
 
  
-              
+               
 
 	}
 }

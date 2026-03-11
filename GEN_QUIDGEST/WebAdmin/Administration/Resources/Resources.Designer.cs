@@ -223,6 +223,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "CODINVOICESTORE"
+        /// </summary>
+        public static string CODINVOICESTORE44054 {
+            get {
+                return ResourceManager.GetString("CODINVOICESTORE44054", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Role"
         /// </summary>
         public static string ROLE60946 {
@@ -520,6 +529,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Purchase Details"
+        /// </summary>
+        public static string PURCHASE_DETAILS40558 {
+            get {
+                return ResourceManager.GetString("PURCHASE_DETAILS40558", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Process mode"
         /// </summary>
         public static string PROCESS_MODE22419 {
@@ -655,6 +673,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Catalog Details"
+        /// </summary>
+        public static string CATALOG_DETAILS56370 {
+            get {
+                return ResourceManager.GetString("CATALOG_DETAILS56370", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "MetaData"
         /// </summary>
         public static string METADATA28516 {
@@ -736,6 +763,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Store Info"
+        /// </summary>
+        public static string STORE_INFO07800 {
+            get {
+                return ResourceManager.GetString("STORE_INFO07800", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "SUB-CATEGORY INFO"
         /// </summary>
         public static string SUB_CATEGORY_INFO23729 {
@@ -804,6 +840,15 @@ namespace Administration.Resources {
         public static string REAL43894 {
             get {
                 return ResourceManager.GetString("REAL43894", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Cost Breakdown"
+        /// </summary>
+        public static string COST_BREAKDOWN51129 {
+            get {
+                return ResourceManager.GetString("COST_BREAKDOWN51129", resourceCulture);
             }
         }
 
@@ -1668,6 +1713,15 @@ namespace Administration.Resources {
         public static string RECEIPT15218 {
             get {
                 return ResourceManager.GetString("RECEIPT15218", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "ITEM INFO"
+        /// </summary>
+        public static string ITEM_INFO03102 {
+            get {
+                return ResourceManager.GetString("ITEM_INFO03102", resourceCulture);
             }
         }
 

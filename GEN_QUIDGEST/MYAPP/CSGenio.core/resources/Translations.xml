@@ -54,6 +54,9 @@
   <msg id="cREA" code="CREA43898">
     <ENUS>cREA</ENUS>
   </msg>
+  <msg id="CODINVOICESTORE" code="CODINVOICESTORE44054">
+    <ENUS>CODINVOICESTORE</ENUS>
+  </msg>
   <msg id="Role" code="ROLE60946">
     <ENUS>Role</ENUS>
   </msg>
@@ -153,6 +156,9 @@
   <msg id="Finished" code="FINISHED26993">
     <ENUS>Finished</ENUS>
   </msg>
+  <msg id="Purchase Details" code="PURCHASE_DETAILS40558">
+    <ENUS>Purchase Details</ENUS>
+  </msg>
   <msg id="Process mode" code="PROCESS_MODE22419">
     <ENUS>Process mode</ENUS>
   </msg>
@@ -198,6 +204,9 @@
   <msg id="Phone number" code="PHONE_NUMBER20774">
     <ENUS>Phone number</ENUS>
   </msg>
+  <msg id="Catalog Details" code="CATALOG_DETAILS56370">
+    <ENUS>Catalog Details</ENUS>
+  </msg>
   <msg id="MetaData" code="METADATA28516">
     <ENUS>MetaData</ENUS>
   </msg>
@@ -225,6 +234,9 @@
   <msg id="User ID" code="USER_ID13914">
     <ENUS>User ID</ENUS>
   </msg>
+  <msg id="Store Info" code="STORE_INFO07800">
+    <ENUS>Store Info</ENUS>
+  </msg>
   <msg id="SUB-CATEGORY INFO" code="SUB_CATEGORY_INFO23729">
     <ENUS>SUB-CATEGORY INFO</ENUS>
   </msg>
@@ -248,6 +260,9 @@
   </msg>
   <msg id="Real" code="REAL43894">
     <ENUS>Real</ENUS>
+  </msg>
+  <msg id="Cost Breakdown" code="COST_BREAKDOWN51129">
+    <ENUS>Cost Breakdown</ENUS>
   </msg>
   <msg id="Country" code="COUNTRY64133">
     <ENUS>Country</ENUS>
@@ -536,6 +551,9 @@
   </msg>
   <msg id="Receipt" code="RECEIPT15218">
     <ENUS>Receipt</ENUS>
+  </msg>
+  <msg id="ITEM INFO" code="ITEM_INFO03102">
+    <ENUS>ITEM INFO</ENUS>
   </msg>
   <msg id="a:" code="A_47238">
     <ENUS>to:</ENUS>

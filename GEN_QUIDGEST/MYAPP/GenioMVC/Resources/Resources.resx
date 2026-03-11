@@ -171,6 +171,9 @@
 	<data name="CREA43898" xml:space="preserve">
 		<value>cREA</value>
 	</data>
+	<data name="CODINVOICESTORE44054" xml:space="preserve">
+		<value>CODINVOICESTORE</value>
+	</data>
 	<data name="ROLE60946" xml:space="preserve">
 		<value>Role</value>
 	</data>
@@ -270,6 +273,9 @@
 	<data name="FINISHED26993" xml:space="preserve">
 		<value>Finished</value>
 	</data>
+	<data name="PURCHASE_DETAILS40558" xml:space="preserve">
+		<value>Purchase Details</value>
+	</data>
 	<data name="PROCESS_MODE22419" xml:space="preserve">
 		<value>Process mode</value>
 	</data>
@@ -315,6 +321,9 @@
 	<data name="PHONE_NUMBER20774" xml:space="preserve">
 		<value>Phone number</value>
 	</data>
+	<data name="CATALOG_DETAILS56370" xml:space="preserve">
+		<value>Catalog Details</value>
+	</data>
 	<data name="METADATA28516" xml:space="preserve">
 		<value>MetaData</value>
 	</data>
@@ -342,6 +351,9 @@
 	<data name="USER_ID13914" xml:space="preserve">
 		<value>User ID</value>
 	</data>
+	<data name="STORE_INFO07800" xml:space="preserve">
+		<value>Store Info</value>
+	</data>
 	<data name="SUB_CATEGORY_INFO23729" xml:space="preserve">
 		<value>SUB-CATEGORY INFO</value>
 	</data>
@@ -365,6 +377,9 @@
 	</data>
 	<data name="REAL43894" xml:space="preserve">
 		<value>Real</value>
+	</data>
+	<data name="COST_BREAKDOWN51129" xml:space="preserve">
+		<value>Cost Breakdown</value>
 	</data>
 	<data name="COUNTRY64133" xml:space="preserve">
 		<value>Country</value>
@@ -653,6 +668,9 @@
 	</data>
 	<data name="RECEIPT15218" xml:space="preserve">
 		<value>Receipt</value>
+	</data>
+	<data name="ITEM_INFO03102" xml:space="preserve">
+		<value>ITEM INFO</value>
 	</data>
 	<data name="A_47238" xml:space="preserve">
 		<value>to:</value>

@@ -115,6 +115,11 @@ namespace GenioMVC.Models
 		[DateAttribute("OD")]
 		public DateTime? ValCreated_at { get { return klass.ValCreated_at; } set { klass.ValCreated_at = value ?? DateTime.Now;  } }
 
+		[DisplayName("CODINVOICESTORE")]
+		/// <summary>Field : "CODINVOICESTORE" Tipo: "C" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValCodinvoicestore")]
+		public string ValCodinvoicestore { get { return klass.ValCodinvoicestore; } set { klass.ValCodinvoicestore = value; } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Invoice.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

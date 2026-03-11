@@ -712,7 +712,6 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_PERSON__PSEUD__NEWGRP01',
 						maxLength: 100,
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -727,7 +726,6 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_PERSON__PSEUD__NEWGRP01',
 						dateTimeType: 'date',
-						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),

@@ -435,10 +435,6 @@ namespace GenioMVC.ViewModels.Person
 			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
 
 			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
-
-			validator.Required("ValUpdated_by", Resources.Resources.UPDATED_BY17808, ViewModelConversion.ToString(ValUpdated_by), FieldType.TEXT.GetFormatting());
-
-			validator.Required("ValUpdated_at", Resources.Resources.UPDATED_AT48366, ViewModelConversion.ToDateTime(ValUpdated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("ValName", Resources.Resources.NAME31974, ValName, 50);
 
 			validator.Required("ValName", Resources.Resources.NAME31974, ViewModelConversion.ToString(ValName), FieldType.TEXT.GetFormatting());
