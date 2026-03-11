@@ -175,7 +175,6 @@ export const components = {
 
 	// Special renderings
 	QCards: defineAsyncComponent(() => import('./rendering/cards/QCards.vue')),
-	QCollapsiblerowslist: defineAsyncComponent(() => import('./rendering/QCollapsiblerowslist.vue')),
 
 	// Table components
 	QTable: defineAsyncComponent(() => import('./table/QTable.vue')),
