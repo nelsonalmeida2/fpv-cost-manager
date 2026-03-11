@@ -924,6 +924,16 @@
 						mustBeFilled: true,
 						controlLimits: [
 						],
+						showWhen: {
+							// eslint-disable-next-line @typescript-eslint/no-unused-vars
+							fnFormula(params)
+							{
+								// Formula: [ITEM->UNITPRICE]!= 0 && [ITEM->QUANTITY]!= 0
+								return this.ValUnitprice.value!==0&&this.ValQuantity.value!==0
+							},
+							dependencyEvents: ['fieldChange:item.unitprice', 'fieldChange:item.quantity'],
+							isServerRecalc: false,
+						},
 					}, this),
 					FORM_ITEM__PSEUD__NEWGRP02: new fieldControlClass.GroupControl({
 						id: 'FORM_ITEM__PSEUD__NEWGRP02',
