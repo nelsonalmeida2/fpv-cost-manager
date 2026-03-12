@@ -216,6 +216,9 @@
   <msg id="Name Person" code="NAME_PERSON43394">
     <ENUS>Name Person</ENUS>
   </msg>
+  <msg id="Spending by Category" code="SPENDING_BY_CATEGORY12333">
+    <ENUS>Spending by Category</ENUS>
+  </msg>
   <msg id="Quidgest" code="QUIDGEST26196">
     <ENUS>Quidgest</ENUS>
   </msg>
@@ -263,6 +266,9 @@
   </msg>
   <msg id="Has login?" code="HAS_LOGIN_58044">
     <ENUS>Has login?</ENUS>
+  </msg>
+  <msg id="Spending By Category" code="SPENDING_BY_CATEGORY50361">
+    <ENUS>Spending By Category</ENUS>
   </msg>
   <msg id="Website" code="WEBSITE08569">
     <ENUS>Website</ENUS>

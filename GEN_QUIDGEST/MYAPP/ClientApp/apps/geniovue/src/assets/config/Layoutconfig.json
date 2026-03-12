@@ -53,6 +53,7 @@
 			true,
 			false
 		],
+		"chosen": false,
 		"default": true
 	},
 	"BreadcrumbsContent": {

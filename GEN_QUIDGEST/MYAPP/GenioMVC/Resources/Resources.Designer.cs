@@ -711,6 +711,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Spending by Category"
+		/// </summary>
+		public static string SPENDING_BY_CATEGORY12333 {
+			get {
+				return ResourceManager.GetString("SPENDING_BY_CATEGORY12333", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Quidgest"
 		/// </summary>
 		public static string QUIDGEST26196 {
@@ -851,6 +860,15 @@ namespace GenioMVC.Resources
 		public static string HAS_LOGIN_58044 {
 			get {
 				return ResourceManager.GetString("HAS_LOGIN_58044", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Spending By Category"
+		/// </summary>
+		public static string SPENDING_BY_CATEGORY50361 {
+			get {
+				return ResourceManager.GetString("SPENDING_BY_CATEGORY50361", resourceCulture);
 			}
 		}
 

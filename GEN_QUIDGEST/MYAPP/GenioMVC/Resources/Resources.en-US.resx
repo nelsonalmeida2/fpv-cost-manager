@@ -333,6 +333,9 @@
 	<data name="NAME_PERSON43394" xml:space="preserve">
 		<value>Name Person</value>
 	</data>
+	<data name="SPENDING_BY_CATEGORY12333" xml:space="preserve">
+		<value>Spending by Category</value>
+	</data>
 	<data name="QUIDGEST26196" xml:space="preserve">
 		<value>Quidgest</value>
 	</data>
@@ -380,6 +383,9 @@
 	</data>
 	<data name="HAS_LOGIN_58044" xml:space="preserve">
 		<value>Has login?</value>
+	</data>
+	<data name="SPENDING_BY_CATEGORY50361" xml:space="preserve">
+		<value>Spending By Category</value>
 	</data>
 	<data name="WEBSITE08569" xml:space="preserve">
 		<value>Website</value>
