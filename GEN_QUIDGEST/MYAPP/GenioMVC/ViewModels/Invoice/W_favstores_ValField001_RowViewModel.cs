@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Store;
+namespace GenioMVC.ViewModels.Invoice;
 
-public class FPV_Menu_611_RowViewModel : Models.Store
+public class W_favstores_ValField001_RowViewModel : Models.Invoice
 {
 	#region Constructors
 
-	public FPV_Menu_611_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public W_favstores_ValField001_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_611_RowViewModel(UserContext userContext, CSGenioAstore val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public W_favstores_ValField001_RowViewModel(UserContext userContext, CSGenioAinvoice val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,37 +36,13 @@ public class FPV_Menu_611_RowViewModel : Models.Store
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "STORE",
-				Field = "LOGOTYPE",
+				Area = "INVOICE",
+				Field = "TOTALPRICE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
 				Area = "STORE",
-				Field = "NAME",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "STORE",
-				Field = "DESCRIPTION",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "STORE",
-				Field = "SITE",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "STORE",
-				Field = "CURRENCY",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "COUNTRY",
 				Field = "NAME",
 			},
 		];
@@ -82,10 +58,6 @@ public class FPV_Menu_611_RowViewModel : Models.Store
 		bool canDelete = true;
 		bool canDuplicate = true;
 		bool canInsert = true;
-
-		using (new CSGenio.persistence.ScopedPersistentSupport(m_userContext.PersistentSupport))
-		{
-		}
 
 		BtnPermission = new TableRowCrudButtonPermissions()
 		{

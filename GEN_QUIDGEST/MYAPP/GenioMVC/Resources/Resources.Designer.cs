@@ -297,6 +297,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Favorite Stores"
+		/// </summary>
+		public static string FAVORITE_STORES13289 {
+			get {
+				return ResourceManager.GetString("FAVORITE_STORES13289", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Ruble"
 		/// </summary>
 		public static string RUBLE07990 {
@@ -1431,6 +1440,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Total Spending"
+		/// </summary>
+		public static string TOTAL_SPENDING49047 {
+			get {
+				return ResourceManager.GetString("TOTAL_SPENDING49047", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Cancelado"
 		/// </summary>
 		public static string CANCELADO05982 {
@@ -1571,6 +1589,15 @@ namespace GenioMVC.Resources
 		public static string NOTIFICATION_MESSAGE60981 {
 			get {
 				return ResourceManager.GetString("NOTIFICATION_MESSAGE60981", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Dashboard"
+		/// </summary>
+		public static string DASHBOARD51597 {
+			get {
+				return ResourceManager.GetString("DASHBOARD51597", resourceCulture);
 			}
 		}
 
@@ -18734,15 +18761,6 @@ namespace GenioMVC.Resources
 		public static string CONTACTOS35567 {
 			get {
 				return ResourceManager.GetString("CONTACTOS35567", resourceCulture);
-			}
-		}
-
-		/// <summary>
-		///   Looks up a localized string similar to "Dashboard"
-		/// </summary>
-		public static string DASHBOARD51597 {
-			get {
-				return ResourceManager.GetString("DASHBOARD51597", resourceCulture);
 			}
 		}
 

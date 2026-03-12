@@ -122,6 +122,12 @@ namespace GenioMVC.Models
 			set { _person = value; }
 		}
 
+		[DisplayName("Total Spending")]
+		/// <summary>Field : "Total Spending" Tipo: "$" Formula: SR "[INVOICE->TOTALPRICE]"</summary>
+		[ShouldSerialize("Store.ValTotalspending")]
+		[CurrencyAttribute("EUR", 2)]
+		public decimal? ValTotalspending { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTotalspending, 2)); } set { klass.ValTotalspending = Convert.ToDecimal(value); } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Store.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

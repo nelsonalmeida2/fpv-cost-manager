@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Person;
+namespace GenioMVC.ViewModels.Invoice;
 
-public class FPV_Menu_51_RowViewModel : Models.Person
+public class W_favstores_ValField002_RowViewModel : Models.Store
 {
 	#region Constructors
 
-	public FPV_Menu_51_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public W_favstores_ValField002_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_51_RowViewModel(UserContext userContext, CSGenioAperson val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public W_favstores_ValField002_RowViewModel(UserContext userContext, CSGenioAstore val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,38 +36,14 @@ public class FPV_Menu_51_RowViewModel : Models.Person
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PERSON",
-				Field = "PHOTO",
-			},
-			new ListColumn()
-			{
-				Order = 2,
-				Area = "PERSON",
+				Area = "STORE",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 3,
-				Area = "PERSON",
-				Field = "GENDER",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "PERSON",
-				Field = "BIRTHDAY",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "PERSON",
-				Field = "EMAIL",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "PERSON",
-				Field = "TELEPHONE",
+				Order = 2,
+				Area = "STORE",
+				Field = "TOTALSPENDING",
 			},
 		];
 	}
@@ -82,10 +58,6 @@ public class FPV_Menu_51_RowViewModel : Models.Person
 		bool canDelete = true;
 		bool canDuplicate = true;
 		bool canInsert = true;
-
-		using (new CSGenio.persistence.ScopedPersistentSupport(m_userContext.PersistentSupport))
-		{
-		}
 
 		BtnPermission = new TableRowCrudButtonPermissions()
 		{

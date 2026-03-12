@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Item;
+namespace GenioMVC.ViewModels.Photoalbum;
 
-public class FPV_Menu_511_RowViewModel : Models.Item
+public class FPV_Menu_911_RowViewModel : Models.Photoalbum
 {
 	#region Constructors
 
-	public FPV_Menu_511_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_911_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_511_RowViewModel(UserContext userContext, CSGenioAitem val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_911_RowViewModel(UserContext userContext, CSGenioAphotoalbum val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,74 +36,44 @@ public class FPV_Menu_511_RowViewModel : Models.Item
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "CATEGORY",
-				Field = "NAME",
-			},
-			new ListColumn()
-			{
-				Order = 2,
-				Area = "ITEM",
+				Area = "PHOTOALBUM",
 				Field = "CREATED_AT",
 			},
 			new ListColumn()
 			{
-				Order = 3,
-				Area = "ITEM",
-				Field = "QUANTITY",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "ITEM",
-				Field = "UPDATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "ITEM",
-				Field = "TOTALPRICE",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "INVOICE",
-				Field = "CODINVOICESTORE",
-			},
-			new ListColumn()
-			{
-				Order = 7,
-				Area = "ITEM",
+				Order = 2,
+				Area = "PHOTOALBUM",
 				Field = "CREATED_BY",
 			},
 			new ListColumn()
 			{
-				Order = 8,
-				Area = "ITEM",
-				Field = "NAME",
+				Order = 3,
+				Area = "PHOTOALBUM",
+				Field = "TITLE",
 			},
 			new ListColumn()
 			{
-				Order = 9,
-				Area = "SUBCATEGORY",
-				Field = "NAME",
+				Order = 4,
+				Area = "PHOTOALBUM",
+				Field = "PHOTO",
 			},
 			new ListColumn()
 			{
-				Order = 10,
-				Area = "BRAND",
-				Field = "NAME",
-			},
-			new ListColumn()
-			{
-				Order = 11,
-				Area = "ITEM",
+				Order = 5,
+				Area = "PHOTOALBUM",
 				Field = "UPDATED_BY",
 			},
 			new ListColumn()
 			{
-				Order = 12,
+				Order = 6,
 				Area = "ITEM",
-				Field = "UNITPRICE",
+				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 7,
+				Area = "PHOTOALBUM",
+				Field = "UPDATED_AT",
 			},
 		];
 	}

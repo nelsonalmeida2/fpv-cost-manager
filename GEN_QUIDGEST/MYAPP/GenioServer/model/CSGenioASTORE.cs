@@ -170,6 +170,19 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "totalspending", FieldType.CURRENCY);
+			Qfield.FieldDescription = "Total Spending";
+			Qfield.FieldSize =  9;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 6;
+			Qfield.Decimals = 2;
+			Qfield.CavDesignation = "TOTAL_SPENDING49047";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -215,6 +228,10 @@ namespace CSGenio.business
 
 
 
+
+			info.RelatedSumFields = new string[] {
+			 "totalspending"
+			};
 
 
 
@@ -464,6 +481,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCodperson, value); }
 		}
 
+		/// <summary>Field : "Total Spending" Tipo: "$" Formula: SR "[INVOICE->TOTALPRICE]"</summary>
+		public static FieldRef FldTotalspending { get { return m_fldTotalspending; } }
+		private static FieldRef m_fldTotalspending = new FieldRef("store", "totalspending");
+
+		/// <summary>Field : "Total Spending" Tipo: "$" Formula: SR "[INVOICE->TOTALPRICE]"</summary>
+		public decimal ValTotalspending
+		{
+			get { return (decimal)returnValueField(FldTotalspending); }
+			set { insertNameValueField(FldTotalspending, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("store", "zzstate");
@@ -561,7 +589,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX STORE]/
 
  
-             
+              
 
 	}
 }

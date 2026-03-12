@@ -123,5 +123,17 @@ export default function getFormsRoutes()
 				isPopup: false
 			}
 		},
+		{
+			path: '/:culture/:system/:module/form/W_FAVSTORES/:mode/:id?',
+			name: 'form-W_FAVSTORES',
+			props: route => propsConverter(route),
+			component: () => import('@/views/forms/FormWFavstores/QFormWFavstores.vue'),
+			meta: {
+				routeType: 'form',
+				baseArea: 'INVOICE',
+				humanKeyFields: ['ValCodinvoicestore'],
+				isPopup: false
+			}
+		},
 	]
 }

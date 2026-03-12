@@ -195,6 +195,9 @@
 	<data name="PERSON_INFO59550" xml:space="preserve">
 		<value>Person Info</value>
 	</data>
+	<data name="FAVORITE_STORES13289" xml:space="preserve">
+		<value>Favorite Stores</value>
+	</data>
 	<data name="RUBLE07990" xml:space="preserve">
 		<value>Ruble</value>
 	</data>
@@ -573,6 +576,9 @@
 	<data name="OTHER37293" xml:space="preserve">
 		<value>Other</value>
 	</data>
+	<data name="TOTAL_SPENDING49047" xml:space="preserve">
+		<value>Total Spending</value>
+	</data>
 	<data name="CANCELADO05982" xml:space="preserve">
 		<value>Cancelado</value>
 	</data>
@@ -620,6 +626,9 @@
 	</data>
 	<data name="NOTIFICATION_MESSAGE60981" xml:space="preserve">
 		<value>Notification Messages</value>
+	</data>
+	<data name="DASHBOARD51597" xml:space="preserve">
+		<value>Dashboard</value>
 	</data>
 	<data name="ID36840" xml:space="preserve">
 		<value>Id</value>
@@ -6341,9 +6350,6 @@
 	</data>
 	<data name="CONTACTOS35567" xml:space="preserve">
 		<value>Contacts</value>
-	</data>
-	<data name="DASHBOARD51597" xml:space="preserve">
-		<value>Dashboard</value>
 	</data>
 	<data name="ESPACO_LIVRE_13565" xml:space="preserve">
 		<value>Free space:</value>

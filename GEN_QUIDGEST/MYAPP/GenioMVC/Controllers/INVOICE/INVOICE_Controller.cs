@@ -166,6 +166,22 @@ namespace GenioMVC.Controllers
 			);
 		}
 
+
+
+		/// <summary>
+		/// Recalculate formulas of the "W_favstores" form. (++, CT, SR, CL and U1)
+		/// </summary>
+		/// <param name="formData">Current form data</param>
+		/// <returns></returns>
+		[HttpPost]
+		public JsonResult RecalculateFormulas_W_favstores([FromBody]W_favstores_ViewModel formData)
+		{
+			return GenericRecalculateFormulas(formData, "invoice",
+				(primaryKey) => Models.Invoice.Find(primaryKey, UserContext.Current, "FW_FAVSTORES"),
+				(model) => formData.MapToModel(model as Models.Invoice)
+			);
+		}
+
 		/// <summary>
 		/// Get "See more..." tree structure
 		/// </summary>

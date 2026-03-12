@@ -351,7 +351,7 @@
 							}
 						},
 						globalEvents: ['changed-PERSON'],
-						uuid: 'addf9a58-3cb3-469d-9909-3184075648c1',
+						uuid: '22f76eab-b30f-49de-b148-3d9a28850d74',
 						allSelectedRows: 'false',
 						viewModes: [
 							{

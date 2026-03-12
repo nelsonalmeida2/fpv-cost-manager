@@ -78,6 +78,9 @@
   <msg id="Person Info" code="PERSON_INFO59550">
     <ENUS>Person Info</ENUS>
   </msg>
+  <msg id="Favorite Stores" code="FAVORITE_STORES13289">
+    <ENUS>Favorite Stores</ENUS>
+  </msg>
   <msg id="Ruble" code="RUBLE07990">
     <ENUS>Ruble</ENUS>
   </msg>
@@ -456,6 +459,9 @@
   <msg id="Other" code="OTHER37293">
     <ENUS>Other</ENUS>
   </msg>
+  <msg id="Total Spending" code="TOTAL_SPENDING49047">
+    <ENUS>Total Spending</ENUS>
+  </msg>
   <msg id="Cancelado" code="CANCELADO05982">
     <ENUS>Cancelado</ENUS>
   </msg>
@@ -503,6 +509,9 @@
   </msg>
   <msg id="Notification Messages" code="NOTIFICATION_MESSAGE60981">
     <ENUS>Notification Messages</ENUS>
+  </msg>
+  <msg id="Dashboard" code="DASHBOARD51597">
+    <ENUS>Dashboard</ENUS>
   </msg>
   <msg id="Id" code="ID36840">
     <ENUS>Id</ENUS>
@@ -6224,9 +6233,6 @@
   </msg>
   <msg id="Contactos" code="CONTACTOS35567">
     <ENUS>Contacts</ENUS>
-  </msg>
-  <msg id="Dashboard" code="DASHBOARD51597">
-    <ENUS>Dashboard</ENUS>
   </msg>
   <msg id="Espaço livre:" code="ESPACO_LIVRE_13565">
     <ENUS>Free space:</ENUS>

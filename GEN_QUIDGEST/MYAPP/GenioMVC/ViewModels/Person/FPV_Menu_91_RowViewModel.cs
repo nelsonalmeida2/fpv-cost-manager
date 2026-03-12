@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Photoalbum;
+namespace GenioMVC.ViewModels.Person;
 
-public class FPV_Menu_811_RowViewModel : Models.Photoalbum
+public class FPV_Menu_91_RowViewModel : Models.Person
 {
 	#region Constructors
 
-	public FPV_Menu_811_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_91_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_811_RowViewModel(UserContext userContext, CSGenioAphotoalbum val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_91_RowViewModel(UserContext userContext, CSGenioAperson val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,44 +36,38 @@ public class FPV_Menu_811_RowViewModel : Models.Photoalbum
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PHOTOALBUM",
-				Field = "CREATED_AT",
-			},
-			new ListColumn()
-			{
-				Order = 2,
-				Area = "PHOTOALBUM",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "PHOTOALBUM",
-				Field = "TITLE",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "PHOTOALBUM",
+				Area = "PERSON",
 				Field = "PHOTO",
 			},
 			new ListColumn()
 			{
-				Order = 5,
-				Area = "PHOTOALBUM",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "ITEM",
+				Order = 2,
+				Area = "PERSON",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 7,
-				Area = "PHOTOALBUM",
-				Field = "UPDATED_AT",
+				Order = 3,
+				Area = "PERSON",
+				Field = "GENDER",
+			},
+			new ListColumn()
+			{
+				Order = 4,
+				Area = "PERSON",
+				Field = "BIRTHDAY",
+			},
+			new ListColumn()
+			{
+				Order = 5,
+				Area = "PERSON",
+				Field = "EMAIL",
+			},
+			new ListColumn()
+			{
+				Order = 6,
+				Area = "PERSON",
+				Field = "TELEPHONE",
 			},
 		];
 	}

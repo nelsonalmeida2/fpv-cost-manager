@@ -29,7 +29,7 @@ namespace GenioMVC.Controllers
 	public partial class ItemController : ControllerBase
 	{
 		private static readonly NavigationLocation ACTION_FPV_MENU_3211 = new NavigationLocation("ITEMS55321", "FPV_Menu_3211", "Item") { vueRouteName = "menu-FPV_3211" };
-		private static readonly NavigationLocation ACTION_FPV_MENU_511 = new NavigationLocation("ITEMS55321", "FPV_Menu_511", "Item") { vueRouteName = "menu-FPV_511" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_611 = new NavigationLocation("ITEMS55321", "FPV_Menu_611", "Item") { vueRouteName = "menu-FPV_611" };
 
 
 		//
@@ -172,14 +172,14 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// GET: /Item/FPV_Menu_511
-		[ActionName("FPV_Menu_511")]
+		// GET: /Item/FPV_Menu_611
+		[ActionName("FPV_Menu_611")]
 		[HttpPost]
-		public ActionResult FPV_Menu_511([FromBody] RequestMenuModel requestModel)
+		public ActionResult FPV_Menu_611([FromBody] RequestMenuModel requestModel)
 		{
 			var queryParams = requestModel.QueryParams;
 
-			FPV_Menu_511_ViewModel model = new(m_userContext);
+			FPV_Menu_611_ViewModel model = new(m_userContext);
 
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
@@ -191,7 +191,7 @@ namespace GenioMVC.Controllers
 
 			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_511");
+				Navigation.SetValue("HomePage", "FPV_Menu_611");
 
 			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
 			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_item")))
@@ -210,12 +210,12 @@ namespace GenioMVC.Controllers
 				querystring.AddRange(queryParams);
 
 			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_511.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_511.Action)
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_611.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_611.Action)
 				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
 			else if (isHomePage)
 			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_511.ShortDescription());
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_611.ShortDescription());
 				Navigation.SetValue("HomePageContainsList", true);
 			}
 
@@ -224,17 +224,17 @@ namespace GenioMVC.Controllers
 				Navigation.SetValue("person", querystring["person"]);
 
 
-// USE /[MANUAL FPV MENU_GET 511]/
+// USE /[MANUAL FPV MENU_GET 611]/
 
 			if (querystring["ImportList"] != null && Convert.ToBoolean(querystring["ImportList"]) && querystring["ImportType"] != null)
 			{
 				string importType =  querystring["ImportType"];
-				string file = "FPV_Menu_511_Template" + "." + importType;
+				string file = "FPV_Menu_611_Template" + "." + importType;
 				List<CSGenio.framework.Exports.QColumn> columns = null;
 				model.LoadToExportTemplate(out columns);
 				byte[] fileBytes = null;
 
-				fileBytes = new CSGenio.framework.Exports(UserContext.Current.User).ExportTemplate(columns, importType, file,ACTION_FPV_MENU_511.Name);
+				fileBytes = new CSGenio.framework.Exports(UserContext.Current.User).ExportTemplate(columns, importType, file,ACTION_FPV_MENU_611.Name);
 
 				QCache.Instance.ExportFiles.Put(file, fileBytes);
 				return Json(GetJsonForDownloadExportFile(file, importType));
@@ -254,10 +254,10 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// POST: /Item/FPV_Menu_511_UploadFile
+		// POST: /Item/FPV_Menu_611_UploadFile
 		[HttpPost]
-		public ActionResult FPV_Menu_511_UploadFile(string importType, string qqfile) {
-			FPV_Menu_511_ViewModel model = new FPV_Menu_511_ViewModel(UserContext.Current);
+		public ActionResult FPV_Menu_611_UploadFile(string importType, string qqfile) {
+			FPV_Menu_611_ViewModel model = new FPV_Menu_611_ViewModel(UserContext.Current);
 
 			PersistentSupport sp = UserContext.Current.PersistentSupport;
 			List<CSGenioAitem> rows = new List<CSGenioAitem>();
