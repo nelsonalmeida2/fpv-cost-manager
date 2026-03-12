@@ -573,6 +573,9 @@
 	<data name="CC35482" xml:space="preserve">
 		<value>Cc</value>
 	</data>
+	<data name="LAST_INVOICE10398" xml:space="preserve">
+		<value>Last Invoice</value>
+	</data>
 	<data name="OTHER37293" xml:space="preserve">
 		<value>Other</value>
 	</data>
@@ -599,6 +602,9 @@
 	</data>
 	<data name="ASSIGNED_TO35661" xml:space="preserve">
 		<value>Assigned To</value>
+	</data>
+	<data name="LAST_INVOICES43184" xml:space="preserve">
+		<value>Last Invoices</value>
 	</data>
 	<data name="ROUTINE58306" xml:space="preserve">
 		<value>Routine</value>
@@ -677,6 +683,9 @@
 	</data>
 	<data name="ENTID_KEY04396" xml:space="preserve">
 		<value>Entid key</value>
+	</data>
+	<data name="HOME23643" xml:space="preserve">
+		<value>Home</value>
 	</data>
 	<data name="SHIPPING_COST12785" xml:space="preserve">
 		<value>Shipping Cost</value>

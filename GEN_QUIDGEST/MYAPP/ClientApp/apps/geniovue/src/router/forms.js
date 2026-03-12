@@ -135,5 +135,17 @@ export default function getFormsRoutes()
 				isPopup: false
 			}
 		},
+		{
+			path: '/:culture/:system/:module/form/W_LASTINVOICE/:mode/:id?',
+			name: 'form-W_LASTINVOICE',
+			props: route => propsConverter(route),
+			component: () => import('@/views/forms/FormWLastinvoice/QFormWLastinvoice.vue'),
+			meta: {
+				routeType: 'form',
+				baseArea: '',
+				humanKeyFields: [],
+				isPopup: false
+			}
+		},
 	]
 }

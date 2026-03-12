@@ -89,13 +89,13 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_41',
-			name: 'menu-FPV_41',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_51',
+			name: 'menu-FPV_51',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_51/QMenuFpv51.vue'),
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '41',
+				order: '51',
 				baseArea: 'PERSON',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
@@ -175,14 +175,14 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_411',
-			name: 'menu-FPV_411',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_411/QMenuFpv411.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_511',
+			name: 'menu-FPV_511',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_511/QMenuFpv511.vue'),
 			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '411',
+				order: '511',
 				baseArea: 'INVOICE',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValCodinvoicestore'],
@@ -375,13 +375,13 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_51',
-			name: 'menu-FPV_51',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_51/QMenuFpv51.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_41',
+			name: 'menu-FPV_41',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'),
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '51',
+				order: '41',
 				baseArea: 'Dashboard',
 				isDashboardPage: true,
 				hasInitialPHE: false,

@@ -15,15 +15,15 @@ using GenioMVC.Models.Navigation;
 using Quidgest.Persistence;
 using Quidgest.Persistence.GenericQuery;
 
-namespace GenioMVC.ViewModels.Invoice
+namespace GenioMVC.ViewModels
 {
-	public class FPV_Menu_411_ViewModel : MenuListViewModel<Models.Invoice>
+	public class W_lastinvoice_ValField001_ViewModel : MenuListViewModel<Models.Invoice>
 	{
 		/// <summary>
 		/// Gets or sets the object that represents the table and its elements.
 		/// </summary>
 		[JsonPropertyName("table")]
-		public TablePartial<FPV_Menu_411_RowViewModel> Menu { get; set; }
+		public TablePartial<W_lastinvoice_ValField001_RowViewModel> Menu { get; set; }
 
 		/// <inheritdoc/>
 		[JsonIgnore]
@@ -31,7 +31,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 		/// <inheritdoc/>
 		[JsonPropertyName("uuid")]
-		public override string Uuid => "4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5";
+		public override string Uuid => "W_lastinvoice_ValField001";
 
 		/// <inheritdoc/>
 		protected override string[] FieldsToSerialize => _fieldsToSerialize;
@@ -52,7 +52,6 @@ namespace GenioMVC.ViewModels.Invoice
 			get
 			{
 				CriteriaSet conditions = CriteriaSet.And();
-				// Limitations
 
 				return conditions;
 			}
@@ -65,7 +64,6 @@ namespace GenioMVC.ViewModels.Invoice
 			get
 			{
 				CriteriaSet conds = CriteriaSet.And();
-				conds.Equal(CSGenioAinvoice.FldCodperson, Navigation.GetValue("person"));
 
 				return conds;
 			}
@@ -84,63 +82,36 @@ namespace GenioMVC.ViewModels.Invoice
 
 		public override CriteriaSet GetCustomizedStaticLimits(CriteriaSet crs)
 		{
-// USE /[MANUAL FPV LIST_LIMITS 411]/
+// USE /[MANUAL FPV LIST_LIMITS W_LASTINVOICE_PSEUDFIELD001]/
 
 			return crs;
 		}
 
 		public override int GetCount(User user)
 		{
-			CSGenio.persistence.PersistentSupport sp = m_userContext.PersistentSupport;
-			var areaBase = CSGenio.business.Area.createArea("invoice", user, "FPV");
-
-			//gets eph conditions to be applied in listing
-			CriteriaSet conditions = CSGenio.business.Listing.CalculateConditionsEphGeneric(areaBase, "ML411");
-			conditions.Equal(CSGenioAinvoice.FldZzstate, 0); //valid zzstate only
-
-			// Fixed limits and relations:
-			conditions.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
-
-			// Checks for foreign tables in fields and conditions
-			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldShippingcost, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldNumberofitems };
-
-			ListingMVC<CSGenioAinvoice> listing = new(fields, null, 1, 1, false, user, true, string.Empty, false);
-			SelectQuery qs = sp.getSelectQueryFromListingMVC(conditions, listing);
-
-			// Menu relations:
-			if (qs.FromTable == null)
-				qs.From(areaBase.QSystem, areaBase.TableName, areaBase.Alias);
-
-			if (!qs.Joins.Select(x => x.Table).Select(y => y.TableAlias).Contains(CSGenio.business.Area.AreaPERSON.Alias))
-				qs.Join(CSGenio.business.Area.AreaPERSON, TableJoinType.Inner).On(CriteriaSet.And().Equal(CSGenioAperson.FldCodperson, CSGenioAinvoice.FldCodperson));
-
-
-
-			//operation: Count menu records
-			return CSGenio.persistence.DBConversion.ToInteger(sp.ExecuteScalar(CSGenio.persistence.QueryUtils.buildQueryCount(qs)));
+			throw new NotImplementedException("This operation is not supported");
 		}
 
 		/// <summary>
 		/// FOR DESERIALIZATION ONLY
 		/// </summary>
 		[Obsolete("For deserialization only")]
-		public FPV_Menu_411_ViewModel() : base(null!) { }
+		public W_lastinvoice_ValField001_ViewModel() : base(null!) { }
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_411_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="W_lastinvoice_ValField001_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
-		public FPV_Menu_411_ViewModel(UserContext userContext) : base(userContext)
+		public W_lastinvoice_ValField001_ViewModel(UserContext userContext) : base(userContext)
 		{
-			this.RoleToShow = CSGenio.framework.Role.ROLE_5;
 		}
 
 		/// <summary>
-		/// Initializes a new instance of the <see cref="FPV_Menu_411_ViewModel" /> class.
+		/// Initializes a new instance of the <see cref="W_lastinvoice_ValField001_ViewModel" /> class.
 		/// </summary>
 		/// <param name="userContext">The current user request context</param>
 		/// <param name="parentCtx">The context of the parent</param>
-		public FPV_Menu_411_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
+		public W_lastinvoice_ValField001_ViewModel(UserContext userContext, Models.ModelBase parentCtx) : this(userContext)
 		{
 			ParentCtx = parentCtx;
 		}
@@ -151,13 +122,12 @@ namespace GenioMVC.ViewModels.Invoice
 			return
 			[
 				new Exports.QColumn(CSGenioAinvoice.FldCodinvoicestore, FieldType.TEXT, Resources.Resources.CODINVOICESTORE44054, 30, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldDate, FieldType.DATE, Resources.Resources.DATE18475, 8, 0, true),
-				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.STORE16493, 30, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldPrice, FieldType.CURRENCY, Resources.Resources.PRICE06900, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldTotalprice, FieldType.CURRENCY, Resources.Resources.TOTAL_PRICE46894, 10, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldTaxes, FieldType.CURRENCY, Resources.Resources.TAXES34617, 10, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldShippingcost, FieldType.CURRENCY, Resources.Resources.SHIPPING_COST12785, 10, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldTotalprice, FieldType.CURRENCY, Resources.Resources.TOTAL_PRICE46894, 10, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldNumberofitems, FieldType.NUMERIC, Resources.Resources.NUMBER_OF_ITEMS22472, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldPrice, FieldType.CURRENCY, Resources.Resources.PRICE06900, 10, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldDeliverytype, FieldType.ARRAY_TEXT, Resources.Resources.DELIVERY_TYPE53619, 1, 0, true, "DELIVERYTYPE"),
 			];
 		}
 
@@ -183,28 +153,6 @@ namespace GenioMVC.ViewModels.Invoice
 			tableConfig.RowsPerPage = rowsPerPage;
 		}
 
-		/// <summary>
-		/// Loads the viewmodel to export a template.
-		/// </summary>
-		/// <param name="columns">The columns.</param>
-		public void LoadToExportTemplate(out List<Exports.QColumn> columns)
-		{
-			columns = new List<Exports.QColumn>()
-			{
-				new Exports.QColumn(CSGenioAinvoice.FldShippingcost, FieldType.CURRENCY, Resources.Resources.SHIPPING_COST12785, 9, 2, true),
-				new Exports.QColumn(CSGenioAinvoice.FldTaxes, FieldType.CURRENCY, Resources.Resources.TAXES34617, 9, 2, true),
-				new Exports.QColumn(CSGenioAinvoice.FldDate, FieldType.DATE, Resources.Resources.DATE18475, 8, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldReceipt, FieldType.DOCUMENT, Resources.Resources.RECEIPT15218, 50, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 100, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 100, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldCodinvoicestore, FieldType.TEXT, Resources.Resources.CODINVOICESTORE44054, 50, 0, true),
-				new Exports.QColumn(CSGenioAinvoice.FldDeliverytype, FieldType.ARRAY_TEXT, Resources.Resources.DELIVERY_TYPE53619, 1, 0, true, "DELIVERYTYPE"),
-				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.STORE16493, 30, 0, true),
-			};
-		}
-
 		/// <inheritdoc/>
 		public override CriteriaSet BuildCriteriaSet(NameValueCollection requestValues, out bool tableReload, CriteriaSet crs = null, bool isToExport = false)
 		{
@@ -220,11 +168,12 @@ namespace GenioMVC.ViewModels.Invoice
 
 			crs ??= CriteriaSet.And();
 
-			Menu ??= new TablePartial<FPV_Menu_411_RowViewModel>();
+
+			Menu ??= new TablePartial<W_lastinvoice_ValField001_RowViewModel>();
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
-			Menu.SetFilters(false, true);
+			Menu.SetFilters(false, false);
 
 			crs.SubSets.Add(ProcessSearchFilters(Menu, GetSearchColumns(tableConfig.ColumnConfigurations), tableConfig));
 
@@ -232,71 +181,19 @@ namespace GenioMVC.ViewModels.Invoice
 			//Subfilters
 			CriteriaSet subfilters = CriteriaSet.And();
 
-			if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-			{
-				string defaultValue = "1";
-				tableConfig.Filters.Add(new GroupFilter { Key = "filter_FPV_Menu_411_PRICE", Value = defaultValue });
-			}
-
-			{
-				var groupFilters = CriteriaSet.Or();
-				bool filter_FPV_Menu_411_PRICE_1 = false;
-				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-					filter_FPV_Menu_411_PRICE_1 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("1");
-				else if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-					filter_FPV_Menu_411_PRICE_1 = true;
-				if (filter_FPV_Menu_411_PRICE_1)
-				{
-
-				}
-
-				bool filter_FPV_Menu_411_PRICE_2 = false;
-				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-					filter_FPV_Menu_411_PRICE_2 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("2");
-				if (filter_FPV_Menu_411_PRICE_2)
-				{
-					groupFilters.Greater(CSGenioAinvoice.FldTotalprice, 100);
-
-				}
-
-				bool filter_FPV_Menu_411_PRICE_3 = false;
-				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-					filter_FPV_Menu_411_PRICE_3 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("3");
-				if (filter_FPV_Menu_411_PRICE_3)
-				{
-					CriteriaSet groupFilters1 = CriteriaSet.And();
-					groupFilters1.Lesser(CSGenioAinvoice.FldTotalprice, 100);
-					groupFilters1.Greater(CSGenioAinvoice.FldTotalprice, 50);
-					groupFilters.SubSets.Add(groupFilters1);
-
-				}
-
-				bool filter_FPV_Menu_411_PRICE_4 = false;
-				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
-					filter_FPV_Menu_411_PRICE_4 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("4");
-				if (filter_FPV_Menu_411_PRICE_4)
-				{
-					groupFilters.Lesser(CSGenioAinvoice.FldTotalprice, 50);
-
-				}
-
-				subfilters.SubSets.Add(groupFilters);
-			}
 
 			crs.SubSets.Add(subfilters);
 
 			// Form field filters
 			crs.SubSets.Add(ProcessFieldFilters(tableConfig.GlobalFilters));
 
+
 			crs.SubSets.Add(GetCustomizedStaticLimits(StaticLimits));
 
-			// Limitations
-			// Limit "DB"
-			crs.Equal(CSGenioAinvoice.FldCodperson, Navigation.GetValue("person"));
 			if (isToExport)
 			{
 				// EPH
-				crs = Models.Invoice.AddEPH<CSGenioAinvoice>(ref u, crs, "ML411");
+				crs = Models.Invoice.AddEPH<CSGenioAinvoice>(ref u, crs, "IBL_W_LASTINVOICE__PSEUD__FIELD001");
 
 				// Export only records with ZZState == 0
 				crs.Equal(CSGenioAinvoice.FldZzstate, 0);
@@ -314,7 +211,7 @@ namespace GenioMVC.ViewModels.Invoice
 				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_invoice");
 				Navigation.DestroyEntry("QMVC_POS_RECORD_invoice");
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
-					crs.Equals(Models.Invoice.AddEPH<CSGenioAinvoice>(ref u, null, "ML411"));
+					crs.Equals(Models.Invoice.AddEPH<CSGenioAinvoice>(ref u, null, "IBL_W_LASTINVOICE__PSEUD__FIELD001"));
 			}
 
 			return crs;
@@ -389,13 +286,15 @@ namespace GenioMVC.ViewModels.Invoice
 		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAinvoice> Qlisting, ref CriteriaSet conditions)
 		{
 			User u = m_userContext.User;
-			Menu = new TablePartial<FPV_Menu_411_RowViewModel>();
+			Menu = new TablePartial<W_lastinvoice_ValField001_RowViewModel>();
 
-			CriteriaSet fpv_menu_411Conds = CriteriaSet.And();
+			CriteriaSet w_lastinvoice__pseud__field001Conds = CriteriaSet.And();
 			bool tableReload = true;
 
 			//FOR: MENU LIST SORTING
 			Dictionary<string, OrderedDictionary> allSortOrders = new Dictionary<string, OrderedDictionary>();
+			allSortOrders.Add("INVOICE.CREATED_AT", new OrderedDictionary());
+			allSortOrders["INVOICE.CREATED_AT"].Add("INVOICE.CREATED_AT", "D");
 
 
 			int numberListItems = tableConfig.RowsPerPage;
@@ -407,8 +306,14 @@ namespace GenioMVC.ViewModels.Invoice
 
 			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "invoice", allSortOrders);
 
+			if (sorts == null || sorts.Count == 0)
+			{
+				sorts = new List<ColumnSort>();
+				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAinvoice.FldCreated_at), SortOrder.Descending));
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldDate, CSGenioAinvoice.FldStore, CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldShippingcost, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldNumberofitems };
+			}
+
+			FieldRef[] fields = new FieldRef[] { CSGenioAinvoice.FldCodinvoice, CSGenioAinvoice.FldZzstate, CSGenioAinvoice.FldCodinvoicestore, CSGenioAinvoice.FldCreated_at, CSGenioAinvoice.FldTotalprice, CSGenioAinvoice.FldTaxes, CSGenioAinvoice.FldShippingcost, CSGenioAinvoice.FldPrice, CSGenioAinvoice.FldDeliverytype };
 
 
 			// Totalizers
@@ -432,39 +337,20 @@ namespace GenioMVC.ViewModels.Invoice
 				Limit limit = new Limit();
 				limit.TipoLimite = LimitType.EPH;
 				CSGenioAinvoice model_limit_area = new CSGenioAinvoice(m_userContext.User);
-				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "ML411");
+				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "IBL_W_LASTINVOICE__PSEUD__FIELD001");
 				if (area_EPH_limits.Count > 0)
 					this.TableLimits.AddRange(area_EPH_limits);
 			}
 
-			// Tooltips: Making a tooltip for each valid limitation: 1 Limit(s) detected.
-			// Limit origin: menu 
-
-			//Limit type: "DB"
-			//Current Area = "INVOICE"
-			//1st Area Limit: "PERSON"
-			//1st Area Field: "CODPERSON"
-			//1st Area Value: ""
-			{
-				Limit limit = new Limit();
-				limit.TipoLimite = LimitType.DB;
-				limit.NaoAplicaSeNulo = false;
-				CSGenioAperson model_limit_area = new CSGenioAperson(m_userContext.User);
-				string limit_field = "codperson", limit_field_value = "";
-				object this_limit_field = Navigation.GetStrValue(limit_field_value);
-				Limit_Filler(ref limit, model_limit_area, limit_field, limit_field_value, this_limit_field, LimitAreaType.AreaLimita);
-				if (!this.TableLimits.Contains(limit, limitComparer)) //to avoid repetitions (i.e: DB and EPH applying same limit)
-					this.TableLimits.Add(limit);
-			}
 
 			if (conditions == null)
 				conditions = CriteriaSet.And();
 
-			conditions.SubSets.Add(fpv_menu_411Conds);
-			fpv_menu_411Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
+			conditions.SubSets.Add(w_lastinvoice__pseud__field001Conds);
+			w_lastinvoice__pseud__field001Conds = BuildCriteriaSet(tableConfig, requestValues, out bool hasAllRequiredLimits, conditions, isToExport);
 			tableReload &= hasAllRequiredLimits;
 
-// USE /[MANUAL FPV OVERRQ 411]/
+// USE /[MANUAL FPV OVERRQ W_LASTINVOICE_PSEUDFIELD001]/
 
 			bool distinct = false;
 
@@ -476,16 +362,16 @@ namespace GenioMVC.ViewModels.Invoice
 				var exportColumns = GetExportColumns(tableConfig.ColumnConfigurations);
 				var exportFieldRefs = exportColumns.Select(eCol => eCol.Field).Where(fldRef => fldRef != null).ToArray();
 
-				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAinvoice>(m_userContext, false, ref fpv_menu_411Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML411", true, firstVisibleColumn: firstVisibleColumn);
+				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAinvoice>(m_userContext, false, ref w_lastinvoice__pseud__field001Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_LASTINVOICE__PSEUD__FIELD001", true, firstVisibleColumn: firstVisibleColumn);
 
-// USE /[MANUAL FPV OVERRQLSTEXP 411]/
+// USE /[MANUAL FPV OVERRQLSTEXP W_LASTINVOICE_PSEUDFIELD001]/
 
 				return;
 			}
 
 			if (tableReload)
 			{
-// USE /[MANUAL FPV OVERRQLIST 411]/
+// USE /[MANUAL FPV OVERRQLIST W_LASTINVOICE_PSEUDFIELD001]/
 
 				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_invoice");
 				Navigation.DestroyEntry("QMVC_POS_RECORD_invoice");
@@ -493,12 +379,12 @@ namespace GenioMVC.ViewModels.Invoice
 
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
 				{
-					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAinvoice.GetInformation(), QMVC_POS_RECORD, sorts, fpv_menu_411Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
+					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAinvoice.GetInformation(), QMVC_POS_RECORD, sorts, w_lastinvoice__pseud__field001Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
 					if (m_iCurPag != -1)
 						pageNumber = ((m_iCurPag - 1) / numberListItems) + 1;
 				}
 
-				ListingMVC<CSGenioAinvoice> listing = Models.ModelBase.Where<CSGenioAinvoice>(m_userContext, distinct, fpv_menu_411Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "ML411", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
+				ListingMVC<CSGenioAinvoice> listing = Models.ModelBase.Where<CSGenioAinvoice>(m_userContext, distinct, w_lastinvoice__pseud__field001Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_LASTINVOICE__PSEUD__FIELD001", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
 
 				if (listing.CurrentPage > 0)
 					pageNumber = listing.CurrentPage;
@@ -510,15 +396,14 @@ namespace GenioMVC.ViewModels.Invoice
 				//Set document field values to objects
 				SetDocumentFields(listing);
 
-				Menu.Elements = MapFPV_Menu_411(listing);
+				Menu.Elements = MapW_lastinvoice_ValField001(listing);
 
-				Menu.Identifier = "ML411";
-				Menu.Slots = new Dictionary<string, List<object>>();
+				Menu.Identifier = "IBL_W_LASTINVOICE__PSEUD__FIELD001";
 
 				// Last updated by [CJP] at [2015.02.03]
 				// Adds the identifier to each element
 				foreach (var element in Menu.Elements)
-					element.Identifier = "ML411";
+					element.Identifier = "IBL_W_LASTINVOICE__PSEUD__FIELD001";
 
 				Menu.SetPagination(pageNumber, listing.NumRegs, listing.HasMore, listing.GetTotal, listing.TotalRecords);
 
@@ -537,9 +422,9 @@ namespace GenioMVC.ViewModels.Invoice
 			LoadUserTableConfigNameProperties();
 		}
 
-		private List<FPV_Menu_411_RowViewModel> MapFPV_Menu_411(ListingMVC<CSGenioAinvoice> Qlisting)
+		private List<W_lastinvoice_ValField001_RowViewModel> MapW_lastinvoice_ValField001(ListingMVC<CSGenioAinvoice> Qlisting)
 		{
-			List<FPV_Menu_411_RowViewModel> Elements = [];
+			List<W_lastinvoice_ValField001_RowViewModel> Elements = [];
 			int i = 0;
 
 			if (Qlisting.Rows != null)
@@ -548,7 +433,7 @@ namespace GenioMVC.ViewModels.Invoice
 				{
 					if (Qlisting.NumRegs > 0 && i >= Qlisting.NumRegs) // Copiado da versão antiga do RowsToViewModels
 						break;
-					Elements.Add(MapFPV_Menu_411(row));
+					Elements.Add(MapW_lastinvoice_ValField001(row));
 					i++;
 				}
 			}
@@ -558,12 +443,12 @@ namespace GenioMVC.ViewModels.Invoice
 
 		/// <summary>
 		/// Maps a single CSGenioAinvoice row
-		/// to a FPV_Menu_411_RowViewModel object.
+		/// to a W_lastinvoice_ValField001_RowViewModel object.
 		/// </summary>
 		/// <param name="row">The row.</param>
-		private FPV_Menu_411_RowViewModel MapFPV_Menu_411(CSGenioAinvoice row)
+		private W_lastinvoice_ValField001_RowViewModel MapW_lastinvoice_ValField001(CSGenioAinvoice row)
 		{
-			var model = new FPV_Menu_411_RowViewModel(m_userContext, true, _fieldsToSerialize);
+			var model = new W_lastinvoice_ValField001_RowViewModel(m_userContext, true, _fieldsToSerialize);
 			if (row == null)
 				return model;
 
@@ -573,8 +458,6 @@ namespace GenioMVC.ViewModels.Invoice
 				{
 					case "invoice":
 						model.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
-					case "store":
-						model.Store.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
 					default:
 						break;
 				}
@@ -620,25 +503,24 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#region Custom code
 
-// USE /[MANUAL FPV VIEWMODEL_CUSTOM FPV_MENU_411]/
+// USE /[MANUAL FPV VIEWMODEL_CUSTOM W_LASTINVOICE_VALFIELD001]/
 
 		#endregion
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Invoice", "Invoice.ValCodinvoice", "Invoice.ValZzstate", "Invoice.ValCodinvoicestore", "Invoice.ValDate", "Store", "Store.ValName", "Invoice.ValPrice", "Invoice.ValTaxes", "Invoice.ValShippingcost", "Invoice.ValTotalprice", "Invoice.ValNumberofitems", "Invoice.ValCodperson", "Invoice.ValStore"
+			"Invoice", "Invoice.ValCodinvoice", "Invoice.ValZzstate", "Invoice.ValCodinvoicestore", "Invoice.ValCreated_at", "Invoice.ValTotalprice", "Invoice.ValTaxes", "Invoice.ValShippingcost", "Invoice.ValPrice", "Invoice.ValDeliverytype", "Invoice.ValCodperson", "Invoice.ValStore"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
 			new TableSearchColumn("ValCodinvoicestore", CSGenioAinvoice.FldCodinvoicestore, typeof(string), defaultSearch : true),
-			new TableSearchColumn("ValDate", CSGenioAinvoice.FldDate, typeof(DateTime?)),
-			new TableSearchColumn("Store_ValName", CSGenioAstore.FldName, typeof(string)),
-			new TableSearchColumn("ValPrice", CSGenioAinvoice.FldPrice, typeof(decimal?)),
+			new TableSearchColumn("ValCreated_at", CSGenioAinvoice.FldCreated_at, typeof(DateTime?)),
+			new TableSearchColumn("ValTotalprice", CSGenioAinvoice.FldTotalprice, typeof(decimal?)),
 			new TableSearchColumn("ValTaxes", CSGenioAinvoice.FldTaxes, typeof(decimal?)),
 			new TableSearchColumn("ValShippingcost", CSGenioAinvoice.FldShippingcost, typeof(decimal?)),
-			new TableSearchColumn("ValTotalprice", CSGenioAinvoice.FldTotalprice, typeof(decimal?)),
-			new TableSearchColumn("ValNumberofitems", CSGenioAinvoice.FldNumberofitems, typeof(decimal?)),
+			new TableSearchColumn("ValPrice", CSGenioAinvoice.FldPrice, typeof(decimal?)),
+			new TableSearchColumn("ValDeliverytype", CSGenioAinvoice.FldDeliverytype, typeof(string), array : "DELIVERYTYPE"),
 		];
 	}
 }

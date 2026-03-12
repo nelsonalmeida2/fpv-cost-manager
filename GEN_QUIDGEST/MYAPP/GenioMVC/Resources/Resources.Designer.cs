@@ -1431,6 +1431,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Last Invoice"
+		/// </summary>
+		public static string LAST_INVOICE10398 {
+			get {
+				return ResourceManager.GetString("LAST_INVOICE10398", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Other"
 		/// </summary>
 		public static string OTHER37293 {
@@ -1508,6 +1517,15 @@ namespace GenioMVC.Resources
 		public static string ASSIGNED_TO35661 {
 			get {
 				return ResourceManager.GetString("ASSIGNED_TO35661", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Last Invoices"
+		/// </summary>
+		public static string LAST_INVOICES43184 {
+			get {
+				return ResourceManager.GetString("LAST_INVOICES43184", resourceCulture);
 			}
 		}
 
@@ -1742,6 +1760,15 @@ namespace GenioMVC.Resources
 		public static string ENTID_KEY04396 {
 			get {
 				return ResourceManager.GetString("ENTID_KEY04396", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Home"
+		/// </summary>
+		public static string HOME23643 {
+			get {
+				return ResourceManager.GetString("HOME23643", resourceCulture);
 			}
 		}
 

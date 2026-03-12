@@ -12,19 +12,19 @@ namespace GenioMVC.Controllers
 {
 	public partial class DashboardController : ControllerBase
 	{
-		private static readonly NavigationLocation ACTION_FPV_Menu_51 =
-			new ("DASHBOARD51597", "FPV_Menu_51", "Dashboard");
+		private static readonly NavigationLocation ACTION_FPV_Menu_41 =
+			new ("DASHBOARD51597", "FPV_Menu_41", "Dashboard");
 
-		public ActionResult FPV_Menu_51()
+		public ActionResult FPV_Menu_41()
 		{
-			DashboardViewModel vm = new FPV_Menu_51_ViewModel(UserContext.Current);
+			DashboardViewModel vm = new FPV_Menu_41_ViewModel(UserContext.Current);
 			vm.Load();
 
 			bool isHomePage =
 				RouteData.Values.ContainsKey("isHomePage") && (bool)RouteData.Values["isHomePage"];
 			
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_51");
+				Navigation.SetValue("HomePage", "FPV_Menu_41");
 			ViewBag.isHomePage = isHomePage;
 
 			CSGenio.framework.StatusMessage result = vm.CheckPermissions(FormMode.Show);
@@ -36,9 +36,9 @@ namespace GenioMVC.Controllers
 				&& !Request.IsAjaxRequest()
 				&& (
 					Navigation.CurrentLevel == null
-					|| !ACTION_FPV_Menu_51.IsSameAction(Navigation.CurrentLevel.Location)
+					|| !ACTION_FPV_Menu_41.IsSameAction(Navigation.CurrentLevel.Location)
 				)
-				&& Navigation.CurrentLevel.Location.Action != ACTION_FPV_Menu_51.Action
+				&& Navigation.CurrentLevel.Location.Action != ACTION_FPV_Menu_41.Action
 			)
 				CSGenio.framework.Audit.registAction(
 					UserContext.Current.User,
@@ -50,28 +50,28 @@ namespace GenioMVC.Controllers
 			{
 				CSGenio.framework.Audit.registAction(
 					UserContext.Current.User,
-					Resources.Resources.MENU01948 + " " + ACTION_FPV_Menu_51.ShortDescription()
+					Resources.Resources.MENU01948 + " " + ACTION_FPV_Menu_41.ShortDescription()
 				);
 			}
 
 			return JsonOK(vm);
 		}
 
-		public ActionResult FPV_Menu_51_Save([FromBody]DashboardSaveRequest dto)
+		public ActionResult FPV_Menu_41_Save([FromBody]DashboardSaveRequest dto)
 		{
 			// Don't allow changes in maintenance mode
 			if (Maintenance.Current.IsActive)
 				return JsonERROR(Resources.Resources.O_SISTEMA_ENCONTRA_S37912);
 
-			DashboardViewModel vm = new FPV_Menu_51_ViewModel(UserContext.Current);
+			DashboardViewModel vm = new FPV_Menu_41_ViewModel(UserContext.Current);
 			vm.Save(dto);
 
 			return JsonOK();
 		}
 
-		public ActionResult FPV_Menu_51_GetWidgetData([FromBody]RequestWidgetModel requestModel)
+		public ActionResult FPV_Menu_41_GetWidgetData([FromBody]RequestWidgetModel requestModel)
 		{
-			DashboardViewModel vm = new FPV_Menu_51_ViewModel(UserContext.Current);
+			DashboardViewModel vm = new FPV_Menu_41_ViewModel(UserContext.Current);
 			object data = vm.GetWidgetData(requestModel.WidgetType, requestModel.WidgetId);
 
 			return JsonOK(data);

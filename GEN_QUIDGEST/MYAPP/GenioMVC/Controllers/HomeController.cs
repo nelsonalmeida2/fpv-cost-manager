@@ -21,6 +21,8 @@ namespace GenioMVC.Controllers
 	public class HomeController(UserContextService userContext) : ControllerBase(userContext)
 	{
 		private static readonly NavigationLocation ACTION_LSTUSR_EDIT = new("LISTA_DE_UTILIZADORE37232", "ChangeListProperties", "Home");
+		private static readonly NavigationLocation ACTION_W_LASTINVOICE_SHOW = new("CONSULTA40695", "W_lastinvoice_Show", "Home")  { vueRouteName = "form-W_LASTINVOICE", mode = "SHOW" };
+		private static readonly NavigationLocation ACTION_W_LASTINVOICE_EDIT = new("EDITAR11616", "W_lastinvoice_Edit", "Home")  { vueRouteName = "form-W_LASTINVOICE", mode = "EDIT" };
 
 		public readonly string EPH_Action_Available_Key = "EPH_Action_Available";
 		public readonly string EPH_Action_Form_Key = "EPH_Action_Form";
@@ -183,6 +185,106 @@ namespace GenioMVC.Controllers
 				return Json(new { Success = false, Message = Resources.Resources.PEDIMOS_DESCULPA__OC63848 });
 			}
 		}
+
+		#region Form Methods -> W_lastinvoice (Last Invoice)
+
+		// GET: /Home/W_lastinvoice_Show
+		public ActionResult W_lastinvoice_Show()
+		{
+			W_lastinvoice_ViewModel model = new(UserContext.Current);
+			CSGenio.framework.StatusMessage permission = model.CheckPermissions(FormMode.Show);
+			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") && (bool)RouteData.Values["isHomePage"];
+			ViewBag.isHomePage = isHomePage;
+			if (isHomePage)
+				Navigation.SetValue("HomePage", "W_lastinvoice");
+			if (permission.Status.Equals(CSGenio.framework.Status.E))
+				return PermissionError(permission.Message);
+
+			// Audit
+			CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.FORM54242 + " " + ACTION_W_LASTINVOICE_SHOW.ShortDescription());
+
+// USE /[MANUAL FPV BEFORE_LOAD_SHOW W_LASTINVOICE]/
+
+			model.Load([], true);
+
+// USE /[MANUAL FPV AFTER_LOAD_SHOW W_LASTINVOICE]/
+
+			return JsonOK(model);
+		}
+
+		[HttpPost]
+		public ActionResult W_lastinvoice_Show_GET()
+		{
+			return W_lastinvoice_Show();
+		}
+
+		// GET: /Home/W_lastinvoice_Edit
+		public ActionResult W_lastinvoice_Edit()
+		{
+			W_lastinvoice_ViewModel model = new(UserContext.Current);
+			CSGenio.framework.StatusMessage permission = model.CheckPermissions(FormMode.Edit);
+			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") && (bool)RouteData.Values["isHomePage"];
+			ViewBag.isHomePage = isHomePage;
+			if (isHomePage)
+				Navigation.SetValue("HomePage", "W_lastinvoice");
+			if (permission.Status.Equals(CSGenio.framework.Status.E))
+				return PermissionError(permission.Message);
+
+			// Audit
+			CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.FORM54242 + " " + ACTION_W_LASTINVOICE_EDIT.ShortDescription());
+
+// USE /[MANUAL FPV BEFORE_LOAD_EDIT W_LASTINVOICE]/
+
+			model.Load([], true);
+
+// USE /[MANUAL FPV AFTER_LOAD_EDIT W_LASTINVOICE]/
+
+			return JsonOK(model);
+		}
+
+		[HttpPost]
+		public ActionResult W_lastinvoice_Edit_GET()
+		{
+			return W_lastinvoice_Edit();
+		}
+
+		//
+		// GET: /Home/W_lastinvoice_Cancel
+// USE /[MANUAL FPV CONTROLLER_CANCEL_GET W_LASTINVOICE]/
+		public ActionResult W_lastinvoice_Cancel()
+		{
+			return JsonOK(new { Success = true });
+		}
+
+		//
+		// GET: /Home/W_lastinvoice_ValField001
+		// POST: /Home/W_lastinvoice_ValField001
+		[ActionName("W_lastinvoice_ValField001")]
+		public ActionResult W_lastinvoice_ValField001([FromBody] RequestLookupModel requestModel)
+		{
+			var queryParams = requestModel.QueryParams;
+
+			NameValueCollection requestValues = [];
+			// Add to request values
+			foreach (var kv in queryParams ?? [])
+				requestValues.Add(kv.Key, kv.Value);
+
+			W_lastinvoice_ValField001_ViewModel model = new(m_userContext);
+
+			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
+				requestModel.TableConfiguration,
+				requestModel.UserTableConfigName,
+				requestModel.LoadDefaultView);
+
+			// Determine rows per page
+			tableConfig.RowsPerPage = tableConfig.DetermineRowsPerPage(5, "");
+
+			model.Load(tableConfig, requestValues, Request.IsAjaxRequest());
+
+			return JsonOK(model);
+		}
+
+		#endregion
 
 		public JsonResult GetAvailableMenus()
 		{

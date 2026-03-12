@@ -1,7 +1,8 @@
 ﻿/* eslint-disable @typescript-eslint/no-unused-vars */
 import { computed, reactive, watch } from 'vue'
+import _merge from 'lodash-es/merge'
 
-import MenuViewModelBase from '@/mixins/menuViewModelBase.js'
+import FormViewModelBase from '@/mixins/formViewModelBase.js'
 import genericFunctions from '@quidgest/clientapp/utils/genericFunctions'
 import modelFieldType from '@quidgest/clientapp/models/fields'
 
@@ -10,14 +11,13 @@ import netAPI from '@quidgest/clientapp/network'
 import qApi from '@/api/genio/quidgestFunctions.js'
 import qFunctions from '@/api/genio/projectFunctions.js'
 import qProjArrays from '@/api/genio/projectArrays.js'
-
 /* eslint-enable @typescript-eslint/no-unused-vars */
 
 /**
  * Represents a ViewModel class.
- * @extends MenuViewModelBase
+ * @extends FormViewModelBase
  */
-export default class ViewModel extends MenuViewModelBase
+export default class ViewModel extends FormViewModelBase
 {
 	/**
 	 * Creates a new instance of the ViewModel.
@@ -31,11 +31,22 @@ export default class ViewModel extends MenuViewModelBase
 		super(vueContext, options)
 		// eslint-disable-next-line @typescript-eslint/no-unused-vars
 		const vm = this.vueContext
+
+		// The view model metadata
+		_merge(this.modelInfo, {
+			name: 'W_LASTINVOICE',
+			area: 'Home',
+			actions: {
+				recalculateFormulas: 'RecalculateFormulas_W_lastinvoice',
+				updateFilesTickets: 'UpdateFilesTicketsW_lastinvoice',
+				setFile: 'SetFileW_lastinvoice'
+			}
+		})
 	}
 
 	/**
-	 * Creates a clone of the current QMenuFPV_411ViewModel instance.
-	 * @returns {QMenuFPV_411ViewModel} A new instance of QMenuFPV_411ViewModel
+	 * Creates a clone of the current QFormWLastinvoiceViewModel instance.
+	 * @returns {QFormWLastinvoiceViewModel} A new instance of QFormWLastinvoiceViewModel
 	 */
 	clone()
 	{

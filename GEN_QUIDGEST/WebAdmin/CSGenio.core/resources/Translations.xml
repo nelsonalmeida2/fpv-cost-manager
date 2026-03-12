@@ -456,6 +456,9 @@
   <msg id="Cc" code="CC35482">
     <ENUS>Cc</ENUS>
   </msg>
+  <msg id="Last Invoice" code="LAST_INVOICE10398">
+    <ENUS>Last Invoice</ENUS>
+  </msg>
   <msg id="Other" code="OTHER37293">
     <ENUS>Other</ENUS>
   </msg>
@@ -482,6 +485,9 @@
   </msg>
   <msg id="Assigned To" code="ASSIGNED_TO35661">
     <ENUS>Assigned To</ENUS>
+  </msg>
+  <msg id="Last Invoices" code="LAST_INVOICES43184">
+    <ENUS>Last Invoices</ENUS>
   </msg>
   <msg id="Routine" code="ROUTINE58306">
     <ENUS>Routine</ENUS>
@@ -560,6 +566,9 @@
   </msg>
   <msg id="Entid key" code="ENTID_KEY04396">
     <ENUS>Entid key</ENUS>
+  </msg>
+  <msg id="Home" code="HOME23643">
+    <ENUS>Home</ENUS>
   </msg>
   <msg id="Shipping Cost" code="SHIPPING_COST12785">
     <ENUS>Shipping Cost</ENUS>

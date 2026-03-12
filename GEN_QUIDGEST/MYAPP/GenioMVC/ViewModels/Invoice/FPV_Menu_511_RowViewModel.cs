@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Person;
+namespace GenioMVC.ViewModels.Invoice;
 
-public class FPV_Menu_41_RowViewModel : Models.Person
+public class FPV_Menu_511_RowViewModel : Models.Invoice
 {
 	#region Constructors
 
-	public FPV_Menu_41_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_511_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_41_RowViewModel(UserContext userContext, CSGenioAperson val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_511_RowViewModel(UserContext userContext, CSGenioAinvoice val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,38 +36,50 @@ public class FPV_Menu_41_RowViewModel : Models.Person
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PERSON",
-				Field = "PHOTO",
+				Area = "INVOICE",
+				Field = "CODINVOICESTORE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
-				Area = "PERSON",
-				Field = "NAME",
+				Area = "INVOICE",
+				Field = "DATE",
 			},
 			new ListColumn()
 			{
 				Order = 3,
-				Area = "PERSON",
-				Field = "GENDER",
+				Area = "STORE",
+				Field = "NAME",
 			},
 			new ListColumn()
 			{
 				Order = 4,
-				Area = "PERSON",
-				Field = "BIRTHDAY",
+				Area = "INVOICE",
+				Field = "PRICE",
 			},
 			new ListColumn()
 			{
 				Order = 5,
-				Area = "PERSON",
-				Field = "EMAIL",
+				Area = "INVOICE",
+				Field = "TAXES",
 			},
 			new ListColumn()
 			{
 				Order = 6,
-				Area = "PERSON",
-				Field = "TELEPHONE",
+				Area = "INVOICE",
+				Field = "SHIPPINGCOST",
+			},
+			new ListColumn()
+			{
+				Order = 7,
+				Area = "INVOICE",
+				Field = "TOTALPRICE",
+			},
+			new ListColumn()
+			{
+				Order = 8,
+				Area = "INVOICE",
+				Field = "NUMBEROFITEMS",
 			},
 		];
 	}
@@ -85,6 +97,8 @@ public class FPV_Menu_41_RowViewModel : Models.Person
 
 		using (new CSGenio.persistence.ScopedPersistentSupport(m_userContext.PersistentSupport))
 		{
+
+			// Table INVOICE CRUD conditions.
 		}
 
 		BtnPermission = new TableRowCrudButtonPermissions()
@@ -144,9 +158,10 @@ public class FPV_Menu_41_RowViewModel : Models.Person
 
 	/// <summary>
 	/// The background color
+	/// Formula: iif([INVOICE->TOTALPRICE] > 100, HEXCOLOUR("FFD5D5"), iif([INVOICE->TOTALPRICE] > 50, HEXCOLOUR("FFF3CD"), HEXCOLOUR("FFFFFF")))
 	/// </summary>
 	[JsonPropertyName("backgroundColor")]
-	public string BackgroundColor => "";
+	public string BackgroundColor => ((((decimal)this.ValTotalprice)>100)?("#"+"FFD5D5"):(((((decimal)this.ValTotalprice)>50)?("#"+"FFF3CD"):("#"+"FFFFFF"))));
 
 	/// <summary>
 	/// Runs init logic that depends on row data.

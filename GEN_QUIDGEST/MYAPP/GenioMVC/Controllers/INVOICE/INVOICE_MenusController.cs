@@ -29,7 +29,7 @@ namespace GenioMVC.Controllers
 	public partial class InvoiceController : ControllerBase
 	{
 		private static readonly NavigationLocation ACTION_FPV_MENU_3111 = new NavigationLocation("INVOICES44448", "FPV_Menu_3111", "Invoice") { vueRouteName = "menu-FPV_3111" };
-		private static readonly NavigationLocation ACTION_FPV_MENU_411 = new NavigationLocation("INVOICES44448", "FPV_Menu_411", "Invoice") { vueRouteName = "menu-FPV_411" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_511 = new NavigationLocation("INVOICES44448", "FPV_Menu_511", "Invoice") { vueRouteName = "menu-FPV_511" };
 
 
 		//
@@ -172,16 +172,16 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// GET: /Invoice/FPV_Menu_411
-		[ActionName("FPV_Menu_411")]
+		// GET: /Invoice/FPV_Menu_511
+		[ActionName("FPV_Menu_511")]
 		[HttpPost]
-		public ActionResult FPV_Menu_411([FromBody] RequestMenuModel requestModel)
+		public ActionResult FPV_Menu_511([FromBody] RequestMenuModel requestModel)
 		{
 			var queryParams = requestModel.QueryParams;
 
-			FPV_Menu_411_ViewModel model = new(m_userContext);
+			FPV_Menu_511_ViewModel model = new(m_userContext);
 
-			CSGenio.core.framework.table.legacy.v1.TableConfigurationUpdate.SetFilterShiftValue(model.Uuid, "filter_FPV_Menu_411_PRICE", 0);
+			CSGenio.core.framework.table.legacy.v1.TableConfigurationUpdate.SetFilterShiftValue(model.Uuid, "filter_FPV_Menu_511_PRICE", 0);
 
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
@@ -193,7 +193,7 @@ namespace GenioMVC.Controllers
 
 			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_411");
+				Navigation.SetValue("HomePage", "FPV_Menu_511");
 
 			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
 			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_invoice")))
@@ -212,12 +212,12 @@ namespace GenioMVC.Controllers
 				querystring.AddRange(queryParams);
 
 			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_411.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_411.Action)
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_511.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_511.Action)
 				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
 			else if (isHomePage)
 			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_411.ShortDescription());
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_511.ShortDescription());
 				Navigation.SetValue("HomePageContainsList", true);
 			}
 
@@ -226,17 +226,17 @@ namespace GenioMVC.Controllers
 				Navigation.SetValue("person", querystring["person"]);
 
 
-// USE /[MANUAL FPV MENU_GET 411]/
+// USE /[MANUAL FPV MENU_GET 511]/
 
 			if (querystring["ImportList"] != null && Convert.ToBoolean(querystring["ImportList"]) && querystring["ImportType"] != null)
 			{
 				string importType =  querystring["ImportType"];
-				string file = "FPV_Menu_411_Template" + "." + importType;
+				string file = "FPV_Menu_511_Template" + "." + importType;
 				List<CSGenio.framework.Exports.QColumn> columns = null;
 				model.LoadToExportTemplate(out columns);
 				byte[] fileBytes = null;
 
-				fileBytes = new CSGenio.framework.Exports(UserContext.Current.User).ExportTemplate(columns, importType, file,ACTION_FPV_MENU_411.Name);
+				fileBytes = new CSGenio.framework.Exports(UserContext.Current.User).ExportTemplate(columns, importType, file,ACTION_FPV_MENU_511.Name);
 
 				QCache.Instance.ExportFiles.Put(file, fileBytes);
 				return Json(GetJsonForDownloadExportFile(file, importType));
@@ -256,10 +256,10 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// POST: /Invoice/FPV_Menu_411_UploadFile
+		// POST: /Invoice/FPV_Menu_511_UploadFile
 		[HttpPost]
-		public ActionResult FPV_Menu_411_UploadFile(string importType, string qqfile) {
-			FPV_Menu_411_ViewModel model = new FPV_Menu_411_ViewModel(UserContext.Current);
+		public ActionResult FPV_Menu_511_UploadFile(string importType, string qqfile) {
+			FPV_Menu_511_ViewModel model = new FPV_Menu_511_ViewModel(UserContext.Current);
 
 			PersistentSupport sp = UserContext.Current.PersistentSupport;
 			List<CSGenioAinvoice> rows = new List<CSGenioAinvoice>();

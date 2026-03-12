@@ -178,7 +178,6 @@ namespace CSGenio.business
 			Qfield.Decimals = 2;
 			Qfield.CavDesignation = "TOTAL_SPENDING49047";
 
-            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 

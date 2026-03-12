@@ -34,7 +34,7 @@ namespace GenioMVC.Controllers
 		private static readonly NavigationLocation ACTION_FPV_MENU_331 = new NavigationLocation("PERSONS18356", "FPV_Menu_331", "Person") { vueRouteName = "menu-FPV_331" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_341 = new NavigationLocation("PERSONS18356", "FPV_Menu_341", "Person") { vueRouteName = "menu-FPV_341" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_351 = new NavigationLocation("PERSONS18356", "FPV_Menu_351", "Person") { vueRouteName = "menu-FPV_351" };
-		private static readonly NavigationLocation ACTION_FPV_MENU_41 = new NavigationLocation("PERSONS18356", "FPV_Menu_41", "Person") { vueRouteName = "menu-FPV_41" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_51 = new NavigationLocation("PERSONS18356", "FPV_Menu_51", "Person") { vueRouteName = "menu-FPV_51" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_61 = new NavigationLocation("PERSONS18356", "FPV_Menu_61", "Person") { vueRouteName = "menu-FPV_61" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_71 = new NavigationLocation("PERSONS18356", "FPV_Menu_71", "Person") { vueRouteName = "menu-FPV_71" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_81 = new NavigationLocation("PERSONS18356", "FPV_Menu_81", "Person") { vueRouteName = "menu-FPV_81" };
@@ -434,14 +434,14 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// GET: /Person/FPV_Menu_41
-		[ActionName("FPV_Menu_41")]
+		// GET: /Person/FPV_Menu_51
+		[ActionName("FPV_Menu_51")]
 		[HttpPost]
-		public ActionResult FPV_Menu_41([FromBody] RequestMenuModel requestModel)
+		public ActionResult FPV_Menu_51([FromBody] RequestMenuModel requestModel)
 		{
 			var queryParams = requestModel.QueryParams;
 
-			FPV_Menu_41_ViewModel model = new(m_userContext);
+			FPV_Menu_51_ViewModel model = new(m_userContext);
 
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
@@ -453,7 +453,7 @@ namespace GenioMVC.Controllers
 
 			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_41");
+				Navigation.SetValue("HomePage", "FPV_Menu_51");
 
 			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
 			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_person")))
@@ -472,18 +472,18 @@ namespace GenioMVC.Controllers
 				querystring.AddRange(queryParams);
 
 			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_41.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_41.Action)
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_51.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_51.Action)
 				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
 			else if (isHomePage)
 			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_41.ShortDescription());
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_51.ShortDescription());
 				Navigation.SetValue("HomePageContainsList", true);
 			}
 
 
 
-// USE /[MANUAL FPV MENU_GET 41]/
+// USE /[MANUAL FPV MENU_GET 51]/
 
 			try
 			{
@@ -514,7 +514,7 @@ namespace GenioMVC.Controllers
 				var isPopup = querystring.Get("isPopup") ?? "false";
 				var noRedirect = isNoRedirect;
 
-				return RedirectToMenuAction("FPV_411", new { id = primaryKey, nav = Navigation.NavigationId, isHomePage, isPopup, noRedirect, skipLastMenu = true, person = primaryKey });
+				return RedirectToMenuAction("FPV_511", new { id = primaryKey, nav = Navigation.NavigationId, isHomePage, isPopup, noRedirect, skipLastMenu = true, person = primaryKey });
 			}
 
 			return JsonOK(model);
