@@ -43,6 +43,11 @@ namespace GenioMVC.ViewModels.Item
 		/// </summary>
 		public string ValInvoice { get; set; }
 		/// <summary>
+		/// Title: "" | Type: "CE"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCodperson { get; set; }
+		/// <summary>
 		/// Title: "Sub-Category" | Type: "CE"
 		/// </summary>
 		public string ValSubcategory { get; set; }
@@ -239,6 +244,7 @@ namespace GenioMVC.ViewModels.Item
 				ValBrand = ViewModelConversion.ToString(m.ValBrand);
 				ValCategory = ViewModelConversion.ToString(m.ValCategory);
 				ValInvoice = ViewModelConversion.ToString(m.ValInvoice);
+				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValSubcategory = ViewModelConversion.ToString(m.ValSubcategory);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
@@ -290,6 +296,7 @@ namespace GenioMVC.ViewModels.Item
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
@@ -1331,6 +1338,7 @@ namespace GenioMVC.ViewModels.Item
 				"item.brand" => ViewModelConversion.ToString(modelValue),
 				"item.category" => ViewModelConversion.ToString(modelValue),
 				"item.invoice" => ViewModelConversion.ToString(modelValue),
+				"item.codperson" => ViewModelConversion.ToString(modelValue),
 				"item.subcategory" => ViewModelConversion.ToString(modelValue),
 				"item.created_by" => ViewModelConversion.ToString(modelValue),
 				"item.created_at" => ViewModelConversion.ToDateTime(modelValue),

@@ -173,6 +173,25 @@ namespace GenioMVC.ViewModels.Brand
 			tableConfig.RowsPerPage = rowsPerPage;
 		}
 
+		/// <summary>
+		/// Loads the viewmodel to export a template.
+		/// </summary>
+		/// <param name="columns">The columns.</param>
+		public void LoadToExportTemplate(out List<Exports.QColumn> columns)
+		{
+			columns = new List<Exports.QColumn>()
+			{
+				new Exports.QColumn(CSGenioAbrand.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 50, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldLogotype, FieldType.IMAGE, Resources.Resources.LOGOTYPE44505, 3, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldDescription, FieldType.TEXT, Resources.Resources.DESCRIPTION07383, 255, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 100, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 100, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
+				new Exports.QColumn(CSGenioAcountry.FldName, FieldType.TEXT, Resources.Resources.COUNTRY64133, 30, 0, true),
+			};
+		}
+
 		/// <inheritdoc/>
 		public override CriteriaSet BuildCriteriaSet(NameValueCollection requestValues, out bool tableReload, CriteriaSet crs = null, bool isToExport = false)
 		{
@@ -523,7 +542,7 @@ namespace GenioMVC.ViewModels.Brand
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValLogotype", "Brand.ValName", "Brand.ValDescription", "Country", "Country.ValName", "Brand.ValCountry"
+			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValLogotype", "Brand.ValName", "Brand.ValDescription", "Country", "Country.ValName", "Brand.ValCountry", "Brand.ValCodperson"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =

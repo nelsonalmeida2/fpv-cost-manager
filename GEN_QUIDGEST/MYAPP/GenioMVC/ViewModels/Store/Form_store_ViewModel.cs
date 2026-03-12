@@ -34,6 +34,11 @@ namespace GenioMVC.ViewModels.Store
 		/// Title: "Country" | Type: "CE"
 		/// </summary>
 		public string ValCountry { get; set; }
+		/// <summary>
+		/// Title: "" | Type: "CE"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCodperson { get; set; }
 
 		#endregion
 		/// <summary>
@@ -214,6 +219,7 @@ namespace GenioMVC.ViewModels.Store
 			try
 			{
 				ValCountry = ViewModelConversion.ToString(m.ValCountry);
+				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
@@ -265,6 +271,7 @@ namespace GenioMVC.ViewModels.Store
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
@@ -678,6 +685,7 @@ namespace GenioMVC.ViewModels.Store
 			return identifier switch
 			{
 				"store.country" => ViewModelConversion.ToString(modelValue),
+				"store.codperson" => ViewModelConversion.ToString(modelValue),
 				"store.created_by" => ViewModelConversion.ToString(modelValue),
 				"store.created_at" => ViewModelConversion.ToDateTime(modelValue),
 				"store.updated_by" => ViewModelConversion.ToString(modelValue),

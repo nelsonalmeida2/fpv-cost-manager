@@ -310,7 +310,7 @@
 										type: 'form',
 										formName: 'FORM_STORE',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -345,6 +345,7 @@
 									isPopup: false
 								},
 							},
+							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
@@ -352,7 +353,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-COUNTRY', 'changed-STORE'],
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
 						uuid: 'ef89d555-4463-45c6-8432-0c17fe054238',
 						allSelectedRows: 'false',
 						viewModes: [

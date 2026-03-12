@@ -268,7 +268,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-COUNTRY', 'changed-STORE'],
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
 						uuid: 'Form_invoice_Form_invoice_StoreValName',
 						allSelectedRows: 'false',
 						handlers: {

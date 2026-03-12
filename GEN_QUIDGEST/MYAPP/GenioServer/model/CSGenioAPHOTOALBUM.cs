@@ -129,6 +129,17 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "codperson", FieldType.KEY_INT);
+			Qfield.FieldDescription = "CODPERSON";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CODPERSON27649";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -147,6 +158,7 @@ namespace CSGenio.business
 			//------------------------------
 			info.ParentTables = new Dictionary<string, Relation>();
 			info.ParentTables.Add("item", new Relation("FPV", "fpvphotoalbum", "photoalbum", "codphotoalbum", "item", "FPV", "fpvitem", "item", "coditem", "coditem"));
+			info.ParentTables.Add("person", new Relation("FPV", "fpvphotoalbum", "photoalbum", "codphotoalbum", "codperson", "FPV", "fpvperson", "person", "codperson", "codperson"));
 		}
 
 		/// <summary>
@@ -157,13 +169,13 @@ namespace CSGenio.business
 			// Pathways
 			//------------------------------
 			info.Pathways = new Dictionary<string, string>(8);
+			info.Pathways.Add("person","person");
 			info.Pathways.Add("item","item");
 			info.Pathways.Add("category","item");
 			info.Pathways.Add("subcategory","item");
 			info.Pathways.Add("brand","item");
 			info.Pathways.Add("invoice","item");
 			info.Pathways.Add("country","item");
-			info.Pathways.Add("person","item");
 			info.Pathways.Add("store","item");
 		}
 
@@ -263,6 +275,10 @@ namespace CSGenio.business
 			// Ephs
 			//------------------------------
 			info.Ephs=new Hashtable();
+			EPHField[] camposEPH;
+						camposEPH = new EPHField[1];
+			camposEPH[0] = new EPHField("PERSONEPH", "person", "codperson", "=", false);
+			info.Ephs.Add(new Par("FPV", "5"), camposEPH);
 
 			// Table minimum roles and access levels
 			//------------------------------
@@ -378,6 +394,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCreated_at, value); }
 		}
 
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldCodperson { get { return m_fldCodperson; } }
+		private static FieldRef m_fldCodperson = new FieldRef("photoalbum", "codperson");
+
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public string ValCodperson
+		{
+			get { return (string)returnValueField(FldCodperson); }
+			set { insertNameValueField(FldCodperson, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("photoalbum", "zzstate");
@@ -475,7 +502,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX PHOTOALBUM]/
 
  
-         
+          
 
 	}
 }

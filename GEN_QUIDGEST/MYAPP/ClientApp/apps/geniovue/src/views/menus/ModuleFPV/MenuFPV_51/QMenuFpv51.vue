@@ -287,7 +287,7 @@
 										type: 'form',
 										formName: 'FORM_BRAND',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -322,6 +322,7 @@
 									isPopup: false
 								},
 							},
+							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
@@ -329,7 +330,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-COUNTRY', 'changed-BRAND'],
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
 						uuid: 'd3385526-6910-4460-aea2-824fdc1c055b',
 						allSelectedRows: 'false',
 						viewModes: [

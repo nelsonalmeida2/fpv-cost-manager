@@ -317,7 +317,7 @@
 										type: 'form',
 										formName: 'FORM_PHOTO_ALBUM',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -359,7 +359,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PHOTOALBUM', 'changed-ITEM'],
+						globalEvents: ['changed-PERSON', 'changed-PHOTOALBUM', 'changed-ITEM'],
 						uuid: '2ea56c4d-ebe7-4790-80e5-e1011527fef8',
 						allSelectedRows: 'false',
 						viewModes: [

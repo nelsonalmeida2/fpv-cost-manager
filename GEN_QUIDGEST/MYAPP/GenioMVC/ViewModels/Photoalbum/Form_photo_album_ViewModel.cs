@@ -34,6 +34,11 @@ namespace GenioMVC.ViewModels.Photoalbum
 		/// Title: "Item" | Type: "CE"
 		/// </summary>
 		public string ValItem { get; set; }
+		/// <summary>
+		/// Title: "" | Type: "CE"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCodperson { get; set; }
 
 		#endregion
 		/// <summary>
@@ -202,6 +207,7 @@ namespace GenioMVC.ViewModels.Photoalbum
 			try
 			{
 				ValItem = ViewModelConversion.ToString(m.ValItem);
+				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
@@ -247,6 +253,7 @@ namespace GenioMVC.ViewModels.Photoalbum
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
@@ -659,6 +666,7 @@ namespace GenioMVC.ViewModels.Photoalbum
 			return identifier switch
 			{
 				"photoalbum.item" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.codperson" => ViewModelConversion.ToString(modelValue),
 				"photoalbum.created_by" => ViewModelConversion.ToString(modelValue),
 				"photoalbum.created_at" => ViewModelConversion.ToDateTime(modelValue),
 				"photoalbum.updated_by" => ViewModelConversion.ToString(modelValue),

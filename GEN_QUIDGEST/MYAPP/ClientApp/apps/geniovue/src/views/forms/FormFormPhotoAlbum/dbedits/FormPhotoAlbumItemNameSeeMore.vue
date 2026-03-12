@@ -268,7 +268,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-PERSON', 'changed-SUBCATEGORY', 'changed-BRAND'],
 						uuid: 'Form_photo_album_Form_photo_album_ItemValName',
 						allSelectedRows: 'false',
 						handlers: {

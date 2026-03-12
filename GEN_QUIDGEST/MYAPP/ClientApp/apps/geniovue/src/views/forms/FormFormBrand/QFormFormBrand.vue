@@ -814,6 +814,8 @@
 				 */
 				dataApi: {
 					Brand: {
+						get ValCodperson() { return vm.model.ValCodperson.value },
+						set ValCodperson(value) { vm.model.ValCodperson.updateValue(value) },
 						get ValCountry() { return vm.model.ValCountry.value },
 						set ValCountry(value) { vm.model.ValCountry.updateValue(value) },
 						get ValCreated_at() { return vm.model.ValCreated_at.value },
@@ -840,6 +842,8 @@
 						get brand() { return vm.model.ValCodbrand },
 						/** The foreign key to the COUNTRY table */
 						get country() { return vm.model.ValCountry },
+						/** The foreign key to the PERSON table */
+						get person() { return vm.model.ValCodperson },
 					},
 					get extraProperties() { return vm.model.extraProperties },
 				},

@@ -507,7 +507,7 @@ namespace GenioMVC.ViewModels.Photoalbum
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValSubcategory"
+			"Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValCodperson", "Item.ValSubcategory"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =

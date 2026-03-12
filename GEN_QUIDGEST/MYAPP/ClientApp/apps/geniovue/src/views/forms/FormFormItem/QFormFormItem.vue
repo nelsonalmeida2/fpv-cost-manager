@@ -1235,7 +1235,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PHOTOALBUM', 'changed-ITEM'],
+						globalEvents: ['changed-PERSON', 'changed-PHOTOALBUM', 'changed-ITEM'],
 						uuid: 'Form_item_ValField001',
 						allSelectedRows: 'false',
 						controlLimits: [
@@ -1291,6 +1291,8 @@
 						set ValBrand(value) { vm.model.ValBrand.updateValue(value) },
 						get ValCategory() { return vm.model.ValCategory.value },
 						set ValCategory(value) { vm.model.ValCategory.updateValue(value) },
+						get ValCodperson() { return vm.model.ValCodperson.value },
+						set ValCodperson(value) { vm.model.ValCodperson.updateValue(value) },
 						get ValCreated_at() { return vm.model.ValCreated_at.value },
 						set ValCreated_at(value) { vm.model.ValCreated_at.updateValue(value) },
 						get ValCreated_by() { return vm.model.ValCreated_by.value },
@@ -1327,6 +1329,8 @@
 						get subcategory() { return vm.model.ValSubcategory },
 						/** The foreign key to the INVOICE table */
 						get invoice() { return vm.model.ValInvoice },
+						/** The foreign key to the PERSON table */
+						get person() { return vm.model.ValCodperson },
 					},
 					get extraProperties() { return vm.model.extraProperties },
 				},

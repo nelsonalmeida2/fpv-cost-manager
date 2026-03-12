@@ -84,6 +84,26 @@ namespace GenioMVC.Models
 		[DateAttribute("OD")]
 		public DateTime? ValCreated_at { get { return klass.ValCreated_at; } set { klass.ValCreated_at = value ?? DateTime.Now;  } }
 
+		[DisplayName("CODPERSON")]
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Photoalbum.ValCodperson")]
+		public string ValCodperson { get { return klass.ValCodperson; } set { klass.ValCodperson = value; } }
+
+		private Person _person;
+		[DisplayName("Person")]
+		[ShouldSerialize("Person")]
+		public virtual Person Person
+		{
+			get
+			{
+				if (!isEmptyModel && (_person == null || (!string.IsNullOrEmpty(ValCodperson) && (_person.isEmptyModel || _person.klass.QPrimaryKey != ValCodperson))))
+					_person = Models.Person.Find(ValCodperson, m_userContext, Identifier, _fieldsToSerialize);
+				_person ??= new Models.Person(m_userContext, true, _fieldsToSerialize);
+				return _person;
+			}
+			set { _person = value; }
+		}
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Photoalbum.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>
@@ -118,6 +138,10 @@ namespace GenioMVC.Models
 					case "item":
 						_item ??= new Item(m_userContext, true, _fieldsToSerialize);
 						_item.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
+					case "person":
+						_person ??= new Person(m_userContext, true, _fieldsToSerialize);
+						_person.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
 						break;
 					default:
 						break;

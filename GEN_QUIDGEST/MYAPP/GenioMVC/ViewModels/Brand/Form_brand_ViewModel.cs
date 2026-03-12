@@ -34,6 +34,11 @@ namespace GenioMVC.ViewModels.Brand
 		/// Title: "Country" | Type: "CE"
 		/// </summary>
 		public string ValCountry { get; set; }
+		/// <summary>
+		/// Title: "" | Type: "CE"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCodperson { get; set; }
 
 		#endregion
 		/// <summary>
@@ -206,6 +211,7 @@ namespace GenioMVC.ViewModels.Brand
 			try
 			{
 				ValCountry = ViewModelConversion.ToString(m.ValCountry);
+				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
@@ -253,6 +259,7 @@ namespace GenioMVC.ViewModels.Brand
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
@@ -667,6 +674,7 @@ namespace GenioMVC.ViewModels.Brand
 			return identifier switch
 			{
 				"brand.country" => ViewModelConversion.ToString(modelValue),
+				"brand.codperson" => ViewModelConversion.ToString(modelValue),
 				"brand.created_by" => ViewModelConversion.ToString(modelValue),
 				"brand.created_at" => ViewModelConversion.ToDateTime(modelValue),
 				"brand.updated_by" => ViewModelConversion.ToString(modelValue),

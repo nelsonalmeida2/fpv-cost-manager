@@ -507,7 +507,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Store", "Store.ValCodstore", "Store.ValZzstate", "Store.ValName", "Store.ValCountry"
+			"Store", "Store.ValCodstore", "Store.ValZzstate", "Store.ValName", "Store.ValCountry", "Store.ValCodperson"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =

@@ -138,6 +138,17 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "codperson", FieldType.KEY_INT);
+			Qfield.FieldDescription = "CODPERSON";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CODPERSON27649";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -158,6 +169,7 @@ namespace CSGenio.business
 			//------------------------------
 			info.ParentTables = new Dictionary<string, Relation>();
 			info.ParentTables.Add("country", new Relation("FPV", "fpvbrand", "brand", "codbrand", "country", "FPV", "fpvcountry", "country", "codcountry", "codcountry"));
+			info.ParentTables.Add("person", new Relation("FPV", "fpvbrand", "brand", "codbrand", "codperson", "FPV", "fpvperson", "person", "codperson", "codperson"));
 		}
 
 		/// <summary>
@@ -167,7 +179,8 @@ namespace CSGenio.business
 		{
 			// Pathways
 			//------------------------------
-			info.Pathways = new Dictionary<string, string>(1);
+			info.Pathways = new Dictionary<string, string>(2);
+			info.Pathways.Add("person","person");
 			info.Pathways.Add("country","country");
 		}
 
@@ -267,6 +280,10 @@ namespace CSGenio.business
 			// Ephs
 			//------------------------------
 			info.Ephs=new Hashtable();
+			EPHField[] camposEPH;
+						camposEPH = new EPHField[1];
+			camposEPH[0] = new EPHField("PERSONEPH", "person", "codperson", "=", false);
+			info.Ephs.Add(new Par("FPV", "5"), camposEPH);
 
 			// Table minimum roles and access levels
 			//------------------------------
@@ -393,6 +410,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCreated_at, value); }
 		}
 
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldCodperson { get { return m_fldCodperson; } }
+		private static FieldRef m_fldCodperson = new FieldRef("brand", "codperson");
+
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public string ValCodperson
+		{
+			get { return (string)returnValueField(FldCodperson); }
+			set { insertNameValueField(FldCodperson, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("brand", "zzstate");
@@ -490,7 +518,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX BRAND]/
 
  
-          
+           
 
 	}
 }

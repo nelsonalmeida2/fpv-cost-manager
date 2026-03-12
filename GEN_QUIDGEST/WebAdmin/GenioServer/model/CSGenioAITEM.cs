@@ -203,6 +203,17 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "codperson", FieldType.KEY_INT);
+			Qfield.FieldDescription = "CODPERSON";
+			Qfield.FieldSize =  8;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "CODPERSON27649";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -225,6 +236,7 @@ namespace CSGenio.business
 			info.ParentTables.Add("brand", new Relation("FPV", "fpvitem", "item", "coditem", "brand", "FPV", "fpvbrand", "brand", "codbrand", "codbrand"));
 			info.ParentTables.Add("category", new Relation("FPV", "fpvitem", "item", "coditem", "category", "FPV", "fpvcategory", "category", "codcategory", "codcategory"));
 			info.ParentTables.Add("invoice", new Relation("FPV", "fpvitem", "item", "coditem", "invoice", "FPV", "fpvinvoice", "invoice", "codinvoice", "codinvoice"));
+			info.ParentTables.Add("person", new Relation("FPV", "fpvitem", "item", "coditem", "codperson", "FPV", "fpvperson", "person", "codperson", "codperson"));
 			info.ParentTables.Add("subcategory", new Relation("FPV", "fpvitem", "item", "coditem", "subcategory", "FPV", "fpvsubcategory", "subcategory", "codsubcategory", "codsubcategory"));
 		}
 
@@ -237,11 +249,11 @@ namespace CSGenio.business
 			//------------------------------
 			info.Pathways = new Dictionary<string, string>(7);
 			info.Pathways.Add("category","category");
+			info.Pathways.Add("person","person");
 			info.Pathways.Add("subcategory","subcategory");
 			info.Pathways.Add("brand","brand");
 			info.Pathways.Add("invoice","invoice");
 			info.Pathways.Add("country","brand");
-			info.Pathways.Add("person","invoice");
 			info.Pathways.Add("store","invoice");
 		}
 
@@ -349,6 +361,10 @@ namespace CSGenio.business
 			// Ephs
 			//------------------------------
 			info.Ephs=new Hashtable();
+			EPHField[] camposEPH;
+						camposEPH = new EPHField[1];
+			camposEPH[0] = new EPHField("PERSONEPH", "person", "codperson", "=", false);
+			info.Ephs.Add(new Par("FPV", "5"), camposEPH);
 
 			// Table minimum roles and access levels
 			//------------------------------
@@ -519,6 +535,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCreated_at, value); }
 		}
 
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public static FieldRef FldCodperson { get { return m_fldCodperson; } }
+		private static FieldRef m_fldCodperson = new FieldRef("item", "codperson");
+
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		public string ValCodperson
+		{
+			get { return (string)returnValueField(FldCodperson); }
+			set { insertNameValueField(FldCodperson, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("item", "zzstate");
@@ -616,7 +643,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX ITEM]/
 
  
-              
+               
 
 	}
 }

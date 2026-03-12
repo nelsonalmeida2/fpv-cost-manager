@@ -491,6 +491,8 @@ namespace GenioMVC.ViewModels.Invoice
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
 
+			validator.Required("ValCodperson", Resources.Resources.ASSIGNED_TO35661, ViewModelConversion.ToString(ValCodperson), FieldType.KEY_INT.GetFormatting());
+
 			validator.Required("ValStore", Resources.Resources.STORE16493, ViewModelConversion.ToString(ValStore), FieldType.KEY_INT.GetFormatting());
 
 			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());

@@ -182,6 +182,28 @@ namespace GenioMVC.ViewModels.Item
 			tableConfig.RowsPerPage = rowsPerPage;
 		}
 
+		/// <summary>
+		/// Loads the viewmodel to export a template.
+		/// </summary>
+		/// <param name="columns">The columns.</param>
+		public void LoadToExportTemplate(out List<Exports.QColumn> columns)
+		{
+			columns = new List<Exports.QColumn>()
+			{
+				new Exports.QColumn(CSGenioAitem.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 255, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldQuantity, FieldType.NUMERIC, Resources.Resources.QUANTITY06415, 10, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldUnitprice, FieldType.CURRENCY, Resources.Resources.UNIT_PRICE24898, 9, 2, true),
+				new Exports.QColumn(CSGenioAitem.FldUpdated_at, FieldType.DATETIMESECONDS, Resources.Resources.UPDATED_AT48366, 8, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldUpdated_by, FieldType.TEXT, Resources.Resources.UPDATED_BY17808, 100, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 100, 0, true),
+				new Exports.QColumn(CSGenioAitem.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
+				new Exports.QColumn(CSGenioAcategory.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldCodinvoicestore, FieldType.TEXT, Resources.Resources.CODINVOICESTORE44054, 30, 0, true),
+				new Exports.QColumn(CSGenioAsubcategory.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
+			};
+		}
+
 		/// <inheritdoc/>
 		public override CriteriaSet BuildCriteriaSet(NameValueCollection requestValues, out bool tableReload, CriteriaSet crs = null, bool isToExport = false)
 		{
@@ -545,7 +567,7 @@ namespace GenioMVC.ViewModels.Item
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Item", "Item.ValCoditem", "Item.ValZzstate", "Category", "Category.ValName", "Item.ValCreated_at", "Item.ValQuantity", "Item.ValUpdated_at", "Item.ValTotalprice", "Invoice", "Invoice.ValCodinvoicestore", "Item.ValCreated_by", "Item.ValName", "Subcategory", "Subcategory.ValName", "Brand", "Brand.ValName", "Item.ValUpdated_by", "Item.ValUnitprice", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValSubcategory"
+			"Item", "Item.ValCoditem", "Item.ValZzstate", "Category", "Category.ValName", "Item.ValCreated_at", "Item.ValQuantity", "Item.ValUpdated_at", "Item.ValTotalprice", "Invoice", "Invoice.ValCodinvoicestore", "Item.ValCreated_by", "Item.ValName", "Subcategory", "Subcategory.ValName", "Brand", "Brand.ValName", "Item.ValUpdated_by", "Item.ValUnitprice", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValCodperson", "Item.ValSubcategory"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =

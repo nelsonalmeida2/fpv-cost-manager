@@ -156,9 +156,10 @@ public class FPV_Menu_21_RowViewModel : Models.Invoice
 
 	/// <summary>
 	/// The background color
+	/// Formula: iif([INVOICE->TOTALPRICE] > 100, HEXCOLOUR("FFD5D5"), iif([INVOICE->TOTALPRICE] > 50, HEXCOLOUR("FFF3CD"), HEXCOLOUR("FFFFFF")))
 	/// </summary>
 	[JsonPropertyName("backgroundColor")]
-	public string BackgroundColor => "";
+	public string BackgroundColor => ((((decimal)this.ValTotalprice)>100)?("#"+"FFD5D5"):(((((decimal)this.ValTotalprice)>50)?("#"+"FFF3CD"):("#"+"FFFFFF"))));
 
 	/// <summary>
 	/// Runs init logic that depends on row data.

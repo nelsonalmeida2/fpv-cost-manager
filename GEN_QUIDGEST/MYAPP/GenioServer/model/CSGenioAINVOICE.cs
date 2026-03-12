@@ -220,6 +220,7 @@ namespace CSGenio.business
 			Qfield.MQueue = false;
 			Qfield.CavDesignation = "CODPERSON27649";
 
+            Qfield.NotNull = true;
 			Qfield.Dupmsg = "";
 			info.RegisterFieldDB(Qfield);
 

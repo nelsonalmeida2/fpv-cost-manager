@@ -1220,7 +1220,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-PERSON', 'changed-SUBCATEGORY', 'changed-BRAND'],
 						uuid: 'Form_invoice_ValField001',
 						allSelectedRows: 'false',
 						controlLimits: [

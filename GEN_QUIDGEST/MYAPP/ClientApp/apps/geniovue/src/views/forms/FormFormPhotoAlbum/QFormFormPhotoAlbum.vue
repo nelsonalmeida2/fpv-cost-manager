@@ -786,6 +786,8 @@
 						set ValName(value) { vm.model.TableItemName.updateValue(value) },
 					},
 					Photoalbum: {
+						get ValCodperson() { return vm.model.ValCodperson.value },
+						set ValCodperson(value) { vm.model.ValCodperson.updateValue(value) },
 						get ValCreated_at() { return vm.model.ValCreated_at.value },
 						set ValCreated_at(value) { vm.model.ValCreated_at.updateValue(value) },
 						get ValCreated_by() { return vm.model.ValCreated_by.value },
@@ -806,6 +808,8 @@
 						get photoalbum() { return vm.model.ValCodphotoalbum },
 						/** The foreign key to the ITEM table */
 						get item() { return vm.model.ValItem },
+						/** The foreign key to the PERSON table */
+						get person() { return vm.model.ValCodperson },
 					},
 					get extraProperties() { return vm.model.extraProperties },
 				},

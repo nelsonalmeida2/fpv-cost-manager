@@ -2,15 +2,15 @@
 <ArrayOfMenuEntry xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <MenuEntry TYPE="ITEM" DESC="MY_APPLICATION56216" ID="FPV" IMG="" IMGVUE="" LVL="0" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false">
     <MENU TYPE="ITEM" DESC="ADMIN32587" SIGLA="🛠️" ID="1" HELPTITLE="" LVL="1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="1" DEFAULTACTION="">
-      <ACCESS>5</ACCESS>
+      <ACCESS>99</ACCESS>
       <MENU TYPE="ITEM" DESC="PERSONS18356" SIGLA="👨" ID="11" PRTID="1" HELPTITLE="" LVL="2" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="11" DEFAULTACTION="">
-        <ACCESS>5</ACCESS>
+        <ACCESS>99</ACCESS>
         <MENU TYPE="ITEM" DESC="PERSONS18356" ID="111" PRTID="11" IMG="" ACT="GenGenio.MenuDBEdit" ACTMVC="FPV_Menu_111" ACTVUE="menu-FPV_111" CONT="PERSON" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="111">
           <MENU TYPE="ITEM" ID="1111" PRTID="111" IMG="" ACT="GenGenio.MenuFormConsulta" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="1111" />
         </MENU>
       </MENU>
       <MENU TYPE="ITEM" DESC="PERSONS_PSW64657" SIGLA="👥" ID="12" PRTID="1" HELPTITLE="" LVL="2" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="12" DEFAULTACTION="">
-        <ACCESS>5</ACCESS>
+        <ACCESS>99</ACCESS>
         <MENU TYPE="ITEM" DESC="PERSON_PSW33377" ID="121" PRTID="12" IMG="" ACT="GenGenio.MenuDBEdit" ACTMVC="FPV_Menu_121" ACTVUE="menu-FPV_121" CONT="PERSONPSW" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="121">
           <MENU TYPE="ITEM" ID="1211" PRTID="121" IMG="" ACT="GenGenio.MenuFormConsulta" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="1211" />
         </MENU>
@@ -28,7 +28,7 @@
         </MENU>
       </MENU>
       <MENU TYPE="ITEM" DESC="COUNTRIES64527" SIGLA="🌎" ID="15" PRTID="1" HELPTITLE="" LVL="2" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="15" DEFAULTACTION="">
-        <ACCESS>1</ACCESS>
+        <ACCESS>99</ACCESS>
         <MENU TYPE="ITEM" DESC="COUNTRIES64527" ID="151" PRTID="15" IMG="" ACT="GenGenio.MenuDBEdit" ACTMVC="FPV_Menu_151" ACTVUE="menu-FPV_151" CONT="COUNTRY" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="151">
           <MENU TYPE="ITEM" ID="1511" PRTID="151" IMG="" ACT="GenGenio.MenuFormConsulta" LVL="-1" PREVIEW="false" SEPARATES="false" SUMMENU="false" HIDEMENUSUM="false" HASCONDITION="false" ISFORM="false" ORDER="1511" />
         </MENU>

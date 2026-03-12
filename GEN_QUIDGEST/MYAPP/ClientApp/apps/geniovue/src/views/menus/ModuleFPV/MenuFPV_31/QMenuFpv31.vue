@@ -371,7 +371,7 @@
 										type: 'form',
 										formName: 'FORM_ITEM',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -406,6 +406,7 @@
 									isPopup: true
 								},
 							},
+							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
@@ -413,7 +414,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-PERSON', 'changed-SUBCATEGORY', 'changed-BRAND'],
 						uuid: '5d0ff2ba-b4fa-47a2-a2d2-6638ab894fdc',
 						allSelectedRows: 'false',
 						headerLevel: 1,

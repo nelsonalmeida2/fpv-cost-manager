@@ -268,7 +268,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-COUNTRY', 'changed-BRAND'],
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
 						uuid: 'Form_item_Form_item_BrandValName',
 						allSelectedRows: 'false',
 						handlers: {

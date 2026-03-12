@@ -330,7 +330,7 @@
 										type: 'form',
 										formName: 'FORM_INVOICE',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -365,6 +365,7 @@
 									isPopup: false
 								},
 							},
+							allowFileImport: true,
 							defaultSearchColumnName: 'ValCodinvoicestore',
 							defaultSearchColumnNameOriginal: 'ValCodinvoicestore',
 							defaultColumnSorting: {
