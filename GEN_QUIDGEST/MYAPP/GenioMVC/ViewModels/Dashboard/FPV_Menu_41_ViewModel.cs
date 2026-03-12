@@ -45,26 +45,6 @@ namespace GenioMVC.ViewModels.Dashboard
 					UsesCache = false,
 					InstantionMethod = WidgetInstantionMethod.Aggregate
 				},
-				new CustomWidgetProvider<CSGenio.business.DbArea>
-{
-					Id = "SPENDINGBYCATEGO",
-					Order = 6,
-					Width = 6,
-					Height = 5,
-					BorderStyle = "",
-					Required = false,
-					Visible = true,
-					Role = CSGenio.framework.Role.ROLE_1,
-					Module = "FPV",
-					Title = Resources.Resources.SPENDING_BY_CATEGORY12333,
-					Group = "_GRAPHS",
-					Form = "SPENDINGBYCATEGORY",
-					Component = "QFormSpendingbycategory",
-					RefreshMode = WidgetRefreshMode.Automatic,
-					RefreshRate = 60,
-					UsesCache = false,
-					InstantionMethod = WidgetInstantionMethod.Aggregate
-				},
 				new CustomWidgetProvider<CSGenio.business.CSGenioAinvoice>
 {
 					Id = "FAVSTORES",

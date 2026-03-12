@@ -13,7 +13,6 @@ export default {
 		app.component('QFormFormPhotoAlbum', defineAsyncComponent(() => import('@/views/forms/FormFormPhotoAlbum/QFormFormPhotoAlbum.vue')))
 		app.component('QFormFormStore', defineAsyncComponent(() => import('@/views/forms/FormFormStore/QFormFormStore.vue')))
 		app.component('QFormFormSubcategory', defineAsyncComponent(() => import('@/views/forms/FormFormSubcategory/QFormFormSubcategory.vue')))
-		app.component('QFormSpendingbycategory', defineAsyncComponent(() => import('@/views/forms/FormSpendingbycategory/QFormSpendingbycategory.vue')))
 		app.component('QFormWFavstores', defineAsyncComponent(() => import('@/views/forms/FormWFavstores/QFormWFavstores.vue')))
 		app.component('QFormWLastinvoice', defineAsyncComponent(() => import('@/views/forms/FormWLastinvoice/QFormWLastinvoice.vue')))
 	}
