@@ -29,8 +29,8 @@ namespace GenioMVC.ViewModels.Dashboard
 {
 					Id = "LASTINVOICE",
 					Order = 2,
-					Width = 2,
-					Height = 2,
+					Width = 6,
+					Height = 6,
 					BorderStyle = "",
 					Required = false,
 					Visible = true,
@@ -49,8 +49,8 @@ namespace GenioMVC.ViewModels.Dashboard
 {
 					Id = "FAVSTORES",
 					Order = 1,
-					Width = 10,
-					Height = 10,
+					Width = 6,
+					Height = 6,
 					BorderStyle = "",
 					Required = false,
 					Visible = true,

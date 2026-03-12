@@ -33,12 +33,12 @@ namespace GenioMVC.Controllers
 	{
 		#region NavigationLocation Names
 
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_CANCEL = new("CANCELAR49513", "W_favstores_Cancel", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "CANCEL" };
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_SHOW = new("CONSULTA40695", "W_favstores_Show", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "SHOW" };
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_NEW = new("INSERIR43365", "W_favstores_New", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "NEW" };
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_EDIT = new("EDITAR11616", "W_favstores_Edit", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "EDIT" };
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_DUPLICATE = new("DUPLICAR09748", "W_favstores_Duplicate", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "DUPLICATE" };
-		private static readonly NavigationLocation ACTION_W_FAVSTORES_DELETE = new("APAGAR04097", "W_favstores_Delete", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "DELETE" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_CANCEL = new("FAVORITE_STORES13289", "W_favstores_Cancel", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "CANCEL" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_SHOW = new("FAVORITE_STORES13289", "W_favstores_Show", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "SHOW" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_NEW = new("FAVORITE_STORES13289", "W_favstores_New", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "NEW" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_EDIT = new("FAVORITE_STORES13289", "W_favstores_Edit", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "EDIT" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_DUPLICATE = new("FAVORITE_STORES13289", "W_favstores_Duplicate", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "DUPLICATE" };
+		private static readonly NavigationLocation ACTION_W_FAVSTORES_DELETE = new("FAVORITE_STORES13289", "W_favstores_Delete", "Invoice") { vueRouteName = "form-W_FAVSTORES", mode = "DELETE" };
 
 		#endregion
 

@@ -172,7 +172,7 @@
 					route: 'form-W_FAVSTORES',
 					area: 'INVOICE',
 					primaryKey: 'ValCodinvoice',
-					designation: '',
+					designation: computed(() => this.Resources.FAVORITE_STORES13289),
 					identifier: '', // Unique identifier received by route (when it's nested).
 					mode: '',
 					availableAgents: [],

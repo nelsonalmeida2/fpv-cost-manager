@@ -88,6 +88,9 @@
 
 				switch (hPage.Identifier)
 				{
+					case 'Dashboard':
+						this.currentComponent = defineAsyncComponent(() => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'))
+						break
 					default:
 						this.currentComponent = null
 				}
