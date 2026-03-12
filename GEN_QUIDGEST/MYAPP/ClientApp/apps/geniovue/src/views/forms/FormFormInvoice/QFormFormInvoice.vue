@@ -1262,6 +1262,8 @@
 					Invoice: {
 						get ValCodinvoicestore() { return vm.model.ValCodinvoicestore.value },
 						set ValCodinvoicestore(value) { vm.model.ValCodinvoicestore.updateValue(value) },
+						get ValCodperson() { return vm.model.ValCodperson.value },
+						set ValCodperson(value) { vm.model.ValCodperson.updateValue(value) },
 						get ValCreated_at() { return vm.model.ValCreated_at.value },
 						set ValCreated_at(value) { vm.model.ValCreated_at.updateValue(value) },
 						get ValCreated_by() { return vm.model.ValCreated_by.value },
@@ -1287,6 +1289,10 @@
 						get ValUpdated_by() { return vm.model.ValUpdated_by.value },
 						set ValUpdated_by(value) { vm.model.ValUpdated_by.updateValue(value) },
 					},
+					Person: {
+						get ValName() { return vm.model.TablePersonName.value },
+						set ValName(value) { vm.model.TablePersonName.updateValue(value) },
+					},
 					Store: {
 						get ValName() { return vm.model.TableStoreName.value },
 						set ValName(value) { vm.model.TableStoreName.updateValue(value) },
@@ -1296,6 +1302,8 @@
 						get invoice() { return vm.model.ValCodinvoice },
 						/** The foreign key to the STORE table */
 						get store() { return vm.model.ValStore },
+						/** The foreign key to the PERSON table */
+						get person() { return vm.model.ValCodperson },
 					},
 					get extraProperties() { return vm.model.extraProperties },
 				},

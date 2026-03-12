@@ -372,7 +372,7 @@
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-INVOICE', 'changed-STORE'],
+						globalEvents: ['changed-PERSON', 'changed-INVOICE', 'changed-STORE'],
 						uuid: '4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5',
 						allSelectedRows: 'false',
 						headerLevel: 1,

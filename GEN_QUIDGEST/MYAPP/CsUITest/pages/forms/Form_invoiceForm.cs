@@ -33,6 +33,11 @@ public class Form_invoiceForm : Form
 	public BaseInputControl InvoiceUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__UPDATED_AT", "#FORM_INVOICE__INVOICE__UPDATED_AT");
 
 	/// <summary>
+	/// Assigned To
+	/// </summary>
+	public BaseInputControl PersonName => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__PERSON__NAME", "#FORM_INVOICE__PERSON__NAME");
+
+	/// <summary>
 	/// Purchase Details
 	/// </summary>
 	public CollapsibleZoneControl PseudNewgrp02 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP02-container");

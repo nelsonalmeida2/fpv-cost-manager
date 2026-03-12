@@ -235,12 +235,13 @@ namespace CSGenio.business
 		{
 			// Pathways
 			//------------------------------
-			info.Pathways = new Dictionary<string, string>(6);
+			info.Pathways = new Dictionary<string, string>(7);
 			info.Pathways.Add("category","category");
 			info.Pathways.Add("subcategory","subcategory");
 			info.Pathways.Add("brand","brand");
 			info.Pathways.Add("invoice","invoice");
 			info.Pathways.Add("country","brand");
+			info.Pathways.Add("person","invoice");
 			info.Pathways.Add("store","invoice");
 		}
 

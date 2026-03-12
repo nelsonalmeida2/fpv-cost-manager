@@ -168,6 +168,9 @@
 	<data name="LOGOTYPE44505" xml:space="preserve">
 		<value>Logotype</value>
 	</data>
+	<data name="CODPERSON27649" xml:space="preserve">
+		<value>CODPERSON</value>
+	</data>
 	<data name="CREA43898" xml:space="preserve">
 		<value>cREA</value>
 	</data>
@@ -554,6 +557,9 @@
 	</data>
 	<data name="SUBJECT33942" xml:space="preserve">
 		<value>Subject</value>
+	</data>
+	<data name="ASSIGNED_TO35661" xml:space="preserve">
+		<value>Assigned To</value>
 	</data>
 	<data name="ROUTINE58306" xml:space="preserve">
 		<value>Routine</value>

@@ -214,6 +214,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "CODPERSON"
+        /// </summary>
+        public static string CODPERSON27649 {
+            get {
+                return ResourceManager.GetString("CODPERSON27649", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "cREA"
         /// </summary>
         public static string CREA43898 {
@@ -1371,6 +1380,15 @@ namespace Administration.Resources {
         public static string SUBJECT33942 {
             get {
                 return ResourceManager.GetString("SUBJECT33942", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Assigned To"
+        /// </summary>
+        public static string ASSIGNED_TO35661 {
+            get {
+                return ResourceManager.GetString("ASSIGNED_TO35661", resourceCulture);
             }
         }
 

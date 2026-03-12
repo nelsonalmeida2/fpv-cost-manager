@@ -31,6 +31,10 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#region Foreign keys
 		/// <summary>
+		/// Title: "Assigned To" | Type: "CE"
+		/// </summary>
+		public string ValCodperson { get; set; }
+		/// <summary>
 		/// Title: "Store" | Type: "CE"
 		/// </summary>
 		public string ValStore { get; set; }
@@ -56,6 +60,11 @@ namespace GenioMVC.ViewModels.Invoice
 		/// </summary>
 		[ValidateSetAccess]
 		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
+		/// Title: "Assigned To" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public TableDBEdit<GenioMVC.Models.Person> TablePersonName { get; set; }
 		/// <summary>
 		/// Title: "CODINVOICESTORE" | Type: "C"
 		/// </summary>
@@ -236,6 +245,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 			try
 			{
+				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValStore = ViewModelConversion.ToString(m.ValStore);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
@@ -276,6 +286,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 			try
 			{
+				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValStore = ViewModelConversion.ToString(ValStore);
 				m.ValCodinvoicestore = ViewModelConversion.ToString(ValCodinvoicestore);
 				m.ValReceipt = ViewModelConversion.ToString(ValReceipt);
@@ -323,6 +334,9 @@ namespace GenioMVC.ViewModels.Invoice
 
 				switch (fullFieldName)
 				{
+					case "invoice.codperson":
+						this.ValCodperson = ViewModelConversion.ToString(_value);
+						break;
 					case "invoice.store":
 						this.ValStore = ViewModelConversion.ToString(_value);
 						break;
@@ -459,6 +473,7 @@ namespace GenioMVC.ViewModels.Invoice
 			// Add characteristics
 			Characs = new List<string>();
 
+			Load_Form_invoice__person__name(qs, lazyLoad);
 			Load_Form_invoice__store__name(qs, lazyLoad);
 
 // USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_INVOICE]/
@@ -522,6 +537,195 @@ namespace GenioMVC.ViewModels.Invoice
 		public void LoadChecklistsSelectedIDs()
 		{
 		}
+
+		/// <summary>
+		/// TablePersonName -> (F1)
+		/// </summary>
+		/// <param name="qs"></param>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void Load_Form_invoice__person__name(NameValueCollection qs, bool lazyLoad = false)
+		{
+			bool form_invoice__person__nameDoLoad = true;
+			CriteriaSet form_invoice__person__nameConds = CriteriaSet.And();
+			{
+				object hValue = Navigation.GetValue("person", true);
+				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
+				{
+					form_invoice__person__nameConds.Equal(CSGenioAperson.FldCodperson, hValue);
+					this.ValCodperson = DBConversion.ToString(hValue);
+				}
+			}
+
+			TablePersonName = new TableDBEdit<Models.Person>
+			{
+				IsLazyLoad = lazyLoad
+			};
+
+			if (lazyLoad)
+			{
+				if (Navigation.CurrentLevel.GetEntry("RETURN_person") != null)
+				{
+					this.ValCodperson = Navigation.GetStrValue("RETURN_person");
+					Navigation.CurrentLevel.SetEntry("RETURN_person", null);
+				}
+				FillDependant_Form_invoiceTablePersonName(lazyLoad);
+				return;
+			}
+
+			if (form_invoice__person__nameDoLoad)
+			{
+				List<ColumnSort> sorts = [];
+				ColumnSort requestedSort = GetRequestSort(TablePersonName, "sTablePersonName", "dTablePersonName", qs, "person");
+				if (requestedSort != null)
+					sorts.Add(requestedSort);
+
+				string query = "";
+				if (!string.IsNullOrEmpty(qs["TablePersonName_tableFilters"]))
+					TablePersonName.TableFilters = bool.Parse(qs["TablePersonName_tableFilters"]);
+				else
+					TablePersonName.TableFilters = false;
+
+				query = qs["qTablePersonName"];
+
+				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
+				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
+				//  tornando confuso to o user porque determinada row foi devolvida quando o Qresult não mostra como o matching foi feito
+				CriteriaSet search_filters = CriteriaSet.And();
+				if (!string.IsNullOrEmpty(query))
+				{
+					search_filters.Like(CSGenioAperson.FldName, query + "%");
+				}
+				form_invoice__person__nameConds.SubSet(search_filters);
+
+				string tryParsePage = qs["pTablePersonName"] != null ? qs["pTablePersonName"].ToString() : "1";
+				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
+				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
+				int offset = (page - 1) * numberItems;
+
+				FieldRef[] fields = [CSGenioAperson.FldCodperson, CSGenioAperson.FldName, CSGenioAperson.FldZzstate];
+
+// USE /[MANUAL FPV OVERRQ FORM_INVOICE_PERSONNAME]/
+
+				// Limitation by Zzstate
+				/*
+					Records that are currently being inserted or duplicated will also be included.
+					Client-side persistence will try to fill the "text" value of that option.
+				*/
+				if (Navigation.checkFormMode("person", FormMode.New) || Navigation.checkFormMode("person", FormMode.Duplicate))
+					form_invoice__person__nameConds.SubSet(CriteriaSet.Or()
+						.Equal(CSGenioAperson.FldZzstate, 0)
+						.Equal(CSGenioAperson.FldCodperson, Navigation.GetStrValue("person")));
+				else
+					form_invoice__person__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAperson.FldZzstate), CriteriaOperator.Equal, 0));
+
+				FieldRef firstVisibleColumn = null;
+				ListingMVC<CSGenioAperson> listing = Models.ModelBase.Where<CSGenioAperson>(m_userContext, false, form_invoice__person__nameConds, fields, offset, numberItems, sorts, "LED_FORM_INVOICE__PERSON__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
+
+				TablePersonName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
+				TablePersonName.Query = query;
+				TablePersonName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Person(m_userContext, r, true, _fieldsToSerialize_FORM_INVOICE__PERSON__NAME));
+
+				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
+				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
+				if (Navigation.CurrentLevel.GetEntry("RETURN_person") != null)
+				{
+					this.ValCodperson = Navigation.GetStrValue("RETURN_person");
+					Navigation.CurrentLevel.SetEntry("RETURN_person", null);
+				}
+
+				TablePersonName.List = new SelectList(TablePersonName.Elements.ToSelectList(x => x.ValName, x => x.ValCodperson,  x => x.ValCodperson == this.ValCodperson), "Value", "Text", this.ValCodperson);
+				FillDependant_Form_invoiceTablePersonName();
+			}
+		}
+
+		/// <summary>
+		/// Get Dependant fields values -> TablePersonName (F1)
+		/// </summary>
+		/// <param name="PKey">Primary Key of Person</param>
+		public ConcurrentDictionary<string, object> GetDependant_Form_invoiceTablePersonName(string PKey)
+		{
+			FieldRef[] refDependantFields = [CSGenioAperson.FldCodperson, CSGenioAperson.FldName];
+
+			var returnEmptyDependants = false;
+			CriteriaSet wherecodition = CriteriaSet.And();
+
+			// Return default values
+			if (GenFunctions.emptyG(PKey) == 1)
+				returnEmptyDependants = true;
+
+			// Check if the limit(s) is filled if exists
+			// - - - - - - - - - - - - - - - - - - - - -
+
+			if (returnEmptyDependants)
+				return GetViewModelFieldValues(refDependantFields);
+
+			PersistentSupport sp = m_userContext.PersistentSupport;
+			User u = m_userContext.User;
+
+			CSGenioAperson tempArea = new(u);
+
+			// Fields to select
+			SelectQuery querySelect = new();
+			querySelect.PageSize(1);
+			foreach (FieldRef field in refDependantFields)
+				querySelect.Select(field);
+
+			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
+				.Where(wherecodition.Equal(CSGenioAperson.FldCodperson, PKey));
+
+			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
+			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
+
+			ArrayList values = sp.executeReaderOneRow(querySelect);
+			bool useDefaults = values.Count == 0;
+
+			if (useDefaults)
+				return GetViewModelFieldValues(refDependantFields);
+			return GetViewModelFieldValues(refDependantFields, values);
+		}
+
+		/// <summary>
+		/// Fill Dependant fields values -> TablePersonName (F1)
+		/// </summary>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void FillDependant_Form_invoiceTablePersonName(bool lazyLoad = false)
+		{
+			var row = GetDependant_Form_invoiceTablePersonName(this.ValCodperson);
+			try
+			{
+
+				// Fill List fields
+				this.ValCodperson = ViewModelConversion.ToString(row["person.codperson"]);
+				TablePersonName.Value = (string)row["person.name"];
+				if (GenFunctions.emptyG(this.ValCodperson) == 1)
+				{
+					this.ValCodperson = "";
+					TablePersonName.Value = "";
+					Navigation.ClearValue("person");
+				}
+				else if (lazyLoad)
+				{
+					TablePersonName.SetPagination(1, 0, false, false, 1);
+					TablePersonName.List = new SelectList(new List<SelectListItem>()
+					{
+						new SelectListItem
+						{
+							Value = Convert.ToString(this.ValCodperson),
+							Text = Convert.ToString(TablePersonName.Value),
+							Selected = true
+						}
+					}, "Value", "Text", this.ValCodperson);
+				}
+
+				TablePersonName.Selected = this.ValCodperson;
+			}
+			catch (Exception ex)
+			{
+				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TablePersonName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
+			}
+		}
+
+		private readonly string[] _fieldsToSerialize_FORM_INVOICE__PERSON__NAME = ["Person", "Person.ValCodperson", "Person.ValZzstate"];
 
 		/// <summary>
 		/// TableStoreName -> (DB)
@@ -723,6 +927,7 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 			return identifier switch
 			{
+				"invoice.codperson" => ViewModelConversion.ToString(modelValue),
 				"invoice.store" => ViewModelConversion.ToString(modelValue),
 				"invoice.created_by" => ViewModelConversion.ToString(modelValue),
 				"invoice.created_at" => ViewModelConversion.ToDateTime(modelValue),
@@ -737,6 +942,8 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.numberofitems" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.totalprice" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
+				"person.codperson" => ViewModelConversion.ToString(modelValue),
+				"person.name" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"store.name" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue

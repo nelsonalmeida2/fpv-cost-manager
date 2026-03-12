@@ -54,6 +54,16 @@ export default class ViewModel extends FormViewModelBase
 		this.stopWatchers.push(watch(() => this.ValCodinvoice.value, (newValue, oldValue) => this.onUpdate('invoice.codinvoice', this.ValCodinvoice, newValue, oldValue)))
 
 		/** The used foreign keys. */
+		this.ValCodperson = reactive(new modelFieldType.ForeignKey({
+			id: 'ValCodperson',
+			originId: 'ValCodperson',
+			area: 'INVOICE',
+			field: 'CODPERSON',
+			relatedArea: 'PERSON',
+			description: computed(() => this.Resources.CODPERSON27649),
+		}).cloneFrom(values?.ValCodperson))
+		this.stopWatchers.push(watch(() => this.ValCodperson.value, (newValue, oldValue) => this.onUpdate('invoice.codperson', this.ValCodperson, newValue, oldValue)))
+
 		this.ValStore = reactive(new modelFieldType.ForeignKey({
 			id: 'ValStore',
 			originId: 'ValStore',
@@ -106,6 +116,19 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.UPDATED_AT48366),
 		}).cloneFrom(values?.ValUpdated_at))
 		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('invoice.updated_at', this.ValUpdated_at, newValue, oldValue)))
+
+		this.TablePersonName = reactive(new modelFieldType.String({
+			type: 'Lookup',
+			id: 'TablePersonName',
+			originId: 'ValName',
+			area: 'PERSON',
+			field: 'NAME',
+			maxLength: 50,
+			isFixed: true,
+			description: computed(() => this.Resources.NAME31974),
+			ignoreFldSubmit: true,
+		}).cloneFrom(values?.TablePersonName))
+		this.stopWatchers.push(watch(() => this.TablePersonName.value, (newValue, oldValue) => this.onUpdate('person.name', this.TablePersonName, newValue, oldValue)))
 
 		this.ValCodinvoicestore = reactive(new modelFieldType.String({
 			id: 'ValCodinvoicestore',

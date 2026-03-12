@@ -120,6 +120,26 @@ namespace GenioMVC.Models
 		[ShouldSerialize("Invoice.ValCodinvoicestore")]
 		public string ValCodinvoicestore { get { return klass.ValCodinvoicestore; } set { klass.ValCodinvoicestore = value; } }
 
+		[DisplayName("CODPERSON")]
+		/// <summary>Field : "CODPERSON" Tipo: "CE" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValCodperson")]
+		public string ValCodperson { get { return klass.ValCodperson; } set { klass.ValCodperson = value; } }
+
+		private Person _person;
+		[DisplayName("Person")]
+		[ShouldSerialize("Person")]
+		public virtual Person Person
+		{
+			get
+			{
+				if (!isEmptyModel && (_person == null || (!string.IsNullOrEmpty(ValCodperson) && (_person.isEmptyModel || _person.klass.QPrimaryKey != ValCodperson))))
+					_person = Models.Person.Find(ValCodperson, m_userContext, Identifier, _fieldsToSerialize);
+				_person ??= new Models.Person(m_userContext, true, _fieldsToSerialize);
+				return _person;
+			}
+			set { _person = value; }
+		}
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Invoice.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>
@@ -154,6 +174,10 @@ namespace GenioMVC.Models
 					case "store":
 						_store ??= new Store(m_userContext, true, _fieldsToSerialize);
 						_store.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
+						break;
+					case "person":
+						_person ??= new Person(m_userContext, true, _fieldsToSerialize);
+						_person.klass.insertNameValueField(Qfield.FullName, Qfield.Value);
 						break;
 					default:
 						break;

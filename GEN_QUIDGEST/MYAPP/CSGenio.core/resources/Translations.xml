@@ -51,6 +51,9 @@
   <msg id="Logotype" code="LOGOTYPE44505">
     <ENUS>Logotype</ENUS>
   </msg>
+  <msg id="CODPERSON" code="CODPERSON27649">
+    <ENUS>CODPERSON</ENUS>
+  </msg>
   <msg id="cREA" code="CREA43898">
     <ENUS>cREA</ENUS>
   </msg>
@@ -437,6 +440,9 @@
   </msg>
   <msg id="Subject" code="SUBJECT33942">
     <ENUS>Subject</ENUS>
+  </msg>
+  <msg id="Assigned To" code="ASSIGNED_TO35661">
+    <ENUS>Assigned To</ENUS>
   </msg>
   <msg id="Routine" code="ROUTINE58306">
     <ENUS>Routine</ENUS>
