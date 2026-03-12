@@ -30,8 +30,7 @@ public class Form_invoiceForm : Form
 	/// <summary>
 	/// Store
 	/// </summary>
-	public LookupControl StoreName => new LookupControl(driver, ContainerLocator, "container-FORM_INVOICE__STORE__NAME");
-	public SeeMorePage StoreNameSeeMorePage => new SeeMorePage(driver, "FORM_INVOICE", "FORM_INVOICE__STORE__NAME");
+	public BaseInputControl StoreCodstore => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__STORE__CODSTORE", "#FORM_INVOICE__STORE__CODSTORE");
 
 	/// <summary>
 	/// Date
