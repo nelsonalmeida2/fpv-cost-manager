@@ -153,6 +153,9 @@
   <msg id="Invoices" code="INVOICES44448">
     <ENUS>Invoices</ENUS>
   </msg>
+  <msg id="Backoffice Audit" code="BACKOFFICE_AUDIT23640">
+    <ENUS>Backoffice Audit</ENUS>
+  </msg>
   <msg id="Female" code="FEMALE46107">
     <ENUS>Female</ENUS>
   </msg>
@@ -167,6 +170,9 @@
   </msg>
   <msg id="Purchase Details" code="PURCHASE_DETAILS40558">
     <ENUS>Purchase Details</ENUS>
+  </msg>
+  <msg id="Backoffice Items" code="BACKOFFICE_ITEMS57653">
+    <ENUS>Backoffice Items</ENUS>
   </msg>
   <msg id="Process mode" code="PROCESS_MODE22419">
     <ENUS>Process mode</ENUS>
@@ -581,6 +587,9 @@
   </msg>
   <msg id="ITEM INFO" code="ITEM_INFO03102">
     <ENUS>ITEM INFO</ENUS>
+  </msg>
+  <msg id="Backoffice People" code="BACKOFFICE_PEOPLE55510">
+    <ENUS>Backoffice People</ENUS>
   </msg>
   <msg id="a:" code="A_47238">
     <ENUS>to:</ENUS>

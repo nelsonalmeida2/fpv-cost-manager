@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '51',
 					isMenuList: true,
-					designation: computed(() => this.Resources.BRANDS27300),
+					designation: computed(() => this.Resources.ITEMS55321),
 					acronym: 'FPV_51',
-					name: 'BRAND',
+					name: 'ITEM',
 					route: 'menu-FPV_51',
 					order: '51',
-					controller: 'BRAND',
+					controller: 'ITEM',
 					action: 'FPV_Menu_51',
 					isPopup: false
 				},
@@ -134,10 +134,10 @@
 				model: new MenuViewModel(this),
 
 				controls: {
-					menu: new controlClass.TableSpecialRenderingControl({
+					menu: new controlClass.TableListControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_51',
-						controller: 'BRAND',
+						controller: 'ITEM',
 						action: 'FPV_Menu_51',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -146,59 +146,143 @@
 							'page-full-height'
 						],
 						columnsOriginal: [
-							new listColumnTypes.ImageColumn({
+							new listColumnTypes.TextColumn({
 								order: 1,
-								name: 'ValLogotype',
-								area: 'BRAND',
-								field: 'LOGOTYPE',
-								label: computed(() => this.Resources.LOGOTYPE44505),
-								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
-								scrollData: 3,
-								sortable: false,
-								searchable: false,
+								name: 'Category.ValName',
+								area: 'CATEGORY',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+								pkColumn: 'ValCodcategory',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 2,
+								name: 'ValCreated_at',
+								area: 'ITEM',
+								field: 'CREATED_AT',
+								label: computed(() => this.Resources.CREATED_AT29089),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 3,
+								name: 'ValQuantity',
+								area: 'ITEM',
+								field: 'QUANTITY',
+								label: computed(() => this.Resources.QUANTITY06415),
+								scrollData: 10,
+								maxDigits: 10,
+								decimalPlaces: 0,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 4,
+								name: 'ValUpdated_at',
+								area: 'ITEM',
+								field: 'UPDATED_AT',
+								label: computed(() => this.Resources.UPDATED_AT48366),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 5,
+								name: 'ValTotalprice',
+								area: 'ITEM',
+								field: 'TOTALPRICE',
+								label: computed(() => this.Resources.TOTAL_PRICE46894),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 2,
+								order: 6,
+								name: 'Invoice.ValCodinvoicestore',
+								area: 'INVOICE',
+								field: 'CODINVOICESTORE',
+								label: computed(() => this.Resources.CODINVOICESTORE44054),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+								pkColumn: 'ValCodinvoice',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 7,
+								name: 'ValCreated_by',
+								area: 'ITEM',
+								field: 'CREATED_BY',
+								label: computed(() => this.Resources.CREATED_BY12292),
+								dataLength: 100,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 8,
 								name: 'ValName',
+								area: 'ITEM',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 255,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 9,
+								name: 'Subcategory.ValName',
+								area: 'SUBCATEGORY',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+								pkColumn: 'ValCodsubcategory',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 10,
+								name: 'Brand.ValName',
 								area: 'BRAND',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
+								pkColumn: 'ValCodbrand',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 3,
-								name: 'ValDescription',
-								area: 'BRAND',
-								field: 'DESCRIPTION',
-								label: computed(() => this.Resources.DESCRIPTION07383),
-								dataLength: 255,
+								order: 11,
+								name: 'ValUpdated_by',
+								area: 'ITEM',
+								field: 'UPDATED_BY',
+								label: computed(() => this.Resources.UPDATED_BY17808),
+								dataLength: 100,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'Country.ValName',
-								area: 'COUNTRY',
-								field: 'NAME',
-								label: computed(() => this.Resources.COUNTRY64133),
-								dataLength: 75,
-								scrollData: 30,
+							new listColumnTypes.CurrencyColumn({
+								order: 12,
+								name: 'ValUnitprice',
+								area: 'ITEM',
+								field: 'UNITPRICE',
+								label: computed(() => this.Resources.UNIT_PRICE24898),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
 								export: 1,
-								pkColumn: 'ValCodcountry',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'FPV_Menu_51',
 							serverMode: true,
-							pkColumn: 'ValCodbrand',
-							tableAlias: 'BRAND',
-							tableNamePlural: computed(() => this.Resources.BRANDS27300),
+							pkColumn: 'ValCoditem',
+							tableAlias: 'ITEM',
+							tableNamePlural: computed(() => this.Resources.ITEMS55321),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.BRANDS27300),
+							tableTitle: computed(() => this.Resources.ITEMS55321),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -219,7 +303,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_ITEM',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -235,7 +319,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_ITEM',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -251,7 +335,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_ITEM',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -267,7 +351,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_ITEM',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -285,7 +369,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_ITEM',
 										mode: 'NEW',
 										repeatInsertion: true,
 										isControlled: true
@@ -302,136 +386,37 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_511',
-								name: 'form-FORM_BRAND',
+								name: 'form-FORM_ITEM',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
 											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodbrand
+											fnValueSelector: (row) => row.ValCoditem
 										},
 									],
 									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_BRAND'
+									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_ITEM'
 								}
 							},
 							formsDefinition: {
-								'FORM_BRAND': {
-									fnKeySelector: (row) => row.Fields.ValCodbrand,
-									isPopup: false
+								'FORM_ITEM': {
+									fnKeySelector: (row) => row.Fields.ValCoditem,
+									isPopup: true
 								},
 							},
 							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValCreated_at',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
-						uuid: 'd3385526-6910-4460-aea2-824fdc1c055b',
+						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-PERSON', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						uuid: '5d0ff2ba-b4fa-47a2-a2d2-6638ab894fdc',
 						allSelectedRows: 'false',
-						viewModes: [
-							{
-								id: 'CARDS',
-								type: 'cards',
-								subtype: 'card-img-top',
-								label: computed(() => this.Resources.CARTOES27587),
-								order: 1,
-								mappingVariables: readonly({
-									title: {
-										allowsMultiple: false,
-										sources: [
-											'BRAND.NAME',
-										]
-									},
-									subtitle: {
-										allowsMultiple: false,
-										sources: [
-											'COUNTRY.NAME',
-										]
-									},
-									text: {
-										allowsMultiple: true,
-										sources: [
-											'BRAND.DESCRIPTION',
-										]
-									},
-									image: {
-										allowsMultiple: false,
-										sources: [
-											'BRAND.LOGOTYPE',
-										]
-									},
-								}),
-								styleVariables: {
-									actionsAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									actionsStyle: {
-										rawValue: 'dropdown',
-										isMapped: false
-									},
-									backgroundColor: {
-										rawValue: 'auto',
-										isMapped: false
-									},
-									contentAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									customFollowupDefaultTarget: {
-										rawValue: 'blank',
-										isMapped: false
-									},
-									customInsertCard: {
-										rawValue: false,
-										isMapped: false
-									},
-									customInsertCardStyle: {
-										rawValue: 'secondary',
-										isMapped: false
-									},
-									displayMode: {
-										rawValue: 'grid',
-										isMapped: false
-									},
-									gridMode: {
-										rawValue: 'fixed',
-										isMapped: false
-									},
-									containerAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									hoverScaleAmount: {
-										rawValue: '1.00',
-										isMapped: false
-									},
-									imageShape: {
-										rawValue: 'rectangular',
-										isMapped: false
-									},
-									showColumnTitles: {
-										rawValue: false,
-										isMapped: false
-									},
-									showEmptyColumnTitles: {
-										rawValue: true,
-										isMapped: false
-									},
-									size: {
-										rawValue: 'regular',
-										isMapped: false
-									},
-								},
-								groups: {
-								}
-							},
-						],
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
 					}, this),

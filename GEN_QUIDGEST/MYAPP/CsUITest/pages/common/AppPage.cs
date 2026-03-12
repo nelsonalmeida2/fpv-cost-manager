@@ -106,14 +106,21 @@ public class AppPage: PageObject
 		res.AddMenu(module, "1", null);
 		res.AddMenu(module, "11", "1");
 		res.AddMenu(module, "12", "1");
-		res.AddMenu(module, "13", "1");
-		res.AddMenu(module, "14", "1");
-		res.AddMenu(module, "15", "1");
 		res.AddMenu(module, "2", null);
+		res.AddMenu(module, "21", "2");
+		res.AddMenu(module, "22", "2");
+		res.AddMenu(module, "23", "2");
 		res.AddMenu(module, "3", null);
+		res.AddMenu(module, "31", "3");
+		res.AddMenu(module, "32", "3");
+		res.AddMenu(module, "33", "3");
+		res.AddMenu(module, "34", "3");
+		res.AddMenu(module, "35", "3");
 		res.AddMenu(module, "4", null);
 		res.AddMenu(module, "5", null);
 		res.AddMenu(module, "6", null);
+		res.AddMenu(module, "7", null);
+		res.AddMenu(module, "8", null);
         return res;
     }
 }

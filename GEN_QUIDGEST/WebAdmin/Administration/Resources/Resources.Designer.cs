@@ -520,6 +520,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Backoffice Audit"
+        /// </summary>
+        public static string BACKOFFICE_AUDIT23640 {
+            get {
+                return ResourceManager.GetString("BACKOFFICE_AUDIT23640", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Female"
         /// </summary>
         public static string FEMALE46107 {
@@ -561,6 +570,15 @@ namespace Administration.Resources {
         public static string PURCHASE_DETAILS40558 {
             get {
                 return ResourceManager.GetString("PURCHASE_DETAILS40558", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Backoffice Items"
+        /// </summary>
+        public static string BACKOFFICE_ITEMS57653 {
+            get {
+                return ResourceManager.GetString("BACKOFFICE_ITEMS57653", resourceCulture);
             }
         }
 
@@ -1803,6 +1821,15 @@ namespace Administration.Resources {
         public static string ITEM_INFO03102 {
             get {
                 return ResourceManager.GetString("ITEM_INFO03102", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "Backoffice People"
+        /// </summary>
+        public static string BACKOFFICE_PEOPLE55510 {
+            get {
+                return ResourceManager.GetString("BACKOFFICE_PEOPLE55510", resourceCulture);
             }
         }
 

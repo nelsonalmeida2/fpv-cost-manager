@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '41',
 					isMenuList: true,
-					designation: computed(() => this.Resources.STORES21606),
+					designation: computed(() => this.Resources.INVOICES44448),
 					acronym: 'FPV_41',
-					name: 'STORE',
+					name: 'INVOICE',
 					route: 'menu-FPV_41',
 					order: '41',
-					controller: 'STORE',
+					controller: 'INVOICE',
 					action: 'FPV_Menu_41',
 					isPopup: false
 				},
@@ -134,10 +134,10 @@
 				model: new MenuViewModel(this),
 
 				controls: {
-					menu: new controlClass.TableSpecialRenderingControl({
+					menu: new controlClass.TableListControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_41',
-						controller: 'STORE',
+						controller: 'INVOICE',
 						action: 'FPV_Menu_41',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -146,82 +146,102 @@
 							'page-full-height'
 						],
 						columnsOriginal: [
-							new listColumnTypes.ImageColumn({
-								order: 1,
-								name: 'ValLogotype',
-								area: 'STORE',
-								field: 'LOGOTYPE',
-								label: computed(() => this.Resources.LOGOTYPE44505),
-								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
-								scrollData: 3,
-								sortable: false,
-								searchable: false,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 2,
-								name: 'ValName',
-								area: 'STORE',
-								field: 'NAME',
-								label: computed(() => this.Resources.NAME31974),
+								order: 1,
+								name: 'ValCodinvoicestore',
+								area: 'INVOICE',
+								field: 'CODINVOICESTORE',
+								label: computed(() => this.Resources.CODINVOICESTORE44054),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 2,
+								name: 'ValDate',
+								area: 'INVOICE',
+								field: 'DATE',
+								label: computed(() => this.Resources.DATE18475),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
 								order: 3,
-								name: 'ValDescription',
+								name: 'Store.ValName',
 								area: 'STORE',
-								field: 'DESCRIPTION',
-								label: computed(() => this.Resources.DESCRIPTION07383),
-								dataLength: 255,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'ValSite',
-								area: 'STORE',
-								field: 'SITE',
-								label: computed(() => this.Resources.WEBSITE08569),
-								dataLength: 255,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.ArrayColumn({
-								order: 5,
-								name: 'ValCurrency',
-								area: 'STORE',
-								field: 'CURRENCY',
-								label: computed(() => this.Resources.CURRENCY13881),
-								dataLength: 3,
-								scrollData: 3,
-								export: 1,
-								array: computed(() => new qProjArrays.QArrayCurrency(vm.$getResource).elements),
-								arrayType: qProjArrays.QArrayCurrency.type,
-								arrayDisplayMode: 'D',
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 6,
-								name: 'Country.ValName',
-								area: 'COUNTRY',
 								field: 'NAME',
-								label: computed(() => this.Resources.COUNTRY64133),
-								dataLength: 75,
+								label: computed(() => this.Resources.STORE16493),
+								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodcountry',
+								pkColumn: 'ValCodstore',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 4,
+								name: 'ValPrice',
+								area: 'INVOICE',
+								field: 'PRICE',
+								label: computed(() => this.Resources.PRICE06900),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 5,
+								name: 'ValTaxes',
+								area: 'INVOICE',
+								field: 'TAXES',
+								label: computed(() => this.Resources.TAXES34617),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 6,
+								name: 'ValShippingcost',
+								area: 'INVOICE',
+								field: 'SHIPPINGCOST',
+								label: computed(() => this.Resources.SHIPPING_COST12785),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.CurrencyColumn({
+								order: 7,
+								name: 'ValTotalprice',
+								area: 'INVOICE',
+								field: 'TOTALPRICE',
+								label: computed(() => this.Resources.TOTAL_PRICE46894),
+								scrollData: 10,
+								maxDigits: 7,
+								decimalPlaces: 2,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 8,
+								name: 'ValNumberofitems',
+								area: 'INVOICE',
+								field: 'NUMBEROFITEMS',
+								label: computed(() => this.Resources.NUMBER_OF_ITEMS22472),
+								scrollData: 10,
+								maxDigits: 10,
+								decimalPlaces: 0,
+								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'FPV_Menu_41',
 							serverMode: true,
-							pkColumn: 'ValCodstore',
-							tableAlias: 'STORE',
-							tableNamePlural: computed(() => this.Resources.STORES21606),
+							pkColumn: 'ValCodinvoice',
+							tableAlias: 'INVOICE',
+							tableNamePlural: computed(() => this.Resources.INVOICES44448),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.STORES21606),
+							tableTitle: computed(() => this.Resources.INVOICES44448),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -242,7 +262,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_INVOICE',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -258,7 +278,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_INVOICE',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -274,7 +294,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_INVOICE',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -290,7 +310,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_INVOICE',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -308,7 +328,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_INVOICE',
 										mode: 'NEW',
 										repeatInsertion: true,
 										isControlled: true
@@ -325,138 +345,37 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_411',
-								name: 'form-FORM_STORE',
+								name: 'form-FORM_INVOICE',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
 											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodstore
+											fnValueSelector: (row) => row.ValCodinvoice
 										},
 									],
 									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_STORE'
+									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_INVOICE'
 								}
 							},
 							formsDefinition: {
-								'FORM_STORE': {
-									fnKeySelector: (row) => row.Fields.ValCodstore,
+								'FORM_INVOICE': {
+									fnKeySelector: (row) => row.Fields.ValCodinvoice,
 									isPopup: false
 								},
 							},
 							allowFileImport: true,
-							defaultSearchColumnName: 'ValName',
-							defaultSearchColumnNameOriginal: 'ValName',
+							defaultSearchColumnName: 'ValCodinvoicestore',
+							defaultSearchColumnNameOriginal: 'ValCodinvoicestore',
 							defaultColumnSorting: {
-								columnName: 'ValDescription',
+								columnName: '',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
-						uuid: 'ef89d555-4463-45c6-8432-0c17fe054238',
+						globalEvents: ['changed-PERSON', 'changed-INVOICE', 'changed-STORE'],
+						uuid: '4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5',
 						allSelectedRows: 'false',
-						viewModes: [
-							{
-								id: 'CARDS',
-								type: 'cards',
-								subtype: 'card-img-top',
-								label: computed(() => this.Resources.CARTOES27587),
-								order: 1,
-								mappingVariables: readonly({
-									title: {
-										allowsMultiple: false,
-										sources: [
-											'STORE.NAME',
-										]
-									},
-									subtitle: {
-										allowsMultiple: false,
-										sources: [
-											'STORE.SITE',
-										]
-									},
-									text: {
-										allowsMultiple: true,
-										sources: [
-											'STORE.DESCRIPTION',
-											'STORE.CURRENCY',
-											'COUNTRY.NAME',
-										]
-									},
-									image: {
-										allowsMultiple: false,
-										sources: [
-											'STORE.LOGOTYPE',
-										]
-									},
-								}),
-								styleVariables: {
-									actionsAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									actionsStyle: {
-										rawValue: 'dropdown',
-										isMapped: false
-									},
-									backgroundColor: {
-										rawValue: 'auto',
-										isMapped: false
-									},
-									contentAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									customFollowupDefaultTarget: {
-										rawValue: 'blank',
-										isMapped: false
-									},
-									customInsertCard: {
-										rawValue: false,
-										isMapped: false
-									},
-									customInsertCardStyle: {
-										rawValue: 'secondary',
-										isMapped: false
-									},
-									displayMode: {
-										rawValue: 'grid',
-										isMapped: false
-									},
-									gridMode: {
-										rawValue: 'fixed',
-										isMapped: false
-									},
-									containerAlignment: {
-										rawValue: 'left',
-										isMapped: false
-									},
-									hoverScaleAmount: {
-										rawValue: '1.00',
-										isMapped: false
-									},
-									imageShape: {
-										rawValue: 'rectangular',
-										isMapped: false
-									},
-									showColumnTitles: {
-										rawValue: false,
-										isMapped: false
-									},
-									showEmptyColumnTitles: {
-										rawValue: true,
-										isMapped: false
-									},
-									size: {
-										rawValue: 'regular',
-										isMapped: false
-									},
-								},
-								groups: {
-								}
-							},
-						],
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
 					}, this),

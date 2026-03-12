@@ -270,6 +270,9 @@
   <data name="INVOICES44448" xml:space="preserve">
     <value>Invoices</value>
   </data>
+  <data name="BACKOFFICE_AUDIT23640" xml:space="preserve">
+    <value>Backoffice Audit</value>
+  </data>
   <data name="FEMALE46107" xml:space="preserve">
     <value>Female</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="PURCHASE_DETAILS40558" xml:space="preserve">
     <value>Purchase Details</value>
+  </data>
+  <data name="BACKOFFICE_ITEMS57653" xml:space="preserve">
+    <value>Backoffice Items</value>
   </data>
   <data name="PROCESS_MODE22419" xml:space="preserve">
     <value>Process mode</value>
@@ -698,6 +704,9 @@
   </data>
   <data name="ITEM_INFO03102" xml:space="preserve">
     <value>ITEM INFO</value>
+  </data>
+  <data name="BACKOFFICE_PEOPLE55510" xml:space="preserve">
+    <value>Backoffice People</value>
   </data>
   <data name="A_47238" xml:space="preserve">
     <value>to:</value>

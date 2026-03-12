@@ -1,0 +1,505 @@
+﻿<template>
+	<teleport
+		v-if="menuModalIsReady"
+		:to="`#${uiContainersId.body}`"
+		:disabled="!menuInfo.isPopup">
+		<form
+			class="form-horizontal"
+			@submit.prevent>
+			<q-row-container>
+				<q-table
+					v-bind="controls.menu"
+					v-on="controls.menu.handlers">
+					<template #header>
+						<q-table-config
+							:table-ctrl="controls.menu"
+							v-on="controls.menu.handlers" />
+					</template>
+					<!-- USE /[MANUAL FPV CUSTOM_TABLE FPV_Menu_311]/ -->
+				</q-table>
+			</q-row-container>
+		</form>
+	</teleport>
+
+	<teleport
+		v-if="menuModalIsReady && hasButtons"
+		:to="`#${uiContainersId.footer}`"
+		:disabled="!menuInfo.isPopup">
+		<q-row-container>
+			<div id="footer-action-btns">
+				<template
+					v-for="btn in menuButtons"
+					:key="btn.id">
+					<q-button
+						v-if="btn.isVisible"
+						:id="btn.id"
+						:label="btn.text"
+						:variant="btn.variant"
+						:disabled="btn.disabled"
+						:icon-pos="btn.iconPos"
+						:class="btn.classes"
+						@click="btn.action">
+						<q-icon
+							v-if="btn.icon"
+							v-bind="btn.icon" />
+					</q-button>
+				</template>
+			</div>
+		</q-row-container>
+	</teleport>
+</template>
+
+<script>
+	/* eslint-disable @typescript-eslint/no-unused-vars */
+	import asyncProcM from '@quidgest/clientapp/composables/async'
+	import qEnums from '@quidgest/clientapp/constants/enums'
+	import netAPI from '@quidgest/clientapp/network'
+	import openQSign from '@quidgest/clientapp/plugins/qSign'
+	import genericFunctions from '@quidgest/clientapp/utils/genericFunctions'
+	import { computed, readonly } from 'vue'
+
+	import MenuHandlers from '@/mixins/menuHandlers.js'
+	import controlClass from '@/mixins/fieldControl.js'
+	import listFunctions from '@/mixins/listFunctions.js'
+	import listColumnTypes from '@/mixins/listColumnTypes.js'
+	import { resetProgressBar, setProgressBar } from '@/utils/layout.js'
+
+	import { loadResources } from '@/plugins/i18n.js'
+
+	import hardcodedTexts from '@/hardcodedTexts'
+	import qApi from '@/api/genio/quidgestFunctions.js'
+	import qFunctions from '@/api/genio/projectFunctions.js'
+	import qProjArrays from '@/api/genio/projectArrays.js'
+	/* eslint-enable @typescript-eslint/no-unused-vars */
+
+	import MenuViewModel from './QMenuFPV_311ViewModel.js'
+
+	const requiredTextResources = ['QMenuFPV_311', 'hardcoded', 'messages']
+
+/* eslint-disable indent, vue/html-indent, vue/script-indent */
+// USE /[MANUAL FPV FORM_INCLUDEJS FPV_MENU_311]/
+// eslint-disable-next-line
+/* eslint-enable indent, vue/html-indent, vue/script-indent */
+
+	export default {
+		name: 'QMenuFpv311',
+
+		mixins: [
+			MenuHandlers
+		],
+
+		inheritAttrs: false,
+
+		props: {
+			/**
+			 * Whether or not the menu is used as a homepage.
+			 */
+			isHomePage: {
+				type: Boolean,
+				default: false
+			}
+		},
+
+		expose: [
+			'navigationId',
+			'onBeforeRouteLeave',
+			'updateMenuNavigation'
+		],
+
+		data()
+		{
+			// eslint-disable-next-line
+			const vm = this
+			return {
+				componentOnLoadProc: asyncProcM.getProcListMonitor('QMenuFPV_311', false),
+
+				interfaceMetadata: {
+					id: 'QMenuFPV_311', // Used for resources
+					requiredTextResources
+				},
+
+				menuInfo: {
+					id: '311',
+					isMenuList: true,
+					designation: computed(() => this.Resources.PERSONS18356),
+					acronym: 'FPV_311',
+					name: 'PERSON',
+					route: 'menu-FPV_311',
+					order: '311',
+					controller: 'PERSON',
+					action: 'FPV_Menu_311',
+					isPopup: false
+				},
+
+				model: new MenuViewModel(this),
+
+				controls: {
+					menu: new controlClass.TableSpecialRenderingControl({
+						fnHydrateViewModel: (data) => vm.model.hydrate(data),
+						id: 'FPV_Menu_311',
+						controller: 'PERSON',
+						action: 'FPV_Menu_311',
+						hasDependencies: false,
+						isInCollapsible: false,
+						tableModeClasses: [
+							'q-table--full-height',
+							'page-full-height'
+						],
+						columnsOriginal: [
+							new listColumnTypes.ImageColumn({
+								order: 1,
+								name: 'ValPhoto',
+								area: 'PERSON',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
+								scrollData: 3,
+								sortable: false,
+								searchable: false,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 2,
+								name: 'ValName',
+								area: 'PERSON',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ArrayColumn({
+								order: 3,
+								name: 'ValGender',
+								area: 'PERSON',
+								field: 'GENDER',
+								label: computed(() => this.Resources.GENDER44172),
+								dataLength: 1,
+								scrollData: 1,
+								export: 1,
+								array: computed(() => new qProjArrays.QArrayGender(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayGender.type,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 4,
+								name: 'ValBirthday',
+								area: 'PERSON',
+								field: 'BIRTHDAY',
+								label: computed(() => this.Resources.BIRTHDAY30236),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 5,
+								name: 'ValEmail',
+								area: 'PERSON',
+								field: 'EMAIL',
+								label: computed(() => this.Resources.EMAIL25170),
+								dataLength: 50,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 6,
+								name: 'ValTelephone',
+								area: 'PERSON',
+								field: 'TELEPHONE',
+								label: computed(() => this.Resources.TELEPHONE28697),
+								scrollData: 9,
+								maxDigits: 9,
+								decimalPlaces: 0,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+						],
+						config: {
+							name: 'FPV_Menu_311',
+							serverMode: true,
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
+							viewManagement: '',
+							showLimitsInfo: true,
+							tableTitle: computed(() => this.Resources.PERSONS18356),
+							showAlternatePagination: true,
+							permissions: {
+							},
+							searchBarConfig: {
+								visibility: true
+							},
+							allowColumnFilters: true,
+							allowColumnSort: true,
+							crudActions: [
+								{
+									id: 'show',
+									name: 'show',
+									title: computed(() => this.Resources.CONSULTAR57388),
+									icon: {
+										icon: 'view'
+									},
+									isInReadOnly: true,
+									params: {
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PERSON',
+										mode: 'SHOW',
+										isControlled: true
+									}
+								},
+								{
+									id: 'edit',
+									name: 'edit',
+									title: computed(() => this.Resources.EDITAR11616),
+									icon: {
+										icon: 'pencil'
+									},
+									isInReadOnly: true,
+									params: {
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PERSON',
+										mode: 'EDIT',
+										isControlled: true
+									}
+								},
+								{
+									id: 'duplicate',
+									name: 'duplicate',
+									title: computed(() => this.Resources.DUPLICAR09748),
+									icon: {
+										icon: 'duplicate'
+									},
+									isInReadOnly: true,
+									params: {
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PERSON',
+										mode: 'DUPLICATE',
+										isControlled: true
+									}
+								},
+								{
+									id: 'delete',
+									name: 'delete',
+									title: computed(() => this.Resources.ELIMINAR21155),
+									icon: {
+										icon: 'delete'
+									},
+									isInReadOnly: true,
+									params: {
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PERSON',
+										mode: 'DELETE',
+										isControlled: true
+									}
+								}
+							],
+							generalActions: [
+								{
+									id: 'insert',
+									name: 'insert',
+									title: computed(() => this.Resources.INSERIR43365),
+									icon: {
+										icon: 'add'
+									},
+									isInReadOnly: true,
+									params: {
+										action: vm.openFormAction,
+										type: 'form',
+										formName: 'FORM_PERSON',
+										mode: 'NEW',
+										repeatInsertion: false,
+										isControlled: true
+									}
+								},
+							],
+							generalCustomActions: [
+							],
+							groupActions: [
+							],
+							customActions: [
+							],
+							MCActions: [
+							],
+							rowClickAction: {
+								id: 'RCA_FPV_3111',
+								name: 'menu-FPV_3111',
+								isVisible: true,
+								params: {
+									isRoute: true,
+									limits: [
+										{
+											identifier: 'person',
+											fnValueSelector: (row) => row.ValCodperson
+										},
+									],
+									action: vm.openMenuAction, type: 'menu', menuName: 'FPV_3111'
+								}
+							},
+							formsDefinition: {
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
+									isPopup: false
+								},
+							},
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
+							defaultColumnSorting: {
+								columnName: 'ValName',
+								sortOrder: 'asc'
+							}
+						},
+						globalEvents: ['changed-PERSON'],
+						uuid: 'ee87d28e-6065-4e58-b028-76ff6094302e',
+						allSelectedRows: 'false',
+						viewModes: [
+							{
+								id: 'CARDS',
+								type: 'cards',
+								subtype: 'card-img-top',
+								label: computed(() => this.Resources.CARTOES27587),
+								order: 1,
+								mappingVariables: readonly({
+									title: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.NAME',
+										]
+									},
+									subtitle: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.EMAIL',
+										]
+									},
+									text: {
+										allowsMultiple: true,
+										sources: [
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
+										]
+									},
+									image: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.PHOTO',
+										]
+									},
+								}),
+								styleVariables: {
+									actionsAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									actionsStyle: {
+										rawValue: 'dropdown',
+										isMapped: false
+									},
+									backgroundColor: {
+										rawValue: 'auto',
+										isMapped: false
+									},
+									contentAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									customFollowupDefaultTarget: {
+										rawValue: 'blank',
+										isMapped: false
+									},
+									customInsertCard: {
+										rawValue: false,
+										isMapped: false
+									},
+									customInsertCardStyle: {
+										rawValue: 'secondary',
+										isMapped: false
+									},
+									displayMode: {
+										rawValue: 'grid',
+										isMapped: false
+									},
+									gridMode: {
+										rawValue: 'fixed',
+										isMapped: false
+									},
+									containerAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									hoverScaleAmount: {
+										rawValue: '1.00',
+										isMapped: false
+									},
+									imageShape: {
+										rawValue: 'rectangular',
+										isMapped: false
+									},
+									showColumnTitles: {
+										rawValue: false,
+										isMapped: false
+									},
+									showEmptyColumnTitles: {
+										rawValue: true,
+										isMapped: false
+									},
+									size: {
+										rawValue: 'regular',
+										isMapped: false
+									},
+								},
+								groups: {
+								}
+							},
+						],
+						headerLevel: 1,
+						isActiveControl: computed(() => this.isActiveMenu)
+					}, this),
+				}
+			}
+		},
+
+		beforeRouteEnter(to, _, next)
+		{
+			// called before the route that renders this component is confirmed.
+			// does NOT have access to `this` component instance,
+			// because it has not been created yet when this guard is called!
+
+			next((vm) => vm.updateMenuNavigation(to))
+		},
+
+		beforeRouteLeave(to, _, next)
+		{
+			this.onBeforeRouteLeave(next)
+		},
+
+		mounted()
+		{
+/* eslint-disable indent, vue/html-indent, vue/script-indent */
+// USE /[MANUAL FPV FORM_CODEJS FPV_MENU_311]/
+// eslint-disable-next-line
+/* eslint-enable indent, vue/html-indent, vue/script-indent */
+		},
+
+		beforeUnmount()
+		{
+/* eslint-disable indent, vue/html-indent, vue/script-indent */
+// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT FPV_MENU_311]/
+// eslint-disable-next-line
+/* eslint-enable indent, vue/html-indent, vue/script-indent */
+		},
+
+		methods: {
+/* eslint-disable indent, vue/html-indent, vue/script-indent */
+// USE /[MANUAL FPV FUNCTIONS_JS FPV_311]/
+// eslint-disable-next-line
+/* eslint-enable indent, vue/html-indent, vue/script-indent */
+/* eslint-disable indent, vue/html-indent, vue/script-indent */
+// USE /[MANUAL FPV LISTING_CODEJS FPV_MENU_311]/
+// eslint-disable-next-line
+/* eslint-enable indent, vue/html-indent, vue/script-indent */
+		}
+	}
+</script>
