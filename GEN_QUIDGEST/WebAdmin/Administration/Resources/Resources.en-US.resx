@@ -192,6 +192,9 @@
   <data name="RUBLE07990" xml:space="preserve">
     <value>Ruble</value>
   </data>
+  <data name="ITEMS24549" xml:space="preserve">
+    <value>iTEMS</value>
+  </data>
   <data name="MY_APPLICATION56216" xml:space="preserve">
     <value>My application</value>
   </data>
@@ -284,6 +287,9 @@
   </data>
   <data name="CATALOGS31485" xml:space="preserve">
     <value>Catalogs</value>
+  </data>
+  <data name="ASSIGNED_TO26333" xml:space="preserve">
+    <value>Assigned to</value>
   </data>
   <data name="FINISHED26993" xml:space="preserve">
     <value>Finished</value>
@@ -401,6 +407,9 @@
   </data>
   <data name="COST_BREAKDOWN51129" xml:space="preserve">
     <value>Cost Breakdown</value>
+  </data>
+  <data name="NUMBER35625" xml:space="preserve">
+    <value>Number</value>
   </data>
   <data name="COUNTRY64133" xml:space="preserve">
     <value>Country</value>

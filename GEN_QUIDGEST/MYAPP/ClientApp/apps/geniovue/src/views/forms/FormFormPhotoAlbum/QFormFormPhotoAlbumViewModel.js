@@ -65,13 +65,13 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValCodperson))
 		this.stopWatchers.push(watch(() => this.ValCodperson.value, (newValue, oldValue) => this.onUpdate('photoalbum.codperson', this.ValCodperson, newValue, oldValue)))
 
-		/** The used foreign keys. */
 		this.ValItem = reactive(new modelFieldType.ForeignKey({
 			id: 'ValItem',
 			originId: 'ValItem',
 			area: 'PHOTOALBUM',
 			field: 'ITEM',
 			relatedArea: 'ITEM',
+			isFixed: true,
 			description: computed(() => this.Resources.ITEM40802),
 		}).cloneFrom(values?.ValItem))
 		this.stopWatchers.push(watch(() => this.ValItem.value, (newValue, oldValue) => this.onUpdate('photoalbum.item', this.ValItem, newValue, oldValue)))
@@ -119,6 +119,17 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValUpdated_at))
 		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('photoalbum.updated_at', this.ValUpdated_at, newValue, oldValue)))
 
+		this.PersonValName = reactive(new modelFieldType.String({
+			id: 'PersonValName',
+			originId: 'ValName',
+			area: 'PERSON',
+			field: 'NAME',
+			maxLength: 50,
+			isFixed: true,
+			description: computed(() => this.Resources.NAME31974),
+		}).cloneFrom(values?.PersonValName))
+		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
+
 		this.ValPhoto = reactive(new modelFieldType.Image({
 			id: 'ValPhoto',
 			originId: 'ValPhoto',
@@ -138,17 +149,16 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValTitle))
 		this.stopWatchers.push(watch(() => this.ValTitle.value, (newValue, oldValue) => this.onUpdate('photoalbum.title', this.ValTitle, newValue, oldValue)))
 
-		this.TableItemName = reactive(new modelFieldType.String({
-			type: 'Lookup',
-			id: 'TableItemName',
+		this.ItemValName = reactive(new modelFieldType.String({
+			id: 'ItemValName',
 			originId: 'ValName',
 			area: 'ITEM',
 			field: 'NAME',
 			maxLength: 255,
+			isFixed: true,
 			description: computed(() => this.Resources.NAME31974),
-			ignoreFldSubmit: true,
-		}).cloneFrom(values?.TableItemName))
-		this.stopWatchers.push(watch(() => this.TableItemName.value, (newValue, oldValue) => this.onUpdate('item.name', this.TableItemName, newValue, oldValue)))
+		}).cloneFrom(values?.ItemValName))
+		this.stopWatchers.push(watch(() => this.ItemValName.value, (newValue, oldValue) => this.onUpdate('item.name', this.ItemValName, newValue, oldValue)))
 	}
 
 	/**

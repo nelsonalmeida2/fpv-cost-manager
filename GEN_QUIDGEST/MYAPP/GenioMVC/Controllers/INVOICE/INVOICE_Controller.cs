@@ -80,14 +80,6 @@ namespace GenioMVC.Controllers
 			{
 				switch (string.IsNullOrEmpty(Identifier) ? "" : Identifier)
 				{
-					case "FORM_INVOICE__PERSON__NAME":	// Field (F1)
-						{
-							var model = new Form_invoice_ViewModel(UserContext.Current) { editable = false };
-							model.MapFromModel(row);
-							model.Load_Form_invoice__person__name(qs);
-							result = model.TablePersonName;
-						}
-						break;
 					case "FORM_INVOICE__STORE__NAME":	// Field (DB)
 						{
 							var model = new Form_invoice_ViewModel(UserContext.Current) { editable = false };
@@ -129,9 +121,6 @@ namespace GenioMVC.Controllers
 				UserContext.Current.PersistentSupport.openConnection();
 				switch (string.IsNullOrEmpty(Identifier) ? "" : Identifier)
 				{
-					case "FORM_INVOICE__PERSON__NAME":	// Field (F1)
-						values = new Form_invoice_ViewModel(UserContext.Current).GetDependant_Form_invoiceTablePersonName(Selected);
-						break;
 					case "FORM_INVOICE__STORE__NAME":	// Field (DB)
 						values = new Form_invoice_ViewModel(UserContext.Current).GetDependant_Form_invoiceTableStoreName(Selected);
 						break;

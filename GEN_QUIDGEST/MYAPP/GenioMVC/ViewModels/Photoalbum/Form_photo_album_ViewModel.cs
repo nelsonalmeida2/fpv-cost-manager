@@ -31,8 +31,9 @@ namespace GenioMVC.ViewModels.Photoalbum
 
 		#region Foreign keys
 		/// <summary>
-		/// Title: "Item" | Type: "CE"
+		/// Title: "" | Type: "CE"
 		/// </summary>
+		[ValidateSetAccess]
 		public string ValItem { get; set; }
 		/// <summary>
 		/// Title: "" | Type: "CE"
@@ -62,6 +63,23 @@ namespace GenioMVC.ViewModels.Photoalbum
 		[ValidateSetAccess]
 		public DateTime? ValUpdated_at { get; set; }
 		/// <summary>
+		/// Title: "Assigned to" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public string PersonValName
+		{
+			get
+			{
+				return funcPersonValName != null ? funcPersonValName() : _auxPersonValName;
+			}
+			set { funcPersonValName = () => value; }
+		}
+
+		[JsonIgnore]
+		public Func<string> funcPersonValName { get; set; }
+
+		private string _auxPersonValName { get; set; }
+		/// <summary>
 		/// Title: "Photo" | Type: "IJ"
 		/// </summary>
 		[ImageThumbnailJsonConverter(30, 50)]
@@ -74,7 +92,19 @@ namespace GenioMVC.ViewModels.Photoalbum
 		/// Title: "Item" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
-		public TableDBEdit<GenioMVC.Models.Item> TableItemName { get; set; }
+		public string ItemValName
+		{
+			get
+			{
+				return funcItemValName != null ? funcItemValName() : _auxItemValName;
+			}
+			set { funcItemValName = () => value; }
+		}
+
+		[JsonIgnore]
+		public Func<string> funcItemValName { get; set; }
+
+		private string _auxItemValName { get; set; }
 
 		#region Navigations
 		#endregion
@@ -212,8 +242,10 @@ namespace GenioMVC.ViewModels.Photoalbum
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
 				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
+				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
 				ValPhoto = ViewModelConversion.ToImage(m.ValPhoto);
 				ValTitle = ViewModelConversion.ToString(m.ValTitle);
+				funcItemValName = () => ViewModelConversion.ToString(m.Item.ValName);
 				ValCodphotoalbum = ViewModelConversion.ToString(m.ValCodphotoalbum);
 			}
 			catch (Exception)
@@ -240,7 +272,6 @@ namespace GenioMVC.ViewModels.Photoalbum
 
 			try
 			{
-				m.ValItem = ViewModelConversion.ToString(ValItem);
 				if (ValPhoto == null || !ValPhoto.IsThumbnail)
 					m.ValPhoto = ViewModelConversion.ToImage(ValPhoto);
 				m.ValTitle = ViewModelConversion.ToString(ValTitle);
@@ -253,6 +284,7 @@ namespace GenioMVC.ViewModels.Photoalbum
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValItem = ViewModelConversion.ToString(ValItem);
 				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
@@ -282,9 +314,6 @@ namespace GenioMVC.ViewModels.Photoalbum
 
 				switch (fullFieldName)
 				{
-					case "photoalbum.item":
-						this.ValItem = ViewModelConversion.ToString(_value);
-						break;
 					case "photoalbum.photo":
 						this.ValPhoto = ViewModelConversion.ToImage(_value);
 						break;
@@ -401,7 +430,6 @@ namespace GenioMVC.ViewModels.Photoalbum
 			// Add characteristics
 			Characs = new List<string>();
 
-			Load_Form_photo_album__item__name(qs, lazyLoad);
 
 // USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_PHOTO_ALBUM]/
 		}
@@ -418,16 +446,16 @@ namespace GenioMVC.ViewModels.Photoalbum
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
 
-			validator.Required("ValItem", Resources.Resources.ITEM40802, ViewModelConversion.ToString(ValItem), FieldType.KEY_INT.GetFormatting());
-
 			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
 
 			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
 
 			validator.Required("ValPhoto", Resources.Resources.PHOTO51874, ViewModelConversion.ToImage(ValPhoto), FieldType.IMAGE.GetFormatting());
 			validator.StringLength("ValTitle", Resources.Resources.TITLE21885, ValTitle, 50);
 
 			validator.Required("ValTitle", Resources.Resources.TITLE21885, ViewModelConversion.ToString(ValTitle), FieldType.TEXT.GetFormatting());
+			validator.StringLength("ItemValName", Resources.Resources.ITEM40802, ItemValName, 255);
 
 
 			return validator.GetResult();
@@ -465,202 +493,6 @@ namespace GenioMVC.ViewModels.Photoalbum
 		{
 		}
 
-		/// <summary>
-		/// TableItemName -> (DB)
-		/// </summary>
-		/// <param name="qs"></param>
-		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void Load_Form_photo_album__item__name(NameValueCollection qs, bool lazyLoad = false)
-		{
-			bool form_photo_album__item__nameDoLoad = true;
-			CriteriaSet form_photo_album__item__nameConds = CriteriaSet.And();
-			{
-				object hValue = Navigation.GetValue("item", true);
-				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
-				{
-					form_photo_album__item__nameConds.Equal(CSGenioAitem.FldCoditem, hValue);
-					this.ValItem = DBConversion.ToString(hValue);
-				}
-			}
-
-			TableItemName = new TableDBEdit<Models.Item>
-			{
-				IsLazyLoad = lazyLoad
-			};
-
-			if (lazyLoad)
-			{
-				if (Navigation.CurrentLevel.GetEntry("RETURN_item") != null)
-				{
-					this.ValItem = Navigation.GetStrValue("RETURN_item");
-					Navigation.CurrentLevel.SetEntry("RETURN_item", null);
-				}
-				FillDependant_Form_photo_albumTableItemName(lazyLoad);
-				return;
-			}
-
-			if (form_photo_album__item__nameDoLoad)
-			{
-				List<ColumnSort> sorts = [];
-				ColumnSort requestedSort = GetRequestSort(TableItemName, "sTableItemName", "dTableItemName", qs, "item");
-				if (requestedSort != null)
-					sorts.Add(requestedSort);
-				sorts.Add(new ColumnSort(new ColumnReference(CSGenioAitem.FldName), SortOrder.Ascending));
-
-				string query = "";
-				if (!string.IsNullOrEmpty(qs["TableItemName_tableFilters"]))
-					TableItemName.TableFilters = bool.Parse(qs["TableItemName_tableFilters"]);
-				else
-					TableItemName.TableFilters = false;
-
-				query = qs["qTableItemName"];
-
-				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
-				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
-				//  tornando confuso to o user porque determinada row foi devolvida quando o Qresult não mostra como o matching foi feito
-				CriteriaSet search_filters = CriteriaSet.And();
-				if (!string.IsNullOrEmpty(query))
-				{
-					search_filters.Like(CSGenioAitem.FldName, query + "%");
-				}
-				form_photo_album__item__nameConds.SubSet(search_filters);
-
-				string tryParsePage = qs["pTableItemName"] != null ? qs["pTableItemName"].ToString() : "1";
-				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
-				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
-				int offset = (page - 1) * numberItems;
-
-				FieldRef[] fields = [CSGenioAitem.FldCoditem, CSGenioAitem.FldName, CSGenioAitem.FldZzstate];
-
-// USE /[MANUAL FPV OVERRQ FORM_PHOTO_ALBUM_ITEMNAME]/
-
-				// Limitation by Zzstate
-				/*
-					Records that are currently being inserted or duplicated will also be included.
-					Client-side persistence will try to fill the "text" value of that option.
-				*/
-				if (Navigation.checkFormMode("item", FormMode.New) || Navigation.checkFormMode("item", FormMode.Duplicate))
-					form_photo_album__item__nameConds.SubSet(CriteriaSet.Or()
-						.Equal(CSGenioAitem.FldZzstate, 0)
-						.Equal(CSGenioAitem.FldCoditem, Navigation.GetStrValue("item")));
-				else
-					form_photo_album__item__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAitem.FldZzstate), CriteriaOperator.Equal, 0));
-
-				FieldRef firstVisibleColumn = new FieldRef("item", "name");
-				ListingMVC<CSGenioAitem> listing = Models.ModelBase.Where<CSGenioAitem>(m_userContext, false, form_photo_album__item__nameConds, fields, offset, numberItems, sorts, "LED_FORM_PHOTO_ALBUM__ITEM__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
-
-				TableItemName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
-				TableItemName.Query = query;
-				TableItemName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Item(m_userContext, r, true, _fieldsToSerialize_FORM_PHOTO_ALBUM__ITEM__NAME));
-
-				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
-				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
-				if (Navigation.CurrentLevel.GetEntry("RETURN_item") != null)
-				{
-					this.ValItem = Navigation.GetStrValue("RETURN_item");
-					Navigation.CurrentLevel.SetEntry("RETURN_item", null);
-				}
-
-				TableItemName.List = new SelectList(TableItemName.Elements.ToSelectList(x => x.ValName, x => x.ValCoditem,  x => x.ValCoditem == this.ValItem), "Value", "Text", this.ValItem);
-				//Seleciona se só um
-				if (TableItemName.List != null && TableItemName.List.Count() == 1)
-				{
-					this.ValItem = TableItemName.List.First().Value;
-					Navigation.SetValue("item", this.ValItem);
-				}
-				FillDependant_Form_photo_albumTableItemName();
-			}
-		}
-
-		/// <summary>
-		/// Get Dependant fields values -> TableItemName (DB)
-		/// </summary>
-		/// <param name="PKey">Primary Key of Item</param>
-		public ConcurrentDictionary<string, object> GetDependant_Form_photo_albumTableItemName(string PKey)
-		{
-			FieldRef[] refDependantFields = [CSGenioAitem.FldCoditem, CSGenioAitem.FldName];
-
-			var returnEmptyDependants = false;
-			CriteriaSet wherecodition = CriteriaSet.And();
-
-			// Return default values
-			if (GenFunctions.emptyG(PKey) == 1)
-				returnEmptyDependants = true;
-
-			// Check if the limit(s) is filled if exists
-			// - - - - - - - - - - - - - - - - - - - - -
-
-			if (returnEmptyDependants)
-				return GetViewModelFieldValues(refDependantFields);
-
-			PersistentSupport sp = m_userContext.PersistentSupport;
-			User u = m_userContext.User;
-
-			CSGenioAitem tempArea = new(u);
-
-			// Fields to select
-			SelectQuery querySelect = new();
-			querySelect.PageSize(1);
-			foreach (FieldRef field in refDependantFields)
-				querySelect.Select(field);
-
-			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
-				.Where(wherecodition.Equal(CSGenioAitem.FldCoditem, PKey));
-
-			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
-			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
-
-			ArrayList values = sp.executeReaderOneRow(querySelect);
-			bool useDefaults = values.Count == 0;
-
-			if (useDefaults)
-				return GetViewModelFieldValues(refDependantFields);
-			return GetViewModelFieldValues(refDependantFields, values);
-		}
-
-		/// <summary>
-		/// Fill Dependant fields values -> TableItemName (DB)
-		/// </summary>
-		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void FillDependant_Form_photo_albumTableItemName(bool lazyLoad = false)
-		{
-			var row = GetDependant_Form_photo_albumTableItemName(this.ValItem);
-			try
-			{
-
-				// Fill List fields
-				this.ValItem = ViewModelConversion.ToString(row["item.coditem"]);
-				TableItemName.Value = (string)row["item.name"];
-				if (GenFunctions.emptyG(this.ValItem) == 1)
-				{
-					this.ValItem = "";
-					TableItemName.Value = "";
-					Navigation.ClearValue("item");
-				}
-				else if (lazyLoad)
-				{
-					TableItemName.SetPagination(1, 0, false, false, 1);
-					TableItemName.List = new SelectList(new List<SelectListItem>()
-					{
-						new SelectListItem
-						{
-							Value = Convert.ToString(this.ValItem),
-							Text = Convert.ToString(TableItemName.Value),
-							Selected = true
-						}
-					}, "Value", "Text", this.ValItem);
-				}
-
-				TableItemName.Selected = this.ValItem;
-			}
-			catch (Exception ex)
-			{
-				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TableItemName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
-			}
-		}
-
-		private readonly string[] _fieldsToSerialize_FORM_PHOTO_ALBUM__ITEM__NAME = ["Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValName"];
-
 		protected override object GetViewModelValue(string identifier, object modelValue)
 		{
 			return identifier switch
@@ -671,11 +503,13 @@ namespace GenioMVC.ViewModels.Photoalbum
 				"photoalbum.created_at" => ViewModelConversion.ToDateTime(modelValue),
 				"photoalbum.updated_by" => ViewModelConversion.ToString(modelValue),
 				"photoalbum.updated_at" => ViewModelConversion.ToDateTime(modelValue),
+				"person.name" => ViewModelConversion.ToString(modelValue),
 				"photoalbum.photo" => ViewModelConversion.ToImage(modelValue),
 				"photoalbum.title" => ViewModelConversion.ToString(modelValue),
-				"photoalbum.codphotoalbum" => ViewModelConversion.ToString(modelValue),
-				"item.coditem" => ViewModelConversion.ToString(modelValue),
 				"item.name" => ViewModelConversion.ToString(modelValue),
+				"photoalbum.codphotoalbum" => ViewModelConversion.ToString(modelValue),
+				"person.codperson" => ViewModelConversion.ToString(modelValue),
+				"item.coditem" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
 		}

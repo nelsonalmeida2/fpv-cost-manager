@@ -168,6 +168,24 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "number", FieldType.NUMERIC);
+			Qfield.FieldDescription = "Number";
+			Qfield.FieldSize =  9;
+			Qfield.MQueue = false;
+			Qfield.IntegerDigits = 9;
+			Qfield.CavDesignation = "NUMBER35625";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+            Qfield.NotDup = true;
+			argumentsListByArea = new List<ByAreaArguments>();
+			Qfield.BlockWhen = new ConditionFormula(argumentsListByArea, 0, delegate(object[] args, User user, string module, PersistentSupport sp) {
+				return true;
+			});
+			Qfield.DefaultValue = new DefaultValue(DefaultValue.getGreaterPlus1_int, "number");
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -218,6 +236,9 @@ namespace CSGenio.business
 			 "email"
 			};
 
+			info.SequentialDefaultValues = new string[] {
+			 "number"
+			};
 
 
 
@@ -456,6 +477,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldTelephone, value); }
 		}
 
+		/// <summary>Field : "Number" Tipo: "N" Formula:  ""</summary>
+		public static FieldRef FldNumber { get { return m_fldNumber; } }
+		private static FieldRef m_fldNumber = new FieldRef("person", "number");
+
+		/// <summary>Field : "Number" Tipo: "N" Formula:  ""</summary>
+		public decimal ValNumber
+		{
+			get { return (decimal)returnValueField(FldNumber); }
+			set { insertNameValueField(FldNumber, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("person", "zzstate");
@@ -553,7 +585,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX PERSON]/
 
  
-            
+             
 
 	}
 }

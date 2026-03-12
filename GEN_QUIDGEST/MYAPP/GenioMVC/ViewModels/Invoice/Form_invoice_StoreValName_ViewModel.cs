@@ -93,6 +93,8 @@ namespace GenioMVC.ViewModels.Invoice
 			return crs;
 		}
 
+		public string ValCodperson { get; set; }
+
 		public override int GetCount(User user)
 		{
 			throw new NotImplementedException("This operation is not supported");
@@ -169,6 +171,10 @@ namespace GenioMVC.ViewModels.Invoice
 
 			crs ??= CriteriaSet.And();
 
+			// Limits Generation
+
+			// Area limit
+			tableReload &= AddCriteriaAreaLimit(crs, CSGenio.business.CSGenioAperson.FldCodperson, "person", this.ValCodperson, true);
 
 			Menu ??= new TablePartial<Form_invoice_StoreValName_RowViewModel>();
 			// Set table name (used in getting searchable column names)
@@ -341,6 +347,24 @@ namespace GenioMVC.ViewModels.Invoice
 					this.TableLimits.AddRange(area_EPH_limits);
 			}
 
+			// Tooltips: Making a tooltip for each valid limitation: 1 Limit(s) detected.
+			// Limit origin: form 
+			//Limit type: "A"
+			//Current Area = "STORE"
+			//1st Area Limit: "PERSON"
+			//1st Area Field: "CODPERSON"
+			//1st Area Value: ""
+			{
+				Limit limit = new Limit();
+				limit.TipoLimite = LimitType.A;
+				limit.NaoAplicaSeNulo = false;
+				CSGenioAperson model_limit_area = new CSGenioAperson(m_userContext.User);
+				string limit_field = "codperson", limit_field_value = "";
+				object this_limit_field = Navigation.GetValue("person") == null ? this.ValCodperson : Navigation.GetValue("person");
+				Limit_Filler(ref limit, model_limit_area, limit_field, limit_field_value, this_limit_field, LimitAreaType.AreaLimita);
+				if (!this.TableLimits.Contains(limit, limitComparer)) //to avoid repetitions (i.e: DB and EPH applying same limit)
+					this.TableLimits.Add(limit);
+			}
 
 			if (conditions == null)
 				conditions = CriteriaSet.And();

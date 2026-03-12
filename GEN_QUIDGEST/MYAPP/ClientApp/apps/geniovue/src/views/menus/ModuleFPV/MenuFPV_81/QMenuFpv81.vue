@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '81',
 					isMenuList: true,
-					designation: computed(() => this.Resources.PHOTOS39221),
+					designation: computed(() => this.Resources.PERSONS18356),
 					acronym: 'FPV_81',
-					name: 'PHOTOALBUM',
+					name: 'PERSON',
 					route: 'menu-FPV_81',
 					order: '81',
-					controller: 'PHOTOALBUM',
+					controller: 'PERSON',
 					action: 'FPV_Menu_81',
 					isPopup: false
 				},
@@ -137,7 +137,7 @@
 					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_81',
-						controller: 'PHOTOALBUM',
+						controller: 'PERSON',
 						action: 'FPV_Menu_81',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -146,40 +146,10 @@
 							'page-full-height'
 						],
 						columnsOriginal: [
-							new listColumnTypes.DateColumn({
-								order: 1,
-								name: 'ValCreated_at',
-								area: 'PHOTOALBUM',
-								field: 'CREATED_AT',
-								label: computed(() => this.Resources.CREATED_AT29089),
-								scrollData: 8,
-								dateTimeType: 'date',
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 2,
-								name: 'ValCreated_by',
-								area: 'PHOTOALBUM',
-								field: 'CREATED_BY',
-								label: computed(() => this.Resources.CREATED_BY12292),
-								dataLength: 100,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 3,
-								name: 'ValTitle',
-								area: 'PHOTOALBUM',
-								field: 'TITLE',
-								label: computed(() => this.Resources.TITLE21885),
-								dataLength: 50,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.ImageColumn({
-								order: 4,
+								order: 1,
 								name: 'ValPhoto',
-								area: 'PHOTOALBUM',
+								area: 'PERSON',
 								field: 'PHOTO',
 								label: computed(() => this.Resources.PHOTO51874),
 								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
@@ -189,46 +159,68 @@
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 5,
-								name: 'ValUpdated_by',
-								area: 'PHOTOALBUM',
-								field: 'UPDATED_BY',
-								label: computed(() => this.Resources.UPDATED_BY17808),
-								dataLength: 100,
+								order: 2,
+								name: 'ValName',
+								area: 'PERSON',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
+								dataLength: 50,
 								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ArrayColumn({
+								order: 3,
+								name: 'ValGender',
+								area: 'PERSON',
+								field: 'GENDER',
+								label: computed(() => this.Resources.GENDER44172),
+								dataLength: 1,
+								scrollData: 1,
+								export: 1,
+								array: computed(() => new qProjArrays.QArrayGender(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayGender.type,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 4,
+								name: 'ValBirthday',
+								area: 'PERSON',
+								field: 'BIRTHDAY',
+								label: computed(() => this.Resources.BIRTHDAY30236),
+								scrollData: 8,
+								dateTimeType: 'date',
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 6,
-								name: 'Item.ValName',
-								area: 'ITEM',
-								field: 'NAME',
-								label: computed(() => this.Resources.NAME31974),
-								dataLength: 255,
+								order: 5,
+								name: 'ValEmail',
+								area: 'PERSON',
+								field: 'EMAIL',
+								label: computed(() => this.Resources.EMAIL25170),
+								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCoditem',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.DateColumn({
-								order: 7,
-								name: 'ValUpdated_at',
-								area: 'PHOTOALBUM',
-								field: 'UPDATED_AT',
-								label: computed(() => this.Resources.UPDATED_AT48366),
-								scrollData: 8,
-								dateTimeType: 'date',
+							new listColumnTypes.NumericColumn({
+								order: 6,
+								name: 'ValTelephone',
+								area: 'PERSON',
+								field: 'TELEPHONE',
+								label: computed(() => this.Resources.TELEPHONE28697),
+								scrollData: 9,
+								maxDigits: 9,
+								decimalPlaces: 0,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'FPV_Menu_81',
 							serverMode: true,
-							pkColumn: 'ValCodphotoalbum',
-							tableAlias: 'PHOTOALBUM',
-							tableNamePlural: computed(() => this.Resources.PHOTOS39221),
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.PHOTOS39221),
+							tableTitle: computed(() => this.Resources.PERSONS18356),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -249,7 +241,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PHOTO_ALBUM',
+										formName: 'FORM_PERSON',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -265,7 +257,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PHOTO_ALBUM',
+										formName: 'FORM_PERSON',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -281,7 +273,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PHOTO_ALBUM',
+										formName: 'FORM_PERSON',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -297,7 +289,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PHOTO_ALBUM',
+										formName: 'FORM_PERSON',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -315,9 +307,9 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_PHOTO_ALBUM',
+										formName: 'FORM_PERSON',
 										mode: 'NEW',
-										repeatInsertion: true,
+										repeatInsertion: false,
 										isControlled: true
 									}
 								},
@@ -332,58 +324,73 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_811',
-								name: 'form-FORM_PHOTO_ALBUM',
+								name: 'menu-FPV_811',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
-											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodphotoalbum
+											identifier: 'person',
+											fnValueSelector: (row) => row.ValCodperson
 										},
 									],
-									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_PHOTO_ALBUM'
+									action: vm.openMenuAction, type: 'menu', menuName: 'FPV_811'
 								}
 							},
 							formsDefinition: {
-								'FORM_PHOTO_ALBUM': {
-									fnKeySelector: (row) => row.Fields.ValCodphotoalbum,
-									isPopup: true
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
+									isPopup: false
 								},
 							},
-							defaultSearchColumnName: 'ValTitle',
-							defaultSearchColumnNameOriginal: 'ValTitle',
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: 'ValCreated_at',
+								columnName: 'ValName',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-PHOTOALBUM', 'changed-ITEM'],
-						uuid: '2ea56c4d-ebe7-4790-80e5-e1011527fef8',
+						globalEvents: ['changed-PERSON'],
+						uuid: 'b34fd645-5e4f-48aa-aadc-41151545f390',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
 								id: 'CARDS',
 								type: 'cards',
-								subtype: 'card',
+								subtype: 'card-img-top',
 								label: computed(() => this.Resources.CARTOES27587),
 								order: 1,
 								mappingVariables: readonly({
+									title: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.NAME',
+										]
+									},
+									subtitle: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.EMAIL',
+										]
+									},
+									text: {
+										allowsMultiple: true,
+										sources: [
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
+										]
+									},
 									image: {
 										allowsMultiple: false,
 										sources: [
-											'PHOTOALBUM.PHOTO',
+											'PERSON.PHOTO',
 										]
 									},
 								}),
 								styleVariables: {
 									actionsAlignment: {
 										rawValue: 'left',
-										isMapped: false
-									},
-									actionsPlacement: {
-										rawValue: 'footer',
 										isMapped: false
 									},
 									actionsStyle: {

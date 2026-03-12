@@ -288,6 +288,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "iTEMS"
+		/// </summary>
+		public static string ITEMS24549 {
+			get {
+				return ResourceManager.GetString("ITEMS24549", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "My application"
 		/// </summary>
 		public static string MY_APPLICATION56216 {
@@ -563,6 +572,15 @@ namespace GenioMVC.Resources
 		public static string CATALOGS31485 {
 			get {
 				return ResourceManager.GetString("CATALOGS31485", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Assigned to"
+		/// </summary>
+		public static string ASSIGNED_TO26333 {
+			get {
+				return ResourceManager.GetString("ASSIGNED_TO26333", resourceCulture);
 			}
 		}
 
@@ -914,6 +932,15 @@ namespace GenioMVC.Resources
 		public static string COST_BREAKDOWN51129 {
 			get {
 				return ResourceManager.GetString("COST_BREAKDOWN51129", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Number"
+		/// </summary>
+		public static string NUMBER35625 {
+			get {
+				return ResourceManager.GetString("NUMBER35625", resourceCulture);
 			}
 		}
 

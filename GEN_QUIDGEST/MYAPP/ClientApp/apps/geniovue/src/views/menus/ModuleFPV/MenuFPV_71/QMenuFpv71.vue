@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '71',
 					isMenuList: true,
-					designation: computed(() => this.Resources.BRANDS27300),
+					designation: computed(() => this.Resources.PERSONS18356),
 					acronym: 'FPV_71',
-					name: 'BRAND',
+					name: 'PERSON',
 					route: 'menu-FPV_71',
 					order: '71',
-					controller: 'BRAND',
+					controller: 'PERSON',
 					action: 'FPV_Menu_71',
 					isPopup: false
 				},
@@ -137,7 +137,7 @@
 					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_71',
-						controller: 'BRAND',
+						controller: 'PERSON',
 						action: 'FPV_Menu_71',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -148,11 +148,11 @@
 						columnsOriginal: [
 							new listColumnTypes.ImageColumn({
 								order: 1,
-								name: 'ValLogotype',
-								area: 'BRAND',
-								field: 'LOGOTYPE',
-								label: computed(() => this.Resources.LOGOTYPE44505),
-								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
+								name: 'ValPhoto',
+								area: 'PERSON',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
 								scrollData: 3,
 								sortable: false,
 								searchable: false,
@@ -161,44 +161,66 @@
 							new listColumnTypes.TextColumn({
 								order: 2,
 								name: 'ValName',
-								area: 'BRAND',
+								area: 'PERSON',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
+							new listColumnTypes.ArrayColumn({
 								order: 3,
-								name: 'ValDescription',
-								area: 'BRAND',
-								field: 'DESCRIPTION',
-								label: computed(() => this.Resources.DESCRIPTION07383),
-								dataLength: 255,
-								scrollData: 30,
+								name: 'ValGender',
+								area: 'PERSON',
+								field: 'GENDER',
+								label: computed(() => this.Resources.GENDER44172),
+								dataLength: 1,
+								scrollData: 1,
+								export: 1,
+								array: computed(() => new qProjArrays.QArrayGender(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayGender.type,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 4,
+								name: 'ValBirthday',
+								area: 'PERSON',
+								field: 'BIRTHDAY',
+								label: computed(() => this.Resources.BIRTHDAY30236),
+								scrollData: 8,
+								dateTimeType: 'date',
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'Country.ValName',
-								area: 'COUNTRY',
-								field: 'NAME',
-								label: computed(() => this.Resources.COUNTRY64133),
-								dataLength: 75,
+								order: 5,
+								name: 'ValEmail',
+								area: 'PERSON',
+								field: 'EMAIL',
+								label: computed(() => this.Resources.EMAIL25170),
+								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodcountry',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 6,
+								name: 'ValTelephone',
+								area: 'PERSON',
+								field: 'TELEPHONE',
+								label: computed(() => this.Resources.TELEPHONE28697),
+								scrollData: 9,
+								maxDigits: 9,
+								decimalPlaces: 0,
+								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'FPV_Menu_71',
 							serverMode: true,
-							pkColumn: 'ValCodbrand',
-							tableAlias: 'BRAND',
-							tableNamePlural: computed(() => this.Resources.BRANDS27300),
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.BRANDS27300),
+							tableTitle: computed(() => this.Resources.PERSONS18356),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -219,7 +241,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PERSON',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -235,7 +257,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PERSON',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -251,7 +273,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PERSON',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -267,7 +289,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PERSON',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -285,9 +307,9 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_PERSON',
 										mode: 'NEW',
-										repeatInsertion: true,
+										repeatInsertion: false,
 										isControlled: true
 									}
 								},
@@ -302,36 +324,34 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_711',
-								name: 'form-FORM_BRAND',
+								name: 'menu-FPV_711',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
-											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodbrand
+											identifier: 'person',
+											fnValueSelector: (row) => row.ValCodperson
 										},
 									],
-									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_BRAND'
+									action: vm.openMenuAction, type: 'menu', menuName: 'FPV_711'
 								}
 							},
 							formsDefinition: {
-								'FORM_BRAND': {
-									fnKeySelector: (row) => row.Fields.ValCodbrand,
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
 									isPopup: false
 								},
 							},
-							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValName',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
-						uuid: 'd3385526-6910-4460-aea2-824fdc1c055b',
+						globalEvents: ['changed-PERSON'],
+						uuid: '11fcbff1-938c-44b4-96ab-d21f120de07f',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
@@ -344,25 +364,27 @@
 									title: {
 										allowsMultiple: false,
 										sources: [
-											'BRAND.NAME',
+											'PERSON.NAME',
 										]
 									},
 									subtitle: {
 										allowsMultiple: false,
 										sources: [
-											'COUNTRY.NAME',
+											'PERSON.EMAIL',
 										]
 									},
 									text: {
 										allowsMultiple: true,
 										sources: [
-											'BRAND.DESCRIPTION',
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
 										]
 									},
 									image: {
 										allowsMultiple: false,
 										sources: [
-											'BRAND.LOGOTYPE',
+											'PERSON.PHOTO',
 										]
 									},
 								}),

@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '41',
 					isMenuList: true,
-					designation: computed(() => this.Resources.INVOICES44448),
+					designation: computed(() => this.Resources.PERSONS18356),
 					acronym: 'FPV_41',
-					name: 'INVOICE',
+					name: 'PERSON',
 					route: 'menu-FPV_41',
 					order: '41',
-					controller: 'INVOICE',
+					controller: 'PERSON',
 					action: 'FPV_Menu_41',
 					isPopup: false
 				},
@@ -134,10 +134,10 @@
 				model: new MenuViewModel(this),
 
 				controls: {
-					menu: new controlClass.TableListControl({
+					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_41',
-						controller: 'INVOICE',
+						controller: 'PERSON',
 						action: 'FPV_Menu_41',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -146,89 +146,68 @@
 							'page-full-height'
 						],
 						columnsOriginal: [
-							new listColumnTypes.TextColumn({
+							new listColumnTypes.ImageColumn({
 								order: 1,
-								name: 'ValCodinvoicestore',
-								area: 'INVOICE',
-								field: 'CODINVOICESTORE',
-								label: computed(() => this.Resources.CODINVOICESTORE44054),
+								name: 'ValPhoto',
+								area: 'PERSON',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
+								scrollData: 3,
+								sortable: false,
+								searchable: false,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 2,
+								name: 'ValName',
+								area: 'PERSON',
+								field: 'NAME',
+								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ArrayColumn({
+								order: 3,
+								name: 'ValGender',
+								area: 'PERSON',
+								field: 'GENDER',
+								label: computed(() => this.Resources.GENDER44172),
+								dataLength: 1,
+								scrollData: 1,
+								export: 1,
+								array: computed(() => new qProjArrays.QArrayGender(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayGender.type,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.DateColumn({
-								order: 2,
-								name: 'ValDate',
-								area: 'INVOICE',
-								field: 'DATE',
-								label: computed(() => this.Resources.DATE18475),
+								order: 4,
+								name: 'ValBirthday',
+								area: 'PERSON',
+								field: 'BIRTHDAY',
+								label: computed(() => this.Resources.BIRTHDAY30236),
 								scrollData: 8,
 								dateTimeType: 'date',
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 3,
-								name: 'Store.ValName',
-								area: 'STORE',
-								field: 'NAME',
-								label: computed(() => this.Resources.STORE16493),
+								order: 5,
+								name: 'ValEmail',
+								area: 'PERSON',
+								field: 'EMAIL',
+								label: computed(() => this.Resources.EMAIL25170),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodstore',
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.CurrencyColumn({
-								order: 4,
-								name: 'ValPrice',
-								area: 'INVOICE',
-								field: 'PRICE',
-								label: computed(() => this.Resources.PRICE06900),
-								scrollData: 10,
-								maxDigits: 7,
-								decimalPlaces: 2,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.CurrencyColumn({
-								order: 5,
-								name: 'ValTaxes',
-								area: 'INVOICE',
-								field: 'TAXES',
-								label: computed(() => this.Resources.TAXES34617),
-								scrollData: 10,
-								maxDigits: 7,
-								decimalPlaces: 2,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.CurrencyColumn({
-								order: 6,
-								name: 'ValShippingcost',
-								area: 'INVOICE',
-								field: 'SHIPPINGCOST',
-								label: computed(() => this.Resources.SHIPPING_COST12785),
-								scrollData: 10,
-								maxDigits: 7,
-								decimalPlaces: 2,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.CurrencyColumn({
-								order: 7,
-								name: 'ValTotalprice',
-								area: 'INVOICE',
-								field: 'TOTALPRICE',
-								label: computed(() => this.Resources.TOTAL_PRICE46894),
-								scrollData: 10,
-								maxDigits: 7,
-								decimalPlaces: 2,
-								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.NumericColumn({
-								order: 8,
-								name: 'ValNumberofitems',
-								area: 'INVOICE',
-								field: 'NUMBEROFITEMS',
-								label: computed(() => this.Resources.NUMBER_OF_ITEMS22472),
-								scrollData: 10,
-								maxDigits: 10,
+								order: 6,
+								name: 'ValTelephone',
+								area: 'PERSON',
+								field: 'TELEPHONE',
+								label: computed(() => this.Resources.TELEPHONE28697),
+								scrollData: 9,
+								maxDigits: 9,
 								decimalPlaces: 0,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
@@ -236,12 +215,12 @@
 						config: {
 							name: 'FPV_Menu_41',
 							serverMode: true,
-							pkColumn: 'ValCodinvoice',
-							tableAlias: 'INVOICE',
-							tableNamePlural: computed(() => this.Resources.INVOICES44448),
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.INVOICES44448),
+							tableTitle: computed(() => this.Resources.PERSONS18356),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -262,7 +241,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_INVOICE',
+										formName: 'FORM_PERSON',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -278,7 +257,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_INVOICE',
+										formName: 'FORM_PERSON',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -294,7 +273,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_INVOICE',
+										formName: 'FORM_PERSON',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -310,7 +289,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_INVOICE',
+										formName: 'FORM_PERSON',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -328,9 +307,9 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_INVOICE',
+										formName: 'FORM_PERSON',
 										mode: 'NEW',
-										repeatInsertion: true,
+										repeatInsertion: false,
 										isControlled: true
 									}
 								},
@@ -345,37 +324,136 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_411',
-								name: 'form-FORM_INVOICE',
+								name: 'menu-FPV_411',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
-											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodinvoice
+											identifier: 'person',
+											fnValueSelector: (row) => row.ValCodperson
 										},
 									],
-									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_INVOICE'
+									action: vm.openMenuAction, type: 'menu', menuName: 'FPV_411'
 								}
 							},
 							formsDefinition: {
-								'FORM_INVOICE': {
-									fnKeySelector: (row) => row.Fields.ValCodinvoice,
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
 									isPopup: false
 								},
 							},
-							allowFileImport: true,
-							defaultSearchColumnName: 'ValCodinvoicestore',
-							defaultSearchColumnNameOriginal: 'ValCodinvoicestore',
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValName',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-INVOICE', 'changed-STORE'],
-						uuid: '4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5',
+						globalEvents: ['changed-PERSON'],
+						uuid: '2b6a335d-0e12-470e-acf9-a461a871eb3b',
 						allSelectedRows: 'false',
+						viewModes: [
+							{
+								id: 'CARDS',
+								type: 'cards',
+								subtype: 'card-img-top',
+								label: computed(() => this.Resources.CARTOES27587),
+								order: 1,
+								mappingVariables: readonly({
+									title: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.NAME',
+										]
+									},
+									subtitle: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.EMAIL',
+										]
+									},
+									text: {
+										allowsMultiple: true,
+										sources: [
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
+										]
+									},
+									image: {
+										allowsMultiple: false,
+										sources: [
+											'PERSON.PHOTO',
+										]
+									},
+								}),
+								styleVariables: {
+									actionsAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									actionsStyle: {
+										rawValue: 'dropdown',
+										isMapped: false
+									},
+									backgroundColor: {
+										rawValue: 'auto',
+										isMapped: false
+									},
+									contentAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									customFollowupDefaultTarget: {
+										rawValue: 'blank',
+										isMapped: false
+									},
+									customInsertCard: {
+										rawValue: false,
+										isMapped: false
+									},
+									customInsertCardStyle: {
+										rawValue: 'secondary',
+										isMapped: false
+									},
+									displayMode: {
+										rawValue: 'grid',
+										isMapped: false
+									},
+									gridMode: {
+										rawValue: 'fixed',
+										isMapped: false
+									},
+									containerAlignment: {
+										rawValue: 'left',
+										isMapped: false
+									},
+									hoverScaleAmount: {
+										rawValue: '1.00',
+										isMapped: false
+									},
+									imageShape: {
+										rawValue: 'rectangular',
+										isMapped: false
+									},
+									showColumnTitles: {
+										rawValue: false,
+										isMapped: false
+									},
+									showEmptyColumnTitles: {
+										rawValue: true,
+										isMapped: false
+									},
+									size: {
+										rawValue: 'regular',
+										isMapped: false
+									},
+								},
+								groups: {
+								}
+							},
+						],
 						headerLevel: 1,
 						isActiveControl: computed(() => this.isActiveMenu)
 					}, this),

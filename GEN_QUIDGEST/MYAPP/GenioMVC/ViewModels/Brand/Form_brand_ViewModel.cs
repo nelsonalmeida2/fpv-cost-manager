@@ -42,6 +42,24 @@ namespace GenioMVC.ViewModels.Brand
 
 		#endregion
 		/// <summary>
+		/// Title: "Logotype" | Type: "IJ"
+		/// </summary>
+		[ImageThumbnailJsonConverter(30, 50)]
+		public GenioMVC.Models.ImageModel ValLogotype { get; set; }
+		/// <summary>
+		/// Title: "Brand Name" | Type: "C"
+		/// </summary>
+		public string ValName { get; set; }
+		/// <summary>
+		/// Title: "Description" | Type: "C"
+		/// </summary>
+		public string ValDescription { get; set; }
+		/// <summary>
+		/// Title: "Country" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public TableDBEdit<GenioMVC.Models.Country> TableCountryName { get; set; }
+		/// <summary>
 		/// Title: "Created by" | Type: "ON"
 		/// </summary>
 		[ValidateSetAccess]
@@ -62,23 +80,22 @@ namespace GenioMVC.ViewModels.Brand
 		[ValidateSetAccess]
 		public DateTime? ValUpdated_at { get; set; }
 		/// <summary>
-		/// Title: "Logotype" | Type: "IJ"
-		/// </summary>
-		[ImageThumbnailJsonConverter(30, 50)]
-		public GenioMVC.Models.ImageModel ValLogotype { get; set; }
-		/// <summary>
-		/// Title: "Brand Name" | Type: "C"
-		/// </summary>
-		public string ValName { get; set; }
-		/// <summary>
-		/// Title: "Description" | Type: "C"
-		/// </summary>
-		public string ValDescription { get; set; }
-		/// <summary>
-		/// Title: "Country" | Type: "C"
+		/// Title: "Assigned to" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
-		public TableDBEdit<GenioMVC.Models.Country> TableCountryName { get; set; }
+		public string PersonValName
+		{
+			get
+			{
+				return funcPersonValName != null ? funcPersonValName() : _auxPersonValName;
+			}
+			set { funcPersonValName = () => value; }
+		}
+
+		[JsonIgnore]
+		public Func<string> funcPersonValName { get; set; }
+
+		private string _auxPersonValName { get; set; }
 
 		#region Navigations
 		#endregion
@@ -212,13 +229,14 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				ValCountry = ViewModelConversion.ToString(m.ValCountry);
 				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
+				ValLogotype = ViewModelConversion.ToImage(m.ValLogotype);
+				ValName = ViewModelConversion.ToString(m.ValName);
+				ValDescription = ViewModelConversion.ToString(m.ValDescription);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
 				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
 				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
-				ValLogotype = ViewModelConversion.ToImage(m.ValLogotype);
-				ValName = ViewModelConversion.ToString(m.ValName);
-				ValDescription = ViewModelConversion.ToString(m.ValDescription);
+				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
 				ValCodbrand = ViewModelConversion.ToString(m.ValCodbrand);
 			}
 			catch (Exception)
@@ -428,14 +446,15 @@ namespace GenioMVC.ViewModels.Brand
 
 
 			validator.Required("ValCountry", Resources.Resources.COUNTRY64133, ViewModelConversion.ToString(ValCountry), FieldType.KEY_INT.GetFormatting());
-
-			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
-
-			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("ValName", Resources.Resources.BRAND_NAME49806, ValName, 50);
 
 			validator.Required("ValName", Resources.Resources.BRAND_NAME49806, ViewModelConversion.ToString(ValName), FieldType.TEXT.GetFormatting());
 			validator.StringLength("ValDescription", Resources.Resources.DESCRIPTION07383, ValDescription, 255);
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
 
 
 			return validator.GetResult();
@@ -675,16 +694,18 @@ namespace GenioMVC.ViewModels.Brand
 			{
 				"brand.country" => ViewModelConversion.ToString(modelValue),
 				"brand.codperson" => ViewModelConversion.ToString(modelValue),
+				"brand.logotype" => ViewModelConversion.ToImage(modelValue),
+				"brand.name" => ViewModelConversion.ToString(modelValue),
+				"brand.description" => ViewModelConversion.ToString(modelValue),
 				"brand.created_by" => ViewModelConversion.ToString(modelValue),
 				"brand.created_at" => ViewModelConversion.ToDateTime(modelValue),
 				"brand.updated_by" => ViewModelConversion.ToString(modelValue),
 				"brand.updated_at" => ViewModelConversion.ToDateTime(modelValue),
-				"brand.logotype" => ViewModelConversion.ToImage(modelValue),
-				"brand.name" => ViewModelConversion.ToString(modelValue),
-				"brand.description" => ViewModelConversion.ToString(modelValue),
+				"person.name" => ViewModelConversion.ToString(modelValue),
 				"brand.codbrand" => ViewModelConversion.ToString(modelValue),
 				"country.codcountry" => ViewModelConversion.ToString(modelValue),
 				"country.name" => ViewModelConversion.ToString(modelValue),
+				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
 		}

@@ -31,7 +31,7 @@ namespace GenioMVC.ViewModels.Invoice
 
 		#region Foreign keys
 		/// <summary>
-		/// Title: "Assigned To" | Type: "CE"
+		/// Title: "" | Type: "CE"
 		/// </summary>
 		public string ValCodperson { get; set; }
 		/// <summary>
@@ -40,31 +40,6 @@ namespace GenioMVC.ViewModels.Invoice
 		public string ValStore { get; set; }
 
 		#endregion
-		/// <summary>
-		/// Title: "Created by" | Type: "ON"
-		/// </summary>
-		[ValidateSetAccess]
-		public string ValCreated_by { get; set; }
-		/// <summary>
-		/// Title: "Created at" | Type: "OD"
-		/// </summary>
-		[ValidateSetAccess]
-		public DateTime? ValCreated_at { get; set; }
-		/// <summary>
-		/// Title: "Updated by" | Type: "EN"
-		/// </summary>
-		[ValidateSetAccess]
-		public string ValUpdated_by { get; set; }
-		/// <summary>
-		/// Title: "Updated At" | Type: "ED"
-		/// </summary>
-		[ValidateSetAccess]
-		public DateTime? ValUpdated_at { get; set; }
-		/// <summary>
-		/// Title: "Assigned To" | Type: "C"
-		/// </summary>
-		[ValidateSetAccess]
-		public TableDBEdit<GenioMVC.Models.Person> TablePersonName { get; set; }
 		/// <summary>
 		/// Title: "CODINVOICESTORE" | Type: "C"
 		/// </summary>
@@ -114,6 +89,43 @@ namespace GenioMVC.ViewModels.Invoice
 		/// </summary>
 		[ValidateSetAccess]
 		public decimal? ValTotalprice { get; set; }
+		/// <summary>
+		/// Title: "Created by" | Type: "ON"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCreated_by { get; set; }
+		/// <summary>
+		/// Title: "Created at" | Type: "OD"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValCreated_at { get; set; }
+		/// <summary>
+		/// Title: "Updated by" | Type: "EN"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValUpdated_by { get; set; }
+		/// <summary>
+		/// Title: "Updated At" | Type: "ED"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
+		/// Title: "Assigned to" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public string PersonValName
+		{
+			get
+			{
+				return funcPersonValName != null ? funcPersonValName() : _auxPersonValName;
+			}
+			set { funcPersonValName = () => value; }
+		}
+
+		[JsonIgnore]
+		public Func<string> funcPersonValName { get; set; }
+
+		private string _auxPersonValName { get; set; }
 
 		#region Navigations
 		#endregion
@@ -247,10 +259,6 @@ namespace GenioMVC.ViewModels.Invoice
 			{
 				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
 				ValStore = ViewModelConversion.ToString(m.ValStore);
-				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
-				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
-				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
-				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
 				ValCodinvoicestore = ViewModelConversion.ToString(m.ValCodinvoicestore);
 				ValReceipt = ViewModelConversion.ToString(m.ValReceipt);
 				ValReceiptfk = ViewModelConversion.ToString(m.ValReceiptfk);
@@ -260,6 +268,11 @@ namespace GenioMVC.ViewModels.Invoice
 				ValTaxes = ViewModelConversion.ToNumeric(m.ValTaxes);
 				ValNumberofitems = ViewModelConversion.ToNumeric(m.ValNumberofitems);
 				ValTotalprice = ViewModelConversion.ToNumeric(m.ValTotalprice);
+				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
+				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
+				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
+				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
+				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
 				ValCodinvoice = ViewModelConversion.ToString(m.ValCodinvoice);
 			}
 			catch (Exception)
@@ -303,13 +316,13 @@ namespace GenioMVC.ViewModels.Invoice
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
+				m.ValPrice = ViewModelConversion.ToNumeric(ValPrice);
+				m.ValNumberofitems = ViewModelConversion.ToNumeric(ValNumberofitems);
+				m.ValTotalprice = ViewModelConversion.ToNumeric(ValTotalprice);
 				m.ValCreated_by = ViewModelConversion.ToString(ValCreated_by);
 				m.ValCreated_at = ViewModelConversion.ToDateTime(ValCreated_at);
 				m.ValUpdated_by = ViewModelConversion.ToString(ValUpdated_by);
 				m.ValUpdated_at = ViewModelConversion.ToDateTime(ValUpdated_at);
-				m.ValPrice = ViewModelConversion.ToNumeric(ValPrice);
-				m.ValNumberofitems = ViewModelConversion.ToNumeric(ValNumberofitems);
-				m.ValTotalprice = ViewModelConversion.ToNumeric(ValTotalprice);
 			}
 			catch (Exception)
 			{
@@ -473,7 +486,6 @@ namespace GenioMVC.ViewModels.Invoice
 			// Add characteristics
 			Characs = new List<string>();
 
-			Load_Form_invoice__person__name(qs, lazyLoad);
 			Load_Form_invoice__store__name(qs, lazyLoad);
 
 // USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_INVOICE]/
@@ -491,18 +503,17 @@ namespace GenioMVC.ViewModels.Invoice
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
 
-			validator.Required("ValCodperson", Resources.Resources.ASSIGNED_TO35661, ViewModelConversion.ToString(ValCodperson), FieldType.KEY_INT.GetFormatting());
-
 			validator.Required("ValStore", Resources.Resources.STORE16493, ViewModelConversion.ToString(ValStore), FieldType.KEY_INT.GetFormatting());
-
-			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
-
-			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ValCodinvoicestore, 50);
 
 			validator.Required("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ViewModelConversion.ToString(ValCodinvoicestore), FieldType.TEXT.GetFormatting());
 
 			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
 
 
 			return validator.GetResult();
@@ -541,195 +552,6 @@ namespace GenioMVC.ViewModels.Invoice
 		}
 
 		/// <summary>
-		/// TablePersonName -> (F1)
-		/// </summary>
-		/// <param name="qs"></param>
-		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void Load_Form_invoice__person__name(NameValueCollection qs, bool lazyLoad = false)
-		{
-			bool form_invoice__person__nameDoLoad = true;
-			CriteriaSet form_invoice__person__nameConds = CriteriaSet.And();
-			{
-				object hValue = Navigation.GetValue("person", true);
-				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
-				{
-					form_invoice__person__nameConds.Equal(CSGenioAperson.FldCodperson, hValue);
-					this.ValCodperson = DBConversion.ToString(hValue);
-				}
-			}
-
-			TablePersonName = new TableDBEdit<Models.Person>
-			{
-				IsLazyLoad = lazyLoad
-			};
-
-			if (lazyLoad)
-			{
-				if (Navigation.CurrentLevel.GetEntry("RETURN_person") != null)
-				{
-					this.ValCodperson = Navigation.GetStrValue("RETURN_person");
-					Navigation.CurrentLevel.SetEntry("RETURN_person", null);
-				}
-				FillDependant_Form_invoiceTablePersonName(lazyLoad);
-				return;
-			}
-
-			if (form_invoice__person__nameDoLoad)
-			{
-				List<ColumnSort> sorts = [];
-				ColumnSort requestedSort = GetRequestSort(TablePersonName, "sTablePersonName", "dTablePersonName", qs, "person");
-				if (requestedSort != null)
-					sorts.Add(requestedSort);
-
-				string query = "";
-				if (!string.IsNullOrEmpty(qs["TablePersonName_tableFilters"]))
-					TablePersonName.TableFilters = bool.Parse(qs["TablePersonName_tableFilters"]);
-				else
-					TablePersonName.TableFilters = false;
-
-				query = qs["qTablePersonName"];
-
-				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
-				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
-				//  tornando confuso to o user porque determinada row foi devolvida quando o Qresult não mostra como o matching foi feito
-				CriteriaSet search_filters = CriteriaSet.And();
-				if (!string.IsNullOrEmpty(query))
-				{
-					search_filters.Like(CSGenioAperson.FldName, query + "%");
-				}
-				form_invoice__person__nameConds.SubSet(search_filters);
-
-				string tryParsePage = qs["pTablePersonName"] != null ? qs["pTablePersonName"].ToString() : "1";
-				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
-				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
-				int offset = (page - 1) * numberItems;
-
-				FieldRef[] fields = [CSGenioAperson.FldCodperson, CSGenioAperson.FldName, CSGenioAperson.FldZzstate];
-
-// USE /[MANUAL FPV OVERRQ FORM_INVOICE_PERSONNAME]/
-
-				// Limitation by Zzstate
-				/*
-					Records that are currently being inserted or duplicated will also be included.
-					Client-side persistence will try to fill the "text" value of that option.
-				*/
-				if (Navigation.checkFormMode("person", FormMode.New) || Navigation.checkFormMode("person", FormMode.Duplicate))
-					form_invoice__person__nameConds.SubSet(CriteriaSet.Or()
-						.Equal(CSGenioAperson.FldZzstate, 0)
-						.Equal(CSGenioAperson.FldCodperson, Navigation.GetStrValue("person")));
-				else
-					form_invoice__person__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAperson.FldZzstate), CriteriaOperator.Equal, 0));
-
-				FieldRef firstVisibleColumn = null;
-				ListingMVC<CSGenioAperson> listing = Models.ModelBase.Where<CSGenioAperson>(m_userContext, false, form_invoice__person__nameConds, fields, offset, numberItems, sorts, "LED_FORM_INVOICE__PERSON__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
-
-				TablePersonName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
-				TablePersonName.Query = query;
-				TablePersonName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Person(m_userContext, r, true, _fieldsToSerialize_FORM_INVOICE__PERSON__NAME));
-
-				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
-				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
-				if (Navigation.CurrentLevel.GetEntry("RETURN_person") != null)
-				{
-					this.ValCodperson = Navigation.GetStrValue("RETURN_person");
-					Navigation.CurrentLevel.SetEntry("RETURN_person", null);
-				}
-
-				TablePersonName.List = new SelectList(TablePersonName.Elements.ToSelectList(x => x.ValName, x => x.ValCodperson,  x => x.ValCodperson == this.ValCodperson), "Value", "Text", this.ValCodperson);
-				FillDependant_Form_invoiceTablePersonName();
-			}
-		}
-
-		/// <summary>
-		/// Get Dependant fields values -> TablePersonName (F1)
-		/// </summary>
-		/// <param name="PKey">Primary Key of Person</param>
-		public ConcurrentDictionary<string, object> GetDependant_Form_invoiceTablePersonName(string PKey)
-		{
-			FieldRef[] refDependantFields = [CSGenioAperson.FldCodperson, CSGenioAperson.FldName];
-
-			var returnEmptyDependants = false;
-			CriteriaSet wherecodition = CriteriaSet.And();
-
-			// Return default values
-			if (GenFunctions.emptyG(PKey) == 1)
-				returnEmptyDependants = true;
-
-			// Check if the limit(s) is filled if exists
-			// - - - - - - - - - - - - - - - - - - - - -
-
-			if (returnEmptyDependants)
-				return GetViewModelFieldValues(refDependantFields);
-
-			PersistentSupport sp = m_userContext.PersistentSupport;
-			User u = m_userContext.User;
-
-			CSGenioAperson tempArea = new(u);
-
-			// Fields to select
-			SelectQuery querySelect = new();
-			querySelect.PageSize(1);
-			foreach (FieldRef field in refDependantFields)
-				querySelect.Select(field);
-
-			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
-				.Where(wherecodition.Equal(CSGenioAperson.FldCodperson, PKey));
-
-			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
-			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
-
-			ArrayList values = sp.executeReaderOneRow(querySelect);
-			bool useDefaults = values.Count == 0;
-
-			if (useDefaults)
-				return GetViewModelFieldValues(refDependantFields);
-			return GetViewModelFieldValues(refDependantFields, values);
-		}
-
-		/// <summary>
-		/// Fill Dependant fields values -> TablePersonName (F1)
-		/// </summary>
-		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
-		public void FillDependant_Form_invoiceTablePersonName(bool lazyLoad = false)
-		{
-			var row = GetDependant_Form_invoiceTablePersonName(this.ValCodperson);
-			try
-			{
-
-				// Fill List fields
-				this.ValCodperson = ViewModelConversion.ToString(row["person.codperson"]);
-				TablePersonName.Value = (string)row["person.name"];
-				if (GenFunctions.emptyG(this.ValCodperson) == 1)
-				{
-					this.ValCodperson = "";
-					TablePersonName.Value = "";
-					Navigation.ClearValue("person");
-				}
-				else if (lazyLoad)
-				{
-					TablePersonName.SetPagination(1, 0, false, false, 1);
-					TablePersonName.List = new SelectList(new List<SelectListItem>()
-					{
-						new SelectListItem
-						{
-							Value = Convert.ToString(this.ValCodperson),
-							Text = Convert.ToString(TablePersonName.Value),
-							Selected = true
-						}
-					}, "Value", "Text", this.ValCodperson);
-				}
-
-				TablePersonName.Selected = this.ValCodperson;
-			}
-			catch (Exception ex)
-			{
-				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TablePersonName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
-			}
-		}
-
-		private readonly string[] _fieldsToSerialize_FORM_INVOICE__PERSON__NAME = ["Person", "Person.ValCodperson", "Person.ValZzstate"];
-
-		/// <summary>
 		/// TableStoreName -> (DB)
 		/// </summary>
 		/// <param name="qs"></param>
@@ -746,6 +568,10 @@ namespace GenioMVC.ViewModels.Invoice
 					this.ValStore = DBConversion.ToString(hValue);
 				}
 			}
+			// Limits Generation
+
+			// Area limit
+			form_invoice__store__nameDoLoad &= AddCriteriaAreaLimit(form_invoice__store__nameConds, CSGenio.business.CSGenioAperson.FldCodperson, "person", this.ValCodperson, true);
 
 			TableStoreName = new TableDBEdit<Models.Store>
 			{
@@ -762,6 +588,9 @@ namespace GenioMVC.ViewModels.Invoice
 				FillDependant_Form_invoiceTableStoreName(lazyLoad);
 				return;
 			}
+
+			if (string.IsNullOrEmpty(this.ValCodperson))
+				form_invoice__store__nameDoLoad = false;
 
 			if (form_invoice__store__nameDoLoad)
 			{
@@ -842,7 +671,7 @@ namespace GenioMVC.ViewModels.Invoice
 		/// <param name="PKey">Primary Key of Store</param>
 		public ConcurrentDictionary<string, object> GetDependant_Form_invoiceTableStoreName(string PKey)
 		{
-			FieldRef[] refDependantFields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName];
+			FieldRef[] refDependantFields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAperson.FldCodperson, CSGenioAperson.FldName];
 
 			var returnEmptyDependants = false;
 			CriteriaSet wherecodition = CriteriaSet.And();
@@ -852,6 +681,15 @@ namespace GenioMVC.ViewModels.Invoice
 				returnEmptyDependants = true;
 
 			// Check if the limit(s) is filled if exists
+			{
+				object hValue = Navigation.GetValue("person");
+				if (!(hValue is Array))
+				{
+					if (GenFunctions.emptyG(hValue) == 1)
+						returnEmptyDependants = true;
+					wherecodition.Equal(CSGenioAstore.FldCodperson, hValue);
+				}
+			}
 			// - - - - - - - - - - - - - - - - - - - - -
 
 			if (returnEmptyDependants)
@@ -891,6 +729,8 @@ namespace GenioMVC.ViewModels.Invoice
 			var row = GetDependant_Form_invoiceTableStoreName(this.ValStore);
 			try
 			{
+				this.ValCodperson = (string)row["person.codperson"];
+				this.funcPersonValName = () => (string)row["person.name"];
 
 				// Fill List fields
 				this.ValStore = ViewModelConversion.ToString(row["store.codstore"]);
@@ -931,10 +771,6 @@ namespace GenioMVC.ViewModels.Invoice
 			{
 				"invoice.codperson" => ViewModelConversion.ToString(modelValue),
 				"invoice.store" => ViewModelConversion.ToString(modelValue),
-				"invoice.created_by" => ViewModelConversion.ToString(modelValue),
-				"invoice.created_at" => ViewModelConversion.ToDateTime(modelValue),
-				"invoice.updated_by" => ViewModelConversion.ToString(modelValue),
-				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"invoice.codinvoicestore" => ViewModelConversion.ToString(modelValue),
 				"invoice.receipt" => ViewModelConversion.ToString(modelValue),
 				"invoice.date" => ViewModelConversion.ToDateTime(modelValue),
@@ -943,11 +779,15 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.taxes" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.numberofitems" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.totalprice" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
-				"person.codperson" => ViewModelConversion.ToString(modelValue),
+				"invoice.created_by" => ViewModelConversion.ToString(modelValue),
+				"invoice.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"invoice.updated_by" => ViewModelConversion.ToString(modelValue),
+				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"person.name" => ViewModelConversion.ToString(modelValue),
+				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"store.name" => ViewModelConversion.ToString(modelValue),
+				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
 		}

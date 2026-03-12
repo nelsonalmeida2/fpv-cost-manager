@@ -184,6 +184,25 @@
 									</base-input-structure>
 								</q-col>
 							</q-row>
+							<q-row v-if="controls.FORM_PHOTO_ALBUM__PERSON__NAME.isVisible">
+								<q-col
+									v-if="controls.FORM_PHOTO_ALBUM__PERSON__NAME.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_PHOTO_ALBUM__PERSON__NAME.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_PHOTO_ALBUM__PERSON__NAME"
+										v-on="controls.FORM_PHOTO_ALBUM__PERSON__NAME.handlers"
+										:loading="controls.FORM_PHOTO_ALBUM__PERSON__NAME.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_PHOTO_ALBUM__PERSON__NAME.props"
+											@blur="onBlur(controls.FORM_PHOTO_ALBUM__PERSON__NAME, model.PersonValName.value)"
+											@change="model.PersonValName.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
 							<!-- End FORM_PHOTO_ALBUM__PSEUD__NEWGRP01 -->
 						</q-group-collapsible>
 					</q-col>
@@ -244,14 +263,10 @@
 										:loading="controls.FORM_PHOTO_ALBUM__ITEM__NAME.props.loading"
 										:reporting-mode-on="reportingModeCAV"
 										:suggestion-mode-on="suggestionModeOn">
-										<q-lookup
-											v-if="controls.FORM_PHOTO_ALBUM__ITEM__NAME.isVisible"
+										<q-text-field
 											v-bind="controls.FORM_PHOTO_ALBUM__ITEM__NAME.props"
-											v-on="controls.FORM_PHOTO_ALBUM__ITEM__NAME.handlers" />
-										<q-see-more-form-photo-album-item-name
-											v-if="controls.FORM_PHOTO_ALBUM__ITEM__NAME.seeMoreIsVisible"
-											v-bind="controls.FORM_PHOTO_ALBUM__ITEM__NAME.seeMoreParams"
-											v-on="controls.FORM_PHOTO_ALBUM__ITEM__NAME.handlers" />
+											@blur="onBlur(controls.FORM_PHOTO_ALBUM__ITEM__NAME, model.ItemValName.value)"
+											@change="model.ItemValName.fnUpdateValueOnChange" />
 									</base-input-structure>
 								</q-col>
 							</q-row>
@@ -330,7 +345,6 @@
 		name: 'QFormFormPhotoAlbum',
 
 		components: {
-			QSeeMoreFormPhotoAlbumItemName: defineAsyncComponent(() => import('@/views/forms/FormFormPhotoAlbum/dbedits/FormPhotoAlbumItemNameSeeMore.vue')),
 		},
 
 		mixins: [
@@ -616,7 +630,7 @@
 						startsExpanded: false,
 						isCollapsible: true,
 						anchored: false,
-						directChildren: ['FORM_PHOTO_ALBUM__PHOTOALBUM__CREATED_BY', 'FORM_PHOTO_ALBUM__PHOTOALBUM__CREATED_AT', 'FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_BY', 'FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_AT'],
+						directChildren: ['FORM_PHOTO_ALBUM__PHOTOALBUM__CREATED_BY', 'FORM_PHOTO_ALBUM__PHOTOALBUM__CREATED_AT', 'FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_BY', 'FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_AT', 'FORM_PHOTO_ALBUM__PERSON__NAME'],
 						mustBeFilled: true,
 						controlLimits: [
 						],
@@ -679,6 +693,22 @@
 						controlLimits: [
 						],
 					}, this),
+					FORM_PHOTO_ALBUM__PERSON__NAME: new fieldControlClass.StringControl({
+						modelField: 'PersonValName',
+						valueChangeEvent: 'fieldChange:person.name',
+						dependentModelField: 'ValCodperson',
+						dependentChangeEvent: 'fieldChange:photoalbum.codperson',
+						id: 'FORM_PHOTO_ALBUM__PERSON__NAME',
+						name: 'NAME',
+						size: 'xlarge',
+						label: computed(() => this.Resources.ASSIGNED_TO26333),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_PHOTO_ALBUM__PSEUD__NEWGRP01',
+						maxLength: 50,
+						controlLimits: [
+						],
+					}, this),
 					FORM_PHOTO_ALBUM__PSEUD__NEWGRP02: new fieldControlClass.GroupControl({
 						id: 'FORM_PHOTO_ALBUM__PSEUD__NEWGRP02',
 						name: 'NEWGRP02',
@@ -727,33 +757,17 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_PHOTO_ALBUM__ITEM__NAME: new fieldControlClass.LookupControl({
-						modelField: 'TableItemName',
+					FORM_PHOTO_ALBUM__ITEM__NAME: new fieldControlClass.StringControl({
+						modelField: 'ItemValName',
 						valueChangeEvent: 'fieldChange:item.name',
 						id: 'FORM_PHOTO_ALBUM__ITEM__NAME',
 						name: 'NAME',
-						size: 'xxlarge',
+						size: 'xlarge',
 						label: computed(() => this.Resources.ITEM40802),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_PHOTO_ALBUM__PSEUD__NEWGRP02',
-						externalCallbacks: {
-							getModelField: vm.getModelField,
-							getModelFieldValue: vm.getModelFieldValue,
-							setModelFieldValue: vm.setModelFieldValue
-						},
-						externalProperties: {
-							modelKeys: computed(() => vm.modelKeys)
-						},
-						lookupKeyModelField: {
-							name: 'ValItem',
-							dependencyEvent: 'fieldChange:photoalbum.item'
-						},
-						dependentFields: () => ({
-							set 'item.coditem'(value) { vm.model.ValItem.updateValue(value) },
-							set 'item.name'(value) { vm.model.TableItemName.updateValue(value) },
-						}),
-						mustBeFilled: true,
+						maxLength: 255,
 						controlLimits: [
 						],
 					}, this),
@@ -782,8 +796,12 @@
 				 */
 				dataApi: {
 					Item: {
-						get ValName() { return vm.model.TableItemName.value },
-						set ValName(value) { vm.model.TableItemName.updateValue(value) },
+						get ValName() { return vm.model.ItemValName.value },
+						set ValName(value) { vm.model.ItemValName.updateValue(value) },
+					},
+					Person: {
+						get ValName() { return vm.model.PersonValName.value },
+						set ValName(value) { vm.model.PersonValName.updateValue(value) },
 					},
 					Photoalbum: {
 						get ValCodperson() { return vm.model.ValCodperson.value },

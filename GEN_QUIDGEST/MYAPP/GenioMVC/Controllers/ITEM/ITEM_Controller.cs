@@ -80,14 +80,6 @@ namespace GenioMVC.Controllers
 			{
 				switch (string.IsNullOrEmpty(Identifier) ? "" : Identifier)
 				{
-					case "FORM_ITEM__INVOICE__CODINVOICESTORE":	// Field (F1)
-						{
-							var model = new Form_item_ViewModel(UserContext.Current) { editable = false };
-							model.MapFromModel(row);
-							model.Load_Form_item__invoice__codinvoicestore(qs);
-							result = model.TableInvoiceCodinvoicestore;
-						}
-						break;
 					case "FORM_ITEM__BRAND__NAME":	// Field (DB)
 						{
 							var model = new Form_item_ViewModel(UserContext.Current) { editable = false };
@@ -110,6 +102,14 @@ namespace GenioMVC.Controllers
 							model.MapFromModel(row);
 							model.Load_Form_item__subcategory__name(qs);
 							result = model.TableSubcategoryName;
+						}
+						break;
+					case "FORM_ITEM__INVOICE__CODINVOICESTORE":	// Field (F1)
+						{
+							var model = new Form_item_ViewModel(UserContext.Current) { editable = false };
+							model.MapFromModel(row);
+							model.Load_Form_item__invoice__codinvoicestore(qs);
+							result = model.TableInvoiceCodinvoicestore;
 						}
 						break;
 					default:
@@ -145,9 +145,6 @@ namespace GenioMVC.Controllers
 				UserContext.Current.PersistentSupport.openConnection();
 				switch (string.IsNullOrEmpty(Identifier) ? "" : Identifier)
 				{
-					case "FORM_ITEM__INVOICE__CODINVOICESTORE":	// Field (F1)
-						values = new Form_item_ViewModel(UserContext.Current).GetDependant_Form_itemTableInvoiceCodinvoicestore(Selected);
-						break;
 					case "FORM_ITEM__BRAND__NAME":	// Field (DB)
 						values = new Form_item_ViewModel(UserContext.Current).GetDependant_Form_itemTableBrandName(Selected);
 						break;
@@ -156,6 +153,9 @@ namespace GenioMVC.Controllers
 						break;
 					case "FORM_ITEM__SUBCATEGORY__NAME":	// Field (DB)
 						values = new Form_item_ViewModel(UserContext.Current).GetDependant_Form_itemTableSubcategoryName(Selected);
+						break;
+					case "FORM_ITEM__INVOICE__CODINVOICESTORE":	// Field (F1)
+						values = new Form_item_ViewModel(UserContext.Current).GetDependant_Form_itemTableInvoiceCodinvoicestore(Selected);
 						break;
 					default: break;
 				}

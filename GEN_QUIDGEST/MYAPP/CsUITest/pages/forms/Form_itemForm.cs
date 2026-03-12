@@ -8,36 +8,6 @@ namespace quidgest.uitests.pages.forms;
 public class Form_itemForm : PopupForm
 {
 	/// <summary>
-	/// METADATA
-	/// </summary>
-	public CollapsibleZoneControl PseudNewgrp01 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__NEWGRP01-container");
-
-	/// <summary>
-	/// Created by
-	/// </summary>
-	public BaseInputControl ItemCreated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__CREATED_BY", "#FORM_ITEM__ITEM__CREATED_BY");
-
-	/// <summary>
-	/// Created at
-	/// </summary>
-	public BaseInputControl ItemCreated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__CREATED_AT", "#FORM_ITEM__ITEM__CREATED_AT");
-
-	/// <summary>
-	/// Updated by
-	/// </summary>
-	public BaseInputControl ItemUpdated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__UPDATED_BY", "#FORM_ITEM__ITEM__UPDATED_BY");
-
-	/// <summary>
-	/// Updated At
-	/// </summary>
-	public BaseInputControl ItemUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__UPDATED_AT", "#FORM_ITEM__ITEM__UPDATED_AT");
-
-	/// <summary>
-	/// Invoice
-	/// </summary>
-	public BaseInputControl InvoiceCodinvoicestore => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__INVOICE__CODINVOICESTORE", "#FORM_ITEM__INVOICE__CODINVOICESTORE");
-
-	/// <summary>
 	/// ITEM INFO
 	/// </summary>
 	public CollapsibleZoneControl PseudNewgrp03 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__NEWGRP03-container");
@@ -94,6 +64,41 @@ public class Form_itemForm : PopupForm
 	/// 
 	/// </summary>
 	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__FIELD001");
+
+	/// <summary>
+	/// METADATA
+	/// </summary>
+	public CollapsibleZoneControl PseudNewgrp01 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_ITEM__PSEUD__NEWGRP01-container");
+
+	/// <summary>
+	/// Created by
+	/// </summary>
+	public BaseInputControl ItemCreated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__CREATED_BY", "#FORM_ITEM__ITEM__CREATED_BY");
+
+	/// <summary>
+	/// Created at
+	/// </summary>
+	public BaseInputControl ItemCreated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__CREATED_AT", "#FORM_ITEM__ITEM__CREATED_AT");
+
+	/// <summary>
+	/// Updated by
+	/// </summary>
+	public BaseInputControl ItemUpdated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__UPDATED_BY", "#FORM_ITEM__ITEM__UPDATED_BY");
+
+	/// <summary>
+	/// Updated At
+	/// </summary>
+	public BaseInputControl ItemUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__ITEM__UPDATED_AT", "#FORM_ITEM__ITEM__UPDATED_AT");
+
+	/// <summary>
+	/// Invoice
+	/// </summary>
+	public BaseInputControl InvoiceCodinvoicestore => new BaseInputControl(driver, ContainerLocator, "container-FORM_ITEM__INVOICE__CODINVOICESTORE", "#FORM_ITEM__INVOICE__CODINVOICESTORE");
+
+	/// <summary>
+	/// Assigned to
+	/// </summary>
+	public IWebElement PersonName => throw new NotImplementedException();
 
 	public Form_itemForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_ITEM") { }

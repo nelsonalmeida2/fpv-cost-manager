@@ -90,6 +90,12 @@ namespace GenioMVC.Models
 		[NumericAttribute(0)]
 		public decimal? ValTelephone { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValTelephone, 0)); } set { klass.ValTelephone = Convert.ToDecimal(value); } }
 
+		[DisplayName("Number")]
+		/// <summary>Field : "Number" Tipo: "N" Formula:  ""</summary>
+		[ShouldSerialize("Person.ValNumber")]
+		[NumericAttribute(0)]
+		public decimal? ValNumber { get { return Convert.ToDecimal(GenFunctions.RoundQG(klass.ValNumber, 0)); } set { klass.ValNumber = Convert.ToDecimal(value); } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Person.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

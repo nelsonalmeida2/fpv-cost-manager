@@ -392,51 +392,6 @@ namespace GenioMVC.Controllers
 		#endregion
 
 
-		public class Form_photo_album_ItemValNameModel : RequestLookupModel
-		{
-			public Form_photo_album_ViewModel Model { get; set; }
-		}
-
-		//
-		// GET: /Photoalbum/Form_photo_album_ItemValName
-		// POST: /Photoalbum/Form_photo_album_ItemValName
-		[ActionName("Form_photo_album_ItemValName")]
-		public ActionResult Form_photo_album_ItemValName([FromBody] Form_photo_album_ItemValNameModel requestModel)
-		{
-			var queryParams = requestModel.QueryParams;
-
-			// If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
-			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_item")))
-				UserContext.Current.SetPersistenceReadOnly(true);
-			else
-			{
-				Navigation.DestroyEntry("ForcePrimaryRead_item");
-				UserContext.Current.SetPersistenceReadOnly(false);
-			}
-
-			NameValueCollection requestValues = [];
-			if (queryParams != null)
-			{
-				// Add to request values
-				foreach (var kv in queryParams)
-					requestValues.Add(kv.Key, kv.Value);
-			}
-
-			IsStateReadonly = true;
-
-			Models.Photoalbum parentCtx = requestModel.Model == null ? null : new(m_userContext);
-			requestModel.Model?.Init(m_userContext);
-			requestModel.Model?.MapToModel(parentCtx);
-			Form_photo_album_ItemValName_ViewModel model = new(m_userContext, parentCtx);
-
-			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(requestModel.TableConfiguration);
-
-			model.setModes(Request.Query["m"].ToString());
-			model.Load(tableConfig, requestValues, Request.IsAjaxRequest());
-
-			return JsonOK(model);
-		}
-
 		// POST: /Photoalbum/Form_photo_album_SaveEdit
 		[HttpPost]
 		public ActionResult Form_photo_album_SaveEdit([FromBody] Form_photo_album_ViewModel model)

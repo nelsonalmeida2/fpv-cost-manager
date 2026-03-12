@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '61',
 					isMenuList: true,
-					designation: computed(() => this.Resources.STORES21606),
+					designation: computed(() => this.Resources.PERSONS18356),
 					acronym: 'FPV_61',
-					name: 'STORE',
+					name: 'PERSON',
 					route: 'menu-FPV_61',
 					order: '61',
-					controller: 'STORE',
+					controller: 'PERSON',
 					action: 'FPV_Menu_61',
 					isPopup: false
 				},
@@ -137,7 +137,7 @@
 					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_61',
-						controller: 'STORE',
+						controller: 'PERSON',
 						action: 'FPV_Menu_61',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -148,11 +148,11 @@
 						columnsOriginal: [
 							new listColumnTypes.ImageColumn({
 								order: 1,
-								name: 'ValLogotype',
-								area: 'STORE',
-								field: 'LOGOTYPE',
-								label: computed(() => this.Resources.LOGOTYPE44505),
-								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
+								name: 'ValPhoto',
+								area: 'PERSON',
+								field: 'PHOTO',
+								label: computed(() => this.Resources.PHOTO51874),
+								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.PHOTO51874)),
 								scrollData: 3,
 								sortable: false,
 								searchable: false,
@@ -161,67 +161,66 @@
 							new listColumnTypes.TextColumn({
 								order: 2,
 								name: 'ValName',
-								area: 'STORE',
+								area: 'PERSON',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 3,
-								name: 'ValDescription',
-								area: 'STORE',
-								field: 'DESCRIPTION',
-								label: computed(() => this.Resources.DESCRIPTION07383),
-								dataLength: 255,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
-							new listColumnTypes.TextColumn({
-								order: 4,
-								name: 'ValSite',
-								area: 'STORE',
-								field: 'SITE',
-								label: computed(() => this.Resources.WEBSITE08569),
-								dataLength: 255,
-								scrollData: 30,
-								export: 1,
-							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.ArrayColumn({
-								order: 5,
-								name: 'ValCurrency',
-								area: 'STORE',
-								field: 'CURRENCY',
-								label: computed(() => this.Resources.CURRENCY13881),
-								dataLength: 3,
-								scrollData: 3,
+								order: 3,
+								name: 'ValGender',
+								area: 'PERSON',
+								field: 'GENDER',
+								label: computed(() => this.Resources.GENDER44172),
+								dataLength: 1,
+								scrollData: 1,
 								export: 1,
-								array: computed(() => new qProjArrays.QArrayCurrency(vm.$getResource).elements),
-								arrayType: qProjArrays.QArrayCurrency.type,
-								arrayDisplayMode: 'D',
+								array: computed(() => new qProjArrays.QArrayGender(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayGender.type,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.DateColumn({
+								order: 4,
+								name: 'ValBirthday',
+								area: 'PERSON',
+								field: 'BIRTHDAY',
+								label: computed(() => this.Resources.BIRTHDAY30236),
+								scrollData: 8,
+								dateTimeType: 'date',
+								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
-								order: 6,
-								name: 'Country.ValName',
-								area: 'COUNTRY',
-								field: 'NAME',
-								label: computed(() => this.Resources.COUNTRY64133),
-								dataLength: 75,
+								order: 5,
+								name: 'ValEmail',
+								area: 'PERSON',
+								field: 'EMAIL',
+								label: computed(() => this.Resources.EMAIL25170),
+								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodcountry',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.NumericColumn({
+								order: 6,
+								name: 'ValTelephone',
+								area: 'PERSON',
+								field: 'TELEPHONE',
+								label: computed(() => this.Resources.TELEPHONE28697),
+								scrollData: 9,
+								maxDigits: 9,
+								decimalPlaces: 0,
+								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'FPV_Menu_61',
 							serverMode: true,
-							pkColumn: 'ValCodstore',
-							tableAlias: 'STORE',
-							tableNamePlural: computed(() => this.Resources.STORES21606),
+							pkColumn: 'ValCodperson',
+							tableAlias: 'PERSON',
+							tableNamePlural: computed(() => this.Resources.PERSONS18356),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.STORES21606),
+							tableTitle: computed(() => this.Resources.PERSONS18356),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -242,7 +241,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_PERSON',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -258,7 +257,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_PERSON',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -274,7 +273,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_PERSON',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -290,7 +289,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_PERSON',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -308,9 +307,9 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_STORE',
+										formName: 'FORM_PERSON',
 										mode: 'NEW',
-										repeatInsertion: true,
+										repeatInsertion: false,
 										isControlled: true
 									}
 								},
@@ -325,36 +324,34 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_611',
-								name: 'form-FORM_STORE',
+								name: 'menu-FPV_611',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
-											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodstore
+											identifier: 'person',
+											fnValueSelector: (row) => row.ValCodperson
 										},
 									],
-									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_STORE'
+									action: vm.openMenuAction, type: 'menu', menuName: 'FPV_611'
 								}
 							},
 							formsDefinition: {
-								'FORM_STORE': {
-									fnKeySelector: (row) => row.Fields.ValCodstore,
+								'FORM_PERSON': {
+									fnKeySelector: (row) => row.Fields.ValCodperson,
 									isPopup: false
 								},
 							},
-							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: 'ValDescription',
+								columnName: 'ValName',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
-						uuid: 'ef89d555-4463-45c6-8432-0c17fe054238',
+						globalEvents: ['changed-PERSON'],
+						uuid: 'addf9a58-3cb3-469d-9909-3184075648c1',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
@@ -367,27 +364,27 @@
 									title: {
 										allowsMultiple: false,
 										sources: [
-											'STORE.NAME',
+											'PERSON.NAME',
 										]
 									},
 									subtitle: {
 										allowsMultiple: false,
 										sources: [
-											'STORE.SITE',
+											'PERSON.EMAIL',
 										]
 									},
 									text: {
 										allowsMultiple: true,
 										sources: [
-											'STORE.DESCRIPTION',
-											'STORE.CURRENCY',
-											'COUNTRY.NAME',
+											'PERSON.BIRTHDAY',
+											'PERSON.GENDER',
+											'PERSON.TELEPHONE',
 										]
 									},
 									image: {
 										allowsMultiple: false,
 										sources: [
-											'STORE.LOGOTYPE',
+											'PERSON.PHOTO',
 										]
 									},
 								}),

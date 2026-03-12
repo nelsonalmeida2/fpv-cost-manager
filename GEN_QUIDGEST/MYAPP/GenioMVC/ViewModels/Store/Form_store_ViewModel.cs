@@ -42,26 +42,6 @@ namespace GenioMVC.ViewModels.Store
 
 		#endregion
 		/// <summary>
-		/// Title: "Created by" | Type: "ON"
-		/// </summary>
-		[ValidateSetAccess]
-		public string ValCreated_by { get; set; }
-		/// <summary>
-		/// Title: "Created at" | Type: "OD"
-		/// </summary>
-		[ValidateSetAccess]
-		public DateTime? ValCreated_at { get; set; }
-		/// <summary>
-		/// Title: "Updated by" | Type: "EN"
-		/// </summary>
-		[ValidateSetAccess]
-		public string ValUpdated_by { get; set; }
-		/// <summary>
-		/// Title: "Updated At" | Type: "ED"
-		/// </summary>
-		[ValidateSetAccess]
-		public DateTime? ValUpdated_at { get; set; }
-		/// <summary>
 		/// Title: "Logotype" | Type: "IJ"
 		/// </summary>
 		[ImageThumbnailJsonConverter(30, 50)]
@@ -87,6 +67,43 @@ namespace GenioMVC.ViewModels.Store
 		/// </summary>
 		[ValidateSetAccess]
 		public TableDBEdit<GenioMVC.Models.Country> TableCountryName { get; set; }
+		/// <summary>
+		/// Title: "Created by" | Type: "ON"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValCreated_by { get; set; }
+		/// <summary>
+		/// Title: "Created at" | Type: "OD"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValCreated_at { get; set; }
+		/// <summary>
+		/// Title: "Updated by" | Type: "EN"
+		/// </summary>
+		[ValidateSetAccess]
+		public string ValUpdated_by { get; set; }
+		/// <summary>
+		/// Title: "Updated At" | Type: "ED"
+		/// </summary>
+		[ValidateSetAccess]
+		public DateTime? ValUpdated_at { get; set; }
+		/// <summary>
+		/// Title: "Assigned to" | Type: "C"
+		/// </summary>
+		[ValidateSetAccess]
+		public string PersonValName
+		{
+			get
+			{
+				return funcPersonValName != null ? funcPersonValName() : _auxPersonValName;
+			}
+			set { funcPersonValName = () => value; }
+		}
+
+		[JsonIgnore]
+		public Func<string> funcPersonValName { get; set; }
+
+		private string _auxPersonValName { get; set; }
 
 		#region Navigations
 		#endregion
@@ -220,15 +237,16 @@ namespace GenioMVC.ViewModels.Store
 			{
 				ValCountry = ViewModelConversion.ToString(m.ValCountry);
 				ValCodperson = ViewModelConversion.ToString(m.ValCodperson);
-				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
-				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
-				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
-				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
 				ValLogotype = ViewModelConversion.ToImage(m.ValLogotype);
 				ValName = ViewModelConversion.ToString(m.ValName);
 				ValDescription = ViewModelConversion.ToString(m.ValDescription);
 				ValSite = ViewModelConversion.ToString(m.ValSite);
 				ValCurrency = ViewModelConversion.ToString(m.ValCurrency);
+				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
+				ValCreated_at = ViewModelConversion.ToDateTime(m.ValCreated_at);
+				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
+				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
+				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
 				ValCodstore = ViewModelConversion.ToString(m.ValCodstore);
 			}
 			catch (Exception)
@@ -444,15 +462,16 @@ namespace GenioMVC.ViewModels.Store
 		{
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
-
-			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
-
-			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("ValName", Resources.Resources.NAME31974, ValName, 50);
 
 			validator.Required("ValName", Resources.Resources.NAME31974, ViewModelConversion.ToString(ValName), FieldType.TEXT.GetFormatting());
 			validator.StringLength("ValDescription", Resources.Resources.DESCRIPTION07383, ValDescription, 255);
 			validator.StringLength("ValSite", Resources.Resources.WEBSITE08569, ValSite, 255);
+
+			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
+
+			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
+			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
 
 
 			return validator.GetResult();
@@ -686,18 +705,20 @@ namespace GenioMVC.ViewModels.Store
 			{
 				"store.country" => ViewModelConversion.ToString(modelValue),
 				"store.codperson" => ViewModelConversion.ToString(modelValue),
-				"store.created_by" => ViewModelConversion.ToString(modelValue),
-				"store.created_at" => ViewModelConversion.ToDateTime(modelValue),
-				"store.updated_by" => ViewModelConversion.ToString(modelValue),
-				"store.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"store.logotype" => ViewModelConversion.ToImage(modelValue),
 				"store.name" => ViewModelConversion.ToString(modelValue),
 				"store.description" => ViewModelConversion.ToString(modelValue),
 				"store.site" => ViewModelConversion.ToString(modelValue),
 				"store.currency" => ViewModelConversion.ToString(modelValue),
+				"store.created_by" => ViewModelConversion.ToString(modelValue),
+				"store.created_at" => ViewModelConversion.ToDateTime(modelValue),
+				"store.updated_by" => ViewModelConversion.ToString(modelValue),
+				"store.updated_at" => ViewModelConversion.ToDateTime(modelValue),
+				"person.name" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"country.codcountry" => ViewModelConversion.ToString(modelValue),
 				"country.name" => ViewModelConversion.ToString(modelValue),
+				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
 		}

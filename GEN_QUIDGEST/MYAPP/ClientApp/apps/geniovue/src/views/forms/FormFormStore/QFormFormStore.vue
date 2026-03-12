@@ -96,98 +96,6 @@
 			data-key="FORM_STORE"
 			:data-loading="!formInitialDataLoaded || !isActiveForm">
 			<template v-if="formControl.initialized && showFormBody">
-				<q-row v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible">
-					<q-col v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible">
-						<q-group-collapsible
-							v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible"
-							id="FORM_STORE__PSEUD__NEWGRP01"
-							v-bind="controls.FORM_STORE__PSEUD__NEWGRP01"
-							v-on="controls.FORM_STORE__PSEUD__NEWGRP01.handlers">
-							<!-- Start FORM_STORE__PSEUD__NEWGRP01 -->
-							<q-row v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible">
-								<q-col
-									v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_STORE__STORE__CREATED_BY"
-										v-on="controls.FORM_STORE__STORE__CREATED_BY.handlers"
-										:loading="controls.FORM_STORE__STORE__CREATED_BY.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-text-field
-											v-bind="controls.FORM_STORE__STORE__CREATED_BY.props"
-											@blur="onBlur(controls.FORM_STORE__STORE__CREATED_BY, model.ValCreated_by.value)"
-											@change="model.ValCreated_by.fnUpdateValueOnChange" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<q-row v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible">
-								<q-col
-									v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_STORE__STORE__CREATED_AT"
-										v-on="controls.FORM_STORE__STORE__CREATED_AT.handlers"
-										:loading="controls.FORM_STORE__STORE__CREATED_AT.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-date-time-picker
-											v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
-											v-bind="controls.FORM_STORE__STORE__CREATED_AT.props"
-											:model-value="model.ValCreated_at.value"
-											@reset-icon-click="model.ValCreated_at.fnUpdateValue(model.ValCreated_at.originalValue ?? new Date())"
-											@update:model-value="model.ValCreated_at.fnUpdateValue($event ?? '')" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<q-row v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible">
-								<q-col
-									v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_STORE__STORE__UPDATED_BY"
-										v-on="controls.FORM_STORE__STORE__UPDATED_BY.handlers"
-										:loading="controls.FORM_STORE__STORE__UPDATED_BY.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-text-field
-											v-bind="controls.FORM_STORE__STORE__UPDATED_BY.props"
-											@blur="onBlur(controls.FORM_STORE__STORE__UPDATED_BY, model.ValUpdated_by.value)"
-											@change="model.ValUpdated_by.fnUpdateValueOnChange" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<q-row v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible">
-								<q-col
-									v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_STORE__STORE__UPDATED_AT"
-										v-on="controls.FORM_STORE__STORE__UPDATED_AT.handlers"
-										:loading="controls.FORM_STORE__STORE__UPDATED_AT.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-date-time-picker
-											v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
-											v-bind="controls.FORM_STORE__STORE__UPDATED_AT.props"
-											:model-value="model.ValUpdated_at.value"
-											@reset-icon-click="model.ValUpdated_at.fnUpdateValue(model.ValUpdated_at.originalValue ?? new Date())"
-											@update:model-value="model.ValUpdated_at.fnUpdateValue($event ?? '')" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<!-- End FORM_STORE__PSEUD__NEWGRP01 -->
-						</q-group-collapsible>
-					</q-col>
-				</q-row>
 				<q-row v-if="controls.FORM_STORE__PSEUD__NEWGRP02.isVisible">
 					<q-col v-if="controls.FORM_STORE__PSEUD__NEWGRP02.isVisible">
 						<q-group-box-container
@@ -314,6 +222,117 @@
 							</q-row>
 							<!-- End FORM_STORE__PSEUD__NEWGRP02 -->
 						</q-group-box-container>
+					</q-col>
+				</q-row>
+				<q-row v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible">
+					<q-col v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible">
+						<q-group-collapsible
+							v-if="controls.FORM_STORE__PSEUD__NEWGRP01.isVisible"
+							id="FORM_STORE__PSEUD__NEWGRP01"
+							v-bind="controls.FORM_STORE__PSEUD__NEWGRP01"
+							v-on="controls.FORM_STORE__PSEUD__NEWGRP01.handlers">
+							<!-- Start FORM_STORE__PSEUD__NEWGRP01 -->
+							<q-row v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible">
+								<q-col
+									v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_STORE__STORE__CREATED_BY.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_STORE__STORE__CREATED_BY"
+										v-on="controls.FORM_STORE__STORE__CREATED_BY.handlers"
+										:loading="controls.FORM_STORE__STORE__CREATED_BY.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_STORE__STORE__CREATED_BY.props"
+											@blur="onBlur(controls.FORM_STORE__STORE__CREATED_BY, model.ValCreated_by.value)"
+											@change="model.ValCreated_by.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible">
+								<q-col
+									v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_STORE__STORE__CREATED_AT"
+										v-on="controls.FORM_STORE__STORE__CREATED_AT.handlers"
+										:loading="controls.FORM_STORE__STORE__CREATED_AT.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-date-time-picker
+											v-if="controls.FORM_STORE__STORE__CREATED_AT.isVisible"
+											v-bind="controls.FORM_STORE__STORE__CREATED_AT.props"
+											:model-value="model.ValCreated_at.value"
+											@reset-icon-click="model.ValCreated_at.fnUpdateValue(model.ValCreated_at.originalValue ?? new Date())"
+											@update:model-value="model.ValCreated_at.fnUpdateValue($event ?? '')" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible">
+								<q-col
+									v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_STORE__STORE__UPDATED_BY.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_STORE__STORE__UPDATED_BY"
+										v-on="controls.FORM_STORE__STORE__UPDATED_BY.handlers"
+										:loading="controls.FORM_STORE__STORE__UPDATED_BY.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_STORE__STORE__UPDATED_BY.props"
+											@blur="onBlur(controls.FORM_STORE__STORE__UPDATED_BY, model.ValUpdated_by.value)"
+											@change="model.ValUpdated_by.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible">
+								<q-col
+									v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_STORE__STORE__UPDATED_AT"
+										v-on="controls.FORM_STORE__STORE__UPDATED_AT.handlers"
+										:loading="controls.FORM_STORE__STORE__UPDATED_AT.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-date-time-picker
+											v-if="controls.FORM_STORE__STORE__UPDATED_AT.isVisible"
+											v-bind="controls.FORM_STORE__STORE__UPDATED_AT.props"
+											:model-value="model.ValUpdated_at.value"
+											@reset-icon-click="model.ValUpdated_at.fnUpdateValue(model.ValUpdated_at.originalValue ?? new Date())"
+											@update:model-value="model.ValUpdated_at.fnUpdateValue($event ?? '')" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_STORE__PERSON__NAME.isVisible">
+								<q-col
+									v-if="controls.FORM_STORE__PERSON__NAME.isVisible"
+									cols="auto">
+									<base-input-structure
+										v-if="controls.FORM_STORE__PERSON__NAME.isVisible"
+										class="i-text"
+										v-bind="controls.FORM_STORE__PERSON__NAME"
+										v-on="controls.FORM_STORE__PERSON__NAME.handlers"
+										:loading="controls.FORM_STORE__PERSON__NAME.props.loading"
+										:reporting-mode-on="reportingModeCAV"
+										:suggestion-mode-on="suggestionModeOn">
+										<q-text-field
+											v-bind="controls.FORM_STORE__PERSON__NAME.props"
+											@blur="onBlur(controls.FORM_STORE__PERSON__NAME, model.PersonValName.value)"
+											@change="model.PersonValName.fnUpdateValueOnChange" />
+									</base-input-structure>
+								</q-col>
+							</q-row>
+							<!-- End FORM_STORE__PSEUD__NEWGRP01 -->
+						</q-group-collapsible>
 					</q-col>
 				</q-row>
 			</template>
@@ -663,79 +682,6 @@
 				},
 
 				controls: {
-					FORM_STORE__PSEUD__NEWGRP01: new fieldControlClass.GroupControl({
-						id: 'FORM_STORE__PSEUD__NEWGRP01',
-						name: 'NEWGRP01',
-						size: 'block',
-						label: computed(() => this.Resources.METADATA52342),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						startsExpanded: false,
-						isCollapsible: true,
-						anchored: false,
-						directChildren: ['FORM_STORE__STORE__CREATED_BY', 'FORM_STORE__STORE__CREATED_AT', 'FORM_STORE__STORE__UPDATED_BY', 'FORM_STORE__STORE__UPDATED_AT'],
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_STORE__STORE__CREATED_BY: new fieldControlClass.StringControl({
-						modelField: 'ValCreated_by',
-						valueChangeEvent: 'fieldChange:store.created_by',
-						id: 'FORM_STORE__STORE__CREATED_BY',
-						name: 'CREATED_BY',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.CREATED_BY12292),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_STORE__PSEUD__NEWGRP01',
-						maxLength: 100,
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_STORE__STORE__CREATED_AT: new fieldControlClass.DateControl({
-						modelField: 'ValCreated_at',
-						valueChangeEvent: 'fieldChange:store.created_at',
-						id: 'FORM_STORE__STORE__CREATED_AT',
-						name: 'CREATED_AT',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.CREATED_AT29089),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_STORE__PSEUD__NEWGRP01',
-						dateTimeType: 'date',
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_STORE__STORE__UPDATED_BY: new fieldControlClass.StringControl({
-						modelField: 'ValUpdated_by',
-						valueChangeEvent: 'fieldChange:store.updated_by',
-						id: 'FORM_STORE__STORE__UPDATED_BY',
-						name: 'UPDATED_BY',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.UPDATED_BY17808),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_STORE__PSEUD__NEWGRP01',
-						maxLength: 100,
-						controlLimits: [
-						],
-					}, this),
-					FORM_STORE__STORE__UPDATED_AT: new fieldControlClass.DateControl({
-						modelField: 'ValUpdated_at',
-						valueChangeEvent: 'fieldChange:store.updated_at',
-						id: 'FORM_STORE__STORE__UPDATED_AT',
-						name: 'UPDATED_AT',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.UPDATED_AT48366),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_STORE__PSEUD__NEWGRP01',
-						dateTimeType: 'date',
-						controlLimits: [
-						],
-					}, this),
 					FORM_STORE__PSEUD__NEWGRP02: new fieldControlClass.GroupControl({
 						id: 'FORM_STORE__PSEUD__NEWGRP02',
 						name: 'NEWGRP02',
@@ -857,6 +803,95 @@
 						controlLimits: [
 						],
 					}, this),
+					FORM_STORE__PSEUD__NEWGRP01: new fieldControlClass.GroupControl({
+						id: 'FORM_STORE__PSEUD__NEWGRP01',
+						name: 'NEWGRP01',
+						size: 'block',
+						label: computed(() => this.Resources.METADATA52342),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						startsExpanded: false,
+						isCollapsible: true,
+						anchored: false,
+						directChildren: ['FORM_STORE__STORE__CREATED_BY', 'FORM_STORE__STORE__CREATED_AT', 'FORM_STORE__STORE__UPDATED_BY', 'FORM_STORE__STORE__UPDATED_AT', 'FORM_STORE__PERSON__NAME'],
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_STORE__STORE__CREATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValCreated_by',
+						valueChangeEvent: 'fieldChange:store.created_by',
+						id: 'FORM_STORE__STORE__CREATED_BY',
+						name: 'CREATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_BY12292),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_STORE__PSEUD__NEWGRP01',
+						maxLength: 100,
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_STORE__STORE__CREATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValCreated_at',
+						valueChangeEvent: 'fieldChange:store.created_at',
+						id: 'FORM_STORE__STORE__CREATED_AT',
+						name: 'CREATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_AT29089),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_STORE__PSEUD__NEWGRP01',
+						dateTimeType: 'date',
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_STORE__STORE__UPDATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValUpdated_by',
+						valueChangeEvent: 'fieldChange:store.updated_by',
+						id: 'FORM_STORE__STORE__UPDATED_BY',
+						name: 'UPDATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_BY17808),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_STORE__PSEUD__NEWGRP01',
+						maxLength: 100,
+						controlLimits: [
+						],
+					}, this),
+					FORM_STORE__STORE__UPDATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValUpdated_at',
+						valueChangeEvent: 'fieldChange:store.updated_at',
+						id: 'FORM_STORE__STORE__UPDATED_AT',
+						name: 'UPDATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_AT48366),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_STORE__PSEUD__NEWGRP01',
+						dateTimeType: 'date',
+						controlLimits: [
+						],
+					}, this),
+					FORM_STORE__PERSON__NAME: new fieldControlClass.StringControl({
+						modelField: 'PersonValName',
+						valueChangeEvent: 'fieldChange:person.name',
+						dependentModelField: 'ValCodperson',
+						dependentChangeEvent: 'fieldChange:store.codperson',
+						id: 'FORM_STORE__PERSON__NAME',
+						name: 'NAME',
+						size: 'xlarge',
+						label: computed(() => this.Resources.ASSIGNED_TO26333),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_STORE__PSEUD__NEWGRP01',
+						maxLength: 50,
+						controlLimits: [
+						],
+					}, this),
 				},
 
 				model: new FormViewModel(this, {
@@ -867,8 +902,8 @@
 				}),
 
 				groupFields: readonly([
-					'FORM_STORE__PSEUD__NEWGRP01',
 					'FORM_STORE__PSEUD__NEWGRP02',
+					'FORM_STORE__PSEUD__NEWGRP01',
 				]),
 
 				tableFields: readonly([
@@ -884,6 +919,10 @@
 					Country: {
 						get ValName() { return vm.model.TableCountryName.value },
 						set ValName(value) { vm.model.TableCountryName.updateValue(value) },
+					},
+					Person: {
+						get ValName() { return vm.model.PersonValName.value },
+						set ValName(value) { vm.model.PersonValName.updateValue(value) },
 					},
 					Store: {
 						get ValCodperson() { return vm.model.ValCodperson.value },

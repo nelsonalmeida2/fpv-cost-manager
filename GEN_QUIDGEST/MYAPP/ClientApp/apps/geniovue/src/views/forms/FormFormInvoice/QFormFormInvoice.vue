@@ -96,6 +96,224 @@
 			data-key="FORM_INVOICE"
 			:data-loading="!formInitialDataLoaded || !isActiveForm">
 			<template v-if="formControl.initialized && showFormBody">
+				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+						<q-group-box-container
+							v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible"
+							id="FORM_INVOICE__PSEUD__NEWGRP04"
+							v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP04"
+							:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
+							<!-- Start FORM_INVOICE__PSEUD__NEWGRP04 -->
+							<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
+								<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
+									<q-group-box-container
+										v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible"
+										id="FORM_INVOICE__PSEUD__NEWGRP02"
+										v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP02"
+										:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
+										<!-- Start FORM_INVOICE__PSEUD__NEWGRP02 -->
+										<q-row v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible || controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE"
+													v-on="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-text-field
+														v-bind="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.props"
+														@blur="onBlur(controls.FORM_INVOICE__INVOICE__CODINVOICESTORE, model.ValCodinvoicestore.value)"
+														@change="model.ValCodinvoicestore.fnUpdateValueOnChange" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__RECEIPT"
+													v-on="controls.FORM_INVOICE__INVOICE__RECEIPT.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__RECEIPT.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-document
+														v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__RECEIPT.props"
+														v-on="controls.FORM_INVOICE__INVOICE__RECEIPT.handlers" />
+												</base-input-structure>
+											</q-col>
+										</q-row>
+										<q-row v-if="controls.FORM_INVOICE__STORE__NAME.isVisible || controls.FORM_INVOICE__INVOICE__DATE.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__STORE__NAME"
+													v-on="controls.FORM_INVOICE__STORE__NAME.handlers"
+													:loading="controls.FORM_INVOICE__STORE__NAME.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-lookup
+														v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
+														v-bind="controls.FORM_INVOICE__STORE__NAME.props"
+														v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
+													<q-see-more-form-invoice-store-name
+														v-if="controls.FORM_INVOICE__STORE__NAME.seeMoreIsVisible"
+														v-bind="controls.FORM_INVOICE__STORE__NAME.seeMoreParams"
+														v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__DATE"
+													v-on="controls.FORM_INVOICE__INVOICE__DATE.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__DATE.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-date-time-picker
+														v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__DATE.props"
+														:model-value="model.ValDate.value"
+														@reset-icon-click="model.ValDate.fnUpdateValue(model.ValDate.originalValue ?? new Date())"
+														@update:model-value="model.ValDate.fnUpdateValue($event ?? '')" />
+												</base-input-structure>
+											</q-col>
+										</q-row>
+										<!-- End FORM_INVOICE__PSEUD__NEWGRP02 -->
+									</q-group-box-container>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
+								<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
+									<q-group-box-container
+										v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible"
+										id="FORM_INVOICE__PSEUD__NEWGRP03"
+										v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP03"
+										:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
+										<!-- Start FORM_INVOICE__PSEUD__NEWGRP03 -->
+										<q-row v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible || controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible || controls.FORM_INVOICE__INVOICE__TAXES.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__PRICE"
+													v-on="controls.FORM_INVOICE__INVOICE__PRICE.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__PRICE.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__PRICE.props"
+														@update:model-value="model.ValPrice.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST"
+													v-on="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props"
+														@update:model-value="model.ValShippingcost.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__TAXES"
+													v-on="controls.FORM_INVOICE__INVOICE__TAXES.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__TAXES.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__TAXES.props"
+														@update:model-value="model.ValTaxes.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+										</q-row>
+										<q-row v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible || controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS"
+													v-on="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.props"
+														@update:model-value="model.ValNumberofitems.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE"
+													v-on="controls.FORM_INVOICE__INVOICE__TOTALPRICE.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props"
+														@update:model-value="model.ValTotalprice.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+										</q-row>
+										<!-- End FORM_INVOICE__PSEUD__NEWGRP03 -->
+									</q-group-box-container>
+								</q-col>
+							</q-row>
+							<q-row v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
+								<q-col v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
+									<q-table
+										v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible"
+										v-bind="controls.FORM_INVOICE__PSEUD__FIELD001"
+										v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers">
+										<template #header>
+											<q-table-config
+												:table-ctrl="controls.FORM_INVOICE__PSEUD__FIELD001"
+												v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers" />
+										</template>
+										<!-- USE /[MANUAL FPV CUSTOM_TABLE FORM_INVOICE__PSEUD__FIELD001]/ -->
+									</q-table>
+								</q-col>
+							</q-row>
+							<!-- End FORM_INVOICE__PSEUD__NEWGRP04 -->
+						</q-group-box-container>
+					</q-col>
+				</q-row>
 				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP01.isVisible">
 					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP01.isVisible">
 						<q-group-collapsible
@@ -184,226 +402,27 @@
 									</base-input-structure>
 								</q-col>
 							</q-row>
-							<!-- End FORM_INVOICE__PSEUD__NEWGRP01 -->
-						</q-group-collapsible>
-					</q-col>
-				</q-row>
-				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
-					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
-						<q-group-box-container
-							v-if="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible"
-							id="FORM_INVOICE__PSEUD__NEWGRP02"
-							v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP02"
-							:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP02.isVisible">
-							<!-- Start FORM_INVOICE__PSEUD__NEWGRP02 -->
-							<q-row v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible || controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible">
+							<q-row v-if="controls.FORM_INVOICE__PERSON__NAME.isVisible">
 								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible"
+									v-if="controls.FORM_INVOICE__PERSON__NAME.isVisible"
 									cols="auto">
 									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.isVisible"
+										v-if="controls.FORM_INVOICE__PERSON__NAME.isVisible"
 										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE"
-										v-on="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.props.loading"
+										v-bind="controls.FORM_INVOICE__PERSON__NAME"
+										v-on="controls.FORM_INVOICE__PERSON__NAME.handlers"
+										:loading="controls.FORM_INVOICE__PERSON__NAME.props.loading"
 										:reporting-mode-on="reportingModeCAV"
 										:suggestion-mode-on="suggestionModeOn">
 										<q-text-field
-											v-bind="controls.FORM_INVOICE__INVOICE__CODINVOICESTORE.props"
-											@blur="onBlur(controls.FORM_INVOICE__INVOICE__CODINVOICESTORE, model.ValCodinvoicestore.value)"
-											@change="model.ValCodinvoicestore.fnUpdateValueOnChange" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__RECEIPT"
-										v-on="controls.FORM_INVOICE__INVOICE__RECEIPT.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__RECEIPT.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-document
-											v-if="controls.FORM_INVOICE__INVOICE__RECEIPT.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__RECEIPT.props"
-											v-on="controls.FORM_INVOICE__INVOICE__RECEIPT.handlers" />
+											v-bind="controls.FORM_INVOICE__PERSON__NAME.props"
+											@blur="onBlur(controls.FORM_INVOICE__PERSON__NAME, model.PersonValName.value)"
+											@change="model.PersonValName.fnUpdateValueOnChange" />
 									</base-input-structure>
 								</q-col>
 							</q-row>
-							<q-row v-if="controls.FORM_INVOICE__STORE__NAME.isVisible || controls.FORM_INVOICE__INVOICE__DATE.isVisible">
-								<q-col
-									v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__STORE__NAME"
-										v-on="controls.FORM_INVOICE__STORE__NAME.handlers"
-										:loading="controls.FORM_INVOICE__STORE__NAME.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-lookup
-											v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
-											v-bind="controls.FORM_INVOICE__STORE__NAME.props"
-											v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
-										<q-see-more-form-invoice-store-name
-											v-if="controls.FORM_INVOICE__STORE__NAME.seeMoreIsVisible"
-											v-bind="controls.FORM_INVOICE__STORE__NAME.seeMoreParams"
-											v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__DATE"
-										v-on="controls.FORM_INVOICE__INVOICE__DATE.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__DATE.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-date-time-picker
-											v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__DATE.props"
-											:model-value="model.ValDate.value"
-											@reset-icon-click="model.ValDate.fnUpdateValue(model.ValDate.originalValue ?? new Date())"
-											@update:model-value="model.ValDate.fnUpdateValue($event ?? '')" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<!-- End FORM_INVOICE__PSEUD__NEWGRP02 -->
-						</q-group-box-container>
-					</q-col>
-				</q-row>
-				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
-					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
-						<q-group-box-container
-							v-if="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible"
-							id="FORM_INVOICE__PSEUD__NEWGRP03"
-							v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP03"
-							:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
-							<!-- Start FORM_INVOICE__PSEUD__NEWGRP03 -->
-							<q-row v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible || controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible || controls.FORM_INVOICE__INVOICE__TAXES.isVisible">
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__PRICE"
-										v-on="controls.FORM_INVOICE__INVOICE__PRICE.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__PRICE.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__PRICE.props"
-											@update:model-value="model.ValPrice.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST"
-										v-on="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props"
-											@update:model-value="model.ValShippingcost.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__TAXES"
-										v-on="controls.FORM_INVOICE__INVOICE__TAXES.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__TAXES.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__TAXES.props"
-											@update:model-value="model.ValTaxes.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<q-row v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible || controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible">
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS"
-										v-on="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__NUMBEROFITEMS.props"
-											@update:model-value="model.ValNumberofitems.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
-								<q-col
-									v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-									cols="auto">
-									<base-input-structure
-										v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-										class="i-text"
-										v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE"
-										v-on="controls.FORM_INVOICE__INVOICE__TOTALPRICE.handlers"
-										:loading="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props.loading"
-										:reporting-mode-on="reportingModeCAV"
-										:suggestion-mode-on="suggestionModeOn">
-										<q-numeric-input
-											v-if="controls.FORM_INVOICE__INVOICE__TOTALPRICE.isVisible"
-											v-bind="controls.FORM_INVOICE__INVOICE__TOTALPRICE.props"
-											@update:model-value="model.ValTotalprice.fnUpdateValue" />
-									</base-input-structure>
-								</q-col>
-							</q-row>
-							<!-- End FORM_INVOICE__PSEUD__NEWGRP03 -->
-						</q-group-box-container>
-					</q-col>
-				</q-row>
-				<q-row v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
-					<q-col v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
-						<q-group-box-container
-							v-if="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible"
-							id="FORM_INVOICE__PSEUD__NEWGRP04"
-							v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP04"
-							:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP04.isVisible">
-							<!-- Start FORM_INVOICE__PSEUD__NEWGRP04 -->
-							<q-row v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
-								<q-col v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible">
-									<q-table
-										v-if="controls.FORM_INVOICE__PSEUD__FIELD001.isVisible"
-										v-bind="controls.FORM_INVOICE__PSEUD__FIELD001"
-										v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers">
-										<template #header>
-											<q-table-config
-												:table-ctrl="controls.FORM_INVOICE__PSEUD__FIELD001"
-												v-on="controls.FORM_INVOICE__PSEUD__FIELD001.handlers" />
-										</template>
-										<!-- USE /[MANUAL FPV CUSTOM_TABLE FORM_INVOICE__PSEUD__FIELD001]/ -->
-									</q-table>
-								</q-col>
-							</q-row>
-							<!-- End FORM_INVOICE__PSEUD__NEWGRP04 -->
-						</q-group-box-container>
+							<!-- End FORM_INVOICE__PSEUD__NEWGRP01 -->
+						</q-group-collapsible>
 					</q-col>
 				</q-row>
 			</template>
@@ -753,76 +772,17 @@
 				},
 
 				controls: {
-					FORM_INVOICE__PSEUD__NEWGRP01: new fieldControlClass.GroupControl({
-						id: 'FORM_INVOICE__PSEUD__NEWGRP01',
-						name: 'NEWGRP01',
+					FORM_INVOICE__PSEUD__NEWGRP04: new fieldControlClass.GroupControl({
+						id: 'FORM_INVOICE__PSEUD__NEWGRP04',
+						name: 'NEWGRP04',
 						size: 'block',
-						label: computed(() => this.Resources.METADATA52342),
+						label: computed(() => this.Resources.INVOICE63068),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
-						startsExpanded: false,
-						isCollapsible: true,
+						isCollapsible: false,
 						anchored: false,
-						directChildren: ['FORM_INVOICE__INVOICE__CREATED_BY', 'FORM_INVOICE__INVOICE__CREATED_AT', 'FORM_INVOICE__INVOICE__UPDATED_BY', 'FORM_INVOICE__INVOICE__UPDATED_AT'],
+						directChildren: ['FORM_INVOICE__PSEUD__NEWGRP02', 'FORM_INVOICE__PSEUD__NEWGRP03', 'FORM_INVOICE__PSEUD__FIELD001'],
 						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_INVOICE__INVOICE__CREATED_BY: new fieldControlClass.StringControl({
-						modelField: 'ValCreated_by',
-						valueChangeEvent: 'fieldChange:invoice.created_by',
-						id: 'FORM_INVOICE__INVOICE__CREATED_BY',
-						name: 'CREATED_BY',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.CREATED_BY12292),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
-						maxLength: 100,
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_INVOICE__INVOICE__CREATED_AT: new fieldControlClass.DateControl({
-						modelField: 'ValCreated_at',
-						valueChangeEvent: 'fieldChange:invoice.created_at',
-						id: 'FORM_INVOICE__INVOICE__CREATED_AT',
-						name: 'CREATED_AT',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.CREATED_AT29089),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
-						dateTimeType: 'date',
-						mustBeFilled: true,
-						controlLimits: [
-						],
-					}, this),
-					FORM_INVOICE__INVOICE__UPDATED_BY: new fieldControlClass.StringControl({
-						modelField: 'ValUpdated_by',
-						valueChangeEvent: 'fieldChange:invoice.updated_by',
-						id: 'FORM_INVOICE__INVOICE__UPDATED_BY',
-						name: 'UPDATED_BY',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.UPDATED_BY17808),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
-						maxLength: 100,
-						controlLimits: [
-						],
-					}, this),
-					FORM_INVOICE__INVOICE__UPDATED_AT: new fieldControlClass.DateControl({
-						modelField: 'ValUpdated_at',
-						valueChangeEvent: 'fieldChange:invoice.updated_at',
-						id: 'FORM_INVOICE__INVOICE__UPDATED_AT',
-						name: 'UPDATED_AT',
-						size: 'xxlarge',
-						label: computed(() => this.Resources.UPDATED_AT48366),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
-						dateTimeType: 'date',
 						controlLimits: [
 						],
 					}, this),
@@ -833,6 +793,7 @@
 						label: computed(() => this.Resources.PURCHASE_DETAILS40558),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
 						isCollapsible: false,
 						anchored: false,
 						directChildren: ['FORM_INVOICE__INVOICE__CODINVOICESTORE', 'FORM_INVOICE__INVOICE__RECEIPT', 'FORM_INVOICE__STORE__NAME', 'FORM_INVOICE__INVOICE__DATE'],
@@ -897,9 +858,18 @@
 						dependentFields: () => ({
 							set 'store.codstore'(value) { vm.model.ValStore.updateValue(value) },
 							set 'store.name'(value) { vm.model.TableStoreName.updateValue(value) },
+							set 'invoice.codperson'(value) { vm.model.ValCodperson.updateValue(value) },
+							set 'person.codperson'(value) { vm.model.ValCodperson.updateValue(value) },
+							set 'person.name'(value) { vm.model.PersonValName.updateValue(value) },
 						}),
 						mustBeFilled: true,
 						controlLimits: [
+							{
+								identifier: ['person', 'invoice.codperson'],
+								dependencyEvents: ['fieldChange:invoice.codperson'],
+								dependencyField: 'INVOICE.CODPERSON',
+								fnValueSelector: (model) => model.ValCodperson.value
+							},
 						],
 					}, this),
 					FORM_INVOICE__INVOICE__DATE: new fieldControlClass.DateControl({
@@ -924,6 +894,7 @@
 						label: computed(() => this.Resources.COST_BREAKDOWN51129),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
 						isCollapsible: false,
 						anchored: false,
 						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS', 'FORM_INVOICE__INVOICE__TOTALPRICE'],
@@ -1008,24 +979,11 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__PSEUD__NEWGRP04: new fieldControlClass.GroupControl({
-						id: 'FORM_INVOICE__PSEUD__NEWGRP04',
-						name: 'NEWGRP04',
-						size: 'block',
-						label: computed(() => this.Resources.ITEMS55321),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						isCollapsible: false,
-						anchored: false,
-						directChildren: ['FORM_INVOICE__PSEUD__FIELD001'],
-						controlLimits: [
-						],
-					}, this),
 					FORM_INVOICE__PSEUD__FIELD001: new fieldControlClass.TableListControl({
 						id: 'FORM_INVOICE__PSEUD__FIELD001',
 						name: 'FIELD001',
 						size: 'block',
-						label: '',
+						label: computed(() => this.Resources.ITEMS24549),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
@@ -1086,6 +1044,7 @@
 							tableNamePlural: computed(() => this.Resources.ITEMS55321),
 							viewManagement: '',
 							showLimitsInfo: true,
+							tableTitle: computed(() => this.Resources.ITEMS24549),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -1232,6 +1191,95 @@
 							},
 						],
 					}, this),
+					FORM_INVOICE__PSEUD__NEWGRP01: new fieldControlClass.GroupControl({
+						id: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						name: 'NEWGRP01',
+						size: 'block',
+						label: computed(() => this.Resources.METADATA52342),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						startsExpanded: false,
+						isCollapsible: true,
+						anchored: false,
+						directChildren: ['FORM_INVOICE__INVOICE__CREATED_BY', 'FORM_INVOICE__INVOICE__CREATED_AT', 'FORM_INVOICE__INVOICE__UPDATED_BY', 'FORM_INVOICE__INVOICE__UPDATED_AT', 'FORM_INVOICE__PERSON__NAME'],
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__INVOICE__CREATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValCreated_by',
+						valueChangeEvent: 'fieldChange:invoice.created_by',
+						id: 'FORM_INVOICE__INVOICE__CREATED_BY',
+						name: 'CREATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_BY12292),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						maxLength: 100,
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__INVOICE__CREATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValCreated_at',
+						valueChangeEvent: 'fieldChange:invoice.created_at',
+						id: 'FORM_INVOICE__INVOICE__CREATED_AT',
+						name: 'CREATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.CREATED_AT29089),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						dateTimeType: 'date',
+						mustBeFilled: true,
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__INVOICE__UPDATED_BY: new fieldControlClass.StringControl({
+						modelField: 'ValUpdated_by',
+						valueChangeEvent: 'fieldChange:invoice.updated_by',
+						id: 'FORM_INVOICE__INVOICE__UPDATED_BY',
+						name: 'UPDATED_BY',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_BY17808),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						maxLength: 100,
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__INVOICE__UPDATED_AT: new fieldControlClass.DateControl({
+						modelField: 'ValUpdated_at',
+						valueChangeEvent: 'fieldChange:invoice.updated_at',
+						id: 'FORM_INVOICE__INVOICE__UPDATED_AT',
+						name: 'UPDATED_AT',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.UPDATED_AT48366),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						dateTimeType: 'date',
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__PERSON__NAME: new fieldControlClass.StringControl({
+						modelField: 'PersonValName',
+						valueChangeEvent: 'fieldChange:person.name',
+						dependentModelField: 'ValCodperson',
+						dependentChangeEvent: 'fieldChange:invoice.codperson',
+						id: 'FORM_INVOICE__PERSON__NAME',
+						name: 'NAME',
+						size: 'xxlarge',
+						label: computed(() => this.Resources.ASSIGNED_TO26333),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
+						maxLength: 50,
+						controlLimits: [
+						],
+					}, this),
 				},
 
 				model: new FormViewModel(this, {
@@ -1242,10 +1290,10 @@
 				}),
 
 				groupFields: readonly([
-					'FORM_INVOICE__PSEUD__NEWGRP01',
+					'FORM_INVOICE__PSEUD__NEWGRP04',
 					'FORM_INVOICE__PSEUD__NEWGRP02',
 					'FORM_INVOICE__PSEUD__NEWGRP03',
-					'FORM_INVOICE__PSEUD__NEWGRP04',
+					'FORM_INVOICE__PSEUD__NEWGRP01',
 				]),
 
 				tableFields: readonly([
@@ -1290,8 +1338,8 @@
 						set ValUpdated_by(value) { vm.model.ValUpdated_by.updateValue(value) },
 					},
 					Person: {
-						get ValName() { return vm.model.TablePersonName.value },
-						set ValName(value) { vm.model.TablePersonName.updateValue(value) },
+						get ValName() { return vm.model.PersonValName.value },
+						set ValName(value) { vm.model.PersonValName.updateValue(value) },
 					},
 					Store: {
 						get ValName() { return vm.model.TableStoreName.value },

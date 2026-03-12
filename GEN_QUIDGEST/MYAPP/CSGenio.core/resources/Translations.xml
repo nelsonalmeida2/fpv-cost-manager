@@ -75,6 +75,9 @@
   <msg id="Ruble" code="RUBLE07990">
     <ENUS>Ruble</ENUS>
   </msg>
+  <msg id="iTEMS" code="ITEMS24549">
+    <ENUS>iTEMS</ENUS>
+  </msg>
   <msg id="My application" code="MY_APPLICATION56216">
     <ENUS>My application</ENUS>
   </msg>
@@ -167,6 +170,9 @@
   </msg>
   <msg id="Catalogs" code="CATALOGS31485">
     <ENUS>Catalogs</ENUS>
+  </msg>
+  <msg id="Assigned to" code="ASSIGNED_TO26333">
+    <ENUS>Assigned to</ENUS>
   </msg>
   <msg id="Finished" code="FINISHED26993">
     <ENUS>Finished</ENUS>
@@ -284,6 +290,9 @@
   </msg>
   <msg id="Cost Breakdown" code="COST_BREAKDOWN51129">
     <ENUS>Cost Breakdown</ENUS>
+  </msg>
+  <msg id="Number" code="NUMBER35625">
+    <ENUS>Number</ENUS>
   </msg>
   <msg id="Country" code="COUNTRY64133">
     <ENUS>Country</ENUS>

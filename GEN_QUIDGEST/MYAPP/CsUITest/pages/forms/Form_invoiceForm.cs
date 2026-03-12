@@ -8,34 +8,9 @@ namespace quidgest.uitests.pages.forms;
 public class Form_invoiceForm : Form
 {
 	/// <summary>
-	/// METADATA
+	/// Invoice
 	/// </summary>
-	public CollapsibleZoneControl PseudNewgrp01 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP01-container");
-
-	/// <summary>
-	/// Created by
-	/// </summary>
-	public BaseInputControl InvoiceCreated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__CREATED_BY", "#FORM_INVOICE__INVOICE__CREATED_BY");
-
-	/// <summary>
-	/// Created at
-	/// </summary>
-	public BaseInputControl InvoiceCreated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__CREATED_AT", "#FORM_INVOICE__INVOICE__CREATED_AT");
-
-	/// <summary>
-	/// Updated by
-	/// </summary>
-	public BaseInputControl InvoiceUpdated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__UPDATED_BY", "#FORM_INVOICE__INVOICE__UPDATED_BY");
-
-	/// <summary>
-	/// Updated At
-	/// </summary>
-	public BaseInputControl InvoiceUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__UPDATED_AT", "#FORM_INVOICE__INVOICE__UPDATED_AT");
-
-	/// <summary>
-	/// Assigned To
-	/// </summary>
-	public BaseInputControl PersonName => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__PERSON__NAME", "#FORM_INVOICE__PERSON__NAME");
+	public CollapsibleZoneControl PseudNewgrp04 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP04-container");
 
 	/// <summary>
 	/// Purchase Details
@@ -94,14 +69,39 @@ public class Form_invoiceForm : Form
 	public BaseInputControl InvoiceTotalprice => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__TOTALPRICE", "#FORM_INVOICE__INVOICE__TOTALPRICE");
 
 	/// <summary>
-	/// Items
-	/// </summary>
-	public CollapsibleZoneControl PseudNewgrp04 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP04-container");
-
-	/// <summary>
-	/// 
+	/// iTEMS
 	/// </summary>
 	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__FIELD001");
+
+	/// <summary>
+	/// METADATA
+	/// </summary>
+	public CollapsibleZoneControl PseudNewgrp01 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_INVOICE__PSEUD__NEWGRP01-container");
+
+	/// <summary>
+	/// Created by
+	/// </summary>
+	public BaseInputControl InvoiceCreated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__CREATED_BY", "#FORM_INVOICE__INVOICE__CREATED_BY");
+
+	/// <summary>
+	/// Created at
+	/// </summary>
+	public BaseInputControl InvoiceCreated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__CREATED_AT", "#FORM_INVOICE__INVOICE__CREATED_AT");
+
+	/// <summary>
+	/// Updated by
+	/// </summary>
+	public BaseInputControl InvoiceUpdated_by => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__UPDATED_BY", "#FORM_INVOICE__INVOICE__UPDATED_BY");
+
+	/// <summary>
+	/// Updated At
+	/// </summary>
+	public BaseInputControl InvoiceUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__UPDATED_AT", "#FORM_INVOICE__INVOICE__UPDATED_AT");
+
+	/// <summary>
+	/// Assigned to
+	/// </summary>
+	public IWebElement PersonName => throw new NotImplementedException();
 
 	public Form_invoiceForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_INVOICE", containerLocator: containerLocator) { }

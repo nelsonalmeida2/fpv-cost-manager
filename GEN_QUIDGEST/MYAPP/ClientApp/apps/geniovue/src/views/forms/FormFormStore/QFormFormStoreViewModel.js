@@ -77,48 +77,6 @@ export default class ViewModel extends FormViewModelBase
 		this.stopWatchers.push(watch(() => this.ValCountry.value, (newValue, oldValue) => this.onUpdate('store.country', this.ValCountry, newValue, oldValue)))
 
 		/** The remaining form fields. */
-		this.ValCreated_by = reactive(new modelFieldType.String({
-			id: 'ValCreated_by',
-			originId: 'ValCreated_by',
-			area: 'STORE',
-			field: 'CREATED_BY',
-			maxLength: 100,
-			isFixed: true,
-			description: computed(() => this.Resources.CREATED_BY12292),
-		}).cloneFrom(values?.ValCreated_by))
-		this.stopWatchers.push(watch(() => this.ValCreated_by.value, (newValue, oldValue) => this.onUpdate('store.created_by', this.ValCreated_by, newValue, oldValue)))
-
-		this.ValCreated_at = reactive(new modelFieldType.Date({
-			id: 'ValCreated_at',
-			originId: 'ValCreated_at',
-			area: 'STORE',
-			field: 'CREATED_AT',
-			isFixed: true,
-			description: computed(() => this.Resources.CREATED_AT29089),
-		}).cloneFrom(values?.ValCreated_at))
-		this.stopWatchers.push(watch(() => this.ValCreated_at.value, (newValue, oldValue) => this.onUpdate('store.created_at', this.ValCreated_at, newValue, oldValue)))
-
-		this.ValUpdated_by = reactive(new modelFieldType.String({
-			id: 'ValUpdated_by',
-			originId: 'ValUpdated_by',
-			area: 'STORE',
-			field: 'UPDATED_BY',
-			maxLength: 100,
-			isFixed: true,
-			description: computed(() => this.Resources.UPDATED_BY17808),
-		}).cloneFrom(values?.ValUpdated_by))
-		this.stopWatchers.push(watch(() => this.ValUpdated_by.value, (newValue, oldValue) => this.onUpdate('store.updated_by', this.ValUpdated_by, newValue, oldValue)))
-
-		this.ValUpdated_at = reactive(new modelFieldType.Date({
-			id: 'ValUpdated_at',
-			originId: 'ValUpdated_at',
-			area: 'STORE',
-			field: 'UPDATED_AT',
-			isFixed: true,
-			description: computed(() => this.Resources.UPDATED_AT48366),
-		}).cloneFrom(values?.ValUpdated_at))
-		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('store.updated_at', this.ValUpdated_at, newValue, oldValue)))
-
 		this.ValLogotype = reactive(new modelFieldType.Image({
 			id: 'ValLogotype',
 			originId: 'ValLogotype',
@@ -180,6 +138,59 @@ export default class ViewModel extends FormViewModelBase
 			ignoreFldSubmit: true,
 		}).cloneFrom(values?.TableCountryName))
 		this.stopWatchers.push(watch(() => this.TableCountryName.value, (newValue, oldValue) => this.onUpdate('country.name', this.TableCountryName, newValue, oldValue)))
+
+		this.ValCreated_by = reactive(new modelFieldType.String({
+			id: 'ValCreated_by',
+			originId: 'ValCreated_by',
+			area: 'STORE',
+			field: 'CREATED_BY',
+			maxLength: 100,
+			isFixed: true,
+			description: computed(() => this.Resources.CREATED_BY12292),
+		}).cloneFrom(values?.ValCreated_by))
+		this.stopWatchers.push(watch(() => this.ValCreated_by.value, (newValue, oldValue) => this.onUpdate('store.created_by', this.ValCreated_by, newValue, oldValue)))
+
+		this.ValCreated_at = reactive(new modelFieldType.Date({
+			id: 'ValCreated_at',
+			originId: 'ValCreated_at',
+			area: 'STORE',
+			field: 'CREATED_AT',
+			isFixed: true,
+			description: computed(() => this.Resources.CREATED_AT29089),
+		}).cloneFrom(values?.ValCreated_at))
+		this.stopWatchers.push(watch(() => this.ValCreated_at.value, (newValue, oldValue) => this.onUpdate('store.created_at', this.ValCreated_at, newValue, oldValue)))
+
+		this.ValUpdated_by = reactive(new modelFieldType.String({
+			id: 'ValUpdated_by',
+			originId: 'ValUpdated_by',
+			area: 'STORE',
+			field: 'UPDATED_BY',
+			maxLength: 100,
+			isFixed: true,
+			description: computed(() => this.Resources.UPDATED_BY17808),
+		}).cloneFrom(values?.ValUpdated_by))
+		this.stopWatchers.push(watch(() => this.ValUpdated_by.value, (newValue, oldValue) => this.onUpdate('store.updated_by', this.ValUpdated_by, newValue, oldValue)))
+
+		this.ValUpdated_at = reactive(new modelFieldType.Date({
+			id: 'ValUpdated_at',
+			originId: 'ValUpdated_at',
+			area: 'STORE',
+			field: 'UPDATED_AT',
+			isFixed: true,
+			description: computed(() => this.Resources.UPDATED_AT48366),
+		}).cloneFrom(values?.ValUpdated_at))
+		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('store.updated_at', this.ValUpdated_at, newValue, oldValue)))
+
+		this.PersonValName = reactive(new modelFieldType.String({
+			id: 'PersonValName',
+			originId: 'ValName',
+			area: 'PERSON',
+			field: 'NAME',
+			maxLength: 50,
+			isFixed: true,
+			description: computed(() => this.Resources.NAME31974),
+		}).cloneFrom(values?.PersonValName))
+		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
 	}
 
 	/**

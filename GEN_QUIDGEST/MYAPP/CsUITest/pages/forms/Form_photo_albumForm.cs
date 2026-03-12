@@ -33,6 +33,11 @@ public class Form_photo_albumForm : PopupForm
 	public BaseInputControl PhotoalbumUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_AT", "#FORM_PHOTO_ALBUM__PHOTOALBUM__UPDATED_AT");
 
 	/// <summary>
+	/// Assigned to
+	/// </summary>
+	public IWebElement PersonName => throw new NotImplementedException();
+
+	/// <summary>
 	/// PHOTO DETAILS
 	/// </summary>
 	public CollapsibleZoneControl PseudNewgrp02 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_PHOTO_ALBUM__PSEUD__NEWGRP02-container");
@@ -50,8 +55,7 @@ public class Form_photo_albumForm : PopupForm
 	/// <summary>
 	/// Item
 	/// </summary>
-	public LookupControl ItemName => new LookupControl(driver, ContainerLocator, "container-FORM_PHOTO_ALBUM__ITEM__NAME");
-	public SeeMorePage ItemNameSeeMorePage => new SeeMorePage(driver, "FORM_PHOTO_ALBUM", "FORM_PHOTO_ALBUM__ITEM__NAME");
+	public BaseInputControl ItemName => new BaseInputControl(driver, ContainerLocator, "container-FORM_PHOTO_ALBUM__ITEM__NAME", "#FORM_PHOTO_ALBUM__ITEM__NAME");
 
 	public Form_photo_albumForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_PHOTO_ALBUM") { }

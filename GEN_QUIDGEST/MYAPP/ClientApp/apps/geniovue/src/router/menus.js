@@ -89,6 +89,76 @@ export default function getMenusRoutes()
 			}
 		},
 		{
+			path: '/:culture/:system/FPV/menu/FPV_41',
+			name: 'menu-FPV_41',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '41',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_51',
+			name: 'menu-FPV_51',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_51/QMenuFpv51.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '51',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_61',
+			name: 'menu-FPV_61',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_61/QMenuFpv61.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '61',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_71',
+			name: 'menu-FPV_71',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_71/QMenuFpv71.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '71',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
+			path: '/:culture/:system/FPV/menu/FPV_81',
+			name: 'menu-FPV_81',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_81/QMenuFpv81.vue'),
+			meta: {
+				routeType: 'menu',
+				module: 'FPV',
+				order: '81',
+				baseArea: 'PERSON',
+				hasInitialPHE: false,
+				humanKeyFields: ['ValName'],
+				isPopup: false
+			}
+		},
+		{
 			path: '/:culture/:system/FPV/menu/FPV_3111',
 			name: 'menu-FPV_3111',
 			component: () => import('@/views/menus/ModuleFPV/MenuFPV_3111/QMenuFpv3111.vue'),
@@ -105,16 +175,18 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_41',
-			name: 'menu-FPV_41',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_41/QMenuFpv41.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_411',
+			name: 'menu-FPV_411',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_411/QMenuFpv411.vue'),
+			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '41',
+				order: '411',
 				baseArea: 'INVOICE',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValCodinvoicestore'],
+				limitations: ['person' /* DB */],
 				isPopup: false
 			}
 		},
@@ -163,16 +235,18 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_61',
-			name: 'menu-FPV_61',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_61/QMenuFpv61.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_611',
+			name: 'menu-FPV_611',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_611/QMenuFpv611.vue'),
+			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '61',
+				order: '611',
 				baseArea: 'STORE',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
+				limitations: ['person' /* DB */],
 				isPopup: false
 			}
 		},
@@ -193,16 +267,18 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_81',
-			name: 'menu-FPV_81',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_81/QMenuFpv81.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_811',
+			name: 'menu-FPV_811',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_811/QMenuFpv811.vue'),
+			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '81',
+				order: '811',
 				baseArea: 'PHOTOALBUM',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValTitle'],
+				limitations: ['person' /* DB */],
 				isPopup: false
 			}
 		},
@@ -237,16 +313,18 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_71',
-			name: 'menu-FPV_71',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_71/QMenuFpv71.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_711',
+			name: 'menu-FPV_711',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_711/QMenuFpv711.vue'),
+			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '71',
+				order: '711',
 				baseArea: 'BRAND',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
+				limitations: ['person' /* DB */],
 				isPopup: false
 			}
 		},
@@ -281,16 +359,18 @@ export default function getMenusRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/FPV/menu/FPV_51',
-			name: 'menu-FPV_51',
-			component: () => import('@/views/menus/ModuleFPV/MenuFPV_51/QMenuFpv51.vue'),
+			path: '/:culture/:system/FPV/menu/FPV_511',
+			name: 'menu-FPV_511',
+			component: () => import('@/views/menus/ModuleFPV/MenuFPV_511/QMenuFpv511.vue'),
+			beforeEnter: [updateQueryParams],
 			meta: {
 				routeType: 'menu',
 				module: 'FPV',
-				order: '51',
+				order: '511',
 				baseArea: 'ITEM',
 				hasInitialPHE: false,
 				humanKeyFields: ['ValName'],
+				limitations: ['person' /* DB */],
 				isPopup: false
 			}
 		},

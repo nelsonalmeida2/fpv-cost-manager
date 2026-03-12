@@ -77,6 +77,47 @@ export default class ViewModel extends FormViewModelBase
 		this.stopWatchers.push(watch(() => this.ValCountry.value, (newValue, oldValue) => this.onUpdate('brand.country', this.ValCountry, newValue, oldValue)))
 
 		/** The remaining form fields. */
+		this.ValLogotype = reactive(new modelFieldType.Image({
+			id: 'ValLogotype',
+			originId: 'ValLogotype',
+			area: 'BRAND',
+			field: 'LOGOTYPE',
+			description: computed(() => this.Resources.LOGOTYPE44505),
+		}).cloneFrom(values?.ValLogotype))
+		this.stopWatchers.push(watch(() => this.ValLogotype.value, (newValue, oldValue) => this.onUpdate('brand.logotype', this.ValLogotype, newValue, oldValue)))
+
+		this.ValName = reactive(new modelFieldType.String({
+			id: 'ValName',
+			originId: 'ValName',
+			area: 'BRAND',
+			field: 'NAME',
+			maxLength: 50,
+			description: computed(() => this.Resources.NAME31974),
+		}).cloneFrom(values?.ValName))
+		this.stopWatchers.push(watch(() => this.ValName.value, (newValue, oldValue) => this.onUpdate('brand.name', this.ValName, newValue, oldValue)))
+
+		this.ValDescription = reactive(new modelFieldType.String({
+			id: 'ValDescription',
+			originId: 'ValDescription',
+			area: 'BRAND',
+			field: 'DESCRIPTION',
+			maxLength: 255,
+			description: computed(() => this.Resources.DESCRIPTION07383),
+		}).cloneFrom(values?.ValDescription))
+		this.stopWatchers.push(watch(() => this.ValDescription.value, (newValue, oldValue) => this.onUpdate('brand.description', this.ValDescription, newValue, oldValue)))
+
+		this.TableCountryName = reactive(new modelFieldType.String({
+			type: 'Lookup',
+			id: 'TableCountryName',
+			originId: 'ValName',
+			area: 'COUNTRY',
+			field: 'NAME',
+			maxLength: 75,
+			description: computed(() => this.Resources.NAME31974),
+			ignoreFldSubmit: true,
+		}).cloneFrom(values?.TableCountryName))
+		this.stopWatchers.push(watch(() => this.TableCountryName.value, (newValue, oldValue) => this.onUpdate('country.name', this.TableCountryName, newValue, oldValue)))
+
 		this.ValCreated_by = reactive(new modelFieldType.String({
 			id: 'ValCreated_by',
 			originId: 'ValCreated_by',
@@ -119,46 +160,16 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValUpdated_at))
 		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('brand.updated_at', this.ValUpdated_at, newValue, oldValue)))
 
-		this.ValLogotype = reactive(new modelFieldType.Image({
-			id: 'ValLogotype',
-			originId: 'ValLogotype',
-			area: 'BRAND',
-			field: 'LOGOTYPE',
-			description: computed(() => this.Resources.LOGOTYPE44505),
-		}).cloneFrom(values?.ValLogotype))
-		this.stopWatchers.push(watch(() => this.ValLogotype.value, (newValue, oldValue) => this.onUpdate('brand.logotype', this.ValLogotype, newValue, oldValue)))
-
-		this.ValName = reactive(new modelFieldType.String({
-			id: 'ValName',
+		this.PersonValName = reactive(new modelFieldType.String({
+			id: 'PersonValName',
 			originId: 'ValName',
-			area: 'BRAND',
+			area: 'PERSON',
 			field: 'NAME',
 			maxLength: 50,
+			isFixed: true,
 			description: computed(() => this.Resources.NAME31974),
-		}).cloneFrom(values?.ValName))
-		this.stopWatchers.push(watch(() => this.ValName.value, (newValue, oldValue) => this.onUpdate('brand.name', this.ValName, newValue, oldValue)))
-
-		this.ValDescription = reactive(new modelFieldType.String({
-			id: 'ValDescription',
-			originId: 'ValDescription',
-			area: 'BRAND',
-			field: 'DESCRIPTION',
-			maxLength: 255,
-			description: computed(() => this.Resources.DESCRIPTION07383),
-		}).cloneFrom(values?.ValDescription))
-		this.stopWatchers.push(watch(() => this.ValDescription.value, (newValue, oldValue) => this.onUpdate('brand.description', this.ValDescription, newValue, oldValue)))
-
-		this.TableCountryName = reactive(new modelFieldType.String({
-			type: 'Lookup',
-			id: 'TableCountryName',
-			originId: 'ValName',
-			area: 'COUNTRY',
-			field: 'NAME',
-			maxLength: 75,
-			description: computed(() => this.Resources.NAME31974),
-			ignoreFldSubmit: true,
-		}).cloneFrom(values?.TableCountryName))
-		this.stopWatchers.push(watch(() => this.TableCountryName.value, (newValue, oldValue) => this.onUpdate('country.name', this.TableCountryName, newValue, oldValue)))
+		}).cloneFrom(values?.PersonValName))
+		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
 	}
 
 	/**

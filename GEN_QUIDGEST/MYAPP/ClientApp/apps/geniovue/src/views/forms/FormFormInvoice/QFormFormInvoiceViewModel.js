@@ -53,17 +53,19 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValCodinvoice))
 		this.stopWatchers.push(watch(() => this.ValCodinvoice.value, (newValue, oldValue) => this.onUpdate('invoice.codinvoice', this.ValCodinvoice, newValue, oldValue)))
 
-		/** The used foreign keys. */
+		/** The hidden foreign keys. */
 		this.ValCodperson = reactive(new modelFieldType.ForeignKey({
 			id: 'ValCodperson',
 			originId: 'ValCodperson',
 			area: 'INVOICE',
 			field: 'CODPERSON',
 			relatedArea: 'PERSON',
+			isFixed: true,
 			description: computed(() => this.Resources.CODPERSON27649),
 		}).cloneFrom(values?.ValCodperson))
 		this.stopWatchers.push(watch(() => this.ValCodperson.value, (newValue, oldValue) => this.onUpdate('invoice.codperson', this.ValCodperson, newValue, oldValue)))
 
+		/** The used foreign keys. */
 		this.ValStore = reactive(new modelFieldType.ForeignKey({
 			id: 'ValStore',
 			originId: 'ValStore',
@@ -75,61 +77,6 @@ export default class ViewModel extends FormViewModelBase
 		this.stopWatchers.push(watch(() => this.ValStore.value, (newValue, oldValue) => this.onUpdate('invoice.store', this.ValStore, newValue, oldValue)))
 
 		/** The remaining form fields. */
-		this.ValCreated_by = reactive(new modelFieldType.String({
-			id: 'ValCreated_by',
-			originId: 'ValCreated_by',
-			area: 'INVOICE',
-			field: 'CREATED_BY',
-			maxLength: 100,
-			isFixed: true,
-			description: computed(() => this.Resources.CREATED_BY12292),
-		}).cloneFrom(values?.ValCreated_by))
-		this.stopWatchers.push(watch(() => this.ValCreated_by.value, (newValue, oldValue) => this.onUpdate('invoice.created_by', this.ValCreated_by, newValue, oldValue)))
-
-		this.ValCreated_at = reactive(new modelFieldType.Date({
-			id: 'ValCreated_at',
-			originId: 'ValCreated_at',
-			area: 'INVOICE',
-			field: 'CREATED_AT',
-			isFixed: true,
-			description: computed(() => this.Resources.CREATED_AT29089),
-		}).cloneFrom(values?.ValCreated_at))
-		this.stopWatchers.push(watch(() => this.ValCreated_at.value, (newValue, oldValue) => this.onUpdate('invoice.created_at', this.ValCreated_at, newValue, oldValue)))
-
-		this.ValUpdated_by = reactive(new modelFieldType.String({
-			id: 'ValUpdated_by',
-			originId: 'ValUpdated_by',
-			area: 'INVOICE',
-			field: 'UPDATED_BY',
-			maxLength: 100,
-			isFixed: true,
-			description: computed(() => this.Resources.UPDATED_BY17808),
-		}).cloneFrom(values?.ValUpdated_by))
-		this.stopWatchers.push(watch(() => this.ValUpdated_by.value, (newValue, oldValue) => this.onUpdate('invoice.updated_by', this.ValUpdated_by, newValue, oldValue)))
-
-		this.ValUpdated_at = reactive(new modelFieldType.Date({
-			id: 'ValUpdated_at',
-			originId: 'ValUpdated_at',
-			area: 'INVOICE',
-			field: 'UPDATED_AT',
-			isFixed: true,
-			description: computed(() => this.Resources.UPDATED_AT48366),
-		}).cloneFrom(values?.ValUpdated_at))
-		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('invoice.updated_at', this.ValUpdated_at, newValue, oldValue)))
-
-		this.TablePersonName = reactive(new modelFieldType.String({
-			type: 'Lookup',
-			id: 'TablePersonName',
-			originId: 'ValName',
-			area: 'PERSON',
-			field: 'NAME',
-			maxLength: 50,
-			isFixed: true,
-			description: computed(() => this.Resources.NAME31974),
-			ignoreFldSubmit: true,
-		}).cloneFrom(values?.TablePersonName))
-		this.stopWatchers.push(watch(() => this.TablePersonName.value, (newValue, oldValue) => this.onUpdate('person.name', this.TablePersonName, newValue, oldValue)))
-
 		this.ValCodinvoicestore = reactive(new modelFieldType.String({
 			id: 'ValCodinvoicestore',
 			originId: 'ValCodinvoicestore',
@@ -274,6 +221,59 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.TOTAL_PRICE46894),
 		}).cloneFrom(values?.ValTotalprice))
 		this.stopWatchers.push(watch(() => this.ValTotalprice.value, (newValue, oldValue) => this.onUpdate('invoice.totalprice', this.ValTotalprice, newValue, oldValue)))
+
+		this.ValCreated_by = reactive(new modelFieldType.String({
+			id: 'ValCreated_by',
+			originId: 'ValCreated_by',
+			area: 'INVOICE',
+			field: 'CREATED_BY',
+			maxLength: 100,
+			isFixed: true,
+			description: computed(() => this.Resources.CREATED_BY12292),
+		}).cloneFrom(values?.ValCreated_by))
+		this.stopWatchers.push(watch(() => this.ValCreated_by.value, (newValue, oldValue) => this.onUpdate('invoice.created_by', this.ValCreated_by, newValue, oldValue)))
+
+		this.ValCreated_at = reactive(new modelFieldType.Date({
+			id: 'ValCreated_at',
+			originId: 'ValCreated_at',
+			area: 'INVOICE',
+			field: 'CREATED_AT',
+			isFixed: true,
+			description: computed(() => this.Resources.CREATED_AT29089),
+		}).cloneFrom(values?.ValCreated_at))
+		this.stopWatchers.push(watch(() => this.ValCreated_at.value, (newValue, oldValue) => this.onUpdate('invoice.created_at', this.ValCreated_at, newValue, oldValue)))
+
+		this.ValUpdated_by = reactive(new modelFieldType.String({
+			id: 'ValUpdated_by',
+			originId: 'ValUpdated_by',
+			area: 'INVOICE',
+			field: 'UPDATED_BY',
+			maxLength: 100,
+			isFixed: true,
+			description: computed(() => this.Resources.UPDATED_BY17808),
+		}).cloneFrom(values?.ValUpdated_by))
+		this.stopWatchers.push(watch(() => this.ValUpdated_by.value, (newValue, oldValue) => this.onUpdate('invoice.updated_by', this.ValUpdated_by, newValue, oldValue)))
+
+		this.ValUpdated_at = reactive(new modelFieldType.Date({
+			id: 'ValUpdated_at',
+			originId: 'ValUpdated_at',
+			area: 'INVOICE',
+			field: 'UPDATED_AT',
+			isFixed: true,
+			description: computed(() => this.Resources.UPDATED_AT48366),
+		}).cloneFrom(values?.ValUpdated_at))
+		this.stopWatchers.push(watch(() => this.ValUpdated_at.value, (newValue, oldValue) => this.onUpdate('invoice.updated_at', this.ValUpdated_at, newValue, oldValue)))
+
+		this.PersonValName = reactive(new modelFieldType.String({
+			id: 'PersonValName',
+			originId: 'ValName',
+			area: 'PERSON',
+			field: 'NAME',
+			maxLength: 50,
+			isFixed: true,
+			description: computed(() => this.Resources.NAME31974),
+		}).cloneFrom(values?.PersonValName))
+		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
 	}
 
 	/**

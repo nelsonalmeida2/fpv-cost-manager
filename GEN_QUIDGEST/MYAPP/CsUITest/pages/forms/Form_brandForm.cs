@@ -8,6 +8,32 @@ namespace quidgest.uitests.pages.forms;
 public class Form_brandForm : Form
 {
 	/// <summary>
+	/// BRAND INFO
+	/// </summary>
+	public CollapsibleZoneControl PseudNewgrp02 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_BRAND__PSEUD__NEWGRP02-container");
+
+	/// <summary>
+	/// Logotype
+	/// </summary>
+	public BaseInputControl BrandLogotype => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__LOGOTYPE", "#FORM_BRAND__BRAND__LOGOTYPE");
+
+	/// <summary>
+	/// Brand Name
+	/// </summary>
+	public BaseInputControl BrandName => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__NAME", "#FORM_BRAND__BRAND__NAME");
+
+	/// <summary>
+	/// Description
+	/// </summary>
+	public BaseInputControl BrandDescription => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__DESCRIPTION", "#FORM_BRAND__BRAND__DESCRIPTION");
+
+	/// <summary>
+	/// Country
+	/// </summary>
+	public LookupControl CountryName => new LookupControl(driver, ContainerLocator, "container-FORM_BRAND__COUNTRY__NAME");
+	public SeeMorePage CountryNameSeeMorePage => new SeeMorePage(driver, "FORM_BRAND", "FORM_BRAND__COUNTRY__NAME");
+
+	/// <summary>
 	/// metadata
 	/// </summary>
 	public CollapsibleZoneControl PseudNewgrp01 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_BRAND__PSEUD__NEWGRP01-container");
@@ -33,30 +59,9 @@ public class Form_brandForm : Form
 	public BaseInputControl BrandUpdated_at => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__UPDATED_AT", "#FORM_BRAND__BRAND__UPDATED_AT");
 
 	/// <summary>
-	/// BRAND INFO
+	/// Assigned to
 	/// </summary>
-	public CollapsibleZoneControl PseudNewgrp02 => new CollapsibleZoneControl(driver, ContainerLocator, "#FORM_BRAND__PSEUD__NEWGRP02-container");
-
-	/// <summary>
-	/// Logotype
-	/// </summary>
-	public BaseInputControl BrandLogotype => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__LOGOTYPE", "#FORM_BRAND__BRAND__LOGOTYPE");
-
-	/// <summary>
-	/// Brand Name
-	/// </summary>
-	public BaseInputControl BrandName => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__NAME", "#FORM_BRAND__BRAND__NAME");
-
-	/// <summary>
-	/// Description
-	/// </summary>
-	public BaseInputControl BrandDescription => new BaseInputControl(driver, ContainerLocator, "container-FORM_BRAND__BRAND__DESCRIPTION", "#FORM_BRAND__BRAND__DESCRIPTION");
-
-	/// <summary>
-	/// Country
-	/// </summary>
-	public LookupControl CountryName => new LookupControl(driver, ContainerLocator, "container-FORM_BRAND__COUNTRY__NAME");
-	public SeeMorePage CountryNameSeeMorePage => new SeeMorePage(driver, "FORM_BRAND", "FORM_BRAND__COUNTRY__NAME");
+	public IWebElement PersonName => throw new NotImplementedException();
 
 	public Form_brandForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_BRAND", containerLocator: containerLocator) { }
