@@ -31,7 +31,7 @@ namespace GenioMVC.ViewModels.Person
 
 		/// <inheritdoc/>
 		[JsonPropertyName("uuid")]
-		public override string Uuid => "b34fd645-5e4f-48aa-aadc-41151545f390";
+		public override string Uuid => "11fcbff1-938c-44b4-96ab-d21f120de07f";
 
 		/// <inheritdoc/>
 		protected override string[] FieldsToSerialize => _fieldsToSerialize;

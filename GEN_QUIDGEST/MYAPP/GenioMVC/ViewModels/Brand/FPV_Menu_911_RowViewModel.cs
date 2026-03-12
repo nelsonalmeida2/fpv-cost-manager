@@ -4,9 +4,9 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Photoalbum;
+namespace GenioMVC.ViewModels.Brand;
 
-public class FPV_Menu_911_RowViewModel : Models.Photoalbum
+public class FPV_Menu_911_RowViewModel : Models.Brand
 {
 	#region Constructors
 
@@ -15,7 +15,7 @@ public class FPV_Menu_911_RowViewModel : Models.Photoalbum
 		InitRowProperties();
 	}
 
-	public FPV_Menu_911_RowViewModel(UserContext userContext, CSGenioAphotoalbum val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_911_RowViewModel(UserContext userContext, CSGenioAbrand val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,44 +36,26 @@ public class FPV_Menu_911_RowViewModel : Models.Photoalbum
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PHOTOALBUM",
-				Field = "CREATED_AT",
+				Area = "BRAND",
+				Field = "LOGOTYPE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
-				Area = "PHOTOALBUM",
-				Field = "CREATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 3,
-				Area = "PHOTOALBUM",
-				Field = "TITLE",
-			},
-			new ListColumn()
-			{
-				Order = 4,
-				Area = "PHOTOALBUM",
-				Field = "PHOTO",
-			},
-			new ListColumn()
-			{
-				Order = 5,
-				Area = "PHOTOALBUM",
-				Field = "UPDATED_BY",
-			},
-			new ListColumn()
-			{
-				Order = 6,
-				Area = "ITEM",
+				Area = "BRAND",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
-				Order = 7,
-				Area = "PHOTOALBUM",
-				Field = "UPDATED_AT",
+				Order = 3,
+				Area = "BRAND",
+				Field = "DESCRIPTION",
+			},
+			new ListColumn()
+			{
+				Order = 4,
+				Area = "COUNTRY",
+				Field = "NAME",
 			},
 		];
 	}

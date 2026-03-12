@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Person;
+namespace GenioMVC.ViewModels.Store;
 
-public class FPV_Menu_61_RowViewModel : Models.Person
+public class FPV_Menu_811_RowViewModel : Models.Store
 {
 	#region Constructors
 
-	public FPV_Menu_61_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_811_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_61_RowViewModel(UserContext userContext, CSGenioAperson val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_811_RowViewModel(UserContext userContext, CSGenioAstore val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,38 +36,38 @@ public class FPV_Menu_61_RowViewModel : Models.Person
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "PERSON",
-				Field = "PHOTO",
+				Area = "STORE",
+				Field = "LOGOTYPE",
 			},
 			new ListColumn()
 			{
 				Order = 2,
-				Area = "PERSON",
+				Area = "STORE",
 				Field = "NAME",
 			},
 			new ListColumn()
 			{
 				Order = 3,
-				Area = "PERSON",
-				Field = "GENDER",
+				Area = "STORE",
+				Field = "DESCRIPTION",
 			},
 			new ListColumn()
 			{
 				Order = 4,
-				Area = "PERSON",
-				Field = "BIRTHDAY",
+				Area = "STORE",
+				Field = "SITE",
 			},
 			new ListColumn()
 			{
 				Order = 5,
-				Area = "PERSON",
-				Field = "EMAIL",
+				Area = "STORE",
+				Field = "CURRENCY",
 			},
 			new ListColumn()
 			{
 				Order = 6,
-				Area = "PERSON",
-				Field = "TELEPHONE",
+				Area = "COUNTRY",
+				Field = "NAME",
 			},
 		];
 	}

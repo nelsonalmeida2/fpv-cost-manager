@@ -41,6 +41,18 @@ namespace GenioMVC.Helpers.Menus
 
 			switch (menuID)
 			{
+				case "FPV6":
+				{
+					return 1==0;
+				}
+				case "FPVB":
+				{
+					return 1==0;
+				}
+				case "FPVC":
+				{
+					return 1==0;
+				}
 				default:
 					break;
 			}

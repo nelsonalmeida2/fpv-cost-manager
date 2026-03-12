@@ -29,7 +29,7 @@ namespace GenioMVC.Controllers
 	public partial class PhotoalbumController : ControllerBase
 	{
 		private static readonly NavigationLocation ACTION_FPV_MENU_3511 = new NavigationLocation("PHOTOS39221", "FPV_Menu_3511", "Photoalbum") { vueRouteName = "menu-FPV_3511" };
-		private static readonly NavigationLocation ACTION_FPV_MENU_911 = new NavigationLocation("PHOTOS39221", "FPV_Menu_911", "Photoalbum") { vueRouteName = "menu-FPV_911" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_A11 = new NavigationLocation("PHOTOS39221", "FPV_Menu_A11", "Photoalbum") { vueRouteName = "menu-FPV_A11" };
 
 
 		//
@@ -101,14 +101,14 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// GET: /Photoalbum/FPV_Menu_911
-		[ActionName("FPV_Menu_911")]
+		// GET: /Photoalbum/FPV_Menu_A11
+		[ActionName("FPV_Menu_A11")]
 		[HttpPost]
-		public ActionResult FPV_Menu_911([FromBody] RequestMenuModel requestModel)
+		public ActionResult FPV_Menu_A11([FromBody] RequestMenuModel requestModel)
 		{
 			var queryParams = requestModel.QueryParams;
 
-			FPV_Menu_911_ViewModel model = new(m_userContext);
+			FPV_Menu_A11_ViewModel model = new(m_userContext);
 
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
@@ -120,7 +120,7 @@ namespace GenioMVC.Controllers
 
 			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
 			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_911");
+				Navigation.SetValue("HomePage", "FPV_Menu_A11");
 
 			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
 			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_photoalbum")))
@@ -139,12 +139,12 @@ namespace GenioMVC.Controllers
 				querystring.AddRange(queryParams);
 
 			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_911.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_911.Action)
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_A11.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_A11.Action)
 				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
 			else if (isHomePage)
 			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_911.ShortDescription());
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_A11.ShortDescription());
 				Navigation.SetValue("HomePageContainsList", true);
 			}
 
@@ -153,7 +153,7 @@ namespace GenioMVC.Controllers
 				Navigation.SetValue("person", querystring["person"]);
 
 
-// USE /[MANUAL FPV MENU_GET 911]/
+// USE /[MANUAL FPV MENU_GET A11]/
 
 			try
 			{

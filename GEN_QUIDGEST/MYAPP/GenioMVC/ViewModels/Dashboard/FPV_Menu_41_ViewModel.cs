@@ -70,6 +70,60 @@ namespace GenioMVC.ViewModels.Dashboard
 
 			IndependentWidgetInstances =
 			[
+				new MenuWidget
+				{
+					Id = "Menu_A",
+					Order = 4,
+					Width = 2,
+					Height = 2,
+					Style = "",
+					BorderStyle = "",
+					RenderSubmenus = false,
+					Required = false,
+					Visible = false,
+					ButtonText = Resources.Resources.IR_PARA07866,
+					Title = Resources.Resources.NEW_STORE64351,
+					Group = "_GRAPHS",
+					Module = "FPV",
+					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "A")),
+					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "A")
+				},
+				new MenuWidget
+				{
+					Id = "Menu_",
+					Order = 5,
+					Width = 2,
+					Height = 2,
+					Style = "",
+					BorderStyle = "",
+					RenderSubmenus = false,
+					Required = false,
+					Visible = true,
+					ButtonText = Resources.Resources.IR_PARA07866,
+					Title = Resources.Resources.NEW_BRAND53740,
+					Group = "_GRAPHS",
+					Module = "FPV",
+					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "")),
+					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "")
+				},
+				new MenuWidget
+				{
+					Id = "Menu_6",
+					Order = 3,
+					Width = 2,
+					Height = 2,
+					Style = "",
+					BorderStyle = "",
+					RenderSubmenus = false,
+					Required = false,
+					Visible = true,
+					ButtonText = Resources.Resources.IR_PARA07866,
+					Title = Resources.Resources.NEW_INVOICE29126,
+					Group = "_GRAPHS",
+					Module = "FPV",
+					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "6")),
+					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "6")
+				},
 			];
 		}
 

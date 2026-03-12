@@ -35,10 +35,10 @@ namespace GenioMVC.Controllers
 		private static readonly NavigationLocation ACTION_FPV_MENU_341 = new NavigationLocation("PERSONS18356", "FPV_Menu_341", "Person") { vueRouteName = "menu-FPV_341" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_351 = new NavigationLocation("PERSONS18356", "FPV_Menu_351", "Person") { vueRouteName = "menu-FPV_351" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_51 = new NavigationLocation("PERSONS18356", "FPV_Menu_51", "Person") { vueRouteName = "menu-FPV_51" };
-		private static readonly NavigationLocation ACTION_FPV_MENU_61 = new NavigationLocation("PERSONS18356", "FPV_Menu_61", "Person") { vueRouteName = "menu-FPV_61" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_71 = new NavigationLocation("PERSONS18356", "FPV_Menu_71", "Person") { vueRouteName = "menu-FPV_71" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_81 = new NavigationLocation("PERSONS18356", "FPV_Menu_81", "Person") { vueRouteName = "menu-FPV_81" };
 		private static readonly NavigationLocation ACTION_FPV_MENU_91 = new NavigationLocation("PERSONS18356", "FPV_Menu_91", "Person") { vueRouteName = "menu-FPV_91" };
+		private static readonly NavigationLocation ACTION_FPV_MENU_A1 = new NavigationLocation("PERSONS18356", "FPV_Menu_A1", "Person") { vueRouteName = "menu-FPV_A1" };
 
 
 		//
@@ -521,93 +521,6 @@ namespace GenioMVC.Controllers
 		}
 
 		//
-		// GET: /Person/FPV_Menu_61
-		[ActionName("FPV_Menu_61")]
-		[HttpPost]
-		public ActionResult FPV_Menu_61([FromBody] RequestMenuModel requestModel)
-		{
-			var queryParams = requestModel.QueryParams;
-
-			FPV_Menu_61_ViewModel model = new(m_userContext);
-
-			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
-				requestModel.TableConfiguration,
-				requestModel.UserTableConfigName,
-				requestModel.LoadDefaultView);
-
-			// Determine rows per page
-			tableConfig.RowsPerPage = tableConfig.DetermineRowsPerPage(CSGenio.framework.Configuration.NrRegDBedit, "");
-
-			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
-			if (isHomePage)
-				Navigation.SetValue("HomePage", "FPV_Menu_61");
-
-			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
-			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_person")))
-				UserContext.Current.SetPersistenceReadOnly(true);
-			else
-			{
-				Navigation.DestroyEntry("ForcePrimaryRead_person");
-				UserContext.Current.SetPersistenceReadOnly(false);
-			}
-			CSGenio.framework.StatusMessage result = model.CheckPermissions(FormMode.List);
-			if (result.Status.Equals(CSGenio.framework.Status.E))
-				return PermissionError(result.Message);
-
-			NameValueCollection querystring = [];
-			if (queryParams != null && queryParams.Count > 0)
-				querystring.AddRange(queryParams);
-
-			if (!isHomePage &&
-				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_61.IsSameAction(Navigation.CurrentLevel.Location)) &&
-				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_61.Action)
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
-			else if (isHomePage)
-			{
-				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_61.ShortDescription());
-				Navigation.SetValue("HomePageContainsList", true);
-			}
-
-
-
-// USE /[MANUAL FPV MENU_GET 61]/
-
-			try
-			{
-				model.Load(tableConfig, querystring, Request.IsAjaxRequest());
-			}
-			catch (Exception e)
-			{
-				return JsonERROR(HandleException(e), model);
-			}
-
-			//FOR: FORM MENU GO BACK, OVERRIDE SKIP IF JUST ONE
-			bool AllowSkipIfOnlyOne = true;
-
-			// jumps if only one
-			var curRowsCount = model.Menu.Pagination.HasTotal ? model.Menu.Pagination.TotalRows : model.Menu.Elements.Count();
-			// only allow the jump if there are no filters
-			bool hasNoFilters = tableConfig.Filters.Count == 0;
-			bool isFirstDataLoad = (bool)requestModel?.IsFirstLoad;
-			bool isNoRedirect = (bool)requestModel?.NoRedirect;
-
-			if (isFirstDataLoad && curRowsCount == 1 && hasNoFilters && model.Menu.Elements.First().ValZzstate == 0 && AllowSkipIfOnlyOne)
-			{
-				// needs the routevalue for the primary key, because a get request to a get form action expects so
-				var primaryKey = model.Menu.Elements.First().ValCodperson;
-				var navKey = "person";
-				Navigation.SetValue(navKey, primaryKey);
-				Navigation.SetValue("SkipIfJustOne", true);
-				var isPopup = querystring.Get("isPopup") ?? "false";
-				var noRedirect = isNoRedirect;
-
-				return RedirectToMenuAction("FPV_611", new { id = primaryKey, nav = Navigation.NavigationId, isHomePage, isPopup, noRedirect, skipLastMenu = true, person = primaryKey });
-			}
-
-			return JsonOK(model);
-		}
-
-		//
 		// GET: /Person/FPV_Menu_71
 		[ActionName("FPV_Menu_71")]
 		[HttpPost]
@@ -863,6 +776,93 @@ namespace GenioMVC.Controllers
 				var noRedirect = isNoRedirect;
 
 				return RedirectToMenuAction("FPV_911", new { id = primaryKey, nav = Navigation.NavigationId, isHomePage, isPopup, noRedirect, skipLastMenu = true, person = primaryKey });
+			}
+
+			return JsonOK(model);
+		}
+
+		//
+		// GET: /Person/FPV_Menu_A1
+		[ActionName("FPV_Menu_A1")]
+		[HttpPost]
+		public ActionResult FPV_Menu_A1([FromBody] RequestMenuModel requestModel)
+		{
+			var queryParams = requestModel.QueryParams;
+
+			FPV_Menu_A1_ViewModel model = new(m_userContext);
+
+			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
+				requestModel.TableConfiguration,
+				requestModel.UserTableConfigName,
+				requestModel.LoadDefaultView);
+
+			// Determine rows per page
+			tableConfig.RowsPerPage = tableConfig.DetermineRowsPerPage(CSGenio.framework.Configuration.NrRegDBedit, "");
+
+			bool isHomePage = RouteData.Values.ContainsKey("isHomePage") ? (bool)RouteData.Values["isHomePage"] : false;
+			if (isHomePage)
+				Navigation.SetValue("HomePage", "FPV_Menu_A1");
+
+			//If there was a recent operation on this table then force the primary persistence server to be called and ignore the read only feature
+			if (string.IsNullOrEmpty(Navigation.GetStrValue("ForcePrimaryRead_person")))
+				UserContext.Current.SetPersistenceReadOnly(true);
+			else
+			{
+				Navigation.DestroyEntry("ForcePrimaryRead_person");
+				UserContext.Current.SetPersistenceReadOnly(false);
+			}
+			CSGenio.framework.StatusMessage result = model.CheckPermissions(FormMode.List);
+			if (result.Status.Equals(CSGenio.framework.Status.E))
+				return PermissionError(result.Message);
+
+			NameValueCollection querystring = [];
+			if (queryParams != null && queryParams.Count > 0)
+				querystring.AddRange(queryParams);
+
+			if (!isHomePage &&
+				(Navigation.CurrentLevel == null || !ACTION_FPV_MENU_A1.IsSameAction(Navigation.CurrentLevel.Location)) &&
+				Navigation.CurrentLevel.Location.Action != ACTION_FPV_MENU_A1.Action)
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + Navigation.CurrentLevel.Location.ShortDescription());
+			else if (isHomePage)
+			{
+				CSGenio.framework.Audit.registAction(UserContext.Current.User, Resources.Resources.MENU01948 + " " + ACTION_FPV_MENU_A1.ShortDescription());
+				Navigation.SetValue("HomePageContainsList", true);
+			}
+
+
+
+// USE /[MANUAL FPV MENU_GET A1]/
+
+			try
+			{
+				model.Load(tableConfig, querystring, Request.IsAjaxRequest());
+			}
+			catch (Exception e)
+			{
+				return JsonERROR(HandleException(e), model);
+			}
+
+			//FOR: FORM MENU GO BACK, OVERRIDE SKIP IF JUST ONE
+			bool AllowSkipIfOnlyOne = true;
+
+			// jumps if only one
+			var curRowsCount = model.Menu.Pagination.HasTotal ? model.Menu.Pagination.TotalRows : model.Menu.Elements.Count();
+			// only allow the jump if there are no filters
+			bool hasNoFilters = tableConfig.Filters.Count == 0;
+			bool isFirstDataLoad = (bool)requestModel?.IsFirstLoad;
+			bool isNoRedirect = (bool)requestModel?.NoRedirect;
+
+			if (isFirstDataLoad && curRowsCount == 1 && hasNoFilters && model.Menu.Elements.First().ValZzstate == 0 && AllowSkipIfOnlyOne)
+			{
+				// needs the routevalue for the primary key, because a get request to a get form action expects so
+				var primaryKey = model.Menu.Elements.First().ValCodperson;
+				var navKey = "person";
+				Navigation.SetValue(navKey, primaryKey);
+				Navigation.SetValue("SkipIfJustOne", true);
+				var isPopup = querystring.Get("isPopup") ?? "false";
+				var noRedirect = isNoRedirect;
+
+				return RedirectToMenuAction("FPV_A11", new { id = primaryKey, nav = Navigation.NavigationId, isHomePage, isPopup, noRedirect, skipLastMenu = true, person = primaryKey });
 			}
 
 			return JsonOK(model);

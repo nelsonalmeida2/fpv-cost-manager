@@ -4,18 +4,18 @@ using CSGenio.business;
 using CSGenio.framework;
 using GenioMVC.Models.Navigation;
 
-namespace GenioMVC.ViewModels.Brand;
+namespace GenioMVC.ViewModels.Item;
 
-public class FPV_Menu_811_RowViewModel : Models.Brand
+public class FPV_Menu_711_RowViewModel : Models.Item
 {
 	#region Constructors
 
-	public FPV_Menu_811_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
+	public FPV_Menu_711_RowViewModel(UserContext userContext, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
 
-	public FPV_Menu_811_RowViewModel(UserContext userContext, CSGenioAbrand val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public FPV_Menu_711_RowViewModel(UserContext userContext, CSGenioAitem val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}
@@ -36,26 +36,74 @@ public class FPV_Menu_811_RowViewModel : Models.Brand
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "BRAND",
-				Field = "LOGOTYPE",
+				Area = "CATEGORY",
+				Field = "NAME",
 			},
 			new ListColumn()
 			{
 				Order = 2,
-				Area = "BRAND",
-				Field = "NAME",
+				Area = "ITEM",
+				Field = "CREATED_AT",
 			},
 			new ListColumn()
 			{
 				Order = 3,
-				Area = "BRAND",
-				Field = "DESCRIPTION",
+				Area = "ITEM",
+				Field = "QUANTITY",
 			},
 			new ListColumn()
 			{
 				Order = 4,
-				Area = "COUNTRY",
+				Area = "ITEM",
+				Field = "UPDATED_AT",
+			},
+			new ListColumn()
+			{
+				Order = 5,
+				Area = "ITEM",
+				Field = "TOTALPRICE",
+			},
+			new ListColumn()
+			{
+				Order = 6,
+				Area = "INVOICE",
+				Field = "CODINVOICESTORE",
+			},
+			new ListColumn()
+			{
+				Order = 7,
+				Area = "ITEM",
+				Field = "CREATED_BY",
+			},
+			new ListColumn()
+			{
+				Order = 8,
+				Area = "ITEM",
 				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 9,
+				Area = "SUBCATEGORY",
+				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 10,
+				Area = "BRAND",
+				Field = "NAME",
+			},
+			new ListColumn()
+			{
+				Order = 11,
+				Area = "ITEM",
+				Field = "UPDATED_BY",
+			},
+			new ListColumn()
+			{
+				Order = 12,
+				Area = "ITEM",
+				Field = "UNITPRICE",
 			},
 		];
 	}

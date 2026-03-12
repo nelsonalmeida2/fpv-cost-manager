@@ -178,6 +178,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "New Invoice"
+        /// </summary>
+        public static string NEW_INVOICE29126 {
+            get {
+                return ResourceManager.GetString("NEW_INVOICE29126", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "New Group"
         /// </summary>
         public static string NEW_GROUP63448 {
@@ -1222,6 +1231,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "New Brand"
+        /// </summary>
+        public static string NEW_BRAND53740 {
+            get {
+                return ResourceManager.GetString("NEW_BRAND53740", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Client ip address"
         /// </summary>
         public static string CLIENT_IP_ADDRESS62089 {
@@ -1245,6 +1263,15 @@ namespace Administration.Resources {
         public static string AGENDADO_PARA_EXECUC11223 {
             get {
                 return ResourceManager.GetString("AGENDADO_PARA_EXECUC11223", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "New Store"
+        /// </summary>
+        public static string NEW_STORE64351 {
+            get {
+                return ResourceManager.GetString("NEW_STORE64351", resourceCulture);
             }
         }
 

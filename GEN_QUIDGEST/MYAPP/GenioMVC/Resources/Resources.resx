@@ -156,6 +156,9 @@
 	<data name="PERSON00920" xml:space="preserve">
 		<value>PERSON</value>
 	</data>
+	<data name="NEW_INVOICE29126" xml:space="preserve">
+		<value>New Invoice</value>
+	</data>
 	<data name="NEW_GROUP63448" xml:space="preserve">
 		<value>New Group</value>
 	</data>
@@ -504,6 +507,9 @@
 	<data name="UPDATED_AT46891" xml:space="preserve">
 		<value>updated_at</value>
 	</data>
+	<data name="NEW_BRAND53740" xml:space="preserve">
+		<value>New Brand</value>
+	</data>
 	<data name="CLIENT_IP_ADDRESS62089" xml:space="preserve">
 		<value>Client ip address</value>
 	</data>
@@ -512,6 +518,9 @@
 	</data>
 	<data name="AGENDADO_PARA_EXECUC11223" xml:space="preserve">
 		<value>Agendado para execução</value>
+	</data>
+	<data name="NEW_STORE64351" xml:space="preserve">
+		<value>New Store</value>
 	</data>
 	<data name="RESULT40974" xml:space="preserve">
 		<value>Result</value>

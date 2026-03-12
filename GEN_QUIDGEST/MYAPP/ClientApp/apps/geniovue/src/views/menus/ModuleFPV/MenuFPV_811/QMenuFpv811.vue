@@ -121,12 +121,12 @@
 				menuInfo: {
 					id: '811',
 					isMenuList: true,
-					designation: computed(() => this.Resources.BRANDS27300),
+					designation: computed(() => this.Resources.STORES21606),
 					acronym: 'FPV_811',
-					name: 'BRAND',
+					name: 'STORE',
 					route: 'menu-FPV_811',
 					order: '811',
-					controller: 'BRAND',
+					controller: 'STORE',
 					action: 'FPV_Menu_811',
 					isPopup: false
 				},
@@ -137,7 +137,7 @@
 					menu: new controlClass.TableSpecialRenderingControl({
 						fnHydrateViewModel: (data) => vm.model.hydrate(data),
 						id: 'FPV_Menu_811',
-						controller: 'BRAND',
+						controller: 'STORE',
 						action: 'FPV_Menu_811',
 						hasDependencies: false,
 						isInCollapsible: false,
@@ -149,7 +149,7 @@
 							new listColumnTypes.ImageColumn({
 								order: 1,
 								name: 'ValLogotype',
-								area: 'BRAND',
+								area: 'STORE',
 								field: 'LOGOTYPE',
 								label: computed(() => this.Resources.LOGOTYPE44505),
 								dataTitle: computed(() => genericFunctions.formatString(vm.Resources.IMAGEM_UTILIZADA_PAR58591, vm.Resources.LOGOTYPE44505)),
@@ -161,7 +161,7 @@
 							new listColumnTypes.TextColumn({
 								order: 2,
 								name: 'ValName',
-								area: 'BRAND',
+								area: 'STORE',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
@@ -171,7 +171,7 @@
 							new listColumnTypes.TextColumn({
 								order: 3,
 								name: 'ValDescription',
-								area: 'BRAND',
+								area: 'STORE',
 								field: 'DESCRIPTION',
 								label: computed(() => this.Resources.DESCRIPTION07383),
 								dataLength: 255,
@@ -180,6 +180,29 @@
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
 								order: 4,
+								name: 'ValSite',
+								area: 'STORE',
+								field: 'SITE',
+								label: computed(() => this.Resources.WEBSITE08569),
+								dataLength: 255,
+								scrollData: 30,
+								export: 1,
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.ArrayColumn({
+								order: 5,
+								name: 'ValCurrency',
+								area: 'STORE',
+								field: 'CURRENCY',
+								label: computed(() => this.Resources.CURRENCY13881),
+								dataLength: 3,
+								scrollData: 3,
+								export: 1,
+								array: computed(() => new qProjArrays.QArrayCurrency(vm.$getResource).elements),
+								arrayType: qProjArrays.QArrayCurrency.type,
+								arrayDisplayMode: 'D',
+							}, computed(() => vm.model), computed(() => vm.internalEvents)),
+							new listColumnTypes.TextColumn({
+								order: 6,
 								name: 'Country.ValName',
 								area: 'COUNTRY',
 								field: 'NAME',
@@ -193,12 +216,12 @@
 						config: {
 							name: 'FPV_Menu_811',
 							serverMode: true,
-							pkColumn: 'ValCodbrand',
-							tableAlias: 'BRAND',
-							tableNamePlural: computed(() => this.Resources.BRANDS27300),
+							pkColumn: 'ValCodstore',
+							tableAlias: 'STORE',
+							tableNamePlural: computed(() => this.Resources.STORES21606),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.BRANDS27300),
+							tableTitle: computed(() => this.Resources.STORES21606),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -219,7 +242,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_STORE',
 										mode: 'SHOW',
 										isControlled: true
 									}
@@ -235,7 +258,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_STORE',
 										mode: 'EDIT',
 										isControlled: true
 									}
@@ -251,7 +274,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_STORE',
 										mode: 'DUPLICATE',
 										isControlled: true
 									}
@@ -267,7 +290,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_STORE',
 										mode: 'DELETE',
 										isControlled: true
 									}
@@ -285,7 +308,7 @@
 									params: {
 										action: vm.openFormAction,
 										type: 'form',
-										formName: 'FORM_BRAND',
+										formName: 'FORM_STORE',
 										mode: 'NEW',
 										repeatInsertion: true,
 										isControlled: true
@@ -302,23 +325,23 @@
 							],
 							rowClickAction: {
 								id: 'RCA_FPV_8111',
-								name: 'form-FORM_BRAND',
+								name: 'form-FORM_STORE',
 								isVisible: true,
 								params: {
 									isRoute: true,
 									limits: [
 										{
 											identifier: 'id',
-											fnValueSelector: (row) => row.ValCodbrand
+											fnValueSelector: (row) => row.ValCodstore
 										},
 									],
 									isControlled: true,
-									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_BRAND'
+									action: vm.openFormAction, type: 'form', mode: 'SHOW', formName: 'FORM_STORE'
 								}
 							},
 							formsDefinition: {
-								'FORM_BRAND': {
-									fnKeySelector: (row) => row.Fields.ValCodbrand,
+								'FORM_STORE': {
+									fnKeySelector: (row) => row.Fields.ValCodstore,
 									isPopup: false
 								},
 							},
@@ -326,12 +349,12 @@
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
-								columnName: '',
+								columnName: 'ValDescription',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
-						uuid: 'd3385526-6910-4460-aea2-824fdc1c055b',
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
+						uuid: 'ef89d555-4463-45c6-8432-0c17fe054238',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
@@ -344,25 +367,27 @@
 									title: {
 										allowsMultiple: false,
 										sources: [
-											'BRAND.NAME',
+											'STORE.NAME',
 										]
 									},
 									subtitle: {
 										allowsMultiple: false,
 										sources: [
-											'COUNTRY.NAME',
+											'STORE.SITE',
 										]
 									},
 									text: {
 										allowsMultiple: true,
 										sources: [
-											'BRAND.DESCRIPTION',
+											'STORE.DESCRIPTION',
+											'STORE.CURRENCY',
+											'COUNTRY.NAME',
 										]
 									},
 									image: {
 										allowsMultiple: false,
 										sources: [
-											'BRAND.LOGOTYPE',
+											'STORE.LOGOTYPE',
 										]
 									},
 								}),

@@ -39,6 +39,9 @@
   <msg id="PERSON" code="PERSON00920">
     <ENUS>PERSON</ENUS>
   </msg>
+  <msg id="New Invoice" code="NEW_INVOICE29126">
+    <ENUS>New Invoice</ENUS>
+  </msg>
   <msg id="New Group" code="NEW_GROUP63448">
     <ENUS>New Group</ENUS>
   </msg>
@@ -387,6 +390,9 @@
   <msg id="updated_at" code="UPDATED_AT46891">
     <ENUS>updated_at</ENUS>
   </msg>
+  <msg id="New Brand" code="NEW_BRAND53740">
+    <ENUS>New Brand</ENUS>
+  </msg>
   <msg id="Client ip address" code="CLIENT_IP_ADDRESS62089">
     <ENUS>Client ip address</ENUS>
   </msg>
@@ -395,6 +401,9 @@
   </msg>
   <msg id="Agendado para execução" code="AGENDADO_PARA_EXECUC11223">
     <ENUS>Agendado para execução</ENUS>
+  </msg>
+  <msg id="New Store" code="NEW_STORE64351">
+    <ENUS>New Store</ENUS>
   </msg>
   <msg id="Result" code="RESULT40974">
     <ENUS>Result</ENUS>
