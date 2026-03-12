@@ -65,13 +65,13 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValCodperson))
 		this.stopWatchers.push(watch(() => this.ValCodperson.value, (newValue, oldValue) => this.onUpdate('invoice.codperson', this.ValCodperson, newValue, oldValue)))
 
+		/** The used foreign keys. */
 		this.ValStore = reactive(new modelFieldType.ForeignKey({
 			id: 'ValStore',
 			originId: 'ValStore',
 			area: 'INVOICE',
 			field: 'STORE',
 			relatedArea: 'STORE',
-			isFixed: true,
 			description: computed(() => this.Resources.STORE16493),
 		}).cloneFrom(values?.ValStore))
 		this.stopWatchers.push(watch(() => this.ValStore.value, (newValue, oldValue) => this.onUpdate('invoice.store', this.ValStore, newValue, oldValue)))
@@ -120,15 +120,17 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValReceiptData))
 		this.stopWatchers.push(watch(() => this.ValReceiptData.value, (newValue, oldValue) => this.onUpdate('invoice.receiptdata', this.ValReceiptData, newValue, oldValue), { deep: true }))
 
-		this.StoreValName = reactive(new modelFieldType.String({
-			id: 'StoreValName',
+		this.TableStoreName = reactive(new modelFieldType.String({
+			type: 'Lookup',
+			id: 'TableStoreName',
 			originId: 'ValName',
 			area: 'STORE',
 			field: 'NAME',
 			maxLength: 50,
 			description: computed(() => this.Resources.NAME31974),
-		}).cloneFrom(values?.StoreValName))
-		this.stopWatchers.push(watch(() => this.StoreValName.value, (newValue, oldValue) => this.onUpdate('store.name', this.StoreValName, newValue, oldValue)))
+			ignoreFldSubmit: true,
+		}).cloneFrom(values?.TableStoreName))
+		this.stopWatchers.push(watch(() => this.TableStoreName.value, (newValue, oldValue) => this.onUpdate('store.name', this.TableStoreName, newValue, oldValue)))
 
 		this.ValDate = reactive(new modelFieldType.Date({
 			id: 'ValDate',

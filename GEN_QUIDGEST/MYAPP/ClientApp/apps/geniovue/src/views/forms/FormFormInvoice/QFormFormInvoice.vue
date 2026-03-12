@@ -160,10 +160,14 @@
 													:loading="controls.FORM_INVOICE__STORE__NAME.props.loading"
 													:reporting-mode-on="reportingModeCAV"
 													:suggestion-mode-on="suggestionModeOn">
-													<q-text-field
+													<q-lookup
+														v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
 														v-bind="controls.FORM_INVOICE__STORE__NAME.props"
-														@blur="onBlur(controls.FORM_INVOICE__STORE__NAME, model.StoreValName.value)"
-														@change="model.StoreValName.fnUpdateValueOnChange" />
+														v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
+													<q-see-more-form-invoice-store-name
+														v-if="controls.FORM_INVOICE__STORE__NAME.seeMoreIsVisible"
+														v-bind="controls.FORM_INVOICE__STORE__NAME.seeMoreParams"
+														v-on="controls.FORM_INVOICE__STORE__NAME.handlers" />
 												</base-input-structure>
 											</q-col>
 											<q-col
@@ -511,6 +515,7 @@
 		name: 'QFormFormInvoice',
 
 		components: {
+			QSeeMoreFormInvoiceStoreName: defineAsyncComponent(() => import('@/views/forms/FormFormInvoice/dbedits/FormInvoiceStoreNameSeeMore.vue')),
 		},
 
 		mixins: [
@@ -847,17 +852,36 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__STORE__NAME: new fieldControlClass.StringControl({
-						modelField: 'StoreValName',
+					FORM_INVOICE__STORE__NAME: new fieldControlClass.LookupControl({
+						modelField: 'TableStoreName',
 						valueChangeEvent: 'fieldChange:store.name',
 						id: 'FORM_INVOICE__STORE__NAME',
 						name: 'NAME',
-						size: 'xlarge',
+						size: 'xxlarge',
 						label: computed(() => this.Resources.STORE16493),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP02',
-						maxLength: 50,
+						externalCallbacks: {
+							getModelField: vm.getModelField,
+							getModelFieldValue: vm.getModelFieldValue,
+							setModelFieldValue: vm.setModelFieldValue
+						},
+						externalProperties: {
+							modelKeys: computed(() => vm.modelKeys)
+						},
+						lookupKeyModelField: {
+							name: 'ValStore',
+							dependencyEvent: 'fieldChange:invoice.store'
+						},
+						dependentFields: () => ({
+							set 'store.codstore'(value) { vm.model.ValStore.updateValue(value) },
+							set 'store.name'(value) { vm.model.TableStoreName.updateValue(value) },
+							set 'invoice.codperson'(value) { vm.model.ValCodperson.updateValue(value) },
+							set 'person.codperson'(value) { vm.model.ValCodperson.updateValue(value) },
+							set 'person.name'(value) { vm.model.PersonValName.updateValue(value) },
+						}),
+						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -1352,8 +1376,8 @@
 						set ValName(value) { vm.model.PersonValName.updateValue(value) },
 					},
 					Store: {
-						get ValName() { return vm.model.StoreValName.value },
-						set ValName(value) { vm.model.StoreValName.updateValue(value) },
+						get ValName() { return vm.model.TableStoreName.value },
+						set ValName(value) { vm.model.TableStoreName.updateValue(value) },
 					},
 					keys: {
 						/** The primary key of the INVOICE table */

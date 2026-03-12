@@ -35,9 +35,8 @@ namespace GenioMVC.ViewModels.Invoice
 		/// </summary>
 		public string ValCodperson { get; set; }
 		/// <summary>
-		/// Title: "" | Type: "CE"
+		/// Title: "Store" | Type: "CE"
 		/// </summary>
-		[ValidateSetAccess]
 		public string ValStore { get; set; }
 
 		#endregion
@@ -62,19 +61,7 @@ namespace GenioMVC.ViewModels.Invoice
 		/// Title: "Store" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
-		public string StoreValName
-		{
-			get
-			{
-				return funcStoreValName != null ? funcStoreValName() : _auxStoreValName;
-			}
-			set { funcStoreValName = () => value; }
-		}
-
-		[JsonIgnore]
-		public Func<string> funcStoreValName { get; set; }
-
-		private string _auxStoreValName { get; set; }
+		public TableDBEdit<GenioMVC.Models.Store> TableStoreName { get; set; }
 		/// <summary>
 		/// Title: "Date" | Type: "D"
 		/// </summary>
@@ -279,7 +266,6 @@ namespace GenioMVC.ViewModels.Invoice
 				ValCodinvoicestore = ViewModelConversion.ToString(m.ValCodinvoicestore);
 				ValReceipt = ViewModelConversion.ToString(m.ValReceipt);
 				ValReceiptfk = ViewModelConversion.ToString(m.ValReceiptfk);
-				funcStoreValName = () => ViewModelConversion.ToString(m.Store.ValName);
 				ValDate = ViewModelConversion.ToDateTime(m.ValDate);
 				ValPrice = ViewModelConversion.ToNumeric(m.ValPrice);
 				ValTaxes = ViewModelConversion.ToNumeric(m.ValTaxes);
@@ -319,6 +305,7 @@ namespace GenioMVC.ViewModels.Invoice
 			try
 			{
 				m.ValCodperson = ViewModelConversion.ToString(ValCodperson);
+				m.ValStore = ViewModelConversion.ToString(ValStore);
 				m.ValCodinvoicestore = ViewModelConversion.ToString(ValCodinvoicestore);
 				m.ValReceipt = ViewModelConversion.ToString(ValReceipt);
 				m.ValReceiptfk = ViewModelConversion.ToString(ValReceiptfk);
@@ -335,7 +322,6 @@ namespace GenioMVC.ViewModels.Invoice
 				if (!HasDisabledUserValuesSecurity)
 					return;
 
-				m.ValStore = ViewModelConversion.ToString(ValStore);
 				m.ValPrice = ViewModelConversion.ToNumeric(ValPrice);
 				m.ValNumberofitems = ViewModelConversion.ToNumeric(ValNumberofitems);
 				m.ValTotalprice = ViewModelConversion.ToNumeric(ValTotalprice);
@@ -369,6 +355,9 @@ namespace GenioMVC.ViewModels.Invoice
 				{
 					case "invoice.codperson":
 						this.ValCodperson = ViewModelConversion.ToString(_value);
+						break;
+					case "invoice.store":
+						this.ValStore = ViewModelConversion.ToString(_value);
 						break;
 					case "invoice.codinvoicestore":
 						this.ValCodinvoicestore = ViewModelConversion.ToString(_value);
@@ -506,6 +495,7 @@ namespace GenioMVC.ViewModels.Invoice
 			// Add characteristics
 			Characs = new List<string>();
 
+			Load_Form_invoice__store__name(qs, lazyLoad);
 
 // USE /[MANUAL FPV VIEWMODEL_LOADPARTIAL FORM_INVOICE]/
 		}
@@ -521,10 +511,11 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 			CrudViewModelFieldValidator validator = new(m_userContext.User.Language);
 
+
+			validator.Required("ValStore", Resources.Resources.STORE16493, ViewModelConversion.ToString(ValStore), FieldType.KEY_INT.GetFormatting());
 			validator.StringLength("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ValCodinvoicestore, 50);
 
 			validator.Required("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ViewModelConversion.ToString(ValCodinvoicestore), FieldType.TEXT.GetFormatting());
-			validator.StringLength("StoreValName", Resources.Resources.STORE16493, StoreValName, 50);
 
 			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
 
@@ -571,6 +562,203 @@ namespace GenioMVC.ViewModels.Invoice
 		{
 		}
 
+		/// <summary>
+		/// TableStoreName -> (DB)
+		/// </summary>
+		/// <param name="qs"></param>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void Load_Form_invoice__store__name(NameValueCollection qs, bool lazyLoad = false)
+		{
+			bool form_invoice__store__nameDoLoad = true;
+			CriteriaSet form_invoice__store__nameConds = CriteriaSet.And();
+			{
+				object hValue = Navigation.GetValue("store", true);
+				if (hValue != null && !(hValue is Array) && !string.IsNullOrEmpty(Convert.ToString(hValue)))
+				{
+					form_invoice__store__nameConds.Equal(CSGenioAstore.FldCodstore, hValue);
+					this.ValStore = DBConversion.ToString(hValue);
+				}
+			}
+
+			TableStoreName = new TableDBEdit<Models.Store>
+			{
+				IsLazyLoad = lazyLoad
+			};
+
+			if (lazyLoad)
+			{
+				if (Navigation.CurrentLevel.GetEntry("RETURN_store") != null)
+				{
+					this.ValStore = Navigation.GetStrValue("RETURN_store");
+					Navigation.CurrentLevel.SetEntry("RETURN_store", null);
+				}
+				FillDependant_Form_invoiceTableStoreName(lazyLoad);
+				return;
+			}
+
+			if (form_invoice__store__nameDoLoad)
+			{
+				List<ColumnSort> sorts = [];
+				ColumnSort requestedSort = GetRequestSort(TableStoreName, "sTableStoreName", "dTableStoreName", qs, "store");
+				if (requestedSort != null)
+					sorts.Add(requestedSort);
+
+				string query = "";
+				if (!string.IsNullOrEmpty(qs["TableStoreName_tableFilters"]))
+					TableStoreName.TableFilters = bool.Parse(qs["TableStoreName_tableFilters"]);
+				else
+					TableStoreName.TableFilters = false;
+
+				query = qs["qTableStoreName"];
+
+				//RS 26.07.2016 O preenchimento da lista de ajuda dos Dbedits passa a basear-se apenas no campo do próprio DbEdit
+				// O interface de pesquisa rápida não fica coerente quando se visualiza apenas uma coluna mas a pesquisa faz matching com 5 ou 6 colunas diferentes
+				//  tornando confuso to o user porque determinada row foi devolvida quando o Qresult não mostra como o matching foi feito
+				CriteriaSet search_filters = CriteriaSet.And();
+				if (!string.IsNullOrEmpty(query))
+				{
+					search_filters.Like(CSGenioAstore.FldName, query + "%");
+				}
+				form_invoice__store__nameConds.SubSet(search_filters);
+
+				string tryParsePage = qs["pTableStoreName"] != null ? qs["pTableStoreName"].ToString() : "1";
+				int page = !string.IsNullOrEmpty(tryParsePage) ? int.Parse(tryParsePage) : 1;
+				int numberItems = CSGenio.framework.Configuration.NrRegDBedit;
+				int offset = (page - 1) * numberItems;
+
+				FieldRef[] fields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAstore.FldZzstate];
+
+// USE /[MANUAL FPV OVERRQ FORM_INVOICE_STORENAME]/
+
+				// Limitation by Zzstate
+				/*
+					Records that are currently being inserted or duplicated will also be included.
+					Client-side persistence will try to fill the "text" value of that option.
+				*/
+				if (Navigation.checkFormMode("store", FormMode.New) || Navigation.checkFormMode("store", FormMode.Duplicate))
+					form_invoice__store__nameConds.SubSet(CriteriaSet.Or()
+						.Equal(CSGenioAstore.FldZzstate, 0)
+						.Equal(CSGenioAstore.FldCodstore, Navigation.GetStrValue("store")));
+				else
+					form_invoice__store__nameConds.Criterias.Add(new Criteria(new ColumnReference(CSGenioAstore.FldZzstate), CriteriaOperator.Equal, 0));
+
+				FieldRef firstVisibleColumn = null;
+				ListingMVC<CSGenioAstore> listing = Models.ModelBase.Where<CSGenioAstore>(m_userContext, false, form_invoice__store__nameConds, fields, offset, numberItems, sorts, "LED_FORM_INVOICE__STORE__NAME", true, false, firstVisibleColumn: firstVisibleColumn);
+
+				TableStoreName.SetPagination(page, numberItems, listing.HasMore, listing.GetTotal, listing.TotalRecords);
+				TableStoreName.Query = query;
+				TableStoreName.Elements = listing.RowsForViewModel((r) => new GenioMVC.Models.Store(m_userContext, r, true, _fieldsToSerialize_FORM_INVOICE__STORE__NAME));
+
+				//created by [ MH ] at [ 14.04.2016 ] - Foi alterada a forma de retornar a key do novo registo inserido / editado no form de apoio do DBEdit.
+				//last update by [ MH ] at [ 10.05.2016 ] - Validação se key encontra-se no level atual, as chaves dos niveis anteriores devem ser ignorados.
+				if (Navigation.CurrentLevel.GetEntry("RETURN_store") != null)
+				{
+					this.ValStore = Navigation.GetStrValue("RETURN_store");
+					Navigation.CurrentLevel.SetEntry("RETURN_store", null);
+				}
+
+				TableStoreName.List = new SelectList(TableStoreName.Elements.ToSelectList(x => x.ValName, x => x.ValCodstore,  x => x.ValCodstore == this.ValStore), "Value", "Text", this.ValStore);
+				//Seleciona se só um
+				if (TableStoreName.List != null && TableStoreName.List.Count() == 1)
+				{
+					this.ValStore = TableStoreName.List.First().Value;
+					Navigation.SetValue("store", this.ValStore);
+				}
+				FillDependant_Form_invoiceTableStoreName();
+			}
+		}
+
+		/// <summary>
+		/// Get Dependant fields values -> TableStoreName (DB)
+		/// </summary>
+		/// <param name="PKey">Primary Key of Store</param>
+		public ConcurrentDictionary<string, object> GetDependant_Form_invoiceTableStoreName(string PKey)
+		{
+			FieldRef[] refDependantFields = [CSGenioAstore.FldCodstore, CSGenioAstore.FldName, CSGenioAperson.FldCodperson, CSGenioAperson.FldName];
+
+			var returnEmptyDependants = false;
+			CriteriaSet wherecodition = CriteriaSet.And();
+
+			// Return default values
+			if (GenFunctions.emptyG(PKey) == 1)
+				returnEmptyDependants = true;
+
+			// Check if the limit(s) is filled if exists
+			// - - - - - - - - - - - - - - - - - - - - -
+
+			if (returnEmptyDependants)
+				return GetViewModelFieldValues(refDependantFields);
+
+			PersistentSupport sp = m_userContext.PersistentSupport;
+			User u = m_userContext.User;
+
+			CSGenioAstore tempArea = new(u);
+
+			// Fields to select
+			SelectQuery querySelect = new();
+			querySelect.PageSize(1);
+			foreach (FieldRef field in refDependantFields)
+				querySelect.Select(field);
+
+			querySelect.From(tempArea.QSystem, tempArea.TableName, tempArea.Alias)
+				.Where(wherecodition.Equal(CSGenioAstore.FldCodstore, PKey));
+
+			string[] dependantFields = refDependantFields.Select(f => f.FullName).ToArray();
+			QueryUtils.SetInnerJoins(dependantFields, null, tempArea, querySelect);
+
+			ArrayList values = sp.executeReaderOneRow(querySelect);
+			bool useDefaults = values.Count == 0;
+
+			if (useDefaults)
+				return GetViewModelFieldValues(refDependantFields);
+			return GetViewModelFieldValues(refDependantFields, values);
+		}
+
+		/// <summary>
+		/// Fill Dependant fields values -> TableStoreName (DB)
+		/// </summary>
+		/// <param name="lazyLoad">Lazy loading of dropdown items</param>
+		public void FillDependant_Form_invoiceTableStoreName(bool lazyLoad = false)
+		{
+			var row = GetDependant_Form_invoiceTableStoreName(this.ValStore);
+			try
+			{
+				this.ValCodperson = (string)row["person.codperson"];
+				this.funcPersonValName = () => (string)row["person.name"];
+
+				// Fill List fields
+				this.ValStore = ViewModelConversion.ToString(row["store.codstore"]);
+				TableStoreName.Value = (string)row["store.name"];
+				if (GenFunctions.emptyG(this.ValStore) == 1)
+				{
+					this.ValStore = "";
+					TableStoreName.Value = "";
+					Navigation.ClearValue("store");
+				}
+				else if (lazyLoad)
+				{
+					TableStoreName.SetPagination(1, 0, false, false, 1);
+					TableStoreName.List = new SelectList(new List<SelectListItem>()
+					{
+						new SelectListItem
+						{
+							Value = Convert.ToString(this.ValStore),
+							Text = Convert.ToString(TableStoreName.Value),
+							Selected = true
+						}
+					}, "Value", "Text", this.ValStore);
+				}
+
+				TableStoreName.Selected = this.ValStore;
+			}
+			catch (Exception ex)
+			{
+				CSGenio.framework.Log.Error(string.Format("FillDependant_Error (TableStoreName): {0}; {1}", ex.Message, ex.InnerException != null ? ex.InnerException.Message : ""));
+			}
+		}
+
+		private readonly string[] _fieldsToSerialize_FORM_INVOICE__STORE__NAME = ["Store", "Store.ValCodstore", "Store.ValZzstate"];
+
 		protected override object GetViewModelValue(string identifier, object modelValue)
 		{
 			return identifier switch
@@ -579,7 +767,6 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.store" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoicestore" => ViewModelConversion.ToString(modelValue),
 				"invoice.receipt" => ViewModelConversion.ToString(modelValue),
-				"store.name" => ViewModelConversion.ToString(modelValue),
 				"invoice.date" => ViewModelConversion.ToDateTime(modelValue),
 				"invoice.price" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.taxes" => ViewModelConversion.ToNumeric(modelValue),
@@ -594,6 +781,7 @@ namespace GenioMVC.ViewModels.Invoice
 				"person.name" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
+				"store.name" => ViewModelConversion.ToString(modelValue),
 				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};
