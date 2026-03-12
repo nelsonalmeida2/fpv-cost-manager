@@ -120,14 +120,15 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValReceiptData))
 		this.stopWatchers.push(watch(() => this.ValReceiptData.value, (newValue, oldValue) => this.onUpdate('invoice.receiptdata', this.ValReceiptData, newValue, oldValue), { deep: true }))
 
-		this.StoreValCodstore = reactive(new modelFieldType.PrimaryKey({
-			id: 'StoreValCodstore',
-			originId: 'ValCodstore',
+		this.StoreValName = reactive(new modelFieldType.String({
+			id: 'StoreValName',
+			originId: 'ValName',
 			area: 'STORE',
-			field: 'CODSTORE',
-			description: '',
-		}).cloneFrom(values?.StoreValCodstore))
-		this.stopWatchers.push(watch(() => this.StoreValCodstore.value, (newValue, oldValue) => this.onUpdate('store.codstore', this.StoreValCodstore, newValue, oldValue)))
+			field: 'NAME',
+			maxLength: 50,
+			description: computed(() => this.Resources.NAME31974),
+		}).cloneFrom(values?.StoreValName))
+		this.stopWatchers.push(watch(() => this.StoreValName.value, (newValue, oldValue) => this.onUpdate('store.name', this.StoreValName, newValue, oldValue)))
 
 		this.ValDate = reactive(new modelFieldType.Date({
 			id: 'ValDate',

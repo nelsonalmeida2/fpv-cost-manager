@@ -148,7 +148,24 @@
 												</base-input-structure>
 											</q-col>
 										</q-row>
-										<q-row v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible">
+										<q-row v-if="controls.FORM_INVOICE__STORE__NAME.isVisible || controls.FORM_INVOICE__INVOICE__DATE.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__STORE__NAME.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__STORE__NAME"
+													v-on="controls.FORM_INVOICE__STORE__NAME.handlers"
+													:loading="controls.FORM_INVOICE__STORE__NAME.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-text-field
+														v-bind="controls.FORM_INVOICE__STORE__NAME.props"
+														@blur="onBlur(controls.FORM_INVOICE__STORE__NAME, model.StoreValName.value)"
+														@change="model.StoreValName.fnUpdateValueOnChange" />
+												</base-input-structure>
+											</q-col>
 											<q-col
 												v-if="controls.FORM_INVOICE__INVOICE__DATE.isVisible"
 												cols="auto">
@@ -793,7 +810,7 @@
 						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
 						isCollapsible: false,
 						anchored: false,
-						directChildren: ['FORM_INVOICE__INVOICE__CODINVOICESTORE', 'FORM_INVOICE__INVOICE__RECEIPT', 'FORM_INVOICE__STORE__CODSTORE', 'FORM_INVOICE__INVOICE__DATE'],
+						directChildren: ['FORM_INVOICE__INVOICE__CODINVOICESTORE', 'FORM_INVOICE__INVOICE__RECEIPT', 'FORM_INVOICE__STORE__NAME', 'FORM_INVOICE__INVOICE__DATE'],
 						mustBeFilled: true,
 						controlLimits: [
 						],
@@ -830,16 +847,17 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__STORE__CODSTORE: new fieldControlClass.StringControl({
-						modelField: 'StoreValCodstore',
-						valueChangeEvent: 'fieldChange:store.codstore',
-						id: 'FORM_INVOICE__STORE__CODSTORE',
-						name: 'CODSTORE',
-						size: 'small',
+					FORM_INVOICE__STORE__NAME: new fieldControlClass.StringControl({
+						modelField: 'StoreValName',
+						valueChangeEvent: 'fieldChange:store.name',
+						id: 'FORM_INVOICE__STORE__NAME',
+						name: 'NAME',
+						size: 'xlarge',
 						label: computed(() => this.Resources.STORE16493),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP02',
+						maxLength: 50,
 						controlLimits: [
 						],
 					}, this),
@@ -1334,8 +1352,8 @@
 						set ValName(value) { vm.model.PersonValName.updateValue(value) },
 					},
 					Store: {
-						get ValCodstore() { return vm.model.StoreValCodstore.value },
-						set ValCodstore(value) { vm.model.StoreValCodstore.updateValue(value) },
+						get ValName() { return vm.model.StoreValName.value },
+						set ValName(value) { vm.model.StoreValName.updateValue(value) },
 					},
 					keys: {
 						/** The primary key of the INVOICE table */

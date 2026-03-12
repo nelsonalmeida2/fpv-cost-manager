@@ -59,22 +59,22 @@ namespace GenioMVC.ViewModels.Invoice
 		/// </summary>
 		public DocumsProperties_ViewModel ValReceiptPropertiesVM { get; set; }
 		/// <summary>
-		/// Title: "Store" | Type: "+"
+		/// Title: "Store" | Type: "C"
 		/// </summary>
 		[ValidateSetAccess]
-		public string StoreValCodstore
+		public string StoreValName
 		{
 			get
 			{
-				return funcStoreValCodstore != null ? funcStoreValCodstore() : _auxStoreValCodstore;
+				return funcStoreValName != null ? funcStoreValName() : _auxStoreValName;
 			}
-			set { funcStoreValCodstore = () => value; }
+			set { funcStoreValName = () => value; }
 		}
 
 		[JsonIgnore]
-		public Func<string> funcStoreValCodstore { get; set; }
+		public Func<string> funcStoreValName { get; set; }
 
-		private string _auxStoreValCodstore { get; set; }
+		private string _auxStoreValName { get; set; }
 		/// <summary>
 		/// Title: "Date" | Type: "D"
 		/// </summary>
@@ -279,7 +279,7 @@ namespace GenioMVC.ViewModels.Invoice
 				ValCodinvoicestore = ViewModelConversion.ToString(m.ValCodinvoicestore);
 				ValReceipt = ViewModelConversion.ToString(m.ValReceipt);
 				ValReceiptfk = ViewModelConversion.ToString(m.ValReceiptfk);
-				funcStoreValCodstore = () => ViewModelConversion.ToString(m.Store.ValCodstore);
+				funcStoreValName = () => ViewModelConversion.ToString(m.Store.ValName);
 				ValDate = ViewModelConversion.ToDateTime(m.ValDate);
 				ValPrice = ViewModelConversion.ToNumeric(m.ValPrice);
 				ValTaxes = ViewModelConversion.ToNumeric(m.ValTaxes);
@@ -524,6 +524,7 @@ namespace GenioMVC.ViewModels.Invoice
 			validator.StringLength("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ValCodinvoicestore, 50);
 
 			validator.Required("ValCodinvoicestore", Resources.Resources.CODINVOICESTORE44054, ViewModelConversion.ToString(ValCodinvoicestore), FieldType.TEXT.GetFormatting());
+			validator.StringLength("StoreValName", Resources.Resources.STORE16493, StoreValName, 50);
 
 			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
 
@@ -578,7 +579,7 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.store" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoicestore" => ViewModelConversion.ToString(modelValue),
 				"invoice.receipt" => ViewModelConversion.ToString(modelValue),
-				"store.codstore" => ViewModelConversion.ToString(modelValue),
+				"store.name" => ViewModelConversion.ToString(modelValue),
 				"invoice.date" => ViewModelConversion.ToDateTime(modelValue),
 				"invoice.price" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.taxes" => ViewModelConversion.ToNumeric(modelValue),
@@ -592,6 +593,7 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"person.name" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
+				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"person.codperson" => ViewModelConversion.ToString(modelValue),
 				_ => modelValue
 			};

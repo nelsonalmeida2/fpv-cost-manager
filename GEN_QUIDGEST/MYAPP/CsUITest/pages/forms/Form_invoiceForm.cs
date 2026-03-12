@@ -30,7 +30,7 @@ public class Form_invoiceForm : Form
 	/// <summary>
 	/// Store
 	/// </summary>
-	public BaseInputControl StoreCodstore => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__STORE__CODSTORE", "#FORM_INVOICE__STORE__CODSTORE");
+	public BaseInputControl StoreName => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__STORE__NAME", "#FORM_INVOICE__STORE__NAME");
 
 	/// <summary>
 	/// Date
