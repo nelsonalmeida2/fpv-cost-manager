@@ -168,6 +168,36 @@ export class QArrayCurrency
 }
 
 /**
+ * The DELIVERYTYPE array.
+ */
+export class QArrayDeliverytype
+{
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
+	constructor(fnResources)
+	{
+		this.type = 'C'
+		this.pluralName = 'DELIVERYTYPE'
+		this.singularName = 'DELIVERY_TYPE53619'
+
+		this.elements = [
+			new Option({
+				num: 1,
+				key: 'P',
+				resourceId: 'PICKUP49098',
+				fnResources,
+			}),
+			new Option({
+				num: 2,
+				key: 'D',
+				resourceId: 'DELIVERY50566',
+				fnResources,
+			}),
+		]
+
+	}
+}
+
+/**
  * The Gender array.
  */
 export class QArrayGender
@@ -473,6 +503,7 @@ export class QArrayS_tpproc
 
 export default {
 	QArrayCurrency,
+	QArrayDeliverytype,
 	QArrayGender,
 	QArrayS_modpro,
 	QArrayS_module,

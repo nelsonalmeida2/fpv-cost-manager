@@ -225,6 +225,19 @@ namespace CSGenio.business
 			info.RegisterFieldDB(Qfield);
 
 			//- - - - - - - - - - - - - - - - - - -
+			Qfield = new Field(info.Alias, "deliverytype", FieldType.ARRAY_TEXT);
+			Qfield.FieldDescription = "Delivery Type";
+			Qfield.FieldSize =  1;
+			Qfield.MQueue = false;
+			Qfield.CavDesignation = "DELIVERY_TYPE53619";
+
+            Qfield.NotNull = true;
+			Qfield.Dupmsg = "";
+            Qfield.ArrayName = "dbo.GetValArrayCdeliverytype";
+            Qfield.ArrayClassName = "Deliverytype";
+			info.RegisterFieldDB(Qfield);
+
+			//- - - - - - - - - - - - - - - - - - -
 			Qfield = new Field(info.Alias, "zzstate", FieldType.INTEGER);
 			Qfield.FieldDescription = "Estado da ficha";
 			info.RegisterFieldDB(Qfield);
@@ -290,6 +303,21 @@ namespace CSGenio.business
 
 			//Write conditions
 			List<ConditionFormula> conditions = new List<ConditionFormula>();
+
+			// [INVOICE->DELIVERYTYPE] != "P" || [INVOICE->SHIPPINGCOST] == 0
+			{
+			List<ByAreaArguments> argumentsListByArea = new List<ByAreaArguments>();
+			argumentsListByArea= new List<ByAreaArguments>();
+			argumentsListByArea.Add(new ByAreaArguments(new string[] {"deliverytype","shippingcost"},new int[] {0,1},"invoice","codinvoice"));
+			ConditionFormula writeCondition = new ConditionFormula(argumentsListByArea, 2, delegate(object []args,User user,string module,PersistentSupport sp) {
+				return ((string)args[0])!="P"||((decimal)args[1])==0;
+			});
+			writeCondition.ErrorWarning = "When 'Pickup' is selected, the Shipping Cost must be 0.";
+            writeCondition.Type =  ConditionType.ERROR;
+            writeCondition.Validate = true;
+			writeCondition.Field = info.DBFields["shippingcost"];
+			conditions.Add(writeCondition);
+			}
 			info.WriteConditions = conditions.Where(c=> c.IsWriteCondition()).ToList();
 			info.CrudConditions = conditions.Where(c=> c.IsCrudCondition()).ToList();
 
@@ -580,6 +608,17 @@ namespace CSGenio.business
 			set { insertNameValueField(FldCodperson, value); }
 		}
 
+		/// <summary>Field : "Delivery Type" Tipo: "AC" Formula:  ""</summary>
+		public static FieldRef FldDeliverytype { get { return m_fldDeliverytype; } }
+		private static FieldRef m_fldDeliverytype = new FieldRef("invoice", "deliverytype");
+
+		/// <summary>Field : "Delivery Type" Tipo: "AC" Formula:  ""</summary>
+		public string ValDeliverytype
+		{
+			get { return (string)returnValueField(FldDeliverytype); }
+			set { insertNameValueField(FldDeliverytype, value); }
+		}
+
 		/// <summary>Field : "ZZSTATE" Type: "INT" Formula:  ""</summary>
 		public static FieldRef FldZzstate { get { return m_fldZzstate; } }
 		private static FieldRef m_fldZzstate = new FieldRef("invoice", "zzstate");
@@ -677,7 +716,7 @@ namespace CSGenio.business
 		// USE /[MANUAL FPV TABAUX INVOICE]/
 
  
-                
+                 
 
 	}
 }

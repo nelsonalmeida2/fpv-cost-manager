@@ -201,6 +201,7 @@ namespace GenioMVC.ViewModels.Invoice
 				new Exports.QColumn(CSGenioAinvoice.FldCreated_by, FieldType.TEXT, Resources.Resources.CREATED_BY12292, 100, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldCreated_at, FieldType.DATETIMESECONDS, Resources.Resources.CREATED_AT29089, 8, 0, true),
 				new Exports.QColumn(CSGenioAinvoice.FldCodinvoicestore, FieldType.TEXT, Resources.Resources.CODINVOICESTORE44054, 50, 0, true),
+				new Exports.QColumn(CSGenioAinvoice.FldDeliverytype, FieldType.ARRAY_TEXT, Resources.Resources.DELIVERY_TYPE53619, 1, 0, true, "DELIVERYTYPE"),
 				new Exports.QColumn(CSGenioAstore.FldName, FieldType.TEXT, Resources.Resources.STORE16493, 30, 0, true),
 			};
 		}

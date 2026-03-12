@@ -72,6 +72,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Delivery Type"
+		/// </summary>
+		public static string DELIVERY_TYPE53619 {
+			get {
+				return ResourceManager.GetString("DELIVERY_TYPE53619", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Description"
 		/// </summary>
 		public static string DESCRIPTION07383 {
@@ -293,6 +302,15 @@ namespace GenioMVC.Resources
 		public static string ITEMS24549 {
 			get {
 				return ResourceManager.GetString("ITEMS24549", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "When 'Pickup' is selected, the Shipping Cost must be 0."
+		/// </summary>
+		public static string WHEN__PICKUP__IS_SEL51586 {
+			get {
+				return ResourceManager.GetString("WHEN__PICKUP__IS_SEL51586", resourceCulture);
 			}
 		}
 
@@ -630,6 +648,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "Pickup"
+		/// </summary>
+		public static string PICKUP49098 {
+			get {
+				return ResourceManager.GetString("PICKUP49098", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Async process"
 		/// </summary>
 		public static string ASYNC_PROCESS56674 {
@@ -770,6 +797,15 @@ namespace GenioMVC.Resources
 		public static string METADATA28516 {
 			get {
 				return ResourceManager.GetString("METADATA28516", resourceCulture);
+			}
+		}
+
+		/// <summary>
+		///   Looks up a localized string similar to "Delivery"
+		/// </summary>
+		public static string DELIVERY50566 {
+			get {
+				return ResourceManager.GetString("DELIVERY50566", resourceCulture);
 			}
 		}
 

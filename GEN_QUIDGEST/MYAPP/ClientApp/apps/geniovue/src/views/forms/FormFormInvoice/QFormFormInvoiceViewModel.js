@@ -274,6 +274,17 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.NAME31974),
 		}).cloneFrom(values?.PersonValName))
 		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
+
+		this.ValDeliverytype = reactive(new modelFieldType.String({
+			id: 'ValDeliverytype',
+			originId: 'ValDeliverytype',
+			area: 'INVOICE',
+			field: 'DELIVERYTYPE',
+			maxLength: 1,
+			arrayOptions: computed(() => new qProjArrays.QArrayDeliverytype(vm.$getResource).elements),
+			description: computed(() => this.Resources.DELIVERY_TYPE53619),
+		}).cloneFrom(values?.ValDeliverytype))
+		this.stopWatchers.push(watch(() => this.ValDeliverytype.value, (newValue, oldValue) => this.onUpdate('invoice.deliverytype', this.ValDeliverytype, newValue, oldValue)))
 	}
 
 	/**

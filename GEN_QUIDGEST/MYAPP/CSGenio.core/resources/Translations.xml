@@ -3,6 +3,9 @@
   <msg id="Estados do processo" code="ESTADOS_DO_PROCESSO59118">
     <ENUS>Estados do processo</ENUS>
   </msg>
+  <msg id="Delivery Type" code="DELIVERY_TYPE53619">
+    <ENUS>Delivery Type</ENUS>
+  </msg>
   <msg id="Description" code="DESCRIPTION07383">
     <ENUS>Description</ENUS>
   </msg>
@@ -77,6 +80,9 @@
   </msg>
   <msg id="iTEMS" code="ITEMS24549">
     <ENUS>iTEMS</ENUS>
+  </msg>
+  <msg id="When &apos;Pickup&apos; is selected, the Shipping Cost must be 0." code="WHEN__PICKUP__IS_SEL51586">
+    <ENUS>When &apos;Pickup&apos; is selected, the Shipping Cost must be 0.</ENUS>
   </msg>
   <msg id="My application" code="MY_APPLICATION56216">
     <ENUS>My application</ENUS>
@@ -189,6 +195,9 @@
   <msg id="Euro" code="EURO46226">
     <ENUS>Euro</ENUS>
   </msg>
+  <msg id="Pickup" code="PICKUP49098">
+    <ENUS>Pickup</ENUS>
+  </msg>
   <msg id="Async process" code="ASYNC_PROCESS56674">
     <ENUS>Async process</ENUS>
   </msg>
@@ -236,6 +245,9 @@
   </msg>
   <msg id="MetaData" code="METADATA28516">
     <ENUS>MetaData</ENUS>
+  </msg>
+  <msg id="Delivery" code="DELIVERY50566">
+    <ENUS>Delivery</ENUS>
   </msg>
   <msg id="Unidade orgânica" code="UNIDADE_ORGANICA38383">
     <ENUS>Unidade orgânica</ENUS>

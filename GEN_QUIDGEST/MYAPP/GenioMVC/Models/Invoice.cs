@@ -140,6 +140,14 @@ namespace GenioMVC.Models
 			set { _person = value; }
 		}
 
+		[DisplayName("Delivery Type")]
+		/// <summary>Field : "Delivery Type" Tipo: "AC" Formula:  ""</summary>
+		[ShouldSerialize("Invoice.ValDeliverytype")]
+		[DataArray("Deliverytype", GenioMVC.Helpers.ArrayType.Character)]
+		public string ValDeliverytype { get { return klass.ValDeliverytype; } set { klass.ValDeliverytype = value; } }
+		[JsonIgnore]
+		public SelectList ArrayValdeliverytype { get { return new SelectList(CSGenio.business.ArrayDeliverytype.GetDictionary(), "Key", "Value", ValDeliverytype); } set { ValDeliverytype = value.SelectedValue as string; } }
+
 		[DisplayName("ZZSTATE")]
 		[ShouldSerialize("Invoice.ValZzstate")]
 		/// <summary>Field: "ZZSTATE", Type: "INT", Formula: ""</summary>

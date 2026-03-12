@@ -1280,6 +1280,23 @@
 						controlLimits: [
 						],
 					}, this),
+					FORM_INVOICE__INVOICE__DELIVERYTYPE: new fieldControlClass.ArrayStringControl({
+						modelField: 'ValDeliverytype',
+						valueChangeEvent: 'fieldChange:invoice.deliverytype',
+						id: 'FORM_INVOICE__INVOICE__DELIVERYTYPE',
+						name: 'DELIVERYTYPE',
+						size: 'mini',
+						label: computed(() => this.Resources.DELIVERY_TYPE53619),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						maxLength: 1,
+						mustBeFilled: true,
+						arrayName: 'DELIVERYTYPE',
+						helpShortItem: 'None',
+						helpDetailedItem: 'None',
+						controlLimits: [
+						],
+					}, this),
 				},
 
 				model: new FormViewModel(this, {
@@ -1318,6 +1335,8 @@
 						set ValCreated_by(value) { vm.model.ValCreated_by.updateValue(value) },
 						get ValDate() { return vm.model.ValDate.value },
 						set ValDate(value) { vm.model.ValDate.updateValue(value) },
+						get ValDeliverytype() { return vm.model.ValDeliverytype.value },
+						set ValDeliverytype(value) { vm.model.ValDeliverytype.updateValue(value) },
 						get ValNumberofitems() { return vm.model.ValNumberofitems.value },
 						set ValNumberofitems(value) { vm.model.ValNumberofitems.updateValue(value) },
 						get ValPrice() { return vm.model.ValPrice.value },

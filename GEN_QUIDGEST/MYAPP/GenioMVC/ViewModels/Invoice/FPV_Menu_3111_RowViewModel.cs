@@ -97,6 +97,8 @@ public class FPV_Menu_3111_RowViewModel : Models.Invoice
 
 		using (new CSGenio.persistence.ScopedPersistentSupport(m_userContext.PersistentSupport))
 		{
+
+			// Table INVOICE CRUD conditions.
 		}
 
 		BtnPermission = new TableRowCrudButtonPermissions()

@@ -103,6 +103,11 @@ public class Form_invoiceForm : Form
 	/// </summary>
 	public IWebElement PersonName => throw new NotImplementedException();
 
+	/// <summary>
+	/// Delivery Type
+	/// </summary>
+	public EnumControl InvoiceDeliverytype => new EnumControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__DELIVERYTYPE");
+
 	public Form_invoiceForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_INVOICE", containerLocator: containerLocator) { }
 }

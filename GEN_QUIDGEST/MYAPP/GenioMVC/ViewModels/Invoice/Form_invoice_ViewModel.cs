@@ -126,6 +126,10 @@ namespace GenioMVC.ViewModels.Invoice
 		public Func<string> funcPersonValName { get; set; }
 
 		private string _auxPersonValName { get; set; }
+		/// <summary>
+		/// Title: "Delivery Type" | Type: "AC"
+		/// </summary>
+		public string ValDeliverytype { get; set; }
 
 		#region Navigations
 		#endregion
@@ -273,6 +277,7 @@ namespace GenioMVC.ViewModels.Invoice
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
 				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
 				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
+				ValDeliverytype = ViewModelConversion.ToString(m.ValDeliverytype);
 				ValCodinvoice = ViewModelConversion.ToString(m.ValCodinvoice);
 			}
 			catch (Exception)
@@ -307,6 +312,7 @@ namespace GenioMVC.ViewModels.Invoice
 				m.ValDate = ViewModelConversion.ToDateTime(ValDate);
 				m.ValShippingcost = ViewModelConversion.ToNumeric(ValShippingcost);
 				m.ValTaxes = ViewModelConversion.ToNumeric(ValTaxes);
+				m.ValDeliverytype = ViewModelConversion.ToString(ValDeliverytype);
 				m.ValCodinvoice = ViewModelConversion.ToString(ValCodinvoice);
 
 				/*
@@ -367,6 +373,9 @@ namespace GenioMVC.ViewModels.Invoice
 						break;
 					case "invoice.taxes":
 						this.ValTaxes = ViewModelConversion.ToNumeric(_value);
+						break;
+					case "invoice.deliverytype":
+						this.ValDeliverytype = ViewModelConversion.ToString(_value);
 						break;
 					case "invoice.codinvoice":
 						this.ValCodinvoice = ViewModelConversion.ToString(_value);
@@ -514,6 +523,8 @@ namespace GenioMVC.ViewModels.Invoice
 
 			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
+
+			validator.Required("ValDeliverytype", Resources.Resources.DELIVERY_TYPE53619, ViewModelConversion.ToString(ValDeliverytype), FieldType.ARRAY_TEXT.GetFormatting());
 
 
 			return validator.GetResult();
@@ -784,6 +795,7 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.updated_by" => ViewModelConversion.ToString(modelValue),
 				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"person.name" => ViewModelConversion.ToString(modelValue),
+				"invoice.deliverytype" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"store.name" => ViewModelConversion.ToString(modelValue),

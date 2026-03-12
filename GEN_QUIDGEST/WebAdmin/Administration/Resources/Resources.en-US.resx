@@ -120,6 +120,9 @@
   <data name="ESTADOS_DO_PROCESSO59118" xml:space="preserve">
     <value>Estados do processo</value>
   </data>
+  <data name="DELIVERY_TYPE53619" xml:space="preserve">
+    <value>Delivery Type</value>
+  </data>
   <data name="DESCRIPTION07383" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -194,6 +197,9 @@
   </data>
   <data name="ITEMS24549" xml:space="preserve">
     <value>iTEMS</value>
+  </data>
+  <data name="WHEN__PICKUP__IS_SEL51586" xml:space="preserve">
+    <value>When &apos;Pickup&apos; is selected, the Shipping Cost must be 0.</value>
   </data>
   <data name="MY_APPLICATION56216" xml:space="preserve">
     <value>My application</value>
@@ -306,6 +312,9 @@
   <data name="EURO46226" xml:space="preserve">
     <value>Euro</value>
   </data>
+  <data name="PICKUP49098" xml:space="preserve">
+    <value>Pickup</value>
+  </data>
   <data name="ASYNC_PROCESS56674" xml:space="preserve">
     <value>Async process</value>
   </data>
@@ -353,6 +362,9 @@
   </data>
   <data name="METADATA28516" xml:space="preserve">
     <value>MetaData</value>
+  </data>
+  <data name="DELIVERY50566" xml:space="preserve">
+    <value>Delivery</value>
   </data>
   <data name="UNIDADE_ORGANICA38383" xml:space="preserve">
     <value>Unidade orgânica</value>
