@@ -128,7 +128,7 @@ namespace GenioMVC.ViewModels.Personpsw
 		/// <param name="userContext">The current user request context</param>
 		public FPV_Menu_121_ViewModel(UserContext userContext) : base(userContext)
 		{
-			this.RoleToShow = CSGenio.framework.Role.ADMINISTRATION;
+			this.RoleToShow = CSGenio.framework.Role.ROLE_5;
 		}
 
 		/// <summary>
