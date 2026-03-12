@@ -171,6 +171,9 @@
   <msg id="Notification Email Signatures" code="NOTIFICATION_EMAIL_S37352">
     <ENUS>Notification Email Signatures</ENUS>
   </msg>
+  <msg id="Favorite Brands" code="FAVORITE_BRANDS21837">
+    <ENUS>Favorite Brands</ENUS>
+  </msg>
   <msg id="Invoices" code="INVOICES44448">
     <ENUS>Invoices</ENUS>
   </msg>

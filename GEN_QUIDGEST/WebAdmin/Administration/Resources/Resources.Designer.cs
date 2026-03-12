@@ -574,6 +574,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Favorite Brands"
+        /// </summary>
+        public static string FAVORITE_BRANDS21837 {
+            get {
+                return ResourceManager.GetString("FAVORITE_BRANDS21837", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Invoices"
         /// </summary>
         public static string INVOICES44448 {

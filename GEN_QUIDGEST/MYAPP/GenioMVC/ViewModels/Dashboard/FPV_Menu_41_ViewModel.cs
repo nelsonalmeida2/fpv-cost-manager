@@ -27,6 +27,26 @@ namespace GenioMVC.ViewModels.Dashboard
 			[
 				new CustomWidgetProvider<CSGenio.business.DbArea>
 {
+					Id = "FAVBRANDS",
+					Order = 7,
+					Width = 6,
+					Height = 5,
+					BorderStyle = "",
+					Required = false,
+					Visible = true,
+					Role = CSGenio.framework.Role.ROLE_5,
+					Module = "FPV",
+					Title = Resources.Resources.FAVORITE_BRANDS21837,
+					Group = "_GRAPHS",
+					Form = "W_FAVBRANDS",
+					Component = "QFormWFavbrands",
+					RefreshMode = WidgetRefreshMode.Automatic,
+					RefreshRate = 60,
+					UsesCache = false,
+					InstantionMethod = WidgetInstantionMethod.Aggregate
+				},
+				new CustomWidgetProvider<CSGenio.business.DbArea>
+{
 					Id = "LASTINVOICE",
 					Order = 2,
 					Width = 6,

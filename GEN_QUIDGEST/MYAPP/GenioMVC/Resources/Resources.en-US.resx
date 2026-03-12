@@ -288,6 +288,9 @@
 	<data name="NOTIFICATION_EMAIL_S37352" xml:space="preserve">
 		<value>Notification Email Signatures</value>
 	</data>
+	<data name="FAVORITE_BRANDS21837" xml:space="preserve">
+		<value>Favorite Brands</value>
+	</data>
 	<data name="INVOICES44448" xml:space="preserve">
 		<value>Invoices</value>
 	</data>
