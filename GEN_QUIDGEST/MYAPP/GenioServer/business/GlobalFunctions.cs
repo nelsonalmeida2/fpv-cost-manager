@@ -1617,7 +1617,7 @@ namespace CSGenio.business
         }
 
         /// <summary>
-        /// My application theme variables
+        /// FPV COST MANAGER theme variables
         /// </summary>
         private static readonly Dictionary<string, string> MYAPP_THEME_VARIABLES = new Dictionary<string, string>()
         {

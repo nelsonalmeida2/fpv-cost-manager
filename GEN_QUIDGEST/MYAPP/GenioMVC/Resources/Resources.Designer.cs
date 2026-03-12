@@ -324,6 +324,15 @@ namespace GenioMVC.Resources
 		}
 
 		/// <summary>
+		///   Looks up a localized string similar to "FPV COST MANAGER"
+		/// </summary>
+		public static string FPV_COST_MANAGER12063 {
+			get {
+				return ResourceManager.GetString("FPV_COST_MANAGER12063", resourceCulture);
+			}
+		}
+
+		/// <summary>
 		///   Looks up a localized string similar to "Status"
 		/// </summary>
 		public static string STATUS62033 {

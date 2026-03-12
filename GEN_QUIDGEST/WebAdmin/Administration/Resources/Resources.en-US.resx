@@ -204,6 +204,9 @@
   <data name="UPDATED_AT48366" xml:space="preserve">
     <value>Updated At</value>
   </data>
+  <data name="FPV_COST_MANAGER12063" xml:space="preserve">
+    <value>FPV COST MANAGER</value>
+  </data>
   <data name="STATUS62033" xml:space="preserve">
     <value>Status</value>
   </data>

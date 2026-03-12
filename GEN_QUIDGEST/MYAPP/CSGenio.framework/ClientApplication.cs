@@ -6,7 +6,7 @@ namespace CSGenio.framework
     public class ClientApplication
     {
         public static readonly ClientApplication MYAPP = 
-            new ClientApplication("MYAPP", "My application") 
+            new ClientApplication("MYAPP", "FPV COST MANAGER") 
             {
                 Modules = new Dictionary<string, string>
 				{

@@ -87,6 +87,9 @@
   <msg id="Updated At" code="UPDATED_AT48366">
     <ENUS>Updated At</ENUS>
   </msg>
+  <msg id="FPV COST MANAGER" code="FPV_COST_MANAGER12063">
+    <ENUS>FPV COST MANAGER</ENUS>
+  </msg>
   <msg id="Status" code="STATUS62033">
     <ENUS>Status</ENUS>
   </msg>
