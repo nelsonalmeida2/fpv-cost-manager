@@ -28,9 +28,9 @@ namespace GenioMVC.ViewModels.Dashboard
 				new CustomWidgetProvider<CSGenio.business.DbArea>
 {
 					Id = "FAVBRANDS",
-					Order = 7,
+					Order = 5,
 					Width = 6,
-					Height = 5,
+					Height = 6,
 					BorderStyle = "",
 					Required = false,
 					Visible = true,
@@ -48,9 +48,9 @@ namespace GenioMVC.ViewModels.Dashboard
 				new CustomWidgetProvider<CSGenio.business.DbArea>
 {
 					Id = "LASTINVOICE",
-					Order = 2,
+					Order = 1,
 					Width = 6,
-					Height = 5,
+					Height = 6,
 					BorderStyle = "",
 					Required = false,
 					Visible = true,
@@ -65,27 +65,6 @@ namespace GenioMVC.ViewModels.Dashboard
 					UsesCache = false,
 					InstantionMethod = WidgetInstantionMethod.Aggregate
 				},
-				new CustomWidgetProvider<CSGenio.business.CSGenioAinvoice>
-{
-					Id = "FAVSTORES",
-					Order = 1,
-					Width = 6,
-					Height = 3,
-					BorderStyle = "",
-					Required = false,
-					Visible = true,
-					Role = CSGenio.framework.Role.ROLE_5,
-					Module = "FPV",
-					Title = Resources.Resources.FAVORITE_STORES13289,
-					Group = "_GRAPHS",
-					Form = "W_FAVSTORES",
-					Component = "QFormWFavstores",
-					RowsSelector = GenioMVC.Models.ModelBase.All<CSGenio.business.CSGenioAinvoice>,
-					RefreshMode = WidgetRefreshMode.Automatic,
-					RefreshRate = 60,
-					UsesCache = false,
-					InstantionMethod = WidgetInstantionMethod.Aggregate
-				},
 			];
 
 			IndependentWidgetInstances =
@@ -93,7 +72,7 @@ namespace GenioMVC.ViewModels.Dashboard
 				new MenuWidget
 				{
 					Id = "Menu_B",
-					Order = 4,
+					Order = 3,
 					Width = 2,
 					Height = 2,
 					Style = "",
@@ -111,7 +90,7 @@ namespace GenioMVC.ViewModels.Dashboard
 				new MenuWidget
 				{
 					Id = "Menu_C",
-					Order = 5,
+					Order = 4,
 					Width = 2,
 					Height = 2,
 					Style = "",
@@ -129,7 +108,7 @@ namespace GenioMVC.ViewModels.Dashboard
 				new MenuWidget
 				{
 					Id = "Menu_6",
-					Order = 3,
+					Order = 2,
 					Width = 2,
 					Height = 2,
 					Style = "",
