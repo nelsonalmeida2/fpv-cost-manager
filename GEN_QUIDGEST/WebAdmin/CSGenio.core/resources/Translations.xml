@@ -27,6 +27,9 @@
   <msg id="System" code="SYSTEM02957">
     <ENUS>System</ENUS>
   </msg>
+  <msg id="100€-50€" code="_100__50_12842">
+    <ENUS>100€-50€</ENUS>
+  </msg>
   <msg id="Aggregate" code="AGGREGATE05721">
     <ENUS>Aggregate</ENUS>
   </msg>
@@ -531,6 +534,9 @@
   <msg id="Executed by external app" code="EXECUTED_BY_EXTERNAL36156">
     <ENUS>Executed by external app</ENUS>
   </msg>
+  <msg id="All" code="ALL38603">
+    <ENUS>All</ENUS>
+  </msg>
   <msg id="Em fila de espera" code="EM_FILA_DE_ESPERA21822">
     <ENUS>Em fila de espera</ENUS>
   </msg>
@@ -551,6 +557,12 @@
   </msg>
   <msg id="Real time status" code="REAL_TIME_STATUS00476">
     <ENUS>Real time status</ENUS>
+  </msg>
+  <msg id="&gt; 100€" code="__100_23298">
+    <ENUS>&gt; 100€</ENUS>
+  </msg>
+  <msg id="&lt; 50€" code="__50_26413">
+    <ENUS>&lt; 50€</ENUS>
   </msg>
   <msg id="End time" code="END_TIME53495">
     <ENUS>End time</ENUS>

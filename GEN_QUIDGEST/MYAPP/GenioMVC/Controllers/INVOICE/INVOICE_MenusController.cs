@@ -181,6 +181,8 @@ namespace GenioMVC.Controllers
 
 			FPV_Menu_411_ViewModel model = new(m_userContext);
 
+			CSGenio.core.framework.table.legacy.v1.TableConfigurationUpdate.SetFilterShiftValue(model.Uuid, "filter_FPV_Menu_411_PRICE", 0);
+
 			CSGenio.core.framework.table.TableConfiguration tableConfig = model.GetTableConfig(
 				requestModel.TableConfiguration,
 				requestModel.UserTableConfigName,

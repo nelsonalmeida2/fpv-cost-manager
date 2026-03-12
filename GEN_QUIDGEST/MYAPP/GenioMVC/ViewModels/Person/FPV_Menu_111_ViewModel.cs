@@ -195,7 +195,7 @@ namespace GenioMVC.ViewModels.Person
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
-			Menu.SetFilters(false, false);
+			Menu.SetFilters(false, true);
 
 			crs.SubSets.Add(ProcessSearchFilters(Menu, GetSearchColumns(tableConfig.ColumnConfigurations), tableConfig));
 
@@ -203,6 +203,53 @@ namespace GenioMVC.ViewModels.Person
 			//Subfilters
 			CriteriaSet subfilters = CriteriaSet.And();
 
+			if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+			{
+				string defaultValue = "1";
+				tableConfig.Filters.Add(new GroupFilter { Key = "filter_FPV_Menu_111_GENDER", Value = defaultValue });
+			}
+
+			{
+				var groupFilters = CriteriaSet.Or();
+				bool filter_FPV_Menu_111_GENDER_1 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+					filter_FPV_Menu_111_GENDER_1 = tableConfig.GroupFilters["filter_FPV_Menu_111_GENDER"].Contains("1");
+				else if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+					filter_FPV_Menu_111_GENDER_1 = true;
+				if (filter_FPV_Menu_111_GENDER_1)
+				{
+
+				}
+
+				bool filter_FPV_Menu_111_GENDER_2 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+					filter_FPV_Menu_111_GENDER_2 = tableConfig.GroupFilters["filter_FPV_Menu_111_GENDER"].Contains("2");
+				if (filter_FPV_Menu_111_GENDER_2)
+				{
+					groupFilters.Equal(CSGenioAperson.FldGender, "M");
+
+				}
+
+				bool filter_FPV_Menu_111_GENDER_3 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+					filter_FPV_Menu_111_GENDER_3 = tableConfig.GroupFilters["filter_FPV_Menu_111_GENDER"].Contains("3");
+				if (filter_FPV_Menu_111_GENDER_3)
+				{
+					groupFilters.Equal(CSGenioAperson.FldGender, "F");
+
+				}
+
+				bool filter_FPV_Menu_111_GENDER_4 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_111_GENDER"))
+					filter_FPV_Menu_111_GENDER_4 = tableConfig.GroupFilters["filter_FPV_Menu_111_GENDER"].Contains("4");
+				if (filter_FPV_Menu_111_GENDER_4)
+				{
+					groupFilters.Equal(CSGenioAperson.FldGender, "O");
+
+				}
+
+				subfilters.SubSets.Add(groupFilters);
+			}
 
 			crs.SubSets.Add(subfilters);
 

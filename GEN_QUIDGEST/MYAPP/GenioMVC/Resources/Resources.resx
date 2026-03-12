@@ -144,6 +144,9 @@
 	<data name="SYSTEM02957" xml:space="preserve">
 		<value>System</value>
 	</data>
+	<data name="_100__50_12842" xml:space="preserve">
+		<value>100€-50€</value>
+	</data>
 	<data name="AGGREGATE05721" xml:space="preserve">
 		<value>Aggregate</value>
 	</data>
@@ -648,6 +651,9 @@
 	<data name="EXECUTED_BY_EXTERNAL36156" xml:space="preserve">
 		<value>Executed by external app</value>
 	</data>
+	<data name="ALL38603" xml:space="preserve">
+		<value>All</value>
+	</data>
 	<data name="EM_FILA_DE_ESPERA21822" xml:space="preserve">
 		<value>Em fila de espera</value>
 	</data>
@@ -668,6 +674,12 @@
 	</data>
 	<data name="REAL_TIME_STATUS00476" xml:space="preserve">
 		<value>Real time status</value>
+	</data>
+	<data name="__100_23298" xml:space="preserve">
+		<value>&gt; 100€</value>
+	</data>
+	<data name="__50_26413" xml:space="preserve">
+		<value>&lt; 50€</value>
 	</data>
 	<data name="END_TIME53495" xml:space="preserve">
 		<value>End time</value>

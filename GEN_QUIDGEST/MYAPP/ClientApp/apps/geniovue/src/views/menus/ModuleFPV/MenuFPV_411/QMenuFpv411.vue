@@ -373,6 +373,36 @@
 								sortOrder: 'asc'
 							}
 						},
+						groupFilters: [
+							{
+								id: 'filter_FPV_Menu_411_PRICE',
+								isMultiple: false,
+								items: [
+									{
+										id: 'filter_FPV_Menu_411_PRICE_1',
+										value: computed(() => this.Resources.ALL38603),
+										key: '1'
+									},
+									{
+										id: 'filter_FPV_Menu_411_PRICE_2',
+										value: computed(() => this.Resources.__100_23298),
+										key: '2'
+									},
+									{
+										id: 'filter_FPV_Menu_411_PRICE_3',
+										value: computed(() => this.Resources._100__50_12842),
+										key: '3'
+									},
+									{
+										id: 'filter_FPV_Menu_411_PRICE_4',
+										value: computed(() => this.Resources.__50_26413),
+										key: '4'
+									},
+								],
+								selected: '1',
+								default: '1'
+							},
+						],
 						globalEvents: ['changed-PERSON', 'changed-INVOICE', 'changed-STORE'],
 						uuid: '4a9dfeb1-6fc5-4de5-bee6-4e3fcd3352a5',
 						allSelectedRows: 'false',

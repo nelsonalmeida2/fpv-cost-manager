@@ -224,7 +224,7 @@ namespace GenioMVC.ViewModels.Invoice
 			// Set table name (used in getting searchable column names)
 			Menu.TableName = TableAlias;
 
-			Menu.SetFilters(false, false);
+			Menu.SetFilters(false, true);
 
 			crs.SubSets.Add(ProcessSearchFilters(Menu, GetSearchColumns(tableConfig.ColumnConfigurations), tableConfig));
 
@@ -232,6 +232,56 @@ namespace GenioMVC.ViewModels.Invoice
 			//Subfilters
 			CriteriaSet subfilters = CriteriaSet.And();
 
+			if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+			{
+				string defaultValue = "1";
+				tableConfig.Filters.Add(new GroupFilter { Key = "filter_FPV_Menu_411_PRICE", Value = defaultValue });
+			}
+
+			{
+				var groupFilters = CriteriaSet.Or();
+				bool filter_FPV_Menu_411_PRICE_1 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+					filter_FPV_Menu_411_PRICE_1 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("1");
+				else if (!tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+					filter_FPV_Menu_411_PRICE_1 = true;
+				if (filter_FPV_Menu_411_PRICE_1)
+				{
+
+				}
+
+				bool filter_FPV_Menu_411_PRICE_2 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+					filter_FPV_Menu_411_PRICE_2 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("2");
+				if (filter_FPV_Menu_411_PRICE_2)
+				{
+					groupFilters.Greater(CSGenioAinvoice.FldTotalprice, 100);
+
+				}
+
+				bool filter_FPV_Menu_411_PRICE_3 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+					filter_FPV_Menu_411_PRICE_3 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("3");
+				if (filter_FPV_Menu_411_PRICE_3)
+				{
+					CriteriaSet groupFilters1 = CriteriaSet.And();
+					groupFilters1.Lesser(CSGenioAinvoice.FldTotalprice, 100);
+					groupFilters1.Greater(CSGenioAinvoice.FldTotalprice, 50);
+					groupFilters.SubSets.Add(groupFilters1);
+
+				}
+
+				bool filter_FPV_Menu_411_PRICE_4 = false;
+				if (tableConfig.GroupFilters.ContainsKey("filter_FPV_Menu_411_PRICE"))
+					filter_FPV_Menu_411_PRICE_4 = tableConfig.GroupFilters["filter_FPV_Menu_411_PRICE"].Contains("4");
+				if (filter_FPV_Menu_411_PRICE_4)
+				{
+					groupFilters.Lesser(CSGenioAinvoice.FldTotalprice, 50);
+
+				}
+
+				subfilters.SubSets.Add(groupFilters);
+			}
 
 			crs.SubSets.Add(subfilters);
 

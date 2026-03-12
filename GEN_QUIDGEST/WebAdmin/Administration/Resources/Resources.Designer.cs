@@ -142,6 +142,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "100€-50€"
+        /// </summary>
+        public static string _100__50_12842 {
+            get {
+                return ResourceManager.GetString("_100__50_12842", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Aggregate"
         /// </summary>
         public static string AGGREGATE05721 {
@@ -1654,6 +1663,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "All"
+        /// </summary>
+        public static string ALL38603 {
+            get {
+                return ResourceManager.GetString("ALL38603", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Em fila de espera"
         /// </summary>
         public static string EM_FILA_DE_ESPERA21822 {
@@ -1713,6 +1731,24 @@ namespace Administration.Resources {
         public static string REAL_TIME_STATUS00476 {
             get {
                 return ResourceManager.GetString("REAL_TIME_STATUS00476", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "> 100€"
+        /// </summary>
+        public static string __100_23298 {
+            get {
+                return ResourceManager.GetString("__100_23298", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to "< 50€"
+        /// </summary>
+        public static string __50_26413 {
+            get {
+                return ResourceManager.GetString("__50_26413", resourceCulture);
             }
         }
 

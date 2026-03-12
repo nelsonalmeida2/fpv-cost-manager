@@ -351,6 +351,36 @@
 								sortOrder: 'asc'
 							}
 						},
+						groupFilters: [
+							{
+								id: 'filter_FPV_Menu_111_GENDER',
+								isMultiple: false,
+								items: [
+									{
+										id: 'filter_FPV_Menu_111_GENDER_1',
+										value: computed(() => this.Resources.ALL38603),
+										key: '1'
+									},
+									{
+										id: 'filter_FPV_Menu_111_GENDER_2',
+										value: computed(() => this.Resources.MALE32397),
+										key: '2'
+									},
+									{
+										id: 'filter_FPV_Menu_111_GENDER_3',
+										value: computed(() => this.Resources.FEMALE46107),
+										key: '3'
+									},
+									{
+										id: 'filter_FPV_Menu_111_GENDER_4',
+										value: computed(() => this.Resources.OTHER37293),
+										key: '4'
+									},
+								],
+								selected: '1',
+								default: '1'
+							},
+						],
 						globalEvents: ['changed-PERSON'],
 						uuid: '2c263db8-87c2-494a-8324-08dfa8b4de08',
 						allSelectedRows: 'false',
