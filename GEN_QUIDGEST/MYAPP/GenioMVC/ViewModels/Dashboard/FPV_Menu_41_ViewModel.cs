@@ -72,7 +72,7 @@ namespace GenioMVC.ViewModels.Dashboard
 			[
 				new MenuWidget
 				{
-					Id = "Menu_A",
+					Id = "Menu_B",
 					Order = 4,
 					Width = 2,
 					Height = 2,
@@ -85,12 +85,12 @@ namespace GenioMVC.ViewModels.Dashboard
 					Title = Resources.Resources.NEW_STORE64351,
 					Group = "_GRAPHS",
 					Module = "FPV",
-					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "A")),
-					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "A")
+					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "B")),
+					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "B")
 				},
 				new MenuWidget
 				{
-					Id = "Menu_",
+					Id = "Menu_C",
 					Order = 5,
 					Width = 2,
 					Height = 2,
@@ -103,8 +103,8 @@ namespace GenioMVC.ViewModels.Dashboard
 					Title = Resources.Resources.NEW_BRAND53740,
 					Group = "_GRAPHS",
 					Module = "FPV",
-					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "")),
-					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "")
+					Path = "FPV" + " > " + string.Join(" > ", GenioMVC.Helpers.Menus.Menus.MenuTextPath("FPV", "C")),
+					MenuEntry = GenioMVC.Helpers.Menus.Menus.FindMenu("FPV", "C")
 				},
 				new MenuWidget
 				{
