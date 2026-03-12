@@ -202,7 +202,7 @@
 										v-bind="controls.FORM_INVOICE__PSEUD__NEWGRP03"
 										:is-visible="controls.FORM_INVOICE__PSEUD__NEWGRP03.isVisible">
 										<!-- Start FORM_INVOICE__PSEUD__NEWGRP03 -->
-										<q-row v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible || controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible || controls.FORM_INVOICE__INVOICE__TAXES.isVisible">
+										<q-row v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible || controls.FORM_INVOICE__INVOICE__TAXES.isVisible">
 											<q-col
 												v-if="controls.FORM_INVOICE__INVOICE__PRICE.isVisible"
 												cols="auto">
@@ -221,23 +221,6 @@
 												</base-input-structure>
 											</q-col>
 											<q-col
-												v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-												cols="auto">
-												<base-input-structure
-													v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-													class="i-text"
-													v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST"
-													v-on="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.handlers"
-													:loading="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props.loading"
-													:reporting-mode-on="reportingModeCAV"
-													:suggestion-mode-on="suggestionModeOn">
-													<q-numeric-input
-														v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
-														v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props"
-														@update:model-value="model.ValShippingcost.fnUpdateValue" />
-												</base-input-structure>
-											</q-col>
-											<q-col
 												v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
 												cols="auto">
 												<base-input-structure
@@ -252,6 +235,42 @@
 														v-if="controls.FORM_INVOICE__INVOICE__TAXES.isVisible"
 														v-bind="controls.FORM_INVOICE__INVOICE__TAXES.props"
 														@update:model-value="model.ValTaxes.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+										</q-row>
+										<q-row v-if="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.isVisible || controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible">
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE"
+													v-on="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-select
+														v-if="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__DELIVERYTYPE.props"
+														@update:model-value="model.ValDeliverytype.fnUpdateValue" />
+												</base-input-structure>
+											</q-col>
+											<q-col
+												v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+												cols="auto">
+												<base-input-structure
+													v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+													class="i-text"
+													v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST"
+													v-on="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.handlers"
+													:loading="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props.loading"
+													:reporting-mode-on="reportingModeCAV"
+													:suggestion-mode-on="suggestionModeOn">
+													<q-numeric-input
+														v-if="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.isVisible"
+														v-bind="controls.FORM_INVOICE__INVOICE__SHIPPINGCOST.props"
+														@update:model-value="model.ValShippingcost.fnUpdateValue" />
 												</base-input-structure>
 											</q-col>
 										</q-row>
@@ -897,7 +916,8 @@
 						container: 'FORM_INVOICE__PSEUD__NEWGRP04',
 						isCollapsible: false,
 						anchored: false,
-						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS', 'FORM_INVOICE__INVOICE__TOTALPRICE'],
+						directChildren: ['FORM_INVOICE__INVOICE__PRICE', 'FORM_INVOICE__INVOICE__TAXES', 'FORM_INVOICE__INVOICE__DELIVERYTYPE', 'FORM_INVOICE__INVOICE__SHIPPINGCOST', 'FORM_INVOICE__INVOICE__NUMBEROFITEMS', 'FORM_INVOICE__INVOICE__TOTALPRICE'],
+						mustBeFilled: true,
 						controlLimits: [
 						],
 					}, this),
@@ -917,13 +937,13 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__INVOICE__SHIPPINGCOST: new fieldControlClass.CurrencyControl({
-						modelField: 'ValShippingcost',
-						valueChangeEvent: 'fieldChange:invoice.shippingcost',
-						id: 'FORM_INVOICE__INVOICE__SHIPPINGCOST',
-						name: 'SHIPPINGCOST',
-						size: 'medium',
-						label: computed(() => this.Resources.SHIPPING_COST12785),
+					FORM_INVOICE__INVOICE__TAXES: new fieldControlClass.CurrencyControl({
+						modelField: 'ValTaxes',
+						valueChangeEvent: 'fieldChange:invoice.taxes',
+						id: 'FORM_INVOICE__INVOICE__TAXES',
+						name: 'TAXES',
+						size: 'small',
+						label: computed(() => this.Resources.TAXES34617),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP03',
@@ -932,13 +952,31 @@
 						controlLimits: [
 						],
 					}, this),
-					FORM_INVOICE__INVOICE__TAXES: new fieldControlClass.CurrencyControl({
-						modelField: 'ValTaxes',
-						valueChangeEvent: 'fieldChange:invoice.taxes',
-						id: 'FORM_INVOICE__INVOICE__TAXES',
-						name: 'TAXES',
-						size: 'small',
-						label: computed(() => this.Resources.TAXES34617),
+					FORM_INVOICE__INVOICE__DELIVERYTYPE: new fieldControlClass.ArrayStringControl({
+						modelField: 'ValDeliverytype',
+						valueChangeEvent: 'fieldChange:invoice.deliverytype',
+						id: 'FORM_INVOICE__INVOICE__DELIVERYTYPE',
+						name: 'DELIVERYTYPE',
+						size: 'mini',
+						label: computed(() => this.Resources.DELIVERY_TYPE53619),
+						placeholder: '',
+						labelPosition: computed(() => this.labelAlignment.topleft),
+						container: 'FORM_INVOICE__PSEUD__NEWGRP03',
+						maxLength: 1,
+						mustBeFilled: true,
+						arrayName: 'DELIVERYTYPE',
+						helpShortItem: 'None',
+						helpDetailedItem: 'None',
+						controlLimits: [
+						],
+					}, this),
+					FORM_INVOICE__INVOICE__SHIPPINGCOST: new fieldControlClass.CurrencyControl({
+						modelField: 'ValShippingcost',
+						valueChangeEvent: 'fieldChange:invoice.shippingcost',
+						id: 'FORM_INVOICE__INVOICE__SHIPPINGCOST',
+						name: 'SHIPPINGCOST',
+						size: 'medium',
+						label: computed(() => this.Resources.SHIPPING_COST12785),
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP03',
@@ -1277,23 +1315,6 @@
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						container: 'FORM_INVOICE__PSEUD__NEWGRP01',
 						maxLength: 50,
-						controlLimits: [
-						],
-					}, this),
-					FORM_INVOICE__INVOICE__DELIVERYTYPE: new fieldControlClass.ArrayStringControl({
-						modelField: 'ValDeliverytype',
-						valueChangeEvent: 'fieldChange:invoice.deliverytype',
-						id: 'FORM_INVOICE__INVOICE__DELIVERYTYPE',
-						name: 'DELIVERYTYPE',
-						size: 'mini',
-						label: computed(() => this.Resources.DELIVERY_TYPE53619),
-						placeholder: '',
-						labelPosition: computed(() => this.labelAlignment.topleft),
-						maxLength: 1,
-						mustBeFilled: true,
-						arrayName: 'DELIVERYTYPE',
-						helpShortItem: 'None',
-						helpDetailedItem: 'None',
 						controlLimits: [
 						],
 					}, this),

@@ -49,14 +49,19 @@ public class Form_invoiceForm : Form
 	public BaseInputControl InvoicePrice => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__PRICE", "#FORM_INVOICE__INVOICE__PRICE");
 
 	/// <summary>
-	/// Shipping Cost
-	/// </summary>
-	public BaseInputControl InvoiceShippingcost => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__SHIPPINGCOST", "#FORM_INVOICE__INVOICE__SHIPPINGCOST");
-
-	/// <summary>
 	/// Taxes
 	/// </summary>
 	public BaseInputControl InvoiceTaxes => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__TAXES", "#FORM_INVOICE__INVOICE__TAXES");
+
+	/// <summary>
+	/// Delivery Type
+	/// </summary>
+	public EnumControl InvoiceDeliverytype => new EnumControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__DELIVERYTYPE");
+
+	/// <summary>
+	/// Shipping Cost
+	/// </summary>
+	public BaseInputControl InvoiceShippingcost => new BaseInputControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__SHIPPINGCOST", "#FORM_INVOICE__INVOICE__SHIPPINGCOST");
 
 	/// <summary>
 	/// Number of Items
@@ -102,11 +107,6 @@ public class Form_invoiceForm : Form
 	/// Assigned to
 	/// </summary>
 	public IWebElement PersonName => throw new NotImplementedException();
-
-	/// <summary>
-	/// Delivery Type
-	/// </summary>
-	public EnumControl InvoiceDeliverytype => new EnumControl(driver, ContainerLocator, "container-FORM_INVOICE__INVOICE__DELIVERYTYPE");
 
 	public Form_invoiceForm(IWebDriver driver, FORM_MODE mode, By? containerLocator = null)
 		: base(driver, mode, "FORM_INVOICE", containerLocator: containerLocator) { }

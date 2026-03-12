@@ -153,17 +153,6 @@ export default class ViewModel extends FormViewModelBase
 		}).cloneFrom(values?.ValPrice))
 		this.stopWatchers.push(watch(() => this.ValPrice.value, (newValue, oldValue) => this.onUpdate('invoice.price', this.ValPrice, newValue, oldValue)))
 
-		this.ValShippingcost = reactive(new modelFieldType.Number({
-			id: 'ValShippingcost',
-			originId: 'ValShippingcost',
-			area: 'INVOICE',
-			field: 'SHIPPINGCOST',
-			maxDigits: 7,
-			decimalDigits: 2,
-			description: computed(() => this.Resources.SHIPPING_COST12785),
-		}).cloneFrom(values?.ValShippingcost))
-		this.stopWatchers.push(watch(() => this.ValShippingcost.value, (newValue, oldValue) => this.onUpdate('invoice.shippingcost', this.ValShippingcost, newValue, oldValue)))
-
 		this.ValTaxes = reactive(new modelFieldType.Number({
 			id: 'ValTaxes',
 			originId: 'ValTaxes',
@@ -174,6 +163,28 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.TAXES34617),
 		}).cloneFrom(values?.ValTaxes))
 		this.stopWatchers.push(watch(() => this.ValTaxes.value, (newValue, oldValue) => this.onUpdate('invoice.taxes', this.ValTaxes, newValue, oldValue)))
+
+		this.ValDeliverytype = reactive(new modelFieldType.String({
+			id: 'ValDeliverytype',
+			originId: 'ValDeliverytype',
+			area: 'INVOICE',
+			field: 'DELIVERYTYPE',
+			maxLength: 1,
+			arrayOptions: computed(() => new qProjArrays.QArrayDeliverytype(vm.$getResource).elements),
+			description: computed(() => this.Resources.DELIVERY_TYPE53619),
+		}).cloneFrom(values?.ValDeliverytype))
+		this.stopWatchers.push(watch(() => this.ValDeliverytype.value, (newValue, oldValue) => this.onUpdate('invoice.deliverytype', this.ValDeliverytype, newValue, oldValue)))
+
+		this.ValShippingcost = reactive(new modelFieldType.Number({
+			id: 'ValShippingcost',
+			originId: 'ValShippingcost',
+			area: 'INVOICE',
+			field: 'SHIPPINGCOST',
+			maxDigits: 7,
+			decimalDigits: 2,
+			description: computed(() => this.Resources.SHIPPING_COST12785),
+		}).cloneFrom(values?.ValShippingcost))
+		this.stopWatchers.push(watch(() => this.ValShippingcost.value, (newValue, oldValue) => this.onUpdate('invoice.shippingcost', this.ValShippingcost, newValue, oldValue)))
 
 		this.ValNumberofitems = reactive(new modelFieldType.Number({
 			id: 'ValNumberofitems',
@@ -274,17 +285,6 @@ export default class ViewModel extends FormViewModelBase
 			description: computed(() => this.Resources.NAME31974),
 		}).cloneFrom(values?.PersonValName))
 		this.stopWatchers.push(watch(() => this.PersonValName.value, (newValue, oldValue) => this.onUpdate('person.name', this.PersonValName, newValue, oldValue)))
-
-		this.ValDeliverytype = reactive(new modelFieldType.String({
-			id: 'ValDeliverytype',
-			originId: 'ValDeliverytype',
-			area: 'INVOICE',
-			field: 'DELIVERYTYPE',
-			maxLength: 1,
-			arrayOptions: computed(() => new qProjArrays.QArrayDeliverytype(vm.$getResource).elements),
-			description: computed(() => this.Resources.DELIVERY_TYPE53619),
-		}).cloneFrom(values?.ValDeliverytype))
-		this.stopWatchers.push(watch(() => this.ValDeliverytype.value, (newValue, oldValue) => this.onUpdate('invoice.deliverytype', this.ValDeliverytype, newValue, oldValue)))
 	}
 
 	/**

@@ -72,13 +72,17 @@ namespace GenioMVC.ViewModels.Invoice
 		[ValidateSetAccess]
 		public decimal? ValPrice { get; set; }
 		/// <summary>
-		/// Title: "Shipping Cost" | Type: "$"
-		/// </summary>
-		public decimal? ValShippingcost { get; set; }
-		/// <summary>
 		/// Title: "Taxes" | Type: "$"
 		/// </summary>
 		public decimal? ValTaxes { get; set; }
+		/// <summary>
+		/// Title: "Delivery Type" | Type: "AC"
+		/// </summary>
+		public string ValDeliverytype { get; set; }
+		/// <summary>
+		/// Title: "Shipping Cost" | Type: "$"
+		/// </summary>
+		public decimal? ValShippingcost { get; set; }
 		/// <summary>
 		/// Title: "Number of Items" | Type: "N"
 		/// </summary>
@@ -126,10 +130,6 @@ namespace GenioMVC.ViewModels.Invoice
 		public Func<string> funcPersonValName { get; set; }
 
 		private string _auxPersonValName { get; set; }
-		/// <summary>
-		/// Title: "Delivery Type" | Type: "AC"
-		/// </summary>
-		public string ValDeliverytype { get; set; }
 
 		#region Navigations
 		#endregion
@@ -268,8 +268,9 @@ namespace GenioMVC.ViewModels.Invoice
 				ValReceiptfk = ViewModelConversion.ToString(m.ValReceiptfk);
 				ValDate = ViewModelConversion.ToDateTime(m.ValDate);
 				ValPrice = ViewModelConversion.ToNumeric(m.ValPrice);
-				ValShippingcost = ViewModelConversion.ToNumeric(m.ValShippingcost);
 				ValTaxes = ViewModelConversion.ToNumeric(m.ValTaxes);
+				ValDeliverytype = ViewModelConversion.ToString(m.ValDeliverytype);
+				ValShippingcost = ViewModelConversion.ToNumeric(m.ValShippingcost);
 				ValNumberofitems = ViewModelConversion.ToNumeric(m.ValNumberofitems);
 				ValTotalprice = ViewModelConversion.ToNumeric(m.ValTotalprice);
 				ValCreated_by = ViewModelConversion.ToString(m.ValCreated_by);
@@ -277,7 +278,6 @@ namespace GenioMVC.ViewModels.Invoice
 				ValUpdated_by = ViewModelConversion.ToString(m.ValUpdated_by);
 				ValUpdated_at = ViewModelConversion.ToDateTime(m.ValUpdated_at);
 				funcPersonValName = () => ViewModelConversion.ToString(m.Person.ValName);
-				ValDeliverytype = ViewModelConversion.ToString(m.ValDeliverytype);
 				ValCodinvoice = ViewModelConversion.ToString(m.ValCodinvoice);
 			}
 			catch (Exception)
@@ -310,9 +310,9 @@ namespace GenioMVC.ViewModels.Invoice
 				m.ValReceipt = ViewModelConversion.ToString(ValReceipt);
 				m.ValReceiptfk = ViewModelConversion.ToString(ValReceiptfk);
 				m.ValDate = ViewModelConversion.ToDateTime(ValDate);
-				m.ValShippingcost = ViewModelConversion.ToNumeric(ValShippingcost);
 				m.ValTaxes = ViewModelConversion.ToNumeric(ValTaxes);
 				m.ValDeliverytype = ViewModelConversion.ToString(ValDeliverytype);
+				m.ValShippingcost = ViewModelConversion.ToNumeric(ValShippingcost);
 				m.ValCodinvoice = ViewModelConversion.ToString(ValCodinvoice);
 
 				/*
@@ -368,14 +368,14 @@ namespace GenioMVC.ViewModels.Invoice
 					case "invoice.date":
 						this.ValDate = ViewModelConversion.ToDateTime(_value);
 						break;
-					case "invoice.shippingcost":
-						this.ValShippingcost = ViewModelConversion.ToNumeric(_value);
-						break;
 					case "invoice.taxes":
 						this.ValTaxes = ViewModelConversion.ToNumeric(_value);
 						break;
 					case "invoice.deliverytype":
 						this.ValDeliverytype = ViewModelConversion.ToString(_value);
+						break;
+					case "invoice.shippingcost":
+						this.ValShippingcost = ViewModelConversion.ToNumeric(_value);
 						break;
 					case "invoice.codinvoice":
 						this.ValCodinvoice = ViewModelConversion.ToString(_value);
@@ -519,12 +519,12 @@ namespace GenioMVC.ViewModels.Invoice
 
 			validator.Required("ValDate", Resources.Resources.DATE18475, ViewModelConversion.ToDateTime(ValDate), FieldType.DATE.GetFormatting());
 
+			validator.Required("ValDeliverytype", Resources.Resources.DELIVERY_TYPE53619, ViewModelConversion.ToString(ValDeliverytype), FieldType.ARRAY_TEXT.GetFormatting());
+
 			validator.Required("ValCreated_by", Resources.Resources.CREATED_BY12292, ViewModelConversion.ToString(ValCreated_by), FieldType.TEXT.GetFormatting());
 
 			validator.Required("ValCreated_at", Resources.Resources.CREATED_AT29089, ViewModelConversion.ToDateTime(ValCreated_at), FieldType.DATETIMESECONDS.GetFormatting());
 			validator.StringLength("PersonValName", Resources.Resources.ASSIGNED_TO26333, PersonValName, 50);
-
-			validator.Required("ValDeliverytype", Resources.Resources.DELIVERY_TYPE53619, ViewModelConversion.ToString(ValDeliverytype), FieldType.ARRAY_TEXT.GetFormatting());
 
 
 			return validator.GetResult();
@@ -786,8 +786,9 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.receipt" => ViewModelConversion.ToString(modelValue),
 				"invoice.date" => ViewModelConversion.ToDateTime(modelValue),
 				"invoice.price" => ViewModelConversion.ToNumeric(modelValue),
-				"invoice.shippingcost" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.taxes" => ViewModelConversion.ToNumeric(modelValue),
+				"invoice.deliverytype" => ViewModelConversion.ToString(modelValue),
+				"invoice.shippingcost" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.numberofitems" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.totalprice" => ViewModelConversion.ToNumeric(modelValue),
 				"invoice.created_by" => ViewModelConversion.ToString(modelValue),
@@ -795,7 +796,6 @@ namespace GenioMVC.ViewModels.Invoice
 				"invoice.updated_by" => ViewModelConversion.ToString(modelValue),
 				"invoice.updated_at" => ViewModelConversion.ToDateTime(modelValue),
 				"person.name" => ViewModelConversion.ToString(modelValue),
-				"invoice.deliverytype" => ViewModelConversion.ToString(modelValue),
 				"invoice.codinvoice" => ViewModelConversion.ToString(modelValue),
 				"store.codstore" => ViewModelConversion.ToString(modelValue),
 				"store.name" => ViewModelConversion.ToString(modelValue),
