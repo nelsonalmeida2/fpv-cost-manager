@@ -1240,6 +1240,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Expenses Over Time"
+        /// </summary>
+        public static string EXPENSES_OVER_TIME29607 {
+            get {
+                return ResourceManager.GetString("EXPENSES_OVER_TIME29607", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Yuan"
         /// </summary>
         public static string YUAN27097 {

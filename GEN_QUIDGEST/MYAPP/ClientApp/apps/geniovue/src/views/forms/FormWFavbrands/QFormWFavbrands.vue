@@ -342,7 +342,7 @@
 						id: 'W_FAVBRANDS__PSEUD__FIELD001',
 						name: 'FIELD001',
 						size: 'block',
-						label: computed(() => this.Resources.FAVORITE_BRANDS21837),
+						label: '',
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						controller: 'Home',
@@ -382,7 +382,6 @@
 							tableNamePlural: computed(() => this.Resources.ITEMS55321),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.FAVORITE_BRANDS21837),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -460,7 +459,7 @@
 										isMapped: false
 									},
 									graphTitle: {
-										rawValue: undefined,
+										rawValue: 'Top Brands',
 										isMapped: false
 									},
 									description: {

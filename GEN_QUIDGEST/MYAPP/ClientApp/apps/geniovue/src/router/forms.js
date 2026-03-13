@@ -124,6 +124,18 @@ export default function getFormsRoutes()
 			}
 		},
 		{
+			path: '/:culture/:system/:module/form/W_EXPENSESOVERTIME/:mode/:id?',
+			name: 'form-W_EXPENSESOVERTIME',
+			props: route => propsConverter(route),
+			component: () => import('@/views/forms/FormWExpensesovertime/QFormWExpensesovertime.vue'),
+			meta: {
+				routeType: 'form',
+				baseArea: '',
+				humanKeyFields: [],
+				isPopup: false
+			}
+		},
+		{
 			path: '/:culture/:system/:module/form/W_FAVBRANDS/:mode/:id?',
 			name: 'form-W_FAVBRANDS',
 			props: route => propsConverter(route),

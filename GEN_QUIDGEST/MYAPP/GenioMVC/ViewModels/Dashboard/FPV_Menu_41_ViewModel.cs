@@ -67,6 +67,25 @@ namespace GenioMVC.ViewModels.Dashboard
 				},
 				new CustomWidgetProvider<CSGenio.business.DbArea>
 {
+					Id = "EXPENSESOVERT",
+					Order = 8,
+					Width = 6,
+					Height = 6,
+					BorderStyle = "",
+					Required = false,
+					Visible = true,
+					Role = CSGenio.framework.Role.ROLE_5,
+					Module = "FPV",
+					Title = Resources.Resources.EXPENSES_OVER_TIME29607,
+					Group = "_GRAPHS",
+					Form = "W_EXPENSESOVERTIME",
+					Component = "QFormWExpensesovertime",
+					RefreshMode = WidgetRefreshMode.None,
+					UsesCache = false,
+					InstantionMethod = WidgetInstantionMethod.Aggregate
+				},
+				new CustomWidgetProvider<CSGenio.business.DbArea>
+{
 					Id = "LASTINVOICE",
 					Order = 1,
 					Width = 6,

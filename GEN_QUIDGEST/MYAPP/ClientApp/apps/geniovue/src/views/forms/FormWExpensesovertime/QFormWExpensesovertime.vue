@@ -53,21 +53,21 @@
 
 		<q-container
 			fluid
-			data-key="W_FAVSTORES"
+			data-key="W_EXPENSESOVERTIME"
 			:data-loading="!formInitialDataLoaded || !isActiveForm">
 			<template v-if="formControl.initialized && showFormBody">
-				<q-row v-if="controls.W_FAVSTORES__PSEUD__FIELD001.isVisible">
-					<q-col v-if="controls.W_FAVSTORES__PSEUD__FIELD001.isVisible">
+				<q-row v-if="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001.isVisible">
+					<q-col v-if="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001.isVisible">
 						<q-table
-							v-if="controls.W_FAVSTORES__PSEUD__FIELD001.isVisible"
-							v-bind="controls.W_FAVSTORES__PSEUD__FIELD001"
-							v-on="controls.W_FAVSTORES__PSEUD__FIELD001.handlers">
+							v-if="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001.isVisible"
+							v-bind="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001"
+							v-on="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001.handlers">
 							<template #header>
 								<q-table-config
-									:table-ctrl="controls.W_FAVSTORES__PSEUD__FIELD001"
-									v-on="controls.W_FAVSTORES__PSEUD__FIELD001.handlers" />
+									:table-ctrl="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001"
+									v-on="controls.W_EXPENSESOVERTIME__PSEUD__FIELD001.handlers" />
 							</template>
-							<!-- USE /[MANUAL FPV CUSTOM_TABLE W_FAVSTORES__PSEUD__FIELD001]/ -->
+							<!-- USE /[MANUAL FPV CUSTOM_TABLE W_EXPENSESOVERTIME__PSEUD__FIELD001]/ -->
 						</q-table>
 					</q-col>
 				</q-row>
@@ -99,17 +99,17 @@
 	import qProjArrays from '@/api/genio/projectArrays.js'
 	/* eslint-enable @typescript-eslint/no-unused-vars */
 
-	import FormViewModel from './QFormWFavstoresViewModel.js'
+	import FormViewModel from './QFormWExpensesovertimeViewModel.js'
 
-	const requiredTextResources = ['QFormWFavstores', 'hardcoded', 'messages']
+	const requiredTextResources = ['QFormWExpensesovertime', 'hardcoded', 'messages']
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_INCLUDEJS W_FAVSTORES]/
+// USE /[MANUAL FPV FORM_INCLUDEJS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
 	export default {
-		name: 'QFormWFavstores',
+		name: 'QFormWExpensesovertime',
 
 		components: {
 		},
@@ -125,8 +125,8 @@
 			nestedRouteParams: {
 				type: Object,
 				default: () => ({
-					name: 'W_FAVSTORES',
-					location: 'form-W_FAVSTORES',
+					name: 'W_EXPENSESOVERTIME',
+					location: 'form-W_EXPENSESOVERTIME',
 					params: {
 						isNested: true
 					}
@@ -159,20 +159,20 @@
 			// eslint-disable-next-line
 			const vm = this
 			return {
-				componentOnLoadProc: asyncProcM.getProcListMonitor('QFormWFavstores', false),
+				componentOnLoadProc: asyncProcM.getProcListMonitor('QFormWExpensesovertime', false),
 
 				interfaceMetadata: {
-					id: 'QFormWFavstores', // Used for resources
+					id: 'QFormWExpensesovertime', // Used for resources
 					requiredTextResources
 				},
 
 				formInfo: {
 					type: 'widget',
-					name: 'W_FAVSTORES',
-					route: 'form-W_FAVSTORES',
+					name: 'W_EXPENSESOVERTIME',
+					route: 'form-W_EXPENSESOVERTIME',
 					isEmptyForm: true,
 					area: 'Home',
-					designation: computed(() => this.Resources.FAVORITE_STORES13289),
+					designation: computed(() => this.Resources.EXPENSES_OVER_TIME29607),
 					identifier: '', // Unique identifier received by route (when it's nested).
 					mode: '',
 					availableAgents: [],
@@ -338,49 +338,49 @@
 				},
 
 				controls: {
-					W_FAVSTORES__PSEUD__FIELD001: new fieldControlClass.TableSpecialRenderingControl({
-						id: 'W_FAVSTORES__PSEUD__FIELD001',
+					W_EXPENSESOVERTIME__PSEUD__FIELD001: new fieldControlClass.TableSpecialRenderingControl({
+						id: 'W_EXPENSESOVERTIME__PSEUD__FIELD001',
 						name: 'FIELD001',
 						size: 'block',
-						label: computed(() => this.Resources.FAVORITE_STORES47289),
+						label: '',
 						placeholder: '',
 						labelPosition: computed(() => this.labelAlignment.topleft),
 						controller: 'Home',
-						action: 'W_favstores_ValField001',
+						action: 'W_expensesovertime_ValField001',
 						hasDependencies: false,
 						isInCollapsible: false,
 						columnsOriginal: [
-							new listColumnTypes.TextColumn({
+							new listColumnTypes.DateColumn({
 								order: 1,
-								name: 'ValName',
-								area: 'STORE',
-								field: 'NAME',
-								label: computed(() => this.Resources.NAME31974),
-								dataLength: 50,
-								scrollData: 30,
+								name: 'ValDate',
+								area: 'INVOICE',
+								field: 'DATE',
+								label: computed(() => this.Resources.DATE18475),
+								scrollData: 8,
+								dateTimeType: 'date',
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.CurrencyColumn({
 								order: 2,
-								name: 'ValTotalspending',
-								area: 'STORE',
-								field: 'TOTALSPENDING',
-								label: computed(() => this.Resources.TOTAL_SPENDING49047),
-								scrollData: 9,
-								maxDigits: 6,
+								name: 'ValTotalprice',
+								area: 'INVOICE',
+								field: 'TOTALPRICE',
+								label: computed(() => this.Resources.TOTAL_PRICE46894),
+								scrollData: 10,
+								maxDigits: 7,
 								decimalPlaces: 2,
+								totalizer: true,
 								export: 1,
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'ValField001',
 							serverMode: true,
-							pkColumn: 'ValCodstore',
-							tableAlias: 'STORE',
-							tableNamePlural: computed(() => this.Resources.STORES21606),
+							pkColumn: 'ValCodinvoice',
+							tableAlias: 'INVOICE',
+							tableNamePlural: computed(() => this.Resources.INVOICES44448),
 							viewManagement: '',
 							showLimitsInfo: true,
-							tableTitle: computed(() => this.Resources.FAVORITE_STORES47289),
 							showAlternatePagination: true,
 							permissions: {
 							},
@@ -401,15 +401,15 @@
 							},
 							formsDefinition: {
 							},
-							defaultSearchColumnName: 'ValName',
-							defaultSearchColumnNameOriginal: 'ValName',
+							defaultSearchColumnName: '',
+							defaultSearchColumnNameOriginal: '',
 							defaultColumnSorting: {
 								columnName: '',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-STORE'],
-						uuid: 'W_favstores_ValField001',
+						globalEvents: ['changed-PERSON', 'changed-INVOICE', 'changed-STORE'],
+						uuid: 'W_expensesovertime_ValField001',
 						allSelectedRows: 'false',
 						viewModes: [
 							{
@@ -422,19 +422,19 @@
 									xaxis: {
 										allowsMultiple: false,
 										sources: [
-											'STORE.NAME',
+											'INVOICE.DATE',
 										]
 									},
 									yaxis: {
 										allowsMultiple: true,
 										sources: [
-											'STORE.TOTALSPENDING',
+											'INVOICE.TOTALPRICE',
 										]
 									},
 								}),
 								styleVariables: {
 									chartType: {
-										rawValue: 'bar',
+										rawValue: 'spline',
 										isMapped: false
 									},
 									firstColor: {
@@ -458,7 +458,7 @@
 										isMapped: false
 									},
 									graphTitle: {
-										rawValue: 'Favorite Stores',
+										rawValue: 'Expenses Over Time',
 										isMapped: false
 									},
 									description: {
@@ -565,6 +565,19 @@
 								groups: {
 								}
 							},
+							{
+								id: 'LIST',
+								type: 'list',
+								subtype: '',
+								label: computed(() => this.Resources.LISTA13474),
+								order: 2,
+								mappingVariables: readonly({
+								}),
+								styleVariables: {
+								},
+								groups: {
+								}
+							},
 						],
 						controlLimits: [
 						],
@@ -582,7 +595,7 @@
 				]),
 
 				tableFields: readonly([
-					'W_FAVSTORES__PSEUD__FIELD001',
+					'W_EXPENSESOVERTIME__PSEUD__FIELD001',
 				]),
 
 				timelineFields: readonly([
@@ -632,7 +645,7 @@
 		mounted()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_CODEJS W_FAVSTORES]/
+// USE /[MANUAL FPV FORM_CODEJS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
@@ -640,7 +653,7 @@
 		beforeUnmount()
 		{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT W_FAVSTORES]/
+// USE /[MANUAL FPV COMPONENT_BEFORE_UNMOUNT W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},
@@ -659,7 +672,7 @@
 				this.emitEvent('before-load-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV BEFORE_LOAD_JS W_FAVSTORES]/
+// USE /[MANUAL FPV BEFORE_LOAD_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -679,7 +692,7 @@
 				this.emitEvent('after-load-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FORM_LOADED_JS W_FAVSTORES]/
+// USE /[MANUAL FPV FORM_LOADED_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 			},
@@ -726,7 +739,7 @@
 				this.emitEvent('before-apply-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV BEFORE_APPLY_JS W_FAVSTORES]/
+// USE /[MANUAL FPV BEFORE_APPLY_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -746,7 +759,7 @@
 				this.emitEvent('after-apply-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV AFTER_APPLY_JS W_FAVSTORES]/
+// USE /[MANUAL FPV AFTER_APPLY_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 			},
@@ -793,7 +806,7 @@
 				this.emitEvent('before-save-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV BEFORE_SAVE_JS W_FAVSTORES]/
+// USE /[MANUAL FPV BEFORE_SAVE_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -813,7 +826,7 @@
 				this.emitEvent('after-save-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV AFTER_SAVE_JS W_FAVSTORES]/
+// USE /[MANUAL FPV AFTER_SAVE_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -828,7 +841,7 @@
 				this.emitEvent('before-delete-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV BEFORE_DEL_JS W_FAVSTORES]/
+// USE /[MANUAL FPV BEFORE_DEL_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -843,7 +856,7 @@
 				this.emitEvent('after-delete-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV AFTER_DEL_JS W_FAVSTORES]/
+// USE /[MANUAL FPV AFTER_DEL_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -863,7 +876,7 @@
 				this.emitEvent('before-exit-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV BEFORE_EXIT_JS W_FAVSTORES]/
+// USE /[MANUAL FPV BEFORE_EXIT_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -883,7 +896,7 @@
 				this.emitEvent('after-exit-form')
 
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV AFTER_EXIT_JS W_FAVSTORES]/
+// USE /[MANUAL FPV AFTER_EXIT_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 			},
@@ -899,7 +912,7 @@
 			onUpdate(fieldName, fieldObject, fieldValue, oldFieldValue)
 			{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV DLGUPDT W_FAVSTORES]/
+// USE /[MANUAL FPV DLGUPDT W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -915,7 +928,7 @@
 			onBlur(fieldObject, fieldValue)
 			{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV CTRLBLR W_FAVSTORES]/
+// USE /[MANUAL FPV CTRLBLR W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
@@ -932,14 +945,14 @@
 			onControlUpdate(controlField, control, fieldValue)
 			{
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV CTRLUPD W_FAVSTORES]/
+// USE /[MANUAL FPV CTRLUPD W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 
 				this.afterControlUpdate(controlField, fieldValue)
 			},
 /* eslint-disable indent, vue/html-indent, vue/script-indent */
-// USE /[MANUAL FPV FUNCTIONS_JS W_FAVSTORES]/
+// USE /[MANUAL FPV FUNCTIONS_JS W_EXPENSESOVERTIME]/
 // eslint-disable-next-line
 /* eslint-enable indent, vue/html-indent, vue/script-indent */
 		},

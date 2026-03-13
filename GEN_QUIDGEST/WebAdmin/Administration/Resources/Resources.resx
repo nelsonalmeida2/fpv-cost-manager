@@ -510,6 +510,9 @@
   <data name="NOTIFICATION_EMAIL_S62518" xml:space="preserve">
     <value>Notification Email Signature</value>
   </data>
+  <data name="EXPENSES_OVER_TIME29607" xml:space="preserve">
+    <value>Expenses Over Time</value>
+  </data>
   <data name="YUAN27097" xml:space="preserve">
     <value>Yuan</value>
   </data>

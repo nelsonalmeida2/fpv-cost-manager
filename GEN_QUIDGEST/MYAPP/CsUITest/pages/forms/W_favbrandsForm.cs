@@ -8,7 +8,7 @@ namespace quidgest.uitests.pages.forms;
 public class W_favbrandsForm : Form
 {
 	/// <summary>
-	/// Favorite Brands
+	/// 
 	/// </summary>
 	public ListControl PseudField001 => new ListControl(driver, ContainerLocator, "#W_FAVBRANDS__PSEUD__FIELD001");
 

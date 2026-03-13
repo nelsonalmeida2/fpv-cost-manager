@@ -393,6 +393,9 @@
   <msg id="Notification Email Signature" code="NOTIFICATION_EMAIL_S62518">
     <ENUS>Notification Email Signature</ENUS>
   </msg>
+  <msg id="Expenses Over Time" code="EXPENSES_OVER_TIME29607">
+    <ENUS>Expenses Over Time</ENUS>
+  </msg>
   <msg id="Yuan" code="YUAN27097">
     <ENUS>Yuan</ENUS>
   </msg>
