@@ -33,7 +33,7 @@ namespace GenioMVC.ViewModels.Dashboard
 					Height = 6,
 					BorderStyle = "",
 					Required = false,
-					Visible = false,
+					Visible = true,
 					Role = CSGenio.framework.Role.ROLE_5,
 					Module = "FPV",
 					Title = Resources.Resources.FAVORITE_STORES13289,
