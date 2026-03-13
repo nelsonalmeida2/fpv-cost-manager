@@ -124,18 +124,6 @@ export default function getFormsRoutes()
 			}
 		},
 		{
-			path: '/:culture/:system/:module/form/TOTALSPENDING/:mode/:id?',
-			name: 'form-TOTALSPENDING',
-			props: route => propsConverter(route),
-			component: () => import('@/views/forms/FormTotalspending/QFormTotalspending.vue'),
-			meta: {
-				routeType: 'form',
-				baseArea: '',
-				humanKeyFields: [],
-				isPopup: false
-			}
-		},
-		{
 			path: '/:culture/:system/:module/form/W_EXPENSESOVERTIME/:mode/:id?',
 			name: 'form-W_EXPENSESOVERTIME',
 			props: route => propsConverter(route),
