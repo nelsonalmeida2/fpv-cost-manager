@@ -6,7 +6,7 @@ using GenioMVC.Models.Navigation;
 
 namespace GenioMVC.ViewModels;
 
-public class W_favbrands_ValField001_RowViewModel : Models.Item
+public class W_favbrands_ValField001_RowViewModel : Models.Brand
 {
 	#region Constructors
 
@@ -15,7 +15,7 @@ public class W_favbrands_ValField001_RowViewModel : Models.Item
 		InitRowProperties();
 	}
 
-	public W_favbrands_ValField001_RowViewModel(UserContext userContext, CSGenioAitem val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
+	public W_favbrands_ValField001_RowViewModel(UserContext userContext, CSGenioAbrand val, bool isEmpty = false, string[]? fieldsToSerialize = null) : base(userContext, val, isEmpty, fieldsToSerialize)
 	{
 		InitRowProperties();
 	}

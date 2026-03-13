@@ -352,7 +352,7 @@
 						columnsOriginal: [
 							new listColumnTypes.CurrencyColumn({
 								order: 1,
-								name: 'Brand.ValTotalspending',
+								name: 'ValTotalspending',
 								area: 'BRAND',
 								field: 'TOTALSPENDING',
 								label: computed(() => this.Resources.TOTAL_SPENDING49047),
@@ -360,26 +360,24 @@
 								maxDigits: 6,
 								decimalPlaces: 2,
 								export: 1,
-								pkColumn: 'ValCodbrand',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
 								order: 2,
-								name: 'Brand.ValName',
+								name: 'ValName',
 								area: 'BRAND',
 								field: 'NAME',
 								label: computed(() => this.Resources.NAME31974),
 								dataLength: 50,
 								scrollData: 30,
 								export: 1,
-								pkColumn: 'ValCodbrand',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 						],
 						config: {
 							name: 'ValField001',
 							serverMode: true,
-							pkColumn: 'ValCoditem',
-							tableAlias: 'ITEM',
-							tableNamePlural: computed(() => this.Resources.ITEMS55321),
+							pkColumn: 'ValCodbrand',
+							tableAlias: 'BRAND',
+							tableNamePlural: computed(() => this.Resources.BRANDS27300),
 							viewManagement: '',
 							showLimitsInfo: true,
 							showAlternatePagination: true,
@@ -402,14 +400,14 @@
 							},
 							formsDefinition: {
 							},
-							defaultSearchColumnName: 'Brand.ValName',
-							defaultSearchColumnNameOriginal: 'Brand.ValName',
+							defaultSearchColumnName: 'ValName',
+							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
 								columnName: '',
 								sortOrder: 'asc'
 							}
 						},
-						globalEvents: ['changed-CATEGORY', 'changed-ITEM', 'changed-INVOICE', 'changed-PERSON', 'changed-SUBCATEGORY', 'changed-BRAND'],
+						globalEvents: ['changed-PERSON', 'changed-COUNTRY', 'changed-BRAND'],
 						uuid: 'W_favbrands_ValField001',
 						allSelectedRows: 'false',
 						viewModes: [

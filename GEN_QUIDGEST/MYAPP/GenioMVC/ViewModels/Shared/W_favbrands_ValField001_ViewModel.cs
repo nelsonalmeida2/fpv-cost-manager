@@ -17,7 +17,7 @@ using Quidgest.Persistence.GenericQuery;
 
 namespace GenioMVC.ViewModels
 {
-	public class W_favbrands_ValField001_ViewModel : MenuListViewModel<Models.Item>
+	public class W_favbrands_ValField001_ViewModel : MenuListViewModel<Models.Brand>
 	{
 		/// <summary>
 		/// Gets or sets the object that represents the table and its elements.
@@ -27,7 +27,7 @@ namespace GenioMVC.ViewModels
 
 		/// <inheritdoc/>
 		[JsonIgnore]
-		public override string TableAlias => "item";
+		public override string TableAlias => "brand";
 
 		/// <inheritdoc/>
 		[JsonPropertyName("uuid")]
@@ -126,13 +126,13 @@ namespace GenioMVC.ViewModels
 			];
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAitem> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAbrand> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 			LoadToExport(out listing, out conditions, out columns, tableConfig, requestValues, ajaxRequest);
 		}
 
-		public void LoadToExport(out ListingMVC<CSGenioAitem> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
+		public void LoadToExport(out ListingMVC<CSGenioAbrand> listing, out CriteriaSet conditions, out List<Exports.QColumn> columns, CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest = false)
 		{
 			listing = null;
 			conditions = null;
@@ -188,25 +188,25 @@ namespace GenioMVC.ViewModels
 			if (isToExport)
 			{
 				// EPH
-				crs = Models.Item.AddEPH<CSGenioAitem>(ref u, crs, "IBL_W_FAVBRANDS__PSEUD__FIELD001");
+				crs = Models.Brand.AddEPH<CSGenioAbrand>(ref u, crs, "IBL_W_FAVBRANDS__PSEUD__FIELD001");
 
 				// Export only records with ZZState == 0
-				crs.Equal(CSGenioAitem.FldZzstate, 0);
+				crs.Equal(CSGenioAbrand.FldZzstate, 0);
 
 				return crs;
 			}
 
 			// Limitation by Zzstate
-			if (!Navigation.checkFormMode("ITEM", FormMode.New)) // TODO: Check in Duplicate mode
-				crs = extendWithZzstateCondition(crs, CSGenioAitem.FldZzstate, CSGenioAitem.FldCreated_by);
+			if (!Navigation.checkFormMode("BRAND", FormMode.New)) // TODO: Check in Duplicate mode
+				crs = extendWithZzstateCondition(crs, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldCreated_by);
 
 
 			if (tableReload)
 			{
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_item");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_item");
+				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_brand");
+				Navigation.DestroyEntry("QMVC_POS_RECORD_brand");
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
-					crs.Equals(Models.Item.AddEPH<CSGenioAitem>(ref u, null, "IBL_W_FAVBRANDS__PSEUD__FIELD001"));
+					crs.Equals(Models.Brand.AddEPH<CSGenioAbrand>(ref u, null, "IBL_W_FAVBRANDS__PSEUD__FIELD001"));
 			}
 
 			return crs;
@@ -231,7 +231,7 @@ namespace GenioMVC.ViewModels
 		/// <param name="conditions">The conditions.</param>
 		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAitem> listing = null;
+			ListingMVC<CSGenioAbrand> listing = null;
 
 			Load(numberListItems, requestValues, ajaxRequest, false, ref listing, ref conditions);
 		}
@@ -245,7 +245,7 @@ namespace GenioMVC.ViewModels
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAitem> Qlisting, ref CriteriaSet conditions)
+		public void Load(int numberListItems, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAbrand> Qlisting, ref CriteriaSet conditions)
 		{
 			CSGenio.core.framework.table.TableConfiguration tableConfig = new();
 
@@ -264,7 +264,7 @@ namespace GenioMVC.ViewModels
 		/// <param name="conditions">The conditions.</param>
 		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport = false, CriteriaSet conditions = null)
 		{
-			ListingMVC<CSGenioAitem> listing = null;
+			ListingMVC<CSGenioAbrand> listing = null;
 
 			Load(tableConfig, requestValues, ajaxRequest, isToExport, ref listing, ref conditions);
 		}
@@ -278,7 +278,7 @@ namespace GenioMVC.ViewModels
 		/// <param name="isToExport">Whether the list is being loaded to be exported</param>
 		/// <param name="Qlisting">The rows.</param>
 		/// <param name="conditions">The conditions.</param>
-		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAitem> Qlisting, ref CriteriaSet conditions)
+		public void Load(CSGenio.core.framework.table.TableConfiguration tableConfig, NameValueCollection requestValues, bool ajaxRequest, bool isToExport, ref ListingMVC<CSGenioAbrand> Qlisting, ref CriteriaSet conditions)
 		{
 			User u = m_userContext.User;
 			Menu = new TablePartial<W_favbrands_ValField001_RowViewModel>();
@@ -297,10 +297,10 @@ namespace GenioMVC.ViewModels
 			if (pageNumber < 1)
 				pageNumber = 1;
 
-			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "item", allSortOrders);
+			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "brand", allSortOrders);
 
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAitem.FldCoditem, CSGenioAitem.FldZzstate, CSGenioAitem.FldBrand, CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldTotalspending, CSGenioAbrand.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldZzstate, CSGenioAbrand.FldTotalspending, CSGenioAbrand.FldName };
 
 
 			// Totalizers
@@ -323,7 +323,7 @@ namespace GenioMVC.ViewModels
 			{
 				Limit limit = new Limit();
 				limit.TipoLimite = LimitType.EPH;
-				CSGenioAitem model_limit_area = new CSGenioAitem(m_userContext.User);
+				CSGenioAbrand model_limit_area = new CSGenioAbrand(m_userContext.User);
 				List<Limit> area_EPH_limits = EPH_Limit_Filler(ref limit, model_limit_area, "IBL_W_FAVBRANDS__PSEUD__FIELD001");
 				if (area_EPH_limits.Count > 0)
 					this.TableLimits.AddRange(area_EPH_limits);
@@ -349,7 +349,7 @@ namespace GenioMVC.ViewModels
 				var exportColumns = GetExportColumns(tableConfig.ColumnConfigurations);
 				var exportFieldRefs = exportColumns.Select(eCol => eCol.Field).Where(fldRef => fldRef != null).ToArray();
 
-				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAitem>(m_userContext, false, ref w_favbrands__pseud__field001Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_FAVBRANDS__PSEUD__FIELD001", true, firstVisibleColumn: firstVisibleColumn);
+				Qlisting = Models.ModelBase.BuildListingForExport<CSGenioAbrand>(m_userContext, false, ref w_favbrands__pseud__field001Conds, exportFieldRefs, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_FAVBRANDS__PSEUD__FIELD001", true, firstVisibleColumn: firstVisibleColumn);
 
 // USE /[MANUAL FPV OVERRQLSTEXP W_FAVBRANDS_PSEUDFIELD001]/
 
@@ -360,18 +360,18 @@ namespace GenioMVC.ViewModels
 			{
 // USE /[MANUAL FPV OVERRQLIST W_FAVBRANDS_PSEUDFIELD001]/
 
-				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_item");
-				Navigation.DestroyEntry("QMVC_POS_RECORD_item");
+				string QMVC_POS_RECORD = Navigation.GetStrValue("QMVC_POS_RECORD_brand");
+				Navigation.DestroyEntry("QMVC_POS_RECORD_brand");
 				CriteriaSet m_PagingPosEPHs = null;
 
 				if (!string.IsNullOrEmpty(QMVC_POS_RECORD))
 				{
-					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAitem.GetInformation(), QMVC_POS_RECORD, sorts, w_favbrands__pseud__field001Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
+					var m_iCurPag = m_userContext.PersistentSupport.getPagingPos(CSGenioAbrand.GetInformation(), QMVC_POS_RECORD, sorts, w_favbrands__pseud__field001Conds, m_PagingPosEPHs, firstVisibleColumn: firstVisibleColumn);
 					if (m_iCurPag != -1)
 						pageNumber = ((m_iCurPag - 1) / numberListItems) + 1;
 				}
 
-				ListingMVC<CSGenioAitem> listing = Models.ModelBase.Where<CSGenioAitem>(m_userContext, distinct, w_favbrands__pseud__field001Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_FAVBRANDS__PSEUD__FIELD001", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
+				ListingMVC<CSGenioAbrand> listing = Models.ModelBase.Where<CSGenioAbrand>(m_userContext, distinct, w_favbrands__pseud__field001Conds, fields, (pageNumber - 1) * numberListItems, numberListItems, sorts, "IBL_W_FAVBRANDS__PSEUD__FIELD001", true, false, QMVC_POS_RECORD, m_PagingPosEPHs, firstVisibleColumn, fieldsWithTotalizers, tableConfig.SelectedRows);
 
 				if (listing.CurrentPage > 0)
 					pageNumber = listing.CurrentPage;
@@ -409,7 +409,7 @@ namespace GenioMVC.ViewModels
 			LoadUserTableConfigNameProperties();
 		}
 
-		private List<W_favbrands_ValField001_RowViewModel> MapW_favbrands_ValField001(ListingMVC<CSGenioAitem> Qlisting)
+		private List<W_favbrands_ValField001_RowViewModel> MapW_favbrands_ValField001(ListingMVC<CSGenioAbrand> Qlisting)
 		{
 			List<W_favbrands_ValField001_RowViewModel> Elements = [];
 			int i = 0;
@@ -429,11 +429,11 @@ namespace GenioMVC.ViewModels
 		}
 
 		/// <summary>
-		/// Maps a single CSGenioAitem row
+		/// Maps a single CSGenioAbrand row
 		/// to a W_favbrands_ValField001_RowViewModel object.
 		/// </summary>
 		/// <param name="row">The row.</param>
-		private W_favbrands_ValField001_RowViewModel MapW_favbrands_ValField001(CSGenioAitem row)
+		private W_favbrands_ValField001_RowViewModel MapW_favbrands_ValField001(CSGenioAbrand row)
 		{
 			var model = new W_favbrands_ValField001_RowViewModel(m_userContext, true, _fieldsToSerialize);
 			if (row == null)
@@ -443,10 +443,8 @@ namespace GenioMVC.ViewModels
 			{
 				switch (Qfield.Area)
 				{
-					case "item":
-						model.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
 					case "brand":
-						model.Brand.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
+						model.klass.insertNameValueField(Qfield.FullName, Qfield.Value); break;
 					default:
 						break;
 				}
@@ -472,19 +470,19 @@ namespace GenioMVC.ViewModels
 		/// Sets the document field values to objects.
 		/// </summary>
 		/// <param name="listing">The rows</param>
-		private void SetDocumentFields(ListingMVC<CSGenioAitem> listing)
+		private void SetDocumentFields(ListingMVC<CSGenioAbrand> listing)
 		{
 		}
 
 		#region Mapper
 
 		/// <inheritdoc />
-		public override void MapFromModel(Models.Item m)
+		public override void MapFromModel(Models.Brand m)
 		{
 		}
 
 		/// <inheritdoc />
-		public override void MapToModel(Models.Item m)
+		public override void MapToModel(Models.Brand m)
 		{
 		}
 
@@ -498,13 +496,13 @@ namespace GenioMVC.ViewModels
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Item", "Item.ValCoditem", "Item.ValZzstate", "Brand", "Brand.ValTotalspending", "Brand.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValCodperson", "Item.ValSubcategory"
+			"Brand", "Brand.ValCodbrand", "Brand.ValZzstate", "Brand.ValTotalspending", "Brand.ValName", "Brand.ValCountry", "Brand.ValCodperson"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("Brand_ValTotalspending", CSGenioAbrand.FldTotalspending, typeof(decimal?)),
-			new TableSearchColumn("Brand_ValName", CSGenioAbrand.FldName, typeof(string), defaultSearch : true),
+			new TableSearchColumn("ValTotalspending", CSGenioAbrand.FldTotalspending, typeof(decimal?)),
+			new TableSearchColumn("ValName", CSGenioAbrand.FldName, typeof(string), defaultSearch : true),
 		];
 	}
 }
