@@ -104,6 +104,26 @@ namespace GenioMVC.ViewModels.Dashboard
 					UsesCache = false,
 					InstantionMethod = WidgetInstantionMethod.Aggregate
 				},
+				new CustomWidgetProvider<CSGenio.business.DbArea>
+{
+					Id = "TOTALSPENDING",
+					Order = 9,
+					Width = 2,
+					Height = 2,
+					BorderStyle = "",
+					Required = false,
+					Visible = true,
+					Role = CSGenio.framework.Role.ROLE_5,
+					Module = "FPV",
+					Title = Resources.Resources.TOTAL_SPENDING49047,
+					Group = "_GRAPHS",
+					Form = "TOTALSPENDING",
+					Component = "QFormTotalspending",
+					RefreshMode = WidgetRefreshMode.Automatic,
+					RefreshRate = 60,
+					UsesCache = false,
+					InstantionMethod = WidgetInstantionMethod.Aggregate
+				},
 			];
 
 			IndependentWidgetInstances =

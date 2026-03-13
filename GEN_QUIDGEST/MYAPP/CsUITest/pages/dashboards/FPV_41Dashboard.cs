@@ -8,4 +8,5 @@ public class FPV_41Dashboard(IWebDriver driver, By containerLocator, string css)
     public IWebElement EXPENSESOVERT => throw new NotImplementedException();
     public IWebElement LASTINVOICE => throw new NotImplementedException();
     public WidgetMenuControl NEWINVOICE => new WidgetMenuControl(driver, By.Id("w-Menu_6"), ".q-widget");
+    public IWebElement TOTALSPENDING => throw new NotImplementedException();
 }
