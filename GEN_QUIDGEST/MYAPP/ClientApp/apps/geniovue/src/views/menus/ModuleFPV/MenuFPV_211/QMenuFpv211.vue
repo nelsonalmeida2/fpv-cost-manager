@@ -264,7 +264,7 @@
 										type: 'form',
 										formName: 'FORM_CATEGORY',
 										mode: 'NEW',
-										repeatInsertion: false,
+										repeatInsertion: true,
 										isControlled: true
 									}
 								},
@@ -299,6 +299,7 @@
 									isPopup: false
 								},
 							},
+							allowFileImport: true,
 							defaultSearchColumnName: 'ValName',
 							defaultSearchColumnNameOriginal: 'ValName',
 							defaultColumnSorting: {
