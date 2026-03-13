@@ -36,8 +36,8 @@ public class W_favbrands_ValField001_RowViewModel : Models.Item
 			new ListColumn()
 			{
 				Order = 1,
-				Area = "ITEM",
-				Field = "TOTALPRICE",
+				Area = "BRAND",
+				Field = "TOTALSPENDING",
 			},
 			new ListColumn()
 			{

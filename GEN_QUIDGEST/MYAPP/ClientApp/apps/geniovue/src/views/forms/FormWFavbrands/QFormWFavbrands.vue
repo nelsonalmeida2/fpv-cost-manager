@@ -352,14 +352,15 @@
 						columnsOriginal: [
 							new listColumnTypes.CurrencyColumn({
 								order: 1,
-								name: 'ValTotalprice',
-								area: 'ITEM',
-								field: 'TOTALPRICE',
-								label: computed(() => this.Resources.TOTAL_PRICE46894),
-								scrollData: 10,
-								maxDigits: 7,
+								name: 'Brand.ValTotalspending',
+								area: 'BRAND',
+								field: 'TOTALSPENDING',
+								label: computed(() => this.Resources.TOTAL_SPENDING49047),
+								scrollData: 9,
+								maxDigits: 6,
 								decimalPlaces: 2,
 								export: 1,
+								pkColumn: 'ValCodbrand',
 							}, computed(() => vm.model), computed(() => vm.internalEvents)),
 							new listColumnTypes.TextColumn({
 								order: 2,
@@ -429,7 +430,7 @@
 									yaxis: {
 										allowsMultiple: true,
 										sources: [
-											'ITEM.TOTALPRICE',
+											'BRAND.TOTALSPENDING',
 										]
 									},
 								}),

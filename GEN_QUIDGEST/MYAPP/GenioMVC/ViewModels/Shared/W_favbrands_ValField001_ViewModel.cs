@@ -121,7 +121,7 @@ namespace GenioMVC.ViewModels
 		{
 			return
 			[
-				new Exports.QColumn(CSGenioAitem.FldTotalprice, FieldType.CURRENCY, Resources.Resources.TOTAL_PRICE46894, 10, 0, true),
+				new Exports.QColumn(CSGenioAbrand.FldTotalspending, FieldType.CURRENCY, Resources.Resources.TOTAL_SPENDING49047, 9, 0, true),
 				new Exports.QColumn(CSGenioAbrand.FldName, FieldType.TEXT, Resources.Resources.NAME31974, 30, 0, true),
 			];
 		}
@@ -300,7 +300,7 @@ namespace GenioMVC.ViewModels
 			List<ColumnSort> sorts = GetRequestSorts(this.Menu, tableConfig, "item", allSortOrders);
 
 
-			FieldRef[] fields = new FieldRef[] { CSGenioAitem.FldCoditem, CSGenioAitem.FldZzstate, CSGenioAitem.FldTotalprice, CSGenioAitem.FldBrand, CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldName };
+			FieldRef[] fields = new FieldRef[] { CSGenioAitem.FldCoditem, CSGenioAitem.FldZzstate, CSGenioAitem.FldBrand, CSGenioAbrand.FldCodbrand, CSGenioAbrand.FldTotalspending, CSGenioAbrand.FldName };
 
 
 			// Totalizers
@@ -312,7 +312,7 @@ namespace GenioMVC.ViewModels
 			{
 				firstVisibleColumn = tableConfig?.GetFirstVisibleColumn(TableAlias);
 
-				firstVisibleColumn ??= new FieldRef("item", "totalprice");
+				firstVisibleColumn ??= new FieldRef("brand", "totalspending");
 			}
 			// Limitations
 			this.TableLimits ??= [];
@@ -498,12 +498,12 @@ namespace GenioMVC.ViewModels
 
 		private static readonly string[] _fieldsToSerialize =
 		[
-			"Item", "Item.ValCoditem", "Item.ValZzstate", "Item.ValTotalprice", "Brand", "Brand.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValCodperson", "Item.ValSubcategory"
+			"Item", "Item.ValCoditem", "Item.ValZzstate", "Brand", "Brand.ValTotalspending", "Brand.ValName", "Item.ValBrand", "Item.ValCategory", "Item.ValInvoice", "Item.ValCodperson", "Item.ValSubcategory"
 		];
 
 		private static readonly List<TableSearchColumn> _searchableColumns =
 		[
-			new TableSearchColumn("ValTotalprice", CSGenioAitem.FldTotalprice, typeof(decimal?)),
+			new TableSearchColumn("Brand_ValTotalspending", CSGenioAbrand.FldTotalspending, typeof(decimal?)),
 			new TableSearchColumn("Brand_ValName", CSGenioAbrand.FldName, typeof(string), defaultSearch : true),
 		];
 	}
