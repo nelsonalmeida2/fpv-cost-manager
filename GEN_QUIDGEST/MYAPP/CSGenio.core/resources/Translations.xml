@@ -444,6 +444,9 @@
   <msg id="Item" code="ITEM40802">
     <ENUS>Item</ENUS>
   </msg>
+  <msg id="Favorite stores" code="FAVORITE_STORES47289">
+    <ENUS>Favorite stores</ENUS>
+  </msg>
   <msg id="Persons" code="PERSONS18356">
     <ENUS>Persons</ENUS>
   </msg>

@@ -561,6 +561,9 @@
 	<data name="ITEM40802" xml:space="preserve">
 		<value>Item</value>
 	</data>
+	<data name="FAVORITE_STORES47289" xml:space="preserve">
+		<value>Favorite stores</value>
+	</data>
 	<data name="PERSONS18356" xml:space="preserve">
 		<value>Persons</value>
 	</data>

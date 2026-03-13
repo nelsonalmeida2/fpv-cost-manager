@@ -1393,6 +1393,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Favorite stores"
+        /// </summary>
+        public static string FAVORITE_STORES47289 {
+            get {
+                return ResourceManager.GetString("FAVORITE_STORES47289", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Persons"
         /// </summary>
         public static string PERSONS18356 {
