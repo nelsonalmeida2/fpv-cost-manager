@@ -387,6 +387,9 @@
   <msg id="New Data Grid" code="NEW_DATA_GRID00674">
     <ENUS>New Data Grid</ENUS>
   </msg>
+  <msg id="Graphs" code="GRAPHS20473">
+    <ENUS>Graphs</ENUS>
+  </msg>
   <msg id="Notification Email Signature" code="NOTIFICATION_EMAIL_S62518">
     <ENUS>Notification Email Signature</ENUS>
   </msg>

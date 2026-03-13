@@ -65,6 +65,12 @@
 						action: 'FPV_Menu_41',
 						title: computed(() => this.Resources.DASHBOARD51597),
 						groups: [
+							{
+								id: '_GRAPHS',
+								hideGroup: false,
+								order: 7,
+								title: computed(() => vm.Resources.GRAPHS20473),
+							},
 						],
 					}, this)
 				}

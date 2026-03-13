@@ -504,6 +504,9 @@
 	<data name="NEW_DATA_GRID00674" xml:space="preserve">
 		<value>New Data Grid</value>
 	</data>
+	<data name="GRAPHS20473" xml:space="preserve">
+		<value>Graphs</value>
+	</data>
 	<data name="NOTIFICATION_EMAIL_S62518" xml:space="preserve">
 		<value>Notification Email Signature</value>
 	</data>

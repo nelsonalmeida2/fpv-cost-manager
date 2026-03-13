@@ -567,6 +567,19 @@
 								groups: {
 								}
 							},
+							{
+								id: 'LIST',
+								type: 'list',
+								subtype: '',
+								label: computed(() => this.Resources.LISTA13474),
+								order: 2,
+								mappingVariables: readonly({
+								}),
+								styleVariables: {
+								},
+								groups: {
+								}
+							},
 						],
 						controlLimits: [
 						],

@@ -1222,6 +1222,15 @@ namespace Administration.Resources {
         }
 
         /// <summary>
+        ///   Looks up a localized string similar to "Graphs"
+        /// </summary>
+        public static string GRAPHS20473 {
+            get {
+                return ResourceManager.GetString("GRAPHS20473", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to "Notification Email Signature"
         /// </summary>
         public static string NOTIFICATION_EMAIL_S62518 {
